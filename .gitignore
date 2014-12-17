@@ -1,0 +1,5 @@
+*\.log
+pfm*\.tar.gz
+pfm\.Rcheck
+pkg/ChangeLog
+test.R

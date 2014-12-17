@@ -1,0 +1,332 @@
+* ------------------------------------------------------------------------
+* ######   ####   ##   ##   ####  ##     ##   ####     FOCUS_TOXSWA v3.3.1
+*   ##    ##  ##   ## ##   ##     ##     ##  ##  ##       TOXSWA v2.1.3-F3
+*   ##    ##  ##    ###    #####  ## ### ##  ##  ##            28-Apr-2009
+*   ##    ##  ##   ## ##      ##  #### ####  ######      
+*   ##     ####   ##   ##  ####    ##   ##   ##  ##      Copyright Alterra
+* Compiled with:VisualFortran v6.6.0.    
+* ------------------------------------------------------------------------
+* T O X i c   S u b s t a n c e s   i n   S u r f a c e   W A t e r s
+* ------------------------------------------------------------------------
+* Alterra, Wageningen UR                         http://www.alterra.wur.nl
+* PO Box 47
+* 6700 AA Wageningen
+* The Netherlands
+* ------------------------------------------------------------------------
+* TOXSWA simulation: 17-Dec-2014-12:44:31
+* Working Directory: C:\SwashProjects\project_H_sw\toxswa                                            
+* Run ID           : 00002d_pa
+* File name        : 00002d_pa.sum
+
+* Input files and selected output files : 00002d_pa.txw
+* Run warnings and errors               : 00002d_pa.err
+* Summary of input and output           : 00002d_pa.sum
+
+
+ Project                : project_H_sw             
+ Substance              : H_sw                
+ Location               : D6 (Meteo station: Thiva)          
+ Type of flow           : variable
+ Type of water body     : watercourse (ditch / small stream)   
+ Simulation period      : 01-Jan-1986  to  01-May-1987
+ Time step output (h)   :  1        (except hydrology output)
+ Calculation based on   : hourly drainage or runoff/erosion data 
+
+ Entry routes    Occurring   Entry stretch water body (m)   Simulated by
+ Spray drift        yes           0.00 -   100.00
+ Drainage           yes           0.00 -   100.00           MACRO
+ Runoff+Erosion      no
+
+ Run comments : FOCUS Run                                                                       
+
+
+ Main physico-chemical properties for substance : H_sw                
+ =======================================================
+
+ Molar mass (g.mol-1)           :    300.0
+ Saturated vapour pressure (Pa) : 0.100E-06  measured at (°C) : 20.0
+ Water solubility (mg.L-1)      : 0.100E+01  measured at (°C) : 20.0
+ Half-life in water (d)         :    100.00  measured at (°C) : 20.0
+ Half-life in sediment (d)      :    300.00  measured at (°C) : 20.0
+ Kom susp.solids (coef. for sorption on organic matter) (L.kg-1) :      58.00
+ Freundlich exponent (-)                                         :       1.00
+ Kom sediment (coef. for sorption on organic matter)    (L.kg-1) :      58.00
+ Freundlich exponent (-)                                         :       1.00
+ Kmp (coef. for sorption on macrophytes-dry weight)     (L.kg-1) :       0.00
+
+
+ Summary of water body system properties
+ =======================================
+
+ Water layer
+ Bottom width*length (m)                     :  1.00 *   100.00
+ Side slope (hor:vert)                       :    0.00001:1
+ Macrophytes (g dry weight.m-2 bottom)       :    0.0
+ Suspended solids (mg.L-1)                   :   15.0
+
+ Selected top layer of sediment
+ Sediment depth (m)                          :    0.050
+ Average bulk density (kg.m-3)               :  800.0
+ Average porosity (-)                        :    0.60
+ Average mass ratio org. matter dry sed. (-) :    0.09
+
+
+ Application pattern and deposition by drift on water surface
+ ============================================================
+
+ Number of applications                            :  1
+
+ Appl.No  Date/Hour         Mass (g ai.ha-1)   Areic mean deposition (%)
+  1    06-Dec-1986 09:00       1000.0                1.927
+
+ Drainage or runoff entry route into surface water
+ =================================================
+
+ Catchment located upstream (ha)           :     2.0
+ Ratio catchment applied area:total area   :    0.00
+ Contributing margin along watercourse 
+ for drainage or runoff (m)                :   100.0
+ Contributing margin along watercourse 
+ for erosion (m)                           :    20.0
+
+ Maximum hourly fluxes and concentrations in drained water
+ Water                    :    1.66 mm.h-1     (   166.5 L.'m-1.h-1)  19-Jan-1987 06:00
+ Substance                :    0.16 mg.m-2.h-1 (    15.7 mg.'m-1.h-1) 19-Jan-1987 06:00
+ Substance concentration  :  175.62 µg.L-1                            18-Dec-1986 02:00
+
+
+ Maximum daily fluxes and concentrations in drained water
+ Water                    :   22.14 mm.d-1     (  2214.1 L.'m-1.d-1)  20-Jan-1987      
+ Substance                :    2.06 mg.m-2.d-1 (   205.8 mg.'m-1.d-1) 20-Jan-1987      
+ Substance concentration  :  162.35 µg.L-1                            19-Dec-1986      
+
+
+ Table: Monthly input of substance into water body
+ =================================================
+
+ Total mass (g) entered in water body
+ -------------------------------------------------
+
+ Year  Month  Upstr.boundary  Drift dep.  Drainage
+ 1986    Jan      0.000        0.000        5.287
+ 1986    Feb      0.000        0.000       94.573
+ 1986    Mar      0.000        0.000        5.386
+ 1986    Apr      0.000        0.000        2.429
+ 1986    May      0.000        0.000        0.000
+ 1986    Jun      0.000        0.000        0.000
+ 1986    Jul      0.000        0.000        0.000
+ 1986    Aug      0.000        0.000        0.000
+ 1986    Sep      0.000        0.000        0.000
+ 1986    Oct      0.000        0.000        0.000
+ 1986    Nov      0.000        0.000        0.432
+ 1986    Dec      0.000        0.193       90.696
+ 1987    Jan      0.000        0.000       61.412
+ 1987    Feb      0.000        0.000       34.381
+ 1987    Mar      0.000        0.000       25.163
+ 1987    Apr      0.000        0.000        6.096
+ -------------------------------------------------
+
+
+ Table: Water balance elements and temperature of the water body
+ ===============================================================
+
+ Key to table:
+ Waflux   total water flux from adjacent plot (mm.m-2.month-1)
+ Qoutmin  minimum monthly outflow (L.s-1)
+ Qoutmax  maximum monthly outflow (L.s-1)
+ Hmin     minimum water depth of the month (m)
+ Hmax     maximum water depth of the month (m)
+ Umin     minimum flow velocity of the month (m.d-1)
+ Umax     maximum flow velocity of the month (m.d-1)
+ Motau    monthly average hydraulic residence time (d)
+ Temp     (constant) temperature of the month (°C)
+
+ ----------------------------------------------------------------------------
+ Year  Month  Waflux  Qoutmin  Qoutmax  Hmin  Hmax   Umin   Umax  Motau  Temp
+ 1986    Jan      12   0.0429      1.4  0.30  0.31     12    322    2.0  10.5
+ 1986    Feb     147   0.4004     13.2  0.30  0.36     98   2725    0.2  10.5
+ 1986    Mar      14   0.0802      0.6  0.30  0.31     21    150    1.8  12.1
+ 1986    Apr       6   0.0429      0.3  0.30  0.30     12     83    3.0  14.8
+ 1986    May       0   0.0429      0.0  0.30  0.30     12     12    8.1  19.0
+ 1986    Jun       0   0.0429      0.0  0.30  0.30     12     12    8.1  22.8
+ 1986    Jul       0   0.0429      0.0  0.30  0.30     12     12    8.1  23.9
+ 1986    Aug       0   0.0429      0.0  0.30  0.30     12     12    8.1  25.1
+ 1986    Sep       0   0.0429      0.0  0.30  0.30     12     12    8.1  22.4
+ 1986    Oct       0   0.0429      0.0  0.30  0.30     12     12    8.1  18.0
+ 1986    Nov       1   0.0429      0.1  0.30  0.30     12     23    6.2  12.8
+ 1986    Dec      89   0.0429      7.3  0.30  0.34     12   1606    0.3   9.4
+ 1987    Jan      90   0.3509     13.8  0.30  0.36     86   2841    0.3  11.1
+ 1987    Feb      53   0.1022      4.4  0.30  0.32     27    994    0.5  11.1
+ 1987    Mar      45   0.2178      1.5  0.30  0.31     55    353    0.6   8.7
+ 1987    Apr      11   0.0429      0.4  0.30  0.30     12    103    2.0  13.3
+ ----------------------------------------------------------------------------
+
+
+ Table: Monthly mass balance of the water layer
+ ==============================================
+
+ Key to table:
+ initial   mass initially present in water layer (g)
+ cuinsl    mass entered via lateral loadings (g.month-1)
+ cuinub    mass entered via upstream end (g.month-1)
+ cuinwb    mass entered via sediment (g.month-1)
+ cuouwb    mass penetrated into sediment (g.month-1)
+ cuoueb    mass flowed out (at downstream end)(g.month-1)
+ cuoufb    mass flowed out (at upstream end) (g.month-1)
+ cutf      mass transformed (g.month-1)
+ cuvol     mass volatilised (g.month-1)
+ totmwl    mass remaining in water layer (g)
+
+ initial:   0.000 g
+
+ -------------------------------------------------------------------------------------
+ Year  Month   cuinsl   cuinub cuinwb  cuouwb   cuoueb  cuoufb    cutf   cuvol  totmwl
+ 1986    Jan    5.264    0.000  0.000  -0.017   -4.993   0.000  -0.003   0.000   0.251
+ 1986    Feb   94.577    0.000  0.001  -0.043  -94.498   0.000  -0.032   0.000   0.255
+ 1986    Mar    5.396    0.000  0.004  -0.002   -5.467   0.000  -0.020   0.000   0.166
+ 1986    Apr    2.436    0.000  0.017  -0.007   -2.595   0.000  -0.014   0.000   0.003
+ 1986    May    0.000    0.000  0.009   0.000   -0.011   0.000   0.000   0.000   0.001
+ 1986    Jun    0.000    0.000  0.004   0.000   -0.004   0.000   0.000   0.000   0.000
+ 1986    Jul    0.000    0.000  0.002   0.000   -0.002   0.000   0.000   0.000   0.000
+ 1986    Aug    0.000    0.000  0.002   0.000   -0.002   0.000   0.000   0.000   0.000
+ 1986    Sep    0.000    0.000  0.001   0.000   -0.001   0.000   0.000   0.000   0.000
+ 1986    Oct    0.000    0.000  0.001   0.000   -0.001   0.000   0.000   0.000   0.000
+ 1986    Nov    0.432    0.000  0.000  -0.010   -0.342   0.000  -0.004   0.000   0.077
+ 1986    Dec   90.860    0.000  0.013  -0.074  -90.505   0.000  -0.031   0.000   0.340
+ 1987    Jan   61.427    0.000  0.003  -0.022  -61.422   0.000  -0.037   0.000   0.289
+ 1987    Feb   34.370    0.000  0.003  -0.021  -34.272   0.000  -0.030   0.000   0.340
+ 1987    Mar   25.172    0.000  0.000  -0.017  -25.146   0.000  -0.029   0.000   0.320
+ 1987    Apr    6.110    0.000  0.023  -0.003   -6.417   0.000  -0.024   0.000   0.010
+ -------------------------------------------------------------------------------------
+
+
+ Table: Monthly mass balance of the top 0.050 m of the sediment layer
+ ====================================================================
+
+ Key to table:
+ initial   mass initially present in sediment layer (g)
+ cuiner    mass entered with eroded mass (g.month-1)
+ cuinwl    mass penetrated from water layer (g.month-1)
+ cuus      mass entered from sediment below (g.month-1)
+ cuouwl    mass transported into the water layer (g.month-1)
+ cuper     mass percolated to sediment below (g.month-1)
+ cutf      mass transformed (g.month-1)
+ totmwb    mass remaining in sediment layer (g)
+
+ initial:   0.000 g
+
+ --------------------------------------------------------------------
+ Year  Month   cuiner  cuinwl    cuus  cuouwl   cuper    cutf  totmwb
+ 1986    Jan    0.000   0.017   0.000   0.000   0.000   0.000   0.017
+ 1986    Feb    0.000   0.043   0.000   0.001   0.000   0.001   0.057
+ 1986    Mar    0.000   0.002   0.000   0.004   0.000   0.002   0.053
+ 1986    Apr    0.000   0.007   0.000   0.017  -0.001   0.002   0.040
+ 1986    May    0.000   0.000   0.000   0.009  -0.002   0.002   0.027
+ 1986    Jun    0.000   0.000   0.000   0.004  -0.002   0.002   0.020
+ 1986    Jul    0.000   0.000   0.000   0.002  -0.001   0.002   0.014
+ 1986    Aug    0.000   0.000   0.000   0.002  -0.001   0.001   0.011
+ 1986    Sep    0.000   0.000   0.000   0.001   0.000   0.001   0.008
+ 1986    Oct    0.000   0.000   0.000   0.001   0.000   0.000   0.007
+ 1986    Nov    0.000   0.010   0.000   0.000   0.000   0.000   0.015
+ 1986    Dec    0.000   0.074   0.000   0.013   0.000   0.001   0.075
+ 1987    Jan    0.000   0.022   0.000   0.003   0.000   0.003   0.091
+ 1987    Feb    0.000   0.021   0.000   0.003  -0.001   0.003   0.104
+ 1987    Mar    0.000   0.017   0.000   0.000  -0.002   0.003   0.115
+ 1987    Apr    0.000   0.003   0.000   0.023  -0.003   0.004   0.088
+ --------------------------------------------------------------------
+
+
+ Tables: Maximum exposure concentrations in water layer
+ ======================================================
+
+ In segment from    90.00 to   100.00 m in water body.
+ (Actual concentrations PECsw as well as PECsed refer to
+ momentary concentrations occurring 1, 2 etc days after
+ the global maximum concentration.  Time Weighted Average
+ Exposure Concentrations (TWAEC) have  been calculated for a
+ moving time frame and have been  allocated to the last
+ day of the period considered)
+
+
+ Actual concentrations in water layer in µg.L-1
+
+ --------------------------------------------------------------------
+                   Concentration             Date          Daynr
+ Global max            56.752          18-Dec-1986 06:00      352
+ (incl. susp.sol       56.757)
+ PECsw1                43.514          19-Dec-1986 06:00      353
+ PECsw2                27.798          20-Dec-1986 06:00      354
+ PECsw4                16.334          22-Dec-1986 06:00      356
+ PECsw7                31.077          25-Dec-1986 06:00      359
+ PECsw14               16.803          01-Jan-1987 06:00      366
+ PECsw21               14.243          08-Jan-1987 06:00      373
+ PECsw28               17.187          15-Jan-1987 06:00      380
+ PECsw42               15.581          29-Jan-1987 06:00      394
+ PECsw50               13.524          06-Feb-1987 06:00      402
+ PECsw100              18.948          28-Mar-1987 06:00      452
+ --------------------------------------------------------------------
+
+
+ Maximum Time Weighted Averaged Exposure Concentrations
+ in water layer in µg.L-1
+
+ --------------------------------------------------------------------
+                   Concentration             Date          Daynr
+ TWAECsw1              54.165          18-Dec-1986 22:00      352
+ TWAECsw2              48.129          19-Dec-1986 19:00      353
+ TWAECsw4              36.734          26-Dec-1986 20:00      360
+ TWAECsw7              34.411          24-Dec-1986 19:00      358
+ TWAECsw14             30.005          31-Dec-1986 16:00      365
+ TWAECsw21             25.045          07-Jan-1987 16:00      372
+ TWAECsw28             22.599          14-Jan-1987 16:00      379
+ TWAECsw42             21.581          28-Jan-1987 16:00      393
+ TWAECsw50             20.483          05-Feb-1987 16:00      401
+ TWAECsw100            18.272          27-Mar-1987 17:00      451
+ --------------------------------------------------------------------
+
+
+ Tables: Maximum exposure concentrations in sediment
+ ===================================================
+
+ In the top  5.00 cm sediment located under 
+ the water body segment from    90.00 to   100.00 m,
+ expressed as µg substance per kg dry sediment.
+
+
+ Actual concentrations in sediment in µg.kg-1 DW
+
+ --------------------------------------------------------------------
+                   Concentration             Date           Daynr
+ Global max            41.472          09-Apr-1987 06:59      464
+ PECsed1               41.455          10-Apr-1987 07:00      465
+ PECsed2               41.410          11-Apr-1987 07:00      466
+ PECsed4               41.181          13-Apr-1987 07:00      468
+ PECsed7               40.475          16-Apr-1987 07:00      471
+ PECsed14              36.913          23-Apr-1987 07:00      478
+ PECsed21              32.086          30-Apr-1987 07:00      485
+ simulated period too short for calculation of  PECsed28   
+ simulated period too short for calculation of  PECsed42   
+ simulated period too short for calculation of  PECsed50   
+ simulated period too short for calculation of  PECsed100  
+ --------------------------------------------------------------------
+
+
+ Maximum Time Weighted Averaged Exposure Concentrations
+ in sediment in µg.kg-1 DW
+
+ --------------------------------------------------------------------
+                   Concentration             Date           Daynr
+ TWAECsed1             41.471          09-Apr-1987 18:00      464
+ TWAECsed2             41.466          10-Apr-1987 08:00      465
+ TWAECsed4             41.449          11-Apr-1987 10:00      466
+ TWAECsed7             41.398          12-Apr-1987 22:00      467
+ TWAECsed14            41.359          11-Apr-1987 12:00      466
+ TWAECsed21            41.260          16-Apr-1987 01:00      471
+ TWAECsed28            40.852          20-Apr-1987 03:00      475
+ TWAECsed42            40.120          21-Apr-1987 09:00      476
+ TWAECsed50            39.739          22-Apr-1987 13:00      477
+ TWAECsed100           36.846          29-Apr-1987 19:00      484
+ --------------------------------------------------------------------
+
+
+ The run time was:    1 minutes and 28 seconds

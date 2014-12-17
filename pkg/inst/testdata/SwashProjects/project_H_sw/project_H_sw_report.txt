@@ -1,0 +1,46 @@
+
+
+
+      * SWASH report file
+      * made by FOCUS-SWASH UI v. 3 (= 3.1.2, 13 Oct 2009)
+      *
+      * File Name   : C:\SwashProjects\project_H_sw\project_H_sw_report.txt
+      * Description : Example project 1
+      * Substance   : Dummy compound H_sw
+      *
+      * Creation    : 17-Dec-2014, 07:44
+      *
+      * Remarks : SWASH report helps you to set up the needed runs to
+      *           calculate the PECsw and PECsed, occuring in the EU
+      *           for the selected substance, used on the selected crop.
+      *           The scenario code informs you which models you need to
+      *           run for this scenario.
+      *           D1-D6: drainage entries calculated by the MACRO model,
+      *                  fate in surface water calculated by the TOXSWA model
+      *           R1-R4: runoff and erosion entries calculated by the PRZM model,
+      *                  fate in surface water calculated by the TOXSWA model
+      *
+      *      N.B. For STREAMS the Mean Deposition and Mass Loading, as calculated
+      *           by the FOCUS Drift Calculator, have been multiplied by a factor
+      *           1.2 to account for pesticide mass incoming from the upstream
+      *           catchment as decided by the FOCUS Surface Water Scenarios Working
+      *           Group.
+      *
+      *
+      ********************************************************************************************************************************************
+      *  CREATED RUNS
+      ********************************************************************************************************************************************
+      *
+      *                                                                |--------------- APPLICATION ----------------|----- on Water Surface -----|
+      * --ID--MACRO\PRZM-Crop(1st/2nd)----------Scenario-WaterbodyType-|-Method---------First/Last/Interval-#--Rate-|-Mean Deposition-Mass Loading
+                                                                                                     (d)     (kg/ha) (% of Appl. Rate)   (mg/m2)
+      *
+      * 00001p_pa 00001  Cereals, winter(1st)     D4        focus_pond   ground spray   08-Sep/28-Oct/7     1 1.0000       0.154          0.154
+      *                                                                                                     2 0.7500       0.154          0.116
+      *                                                                                                     3 0.5000       0.154          0.077
+      *
+      * 00002d_pa 00002  Cereals, winter(1st)     D6        focus_ditch  ground spray   16-Nov/16-Dec/1     1 1.0000       1.927          1.927
+      *
+      * 00003s_pa 00003  Cereals, winter(1st)     R1        focus_stream ground spray   29-Oct/28-Nov/1     1 1.0000       1.716          1.716
+      *
+      ******************************************************* Surface WAter Scenarios Help *******************************************************
