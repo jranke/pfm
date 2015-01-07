@@ -90,7 +90,7 @@ plot.TOXSWA_cwa <- function(x, time_column = c("datetime", "t", "t_firstjan"),
     ylab = paste( ifelse(total, "Total concentration", "Concentration"), "[\u03bcg/L]")
   }
   if (add) {
-    lines(x$cwas[c(time_column, cwa_column)], xlab = xlab, ylab = ylab)
+    lines(x$cwas[c(time_column, cwa_column)], xlab = xlab, ylab = ylab, ...)
   } else{
     plot(x$cwas[c(time_column, cwa_column)], type = "l",
          xlab = xlab, ylab = ylab, ...)
