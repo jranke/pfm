@@ -152,12 +152,15 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
     cwas = NULL,
     windows = NULL,
     events = NULL,
-    initialize = function(filename, basedir, zipfile, segment = "last") {
+    initialize = function(filename, basedir, zipfile = NULL, segment = "last") {
       self$filename <- filename
       self$basedir <- basedir
       self$zipfile <- zipfile
-      if (!is.null(zipfile)) try((file_connection <- unz(zipfile, paste0(basedir, "/", filename))))
-      else try((file_connection <- file(file.path(basedir, filename))))
+      if (!is.null(zipfile)) {
+        try(file_connection <- unz(zipfile, paste0(basedir, "/", filename)))
+      } else {
+        try(file_connection <- file(file.path(basedir, filename), "rt"))
+      }
       cwa_all_segments <- try(read.table(file_connection,
                                          sep = "", skip = 40, 
                                          colClasses = c("character", "numeric",
@@ -165,6 +168,8 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
                                          col.names = c("datetime", "t", "segment",
                                                        "xcd", "cwa_tot", "cwa",
                                                        "Xss", "Xmp")))
+      if (is.null(zipfile)) close(file_connection) # only needed for files
+
       if (!inherits(cwa_all_segments, "try-error")) {
         available_segments = 1:max(cwa_all_segments$segment)
         if (segment == "last") segment = max(available_segments)
