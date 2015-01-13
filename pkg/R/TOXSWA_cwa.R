@@ -1,4 +1,4 @@
-# Copyright (C) 2014  Johannes Ranke
+# Copyright (C) 2014,2015  Johannes Ranke
 # Contact: jranke@uni-bremen.de
 # This file is part of the R package pfm
 
@@ -22,11 +22,12 @@
 #' segment are imported.
 #'
 #' @param filename The filename of the cwa file.
-#' @param basedir The full path to the directory where the cwa file resides.
+#' @param basedir The path to the directory where the cwa file resides.
+#' @param zipfile Optional path to a zip file containing the cwa file.
 #' @param segment The segment for which the data should be read. Either "last", or 
 #'   the segment number.
-#' @param windows Numeric vector of width of moving windows for calculating
-#'   time weighted average concentrations and areas under the curve.
+#' @param windows Numeric vector of width of moving windows in days, for calculating
+#'   maximum time weighted average concentrations and areas under the curve.
 #' @param thresholds Numeric vector of threshold concentrations in µg/L for
 #'   generating event statistics.  
 #' @return An instance of an R6 object of class
@@ -35,13 +36,15 @@
 #' @author Johannes Ranke
 #' @examples
 #' H_sw_D4_pond  <- read.TOXSWA_cwa("00001p_pa.cwa",
-#'                                  system.file("testdata/SwashProjects/project_H_sw/TOXSWA",
+#'                                  basedir = "SwashProjects/project_H_sw/TOXSWA",
+#'                                  zipfile = system.file("testdata/SwashProjects.zip",
 #'                                              package = "pfm"))
-read.TOXSWA_cwa <- function(filename, basedir = ".", segment = "last",
-                            windows = c(7, 21), thresholds = NULL)
+read.TOXSWA_cwa <- function(filename, basedir = ".", zipfile = NULL, 
+                            segment = "last",
+                            windows = NULL, thresholds = NULL)
 {
   if (!missing(filename)) {
-    cwa <- TOXSWA_cwa$new(filename, basedir)
+    cwa <- TOXSWA_cwa$new(filename, basedir, zipfile)
     if (!is.null(windows[1])) cwa$moving_windows(windows)
     if (!is.null(thresholds[1])) cwa$get_events(thresholds)
     invisible(cwa)
@@ -68,7 +71,8 @@ read.TOXSWA_cwa <- function(filename, basedir = ".", segment = "last",
 #' @author Johannes Ranke
 #' @examples
 #' H_sw_D4_pond  <- read.TOXSWA_cwa("00001p_pa.cwa",
-#'                                  system.file("testdata/SwashProjects/project_H_sw/TOXSWA",
+#'                                  basedir = "SwashProjects/project_H_sw/TOXSWA",
+#'                                  zipfile = system.file("testdata/SwashProjects.zip",
 #'                                              package = "pfm"))
 #' plot(H_sw_D4_pond)
 plot.TOXSWA_cwa <- function(x, time_column = c("datetime", "t", "t_firstjan"),
@@ -131,23 +135,30 @@ plot.TOXSWA_cwa <- function(x, time_column = c("datetime", "t", "t_firstjan"),
 #' }
 #' @examples
 #' H_sw_R1_stream  <- read.TOXSWA_cwa("00003s_pa.cwa",
-#'                                  system.file("testdata/SwashProjects/project_H_sw/TOXSWA",
+#'                                  basedir = "SwashProjects/project_H_sw/TOXSWA",
+#'                                  zipfile = system.file("testdata/SwashProjects.zip",
 #'                                              package = "pfm"))
 #' H_sw_R1_stream$get_events(c(2, 10))
+#' H_sw_R1_stream$moving_windows(c(7, 21))
+#' print(H_sw_R1_stream)
 #' @keywords data
 
 TOXSWA_cwa <- R6Class("TOXSWA_cwa",
   public = list(
-    filename = "character",
-    basedir = "character",
-    segment = "integer",
-    cwas = "data.frame",
-    windows = "matrix",
-    events = "list",
-    initialize = function(filename, basedir, segment = "last") {
+    filename = NULL,
+    basedir = NULL,
+    zipfile = NULL,
+    segment = NULL,
+    cwas = NULL,
+    windows = NULL,
+    events = NULL,
+    initialize = function(filename, basedir, zipfile, segment = "last") {
       self$filename <- filename
       self$basedir <- basedir
-      cwa_all_segments <- try(read.table(file.path(basedir, filename), 
+      self$zipfile <- zipfile
+      if (!is.null(zipfile)) try((file_connection <- unz(zipfile, paste0(basedir, "/", filename))))
+      else try((file_connection <- file(file.path(basedir, filename))))
+      cwa_all_segments <- try(read.table(file_connection,
                                          sep = "", skip = 40, 
                                          colClasses = c("character", "numeric",
                                                         "integer", rep("numeric", 5)),

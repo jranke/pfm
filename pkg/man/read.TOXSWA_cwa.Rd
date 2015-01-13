@@ -4,19 +4,21 @@
 \alias{read.TOXSWA_cwa}
 \title{Read TOXSWA surface water concentrations}
 \usage{
-read.TOXSWA_cwa(filename, basedir = ".", segment = "last", windows = c(7,
-  21), thresholds = NULL)
+read.TOXSWA_cwa(filename, basedir = ".", zipfile = NULL, segment = "last",
+  windows = NULL, thresholds = NULL)
 }
 \arguments{
 \item{filename}{The filename of the cwa file.}
 
-\item{basedir}{The full path to the directory where the cwa file resides.}
+\item{basedir}{The path to the directory where the cwa file resides.}
+
+\item{zipfile}{Optional path to a zip file containing the cwa file.}
 
 \item{segment}{The segment for which the data should be read. Either "last", or
 the segment number.}
 
-\item{windows}{Numeric vector of width of moving windows for calculating
-time weighted average concentrations and areas under the curve.}
+\item{windows}{Numeric vector of width of moving windows in days, for calculating
+maximum time weighted average concentrations and areas under the curve.}
 
 \item{thresholds}{Numeric vector of threshold concentrations in µg/L for
 generating event statistics.}
@@ -32,7 +34,8 @@ segment are imported.
 }
 \examples{
 H_sw_D4_pond  <- read.TOXSWA_cwa("00001p_pa.cwa",
-                                 system.file("testdata/SwashProjects/project_H_sw/TOXSWA",
+                                 basedir = "SwashProjects/project_H_sw/TOXSWA",
+                                 zipfile = system.file("testdata/SwashProjects.zip",
                                              package = "pfm"))
 }
 \author{

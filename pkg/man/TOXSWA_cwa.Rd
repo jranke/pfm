@@ -47,9 +47,12 @@ for the requested moving window sizes in days.}
 }
 \examples{
 H_sw_R1_stream  <- read.TOXSWA_cwa("00003s_pa.cwa",
-                                 system.file("testdata/SwashProjects/project_H_sw/TOXSWA",
+                                 basedir = "SwashProjects/project_H_sw/TOXSWA",
+                                 zipfile = system.file("testdata/SwashProjects.zip",
                                              package = "pfm"))
 H_sw_R1_stream$get_events(c(2, 10))
+H_sw_R1_stream$moving_windows(c(7, 21))
+print(H_sw_R1_stream)
 }
 \keyword{data}
 

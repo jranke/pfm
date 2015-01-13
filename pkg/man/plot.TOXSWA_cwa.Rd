@@ -31,7 +31,8 @@ segment of a segment of a TOXSWA surface water body.
 }
 \examples{
 H_sw_D4_pond  <- read.TOXSWA_cwa("00001p_pa.cwa",
-                                 system.file("testdata/SwashProjects/project_H_sw/TOXSWA",
+                                 basedir = "SwashProjects/project_H_sw/TOXSWA",
+                                 zipfile = system.file("testdata/SwashProjects.zip",
                                              package = "pfm"))
 plot(H_sw_D4_pond)
 }
