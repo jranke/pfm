@@ -35,28 +35,11 @@ To read in and analyse a cwa file:
 
 ```r
 library(pfm)
-```
-
-```
-## Loading required package: R6
-```
-
-```r
 example_cwa <- read.TOXSWA_cwa("00003s_pa.cwa")
 plot(example_cwa)
 ```
 
-```
-## Warning in title(...): Konvertierungsfehler für 'Concentration [μg/L]' in
-## 'mbcsToSbcs': Punkt ersetzt <ce>
-```
-
-```
-## Warning in title(...): Konvertierungsfehler für 'Concentration [μg/L]' in
-## 'mbcsToSbcs': Punkt ersetzt <bc>
-```
-
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
 ```r
 example_cwa$get_events(c(20, 100))

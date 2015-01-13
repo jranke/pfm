@@ -1,5 +1,9 @@
 # pfm
-
+```{r, echo = FALSE}
+options(device = function(file, width = 7, height = 7, ...) {
+          cairo_pdf(tempfile(), width = width, height = height, ...)
+})
+```
 The R package **pfm** provides some utilities for dealing with FOCUS pesticide fate modelling tools,
 (currently only TOXSWA cwa files), made available under the GNU public license.
 This means:
