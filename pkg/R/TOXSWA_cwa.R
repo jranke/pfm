@@ -75,7 +75,7 @@ read.TOXSWA_cwa <- function(filename, basedir = ".", zipfile = NULL,
 #'                                  zipfile = system.file("testdata/SwashProjects.zip",
 #'                                              package = "pfm"))
 #' plot(H_sw_D4_pond)
-plot.TOXSWA_cwa <- function(x, time_column = c("datetime", "t", "t_firstjan"),
+plot.TOXSWA_cwa <- function(x, time_column = c("datetime", "t", "t_firstjan", "t_rel_to_max"),
                             xlab = "default", ylab = "default",
                             add = FALSE,
                             total = FALSE, LC_TIME = "C", ...)
@@ -88,7 +88,8 @@ plot.TOXSWA_cwa <- function(x, time_column = c("datetime", "t", "t_firstjan"),
     xlab = switch(time_column,
                 datetime = "Time",
                 t = "Time [days]",
-                t_firstjan = "Time since first of January [days]")  
+                t_firstjan = "Time since first of January [days]",
+                t_rel_to_max = "Time relative to maximum concentration [days]")  
   }
   if (ylab == "default") {
     ylab = paste( ifelse(total, "Total concentration", "Concentration"), "[\u03bcg/L]")

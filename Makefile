@@ -12,7 +12,7 @@ usage:
 	@echo ""
 	@echo "  clean     - Clean up."
 	@echo "  roxygen   - Roxygenize."
-	@echo "  build     - Build source package of last commit."
+	@echo "  build     - Build source package."
 	@echo "  check     - Run CRAN check on the package."
 	@echo "  install   - Install the package."
 

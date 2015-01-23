@@ -4,9 +4,9 @@
 \alias{plot.TOXSWA_cwa}
 \title{Plot TOXSWA surface water concentrations}
 \usage{
-\method{plot}{TOXSWA_cwa}(x, time_column = c("datetime", "t", "t_firstjan"),
-  xlab = "default", ylab = "default", add = FALSE, total = FALSE,
-  LC_TIME = "C", ...)
+\method{plot}{TOXSWA_cwa}(x, time_column = c("datetime", "t", "t_firstjan",
+  "t_rel_to_max"), xlab = "default", ylab = "default", add = FALSE,
+  total = FALSE, LC_TIME = "C", ...)
 }
 \arguments{
 \item{x}{The TOXSWA_cwa object to be plotted.}

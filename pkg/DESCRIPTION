@@ -2,7 +2,7 @@ Package: pfm
 Type: Package
 Title: Utilities for pesticide fate modelling
 Version: 0.1-1
-Date: 2015-01-13
+Date: 2015-01-23
 Authors@R: "Johannes Ranke <jranke@uni-bremen.de> [aut, cre, cph]"
 Description: Utilities for dealing with data from FOCUS software tools.
 Depends: R6
