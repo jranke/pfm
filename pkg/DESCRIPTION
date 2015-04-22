@@ -1,11 +1,14 @@
 Package: pfm
 Type: Package
 Title: Utilities for pesticide fate modelling
-Version: 0.1-1
-Date: 2015-01-23
-Authors@R: "Johannes Ranke <jranke@uni-bremen.de> [aut, cre, cph]"
-Description: Utilities for dealing with data from FOCUS software tools.
+Version: 0.1-2
+Date: 2015-04-22
+Authors@R: person("Johannes Ranke", email = "jranke@uni-bremen.de", 
+                  role = c("aut", "cre", "cph"))
+Description: Utilities for simple PEC calculations and for dealing with data
+  from some FOCUS pesticide fate modelling software.
 Depends: R6
+Suggests: testthat
 License: GPL
 LazyLoad: yes
 LazyData: yes

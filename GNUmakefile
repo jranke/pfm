@@ -18,6 +18,8 @@ usage:
 
 pkgfiles = pkg/DESCRIPTION \
 	   pkg/inst/testdata/* \
+		 pkg/tests/testthat.R \
+		 pkg/tests/testthat/* \
 	   pkg/R/*
 
 clean:
@@ -33,14 +35,24 @@ roxygen:
 $(TGZ): $(pkgfiles)
 	@echo "Building package..."
 	sed -i -e "s/Date:.*/Date: $(DATE)/" pkg/DESCRIPTION
-	"$(R_HOME)/bin/Rscript" -e 'library(roxygen2); roxygenize("pkg")' > roxygen.log 2>&1 || cat roxygen.log
+	"$(R_HOME)/bin/Rscript" -e 'library(roxygen2); roxygenize("pkg")' 2>&1 | tee roxygen.log
 	git log --no-merges -M --date=iso pkg/ > pkg/ChangeLog
 	"$(R_HOME)/bin/R" CMD build pkg > build.log 2>&1
 	@echo "DONE."
 
 build: $(TGZ)
 
+test: build
+	@echo "Running testthat tests..."
+	"$(R_HOME)/bin/Rscript" -e 'library(devtools); devtools::test("pkg")' 2>&1 | tee roxygen.log
+	@echo "DONE."
+
 check: build
+	@echo "Running check..."
+	"$(R_HOME)/bin/R" CMD check $(TGZ)
+	@echo "DONE."
+
+crancheck: build
 	@echo "Running CRAN check..."
 	"$(R_HOME)/bin/R" CMD check --as-cran $(TGZ)
 	@echo "DONE."
