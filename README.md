@@ -32,13 +32,20 @@ install_github("jranke/pfm", subdir = "pkg", quick = TRUE)
 
 ## Use
 
-# Analyse TOXSWA output
+### Analyse TOXSWA output
 
 Read in and analyse a cwa file:
 
 
 ```r
 library(pfm)
+```
+
+```
+## Loading required package: R6
+```
+
+```r
 example_cwa <- read.TOXSWA_cwa("00003s_pa.cwa")
 plot(example_cwa)
 ```
@@ -78,7 +85,7 @@ print(example_cwa)
 ## No events found
 ```
 
-# Calculate PEC soil
+### Calculate PEC soil
 
 Simple PEC soil calculation for an application rate of 100 g/ha and
 25% interception, assuming complete mixing into 5 cm and a soil bulk
