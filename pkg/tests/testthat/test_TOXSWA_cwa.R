@@ -6,6 +6,7 @@ test_that("TOXSWA cwa file is correctly read", {
                                    basedir = "SwashProjects/project_H_sw/TOXSWA",
                                    zipfile = system.file("testdata/SwashProjects.zip",
                                                package = "pfm"))
+  H_sw_D4_pond$zipfile <- NULL # do not test the path
   expect_equal_to_reference(H_sw_D4_pond, file = "H_sw_D4_pond.rds")
 })
 
