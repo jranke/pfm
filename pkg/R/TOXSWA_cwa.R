@@ -97,8 +97,15 @@ plot.TOXSWA_cwa <- function(x, time_column = c("datetime", "t", "t_firstjan", "t
   if (add) {
     lines(x$cwas[c(time_column, cwa_column)], xlab = xlab, ylab = ylab, ...)
   } else{
-    plot(x$cwas[c(time_column, cwa_column)], type = "l",
-         xlab = xlab, ylab = ylab, ...)
+    if (time_column == "datetime") {
+      plot(x$cwas$datetime, x$cwas[[cwa_column]], type = "l",
+           xlab = xlab, ylab = ylab, xaxt = "n", ...)
+      seq_x <- seq(min(x$cwas$datetime), max(x$cwas$datetime), by = "quarter")
+      axis(1, at = seq_x, labels = format(seq_x, "%b %Y"))
+    } else {
+      plot(x$cwas[c(time_column, cwa_column)], type = "l",
+           xlab = xlab, ylab = ylab, ...)
+    }
   }
   tmp <- Sys.setlocale("LC_TIME", lct)
 }
