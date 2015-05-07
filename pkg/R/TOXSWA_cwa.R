@@ -252,6 +252,7 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
               pre_interval = event_start - event_end
               i_start = i
               event = TRUE
+              event_max = cwa_cur
             }
           } else {
             if (cwa_cur > event_max) event_max = cwa_cur
