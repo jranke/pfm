@@ -39,13 +39,6 @@ Read in and analyse a cwa file:
 
 ```r
 library(pfm)
-```
-
-```
-## Loading required package: R6
-```
-
-```r
 example_cwa <- read.TOXSWA_cwa("00003s_pa.cwa")
 plot(example_cwa)
 ```
