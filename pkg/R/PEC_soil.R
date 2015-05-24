@@ -43,3 +43,72 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
   PEC_soil = rate_to_soil * 1000 / soil_mass     # in mg/kg
   return(PEC_soil)
 }
+
+
+PEC_soil_product <- function(product, rate, rate_units = "L/ha", interception = 0,
+                             mixing_depth = 5, tillage_depth = 20, 
+                             interval = 365,
+                             bulk_density = 1.5,
+                             PEC_units = "mg/kg") {
+  rate_units = match.arg(rate_units)
+  PEC_units = match.arg(PEC_units)
+  if (product$density_units != "g/L") stop("Product density other than g/L not supported")
+  if (product$concentration_units != "g/L") {
+    stop("Active ingredient concentration units other than g/L not supported")
+  }
+
+  results <- data.frame(compound = character(0), initial = numeric(0), 
+                        plateau_max = numeric(0), plateau_min = numeric(0), 
+                        long_term_max = numeric(0),
+                        stringsAsFactors = FALSE)
+  for (ai_name in names(product$ais)) {
+    ai <- product$ais[[ai_name]]
+    ai_rate <- rate * product$concentrations[ai_name] 
+    ini <- PEC_soil(ai_rate,
+                    interception = interception, mixing_depth = mixing_depth,
+                    bulk_density = bulk_density)
+    results[ai_name, "compound"] <- ai$acronym
+    results[ai_name, "initial"] <- ini
+
+    ini_tillage <- ini * mixing_depth / tillage_depth
+    DT50 <- subset(ai$degradation_endpoints, destination == "PECsoil")$DT50
+    if (length(DT50) > 0) {
+      if (!is.na(DT50)) {
+        k <- log(2) / DT50
+        plateau_max <- ini_tillage / (1 - exp( - k * interval))
+        plateau_min <- plateau_max *  exp( - k * interval)
+        long_term_max <- plateau_min + ini
+        results[ai_name, c("plateau_max", "plateau_min", "long_term_max")] <- 
+          c(plateau_max, plateau_min, long_term_max)
+      }
+    }
+
+    for (TP_name in names(ai$TPs)) {
+      TP <- ai$TPs[[TP_name]]
+      max_occurrence = max(subset(ai$transformations, 
+                                  grepl("soil", study_type) & 
+                                  acronym == TP$acronym, max_occurrence))
+      TP_rate <- ai_rate * TP$mw / ai$mw * max_occurrence
+      ini <- PEC_soil(TP_rate, interception = interception, mixing_depth = mixing_depth,
+                      bulk_density = bulk_density)
+      results[TP_name, "compound"] <- TP$acronym
+      results[TP_name, "initial"] <- ini
+
+      ini_tillage <- ini * mixing_depth / tillage_depth
+      DT50 <- subset(TP$degradation_endpoints, destination == "PECsoil")$DT50
+      if (length(DT50) > 0) {
+        if (!is.na(DT50)) {
+          k <- log(2) / DT50
+          plateau_max <- ini_tillage / (1 - exp( - k * interval))
+          plateau_min <- plateau_max *  exp( - k * interval)
+          results[TP_name, c("plateau_max", "plateau_min")] <- c(plateau_max, plateau_min)
+          long_term_max <- plateau_min + ini
+          results[TP_name, c("plateau_max", "plateau_min", "long_term_max")] <- 
+            c(plateau_max, plateau_min, long_term_max)
+        }
+      }
+    }
+  }
+  return(results)
+}
+

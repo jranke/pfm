@@ -1,5 +1,5 @@
-library(pfm)
-context("Simple PEC soil calculations")
+library(mkin)
+context("Setting up kinetic degradation models")
 
 test_that("PEC_soil calculates correctly", {
   # Application of 100 g/ha gives 0.133 mg/kg under default assumptions
