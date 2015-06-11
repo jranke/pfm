@@ -2,9 +2,11 @@
 
 S3method(plot,TOXSWA_cwa)
 export(PEC_soil)
+export(PEC_sw_drainage_UK_ini)
 export(PEC_sw_drift)
 export(PEC_sw_drift_ini)
 export(SFO_actual_twa)
+export(SSLRC_mobility_classification)
 export(TOXSWA_cwa)
 export(geomean)
 export(pfm_degradation)
