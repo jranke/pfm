@@ -132,10 +132,9 @@ deep water body are obtained using
 
 
 ```r
-PEC_sw_drift(100, applications = 1)
+PEC_sw_drift_ini(100, applications = 1)
 ```
 
 ```
-##        1 m        5 m       10 m       20 m 
-## 0.92333333 0.19000000 0.09666667 0.05000000
+## Error in eval(expr, envir, enclos): konnte Funktion "PEC_sw_drift_ini" nicht finden
 ```
