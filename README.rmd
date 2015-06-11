@@ -57,3 +57,14 @@ density of 1.5 kg/L, output in mg/kg:
 ```{r}
 PEC_soil(100, int = 0.25)
 ```
+
+### Rautmann drift data
+
+Some of the drift percentage data published by the JKI are included. To
+see the data for one application:
+
+```{r}
+drift_data_JKI[1]
+```
+
+

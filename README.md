@@ -92,3 +92,29 @@ PEC_soil(100, int = 0.25)
 ```
 ## [1] 0.1
 ```
+
+### Rautmann drift data
+
+Some of the drift percentage data published by the JKI are included. To
+see the data for one application:
+
+
+```r
+drift_data_JKI[1]
+```
+
+```
+## [[1]]
+##            crop
+## distance    Ackerbau Obstbau früh Obstbau spät
+##   1.000000      2.77           NA           NA
+##   3.000000        NA        29.20        15.73
+##   5.000000      0.57        19.89         8.41
+##   10.000000     0.29        11.81         3.60
+##   15.000000     0.20         5.55         1.81
+##   20.000000     0.15         2.77         1.09
+##   30.000000     0.10         1.04         0.54
+##   40.000000     0.07         0.52         0.32
+##   50.000000     0.06         0.30         0.22
+```
+
