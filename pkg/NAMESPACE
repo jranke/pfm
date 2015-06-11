@@ -2,6 +2,7 @@
 
 S3method(plot,TOXSWA_cwa)
 export(PEC_soil)
+export(PEC_sw_drift)
 export(TOXSWA_cwa)
 export(geomean)
 export(read.TOXSWA_cwa)

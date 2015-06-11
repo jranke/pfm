@@ -39,6 +39,13 @@ Read in and analyse a cwa file:
 
 ```r
 library(pfm)
+```
+
+```
+## Loading required package: R6
+```
+
+```r
 example_cwa <- read.TOXSWA_cwa("00003s_pa.cwa")
 plot(example_cwa)
 ```
@@ -105,16 +112,30 @@ drift_data_JKI[1]
 
 ```
 ## [[1]]
-##            crop
-## distance    Ackerbau Obstbau früh Obstbau spät
-##   1.000000      2.77           NA           NA
-##   3.000000        NA        29.20        15.73
-##   5.000000      0.57        19.89         8.41
-##   10.000000     0.29        11.81         3.60
-##   15.000000     0.20         5.55         1.81
-##   20.000000     0.15         2.77         1.09
-##   30.000000     0.10         1.04         0.54
-##   40.000000     0.07         0.52         0.32
-##   50.000000     0.06         0.30         0.22
+##         crop
+## distance Ackerbau Obstbau früh Obstbau spät
+##       1      2.77           NA           NA
+##       3        NA        29.20        15.73
+##       5      0.57        19.89         8.41
+##       10     0.29        11.81         3.60
+##       15     0.20         5.55         1.81
+##       20     0.15         2.77         1.09
+##       30     0.10         1.04         0.54
+##       40     0.07         0.52         0.32
+##       50     0.06         0.30         0.22
 ```
 
+### PEC surface water due to drift
+
+Initial PEC values for an application of 100 g/ha in the vicinity of a 30 cm
+deep water body are obtained using
+
+
+```r
+PEC_sw_drift(100, applications = 1)
+```
+
+```
+##        1 m        5 m       10 m       20 m 
+## 0.92333333 0.19000000 0.09666667 0.05000000
+```

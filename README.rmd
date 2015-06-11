@@ -67,4 +67,11 @@ see the data for one application:
 drift_data_JKI[1]
 ```
 
+### PEC surface water due to drift
 
+Initial PEC values for an application of 100 g/ha in the vicinity of a 30 cm
+deep water body are obtained using
+
+```{r}
+PEC_sw_drift(100, applications = 1)
+```
