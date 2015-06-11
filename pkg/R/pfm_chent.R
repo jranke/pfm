@@ -190,7 +190,6 @@ pfm_chent <- R6Class("pfm_chent",
 #'
 #' @docType class
 #' @importFrom R6 R6Class
-#' @importFrom pfm pfm_chent
 #' @export
 #' @format An \code{\link{R6Class}} generator object.
 #' @field iso ISO common name

@@ -2,7 +2,11 @@
 
 S3method(plot,TOXSWA_cwa)
 export(PEC_soil)
+export(PEC_soil_product)
 export(TOXSWA_cwa)
 export(geomean)
+export(pfm_ai)
+export(pfm_chent)
+export(pfm_product)
 export(read.TOXSWA_cwa)
 importFrom(R6,R6Class)

@@ -45,6 +45,12 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
 }
 
 
+#' Calculate predicted environmental concentrations in soil for a product
+#'
+#' Calculates long term accumulation PEC values
+#'
+#' @export
+#' @author Johannes Ranke
 PEC_soil_product <- function(product, rate, rate_units = "L/ha", interception = 0,
                              mixing_depth = 5, tillage_depth = 20, 
                              interval = 365,
@@ -71,7 +77,8 @@ PEC_soil_product <- function(product, rate, rate_units = "L/ha", interception = 
     results[ai_name, "initial"] <- ini
 
     ini_tillage <- ini * mixing_depth / tillage_depth
-    DT50 <- subset(ai$degradation_endpoints, destination == "PECsoil")$DT50
+    DT50 <- subset(ai$soil_degradation_endpoints, destination == "PECsoil")$DT50
+    if (length(DT50) > 1) stop("More than one PECsoil DT50 for", ai$acronym)
     if (length(DT50) > 0) {
       if (!is.na(DT50)) {
         k <- log(2) / DT50
@@ -95,7 +102,8 @@ PEC_soil_product <- function(product, rate, rate_units = "L/ha", interception = 
       results[TP_name, "initial"] <- ini
 
       ini_tillage <- ini * mixing_depth / tillage_depth
-      DT50 <- subset(TP$degradation_endpoints, destination == "PECsoil")$DT50
+      DT50 <- subset(TP$soil_degradation_endpoints, destination == "PECsoil")$DT50
+      if (length(DT50) > 1) stop("More than one PECsoil DT50 for", TP$acronym)
       if (length(DT50) > 0) {
         if (!is.na(DT50)) {
           k <- log(2) / DT50

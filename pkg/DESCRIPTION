@@ -2,7 +2,7 @@ Package: pfm
 Type: Package
 Title: Utilities for pesticide fate modelling
 Version: 0.1-3
-Date: 2015-05-07
+Date: 2015-06-09
 Authors@R: person("Johannes Ranke", email = "jranke@uni-bremen.de", 
                   role = c("aut", "cre", "cph"))
 Description: Utilities for simple PEC calculations and for dealing with data
