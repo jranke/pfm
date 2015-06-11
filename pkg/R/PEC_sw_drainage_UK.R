@@ -23,28 +23,39 @@
 #' @param rate Application rate in g/ha
 #' @param interception The fraction of the application rate that does not reach the soil
 #' @param Koc The sorption coefficient normalised to organic carbon in L/kg
+#' @param latest_application Latest application date, formatted as e.g. "01 July"
+#' @param soil_DT50 Soil degradation half-life, if SFO kinetics are to be used
+#' @param model The degradation model to be used. Either one of "FOMC", "DFOP", 
+#'   "HS", or "IORE", or an mkinmod object
+#' @param model_parms A named numeric vector containing the model parameters
 #' @return The predicted concentration in surface water in µg/L
 #' @export
 #' @author Johannes Ranke
 #' @examples
-#' PEC_sw_drainage_UK_ini(100)
+#' PEC_sw_drainage_UK_ini(150, Koc = 100)
 PEC_sw_drainage_UK_ini <- function(rate, interception = 0, Koc,
-                                   latest_application = NULL, soil_DT50 = NULL)
+                                   latest_application = NULL, soil_DT50 = NULL,
+                                   model = NULL, model_parms = NULL)
 {
   percentage_lost <- SSLRC_mobility_classification(Koc)[[2]]
   amount_available <- rate * (1 - interception) # g/ha
 
   if (!missing(latest_application)) {
-    if (missing(soil_DT50)) stop("You need to supply a soil DT50 value")
-    k = log(2)/soil_DT50
-    as.Date(paste(latest_application, "1999"), "%d %B %Y")
+    if (!missing(soil_DT50)) {
+      k = log(2)/soil_DT50
+      as.Date(paste(latest_application, "1999"), "%d %B %Y")
 
-    lct <- Sys.getlocale("LC_TIME")
-    tmp <- Sys.setlocale("LC_TIME", "C")
-    latest <- as.Date(paste(latest_application, "1999"), "%d %b %Y")
-    tmp <- Sys.setlocale("LC_TIME", lct)
-    degradation_time <- as.numeric(difftime(as.Date("1999-10-01"), units = "days", latest))
-    amount_available <- amount_available * exp(-k * degradation_time)
+      lct <- Sys.getlocale("LC_TIME")
+      tmp <- Sys.setlocale("LC_TIME", "C")
+      latest <- as.Date(paste(latest_application, "1999"), "%d %b %Y")
+      tmp <- Sys.setlocale("LC_TIME", lct)
+      degradation_time <- as.numeric(difftime(as.Date("1999-10-01"), units = "days", latest))
+      amount_available <- amount_available * exp(-k * degradation_time)
+      if (!missing(model)) stop("You already supplied a soil_DT50 value, implying SFO kinetics")
+    }
+    if (!missing(model)) {
+      amount_available <- pfm_degradation(model, parms = model_parms, times = degradation_time)
+    }
   } 
 
   volume = 130000 # L/ha

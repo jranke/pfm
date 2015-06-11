@@ -26,7 +26,7 @@
 #' @export
 #' @author Johannes Ranke
 #' @examples
-#' SSLRC_mobility_classification(Koc)
+#' SSLRC_mobility_classification(100)
 SSLRC_mobility_classification <- function(Koc)
 {
   if (!is.numeric(Koc) | length(Koc) != 1) stop("Please give a single number")

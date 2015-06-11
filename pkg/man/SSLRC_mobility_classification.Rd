@@ -18,7 +18,7 @@ This implements the method specified in the UK data requirements handbook and wa
 checked against the spreadsheet published on the CRC website
 }
 \examples{
-SSLRC_mobility_classification(Koc)
+SSLRC_mobility_classification(100)
 }
 \author{
 Johannes Ranke
