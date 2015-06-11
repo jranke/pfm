@@ -29,13 +29,14 @@ clean:
 
 roxygen: 
 	@echo "Roxygenizing package..."
-	"$(R_HOME)/bin/Rscript" -e 'library(roxygen2); roxygenize("pkg")' 2>&1
+	"$(R_HOME)/bin/Rscript" -e 'library(devtools); document("pkg")' 2>&1 | tee roxygen.log
 	@echo "DONE."
 
 $(TGZ): $(pkgfiles)
-	@echo "Building package..."
 	sed -i -e "s/Date:.*/Date: $(DATE)/" pkg/DESCRIPTION
-	"$(R_HOME)/bin/Rscript" -e 'library(roxygen2); roxygenize("pkg")' 2>&1
+	@echo "Roxygenizing package..."
+	"$(R_HOME)/bin/Rscript" -e 'library(devtools); document("pkg")' 2>&1 | tee roxygen.log
+	@echo "Building package..."
 	git log --no-merges -M --date=iso pkg/ > pkg/ChangeLog
 	"$(R_HOME)/bin/R" CMD build pkg > build.log 2>&1
 	@echo "DONE."
