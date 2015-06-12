@@ -41,20 +41,22 @@ PEC_sw_drainage_UK_ini <- function(rate, interception = 0, Koc,
   amount_available <- rate * (1 - interception) # g/ha
 
   if (!missing(latest_application)) {
+    lct <- Sys.getlocale("LC_TIME")
+    tmp <- Sys.setlocale("LC_TIME", "C")
+    latest <- as.Date(paste(latest_application, "1999"), "%d %b %Y")
+    tmp <- Sys.setlocale("LC_TIME", lct)
+    degradation_time <- as.numeric(difftime(as.Date("1999-10-01"), units = "days", latest))
     if (!missing(soil_DT50)) {
       k = log(2)/soil_DT50
       as.Date(paste(latest_application, "1999"), "%d %B %Y")
 
-      lct <- Sys.getlocale("LC_TIME")
-      tmp <- Sys.setlocale("LC_TIME", "C")
-      latest <- as.Date(paste(latest_application, "1999"), "%d %b %Y")
-      tmp <- Sys.setlocale("LC_TIME", lct)
-      degradation_time <- as.numeric(difftime(as.Date("1999-10-01"), units = "days", latest))
       amount_available <- amount_available * exp(-k * degradation_time)
       if (!missing(model)) stop("You already supplied a soil_DT50 value, implying SFO kinetics")
     }
     if (!missing(model)) {
-      amount_available <- pfm_degradation(model, parms = model_parms, times = degradation_time)
+      fraction_left <- pfm_degradation(model, parms = model_parms, 
+                                       times = degradation_time)[1, "parent"]
+      amount_available <- fraction_left * amount_available
     }
   } 
 
