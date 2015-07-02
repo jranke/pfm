@@ -13,7 +13,7 @@
 #' @docType data
 #' @format A list currently containing matrices with spray drift percentage
 #' data for field crops (Ackerbau), and Pome/stone fruit, early and late
-#' (Obstbau früh, spät).
+#' (Obstbau frueh, spaet).
 #' @source JKI (2010) Spreadsheet 'Tabelle der Abdrifteckwerte.xls', retrieved
 #' from
 #' http://www.jki.bund.de/no_cache/de/startseite/institute/anwendungstechnik/abdrift-eckwerte.html
@@ -24,8 +24,8 @@
 #' \dontrun{
 #'   # This is the code that was used to extract the data
 #'   library(readxl)
-#'   abdrift_path <- "../inst/extdata/Tabelle der Abdrifteckwerte.xls"
-#'   JKI_crops <- c("Ackerbau", "Obstbau früh", "Obstbau spät")
+#'   abdrift_path <- "inst/extdata/Tabelle der Abdrifteckwerte.xls"
+#'   JKI_crops <- c("Ackerbau", "Obstbau frueh", "Obstbau spaet")
 #'   names(JKI_crops) <- c("Field crops", "Pome/stone fruit, early", "Pome/stone fruit, late")
 #'   drift_data_JKI <- list()
 #' 
@@ -36,7 +36,7 @@
 #'                                             crop = JKI_crops)
 #'     drift_data_JKI[[n]] <- drift_data
 #'   }
-#'   save(drift_data_JKI, file = "../data/drift_data_JKI.RData")
+#'   save(drift_data_JKI, file = "data/drift_data_JKI.RData")
 #' }
 #' 
 NULL

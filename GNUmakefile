@@ -48,12 +48,12 @@ test: build
 	"$(R_HOME)/bin/Rscript" -e 'library(devtools); devtools::test("pkg")' 2>&1 | tee test.log
 	@echo "DONE."
 
-check: build
+quickcheck: build
 	@echo "Running check..."
 	"$(R_HOME)/bin/R" CMD check $(TGZ)
 	@echo "DONE."
 
-crancheck: build
+check: build
 	@echo "Running CRAN check..."
 	"$(R_HOME)/bin/R" CMD check --as-cran $(TGZ)
 	@echo "DONE."
@@ -62,3 +62,10 @@ install: build
 	@echo "Installing package..."
 	"$(R_HOME)/bin/R" CMD INSTALL --no-multiarch $(TGZ)
 	@echo "DONE."
+
+winbuilder: build
+	date
+	@echo "Uploading to R-release on win-builder"
+	curl -T $(TGZ) ftp://anonymous@win-builder.r-project.org/R-release/
+	@echo "Uploading to R-devel on win-builder"
+	curl -T $(TGZ) ftp://anonymous@win-builder.r-project.org/R-devel/
