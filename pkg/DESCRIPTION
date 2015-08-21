@@ -5,9 +5,9 @@ Version: 0.2-3
 Date: 2015-08-21
 Authors@R: person("Johannes Ranke", email = "jranke@uni-bremen.de", 
                   role = c("aut", "cre", "cph"))
-Description: 'pfm' contains utilities for simple calculations of predicted
-  environmental concentrations (PECs) and for dealing with data from some FOCUS
-  pesticide fate modelling software packages.
+Description: Utilities for simple calculations of predicted environmental
+  concentrations (PECs) and for dealing with data from some FOCUS pesticide
+  fate modelling software packages.
 Depends: R6, mkin
 Imports: graphics
 Suggests: testthat
