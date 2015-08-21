@@ -58,6 +58,7 @@ read.TOXSWA_cwa <- function(filename, basedir = ".", zipfile = NULL,
 #' Plot TOXSWA hourly concentrations of a chemical substance in a specific
 #' segment of a segment of a TOXSWA surface water body.
 #'
+#' @import graphics
 #' @param x The TOXSWA_cwa object to be plotted.
 #' @param xlab,ylab Labels for x and y axis.
 #' @param time_column What should be used for the time axis. If "t_firstjan" is chosen,
@@ -171,6 +172,7 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
       }
       cwa_all_segments <- try(read.table(file_connection,
                                          sep = "", skip = 40, 
+                                         encoding = "UTF-8",
                                          colClasses = c("character", "numeric",
                                                         "integer", rep("numeric", 5)),
                                          col.names = c("datetime", "t", "segment",
