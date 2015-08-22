@@ -17,6 +17,7 @@ usage:
 	@echo "  install   - Install the package."
 
 pkgfiles = pkg/DESCRIPTION \
+	   README.html \
 	   pkg/inst/testdata/* \
 		 pkg/tests/testthat.R \
 		 pkg/tests/testthat/* \
@@ -40,6 +41,9 @@ $(TGZ): $(pkgfiles)
 	git log --no-merges -M --date=iso pkg/ > pkg/ChangeLog
 	"$(R_HOME)/bin/R" CMD build pkg > build.log 2>&1
 	@echo "DONE."
+
+README.html: README.md
+	"$(R_HOME)/bin/Rscript" -e "rmarkdown::render('README.md', output_format = 'html_document')"
 
 build: $(TGZ)
 
