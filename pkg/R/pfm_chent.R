@@ -17,12 +17,13 @@
 
 #' R6 class for holding a chemical entity
 #'
-#' An R6 class for holding information about a chemical entity
+#' An R6 class for holding information about a chemical entity that is useful
+#' for fate modelling
 #'
 #' @docType class
 #' @importFrom R6 R6Class
 #' @export
-#' @format An \code{\link{R6Class}} generator object.
+#' @format An \code{\link{R6Class}} generator object
 #' @field acronym Acronym for local use
 #' @field smiles SMILES code
 #' @field mw Molecular weight

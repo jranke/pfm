@@ -36,7 +36,7 @@ segment are imported.
 H_sw_D4_pond  <- read.TOXSWA_cwa("00001p_pa.cwa",
                                  basedir = "SwashProjects/project_H_sw/TOXSWA",
                                  zipfile = system.file("testdata/SwashProjects.zip",
-                                             package = "pfm"))
+                                                       package = "pfm"))
 }
 \author{
 Johannes Ranke
