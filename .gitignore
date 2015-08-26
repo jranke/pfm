@@ -3,5 +3,4 @@ pfm*\.tar.gz
 pfm\.Rcheck
 pkg/ChangeLog
 test.R
-README.html
 pkg/inst/extdata/Tabelle\ der\ Abdrifteckwerte.xls
