@@ -67,18 +67,19 @@ PEC_soil_product <- function(product, rate, rate_units = "L/ha", interception = 
                         plateau_max = numeric(0), plateau_min = numeric(0), 
                         long_term_max = numeric(0),
                         stringsAsFactors = FALSE)
+
   for (ai_name in names(product$ais)) {
     ai <- product$ais[[ai_name]]
     ai_rate <- rate * product$concentrations[ai_name] 
     ini <- PEC_soil(ai_rate,
                     interception = interception, mixing_depth = mixing_depth,
                     bulk_density = bulk_density)
-    results[ai_name, "compound"] <- ai$acronym
+    results[ai_name, "compound"] <- ai$identifier
     results[ai_name, "initial"] <- ini
 
     ini_tillage <- ini * mixing_depth / tillage_depth
     DT50 <- subset(ai$soil_degradation_endpoints, destination == "PECsoil")$DT50
-    if (length(DT50) > 1) stop("More than one PECsoil DT50 for", ai$acronym)
+    if (length(DT50) > 1) stop("More than one PECsoil DT50 for", ai_name)
     if (length(DT50) > 0) {
       if (!is.na(DT50)) {
         k <- log(2) / DT50
@@ -94,16 +95,16 @@ PEC_soil_product <- function(product, rate, rate_units = "L/ha", interception = 
       TP <- ai$TPs[[TP_name]]
       max_occurrence = max(subset(ai$transformations, 
                                   grepl("soil", study_type) & 
-                                  acronym == TP$acronym, max_occurrence))
+                                  TP_identifier == TP$identifier, max_occurrence))
       TP_rate <- ai_rate * TP$mw / ai$mw * max_occurrence
       ini <- PEC_soil(TP_rate, interception = interception, mixing_depth = mixing_depth,
                       bulk_density = bulk_density)
-      results[TP_name, "compound"] <- TP$acronym
+      results[TP_name, "compound"] <- TP$identifier
       results[TP_name, "initial"] <- ini
 
       ini_tillage <- ini * mixing_depth / tillage_depth
       DT50 <- subset(TP$soil_degradation_endpoints, destination == "PECsoil")$DT50
-      if (length(DT50) > 1) stop("More than one PECsoil DT50 for", TP$acronym)
+      if (length(DT50) > 1) stop("More than one PECsoil DT50 for", TP_name)
       if (length(DT50) > 0) {
         if (!is.na(DT50)) {
           k <- log(2) / DT50
