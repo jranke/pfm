@@ -8,6 +8,30 @@ PEC_soil_product(product, rate, rate_units = "L/ha", interception = 0,
   mixing_depth = 5, tillage_depth = 20, interval = 365,
   bulk_density = 1.5, PEC_units = "mg/kg")
 }
+\arguments{
+\item{product}{An object of class pp}
+
+\item{rate}{Application rate in units specified below}
+
+\item{rate_units}{Defaults to g/ha}
+
+\item{interception}{The fraction of the application rate that does not reach the soil}
+
+\item{mixing_depth}{Mixing depth in cm}
+
+\item{tillage_depth}{Periodic (see interval) deeper mixing in cm}
+
+\item{interval}{Period of the deeper mixing, defaults to 365, which is a year if
+rate units are in days}
+
+\item{bulk_density}{Bulk density of the soil. Defaults to 1.5 kg/L, or 1500 kg/m3}
+
+\item{PEC_units}{Requested units for the calculated PEC. Only mg/kg currently supported}
+}
+\value{
+A data frame with compound names, and initial, plateau maximum, plateau minimum (background)
+  and long term maximum predicted concentrations in soil
+}
 \description{
 Calculates long term accumulation PEC values
 }

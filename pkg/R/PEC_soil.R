@@ -44,12 +44,25 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
   return(PEC_soil)
 }
 
+if(getRversion() >= '2.15.1') utils::globalVariables(c("destination", "study_type", "TP_identifier"))
 
 #' Calculate predicted environmental concentrations in soil for a product
 #'
 #' Calculates long term accumulation PEC values
 #'
-#' @export
+#' @param product An object of class pp
+#' @param rate Application rate in units specified below
+#' @param rate_units Defaults to g/ha
+#' @param interception The fraction of the application rate that does not reach the soil
+#' @param mixing_depth Mixing depth in cm
+#' @param tillage_depth Periodic (see interval) deeper mixing in cm
+#' @param interval Period of the deeper mixing, defaults to 365, which is a year if
+#'   rate units are in days
+#' @param bulk_density Bulk density of the soil. Defaults to 1.5 kg/L, or 1500 kg/m3
+#' @param PEC_units Requested units for the calculated PEC. Only mg/kg currently supported
+#' @return A data frame with compound names, and initial, plateau maximum, plateau minimum (background)
+#'   and long term maximum predicted concentrations in soil
+#' @export PEC_soil_product
 #' @author Johannes Ranke
 PEC_soil_product <- function(product, rate, rate_units = "L/ha", interception = 0,
                              mixing_depth = 5, tillage_depth = 20, 
