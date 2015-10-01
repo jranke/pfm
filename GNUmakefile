@@ -21,6 +21,7 @@ pkgfiles = pkg/DESCRIPTION \
 	   pkg/inst/testdata/* \
 		 pkg/tests/testthat.R \
 		 pkg/tests/testthat/* \
+		 pkg/data/* \
 	   pkg/R/*
 
 clean:
