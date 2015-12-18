@@ -16,6 +16,9 @@
 #'   usage section is not exclusive
 #' @param aggregator The aggregator function. Can be mean, 
 #'   \code{\link{geomean}}, or identity, for example.
+#' @param raw Should the number(s) be returned as stored in the chent
+#'   object (could be a character value) to retain original information
+#'   about precision?
 #' @param signif How many significant digits do we want
 #' @return The result from applying the aggregator function to
 #'   the values converted to a numeric vector, rounded to the

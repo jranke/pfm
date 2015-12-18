@@ -13,6 +13,10 @@ soil_N(chent, aggregator = mean, signif = 3, raw = FALSE)
 \code{\link{geomean}}, or identity, for example.}
 
 \item{signif}{How many significant digits do we want}
+
+\item{raw}{Should the number(s) be returned as stored in the chent
+object (could be a character value) to retain original information
+about precision?}
 }
 \description{
 In pesticide fate modelling, this exponent is often called 1/n. Here, in 

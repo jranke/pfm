@@ -17,6 +17,10 @@ soil_Kfoc(chent, aggregator = geomean, signif = 3, value = "Kfoc",
 
 \item{value}{The name of the value we want. The list given in the 
 usage section is not exclusive}
+
+\item{raw}{Should the number(s) be returned as stored in the chent
+object (could be a character value) to retain original information
+about precision?}
 }
 \description{
 Obtain soil Kfoc

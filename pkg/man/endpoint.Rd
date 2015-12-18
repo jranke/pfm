@@ -26,6 +26,10 @@ usage section is not exclusive}
 \item{aggregator}{The aggregator function. Can be mean, 
 \code{\link{geomean}}, or identity, for example.}
 
+\item{raw}{Should the number(s) be returned as stored in the chent
+object (could be a character value) to retain original information
+about precision?}
+
 \item{signif}{How many significant digits do we want}
 }
 \value{
@@ -34,7 +38,6 @@ The result from applying the aggregator function to
   given number of significant digits, or, if raw = TRUE,
   the values as a character value, retaining any implicit
   information on precision that may be present.
-
 }
 \description{
 R6 class objects of class \code{\link{chent}} represent chemical entities

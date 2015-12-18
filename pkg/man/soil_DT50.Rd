@@ -22,6 +22,10 @@ soil_DT50(chent, aggregator = geomean, signif = 3,
 usage section is not exclusive}
 
 \item{redox}{If not NA, are we looking for aerobic or anaerobic data}
+
+\item{raw}{Should the number(s) be returned as stored in the chent
+object (could be a character value) to retain original information
+about precision?}
 }
 \description{
 Obtain soil DT50

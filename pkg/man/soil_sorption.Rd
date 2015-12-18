@@ -16,6 +16,10 @@ soil_sorption(chent, values = c("Kfoc", "N"), aggregators = c(Kfoc =
 \item{aggregators}{A named vector of aggregator functions to be used}
 
 \item{signif}{How many significant digits do we want}
+
+\item{raw}{Should the number(s) be returned as stored in the chent
+object (could be a character value) to retain original information
+about precision?}
 }
 \description{
 Obtain soil sorption data

@@ -4,18 +4,23 @@
 \alias{GUS}
 \alias{GUS.chent}
 \alias{GUS.numeric}
+\alias{print.GUS_result}
 \title{Groundwater ubiquity score based on Gustafson (1989)}
 \usage{
 GUS(...)
 
-\method{GUS}{numeric}(DT50, Koc)
+\method{GUS}{numeric}(DT50, Koc, ...)
 
-\method{GUS}{chent}(chent, lab_field = "laboratory", aerobic = TRUE,
-  degradation_value = "DT50ref", sorption_value = "Kfoc",
-  degradation_aggregator = geomean, sorption_aggregator = geomean,
-  digits = 1)
+\method{GUS}{chent}(chent, degradation_value = "DT50ref",
+  lab_field = "laboratory", redox = "aerobic", sorption_value = "Kfoc",
+  degradation_aggregator = geomean, sorption_aggregator = geomean, ...)
+
+\method{print}{GUS_result}(x, ..., digits = 1)
 }
 \arguments{
+\item{...}{Included in the generic to allow for further arguments later. Therefore
+this also had to be added to the specific methods.}
+
 \item{DT50}{Half-life of the chemical in soil. Should be a field
 half-life according to Gustafson (1989). However, leaching to the sub-soil
 can not completely be excluded in field dissipation experiments and Gustafson
@@ -31,14 +36,16 @@ unclear at which reference concentration the Koc should be observed
 \item{chent}{If a chent is given with appropriate information present in its
 chyaml field, this information is used, with defaults specified below.}
 
+\item{degradation_value}{Which of the available degradation values should 
+be used?}
+
 \item{lab_field}{Should laboratory or field half-lives be used? This
 defaults to lab in this implementation, in order to avoid
 double-accounting for mobility. If comparability with the original GUS
 values given by Gustafson (1989) is desired, non-normalised first-order
 field half-lives obtained under actual use conditions should be used.}
 
-\item{degradation_value}{Which of the available degradation values should 
-be used?}
+\item{redox}{Aerobic or anaerobic degradation data}
 
 \item{sorption_value}{Which of the available sorption values should be used?
 Defaults to Kfoc as this is what is generally available from the European
@@ -49,6 +56,10 @@ be Koc values at a concentration of 1 mg/L in the water phase.}
 \item{degradation_aggregator}{Function for aggregating half-lives}
 
 \item{sorption_aggregator}{Function for aggregation Koc values}
+
+\item{x}{An object of class GUS_result to be printed}
+
+\item{digits}{The number of digits used in the print method}
 }
 \value{
 A list with the DT50 and Koc used as well as the resulting score
@@ -64,7 +75,7 @@ Johannes Ranke
 }
 \references{
 Gustafson, David I. (1989) Groundwater ubiquity score: a simple
-method for assessing pesticide leachability. _Environmental
-toxicology and chemistry_ *8*(4) 339–57.
+method for assessing pesticide leachability. \emph{Environmental
+toxicology and chemistry} \bold{8}(4) 339–57.
 }
 
