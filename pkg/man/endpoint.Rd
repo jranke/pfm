@@ -2,12 +2,29 @@
 % Please edit documentation in R/endpoint.R
 \name{endpoint}
 \alias{endpoint}
+\alias{soil_DT50}
+\alias{soil_Kfoc}
+\alias{soil_N}
+\alias{soil_sorption}
 \title{Retrieve endpoint information from the chyaml field of a chent object}
 \usage{
 endpoint(chent, medium = "soil", type = c("degradation", "sorption"),
   lab_field = c(NA, "laboratory", "field"), redox = c(NA, "aerobic",
   "anaerobic"), value = c("DT50ref", "Kfoc", "N"), aggregator = geomean,
   raw = FALSE, signif = 3)
+
+soil_DT50(chent, aggregator = geomean, signif = 3,
+  lab_field = "laboratory", value = "DT50ref", redox = "aerobic",
+  raw = FALSE)
+
+soil_Kfoc(chent, aggregator = geomean, signif = 3, value = "Kfoc",
+  raw = FALSE)
+
+soil_N(chent, aggregator = mean, signif = 3, raw = FALSE)
+
+soil_sorption(chent, values = c("Kfoc", "N"), aggregators = c(Kfoc =
+  geomean, Koc = geomean, N = mean), signif = rep(3, length(values)),
+  raw = FALSE)
 }
 \arguments{
 \item{chent}{The \code{\link{chent}} object to get the information from}
@@ -31,6 +48,10 @@ object (could be a character value) to retain original information
 about precision?}
 
 \item{signif}{How many significant digits do we want}
+
+\item{values}{The values to be returned}
+
+\item{aggregators}{A named vector of aggregator functions to be used}
 }
 \value{
 The result from applying the aggregator function to
@@ -44,5 +65,11 @@ R6 class objects of class \code{\link{chent}} represent chemical entities
 and can hold a list of information loaded from a chemical yaml file in their
 chyaml field. Such information is extracted and optionally aggregated by
 this function.
+}
+\details{
+The functions \code{soil_*} are functions to extract soil specific endpoints.
+For the Freundlich exponent, the capital letter \code{N} is used in order to
+facilitate dealing with such data in R. In pesticide fate modelling, this
+exponent is often called 1/n.
 }
 

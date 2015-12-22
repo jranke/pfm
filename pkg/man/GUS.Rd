@@ -68,7 +68,7 @@ A list with the DT50 and Koc used as well as the resulting score
 \description{
 The groundwater ubiquity score GUS is calculated according to
 the following equation
-\deqn{GUS = \log_10 DT50_{soil} (4 - \log_10 K_{oc}}{GUS = log10 DT50soil * (4 - log10 Koc)}
+\deqn{GUS = \log_{10} DT50_{soil} (4 - \log_{10} K_{oc})}{GUS = log10 DT50soil * (4 - log10 Koc)}
 }
 \author{
 Johannes Ranke

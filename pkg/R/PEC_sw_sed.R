@@ -15,8 +15,8 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http://www.gnu.org/licenses/>
 
-#' Calculate initial predicted environmental concentrations in sediment from
-#' surface water concentrations
+#' Calculate predicted environmental concentrations in sediment from surface
+#' water concentrations
 #'
 #' The method 'percentage' is equivalent to what is used in the CRD spreadsheet
 #' PEC calculator
@@ -34,7 +34,7 @@
 #' @export
 #' @author Johannes Ranke
 #' @examples
-#' PEC_sw_sed(PEC_sw_drift_ini(100, distances = 1), percentage = 50)
+#' PEC_sw_sed(PEC_sw_drift(100, distances = 1), percentage = 50)
 PEC_sw_sed <- function(PEC_sw, percentage = 100, method = "percentage", 
                        sediment_depth = 5, water_depth = 30,
                        sediment_density = 1.3,

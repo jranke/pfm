@@ -5,7 +5,10 @@
 \title{Calculate predicted environmental concentrations in soil}
 \usage{
 PEC_soil(rate, rate_units = "g/ha", interception = 0, mixing_depth = 5,
-  bulk_density = 1.5, PEC_units = "mg/kg")
+  PEC_units = "mg/kg", PEC_pw_units = "mg/L", interval = NA,
+  n_periods = Inf, tillage_depth = 20, chent = NA, DT50 = NA,
+  Koc = NA, Kom = Koc/1.724, t_avg = 0, scenarios = c("default",
+  "EFSA_2015"), porewater = FALSE)
 }
 \arguments{
 \item{rate}{Application rate in units specified below}
@@ -16,21 +19,101 @@ PEC_soil(rate, rate_units = "g/ha", interception = 0, mixing_depth = 5,
 
 \item{mixing_depth}{Mixing depth in cm}
 
-\item{bulk_density}{Bulk density of the soil. Defaults to 1.5 kg/L, or 1500 kg/m3}
-
 \item{PEC_units}{Requested units for the calculated PEC. Only mg/kg currently supported}
+
+\item{PEC_pw_units}{Only mg/L currently supported}
+
+\item{interval}{Period of the deeper mixing, defaults to 365, which is a year if
+rate units are in days}
+
+\item{n_periods}{Number of periods to be considered for long term PEC calculations}
+
+\item{tillage_depth}{Periodic (see interval) deeper mixing in cm}
+
+\item{chent}{An optional chent object holding substance specific information. Can 
+also be a name for the substance as a character string}
+
+\item{DT50}{If specified, overrides soil DT50 endpoints from a chent object
+If DT50 is not specified here and not available from the chent object, zero
+degradation is assumed}
+
+\item{Koc}{If specified, overrides Koc endpoints from a chent object}
+
+\item{Kom}{Calculated from Koc by default, but can explicitly be specified
+as Kom here}
+
+\item{t_avg}{Averaging times for time weighted average concentrations}
+
+\item{scenarios}{If this is 'default', the DT50 will be used without correction
+and soil properties as specified in the REACH guidance (R.16, Table
+R.16-9) are used for porewater PEC calculations.  If this is "EFSA_2015",
+the DT50 is taken to be a modelling half-life at 20°C and pF2 (for when
+'chents' is specified, the DegT50 with destination 'PECgw' will be used),
+and corrected using an Arrhenius activation energy of 65.4 kJ/mol. Also
+model and scenario adjustment factors from the EFSA guidance are used.}
+
+\item{porewater}{Should equilibrium porewater concentrations be estimated
+based on Kom and the organic carbon fraction of the soil instead of total
+soil concentrations?  Based on equation (7) given in the PPR panel opinion
+(EFSA 2012, p. 24) and the scenarios specified in the EFSA guidance (2015,
+p. 13).}
 }
 \value{
 The predicted concentration in soil
 }
 \description{
-This is a basic, vectorised form of a simple calculation of a contaminant
-concentration in bulk soil based on complete, instantaneous mixing.
+This is a basic calculation of a contaminant concentration in bulk soil
+based on complete, instantaneous mixing. If an interval is given, an 
+attempt is made at calculating a long term maximum concentration using
+the concepts layed out for example in the PPR panel opinion (EFSA 2012).
+}
+\details{
+This assumes that the complete load to soil during the time specified by
+'interval' (typically 365 days) is dosed at once. As in the PPR panel
+opinion cited below (PPR panel 2012), only temperature correction using the
+Arrhenius equation is performed.
+
+Total soil and porewater PEC values for the scenarios as defined in the EFSA
+guidance (2015, p. 13) can easily be calculated.
+}
+\note{
+If temperature information is available in the selected scenarios, as
+  e.g. in the EFSA scenarios, the DT50 for groundwater modelling
+  (destination 'PECgw') is taken from the chent object, otherwise the DT50
+  with destination 'PECsoil'.
 }
 \examples{
 PEC_soil(100, interception = 0.25)
+
+# This is example 1 starting at p. 79 of the EFSA guidance (2015)
+PEC_soil(1000, interval = 365, DT50 = 250, t_avg = c(0, 21),
+               scenarios = "EFSA_2015")
+PEC_soil(1000, interval = 365, DT50 = 250, t_av = c(0, 21),
+               Kom = 1000, scenarios = "EFSA_2015", porewater = TRUE)
+
+# The following is from example 4 starting at p. 85 of the EFSA guidance (2015)
+# Metabolite M2
+# Calculate total and porewater soil concentrations for tier 1 scenarios
+# Relative molar mass is 100/300, formation fraction is 0.7 * 1
+results_pfm <- PEC_soil(100/300 * 0.7 * 1 * 1000, interval = 365, DT50 = 250, t_avg = c(0, 21),
+                        scenarios = "EFSA_2015")
+results_pfm_pw <- PEC_soil(100/300 * 0.7 * 1000, interval = 365, DT50 = 250, t_av = c(0, 21),
+                           Kom = 100, scenarios = "EFSA_2015", porewater = TRUE)
 }
 \author{
 Johannes Ranke
+}
+\references{
+EFSA Panel on Plant Protection Products and their Residues (2012)
+  Scientific Opinion on the science behind the guidance for scenario
+  selection and scenario parameterisation for predicting environmental
+  concentrations of plant protection products in soil. \emph{EFSA Journal}
+  \bold{10}(2) 2562, doi:10.2903/j.efsa.2012.2562
+
+  EFSA (European Food Safety Authority) (2015) EFSA guidance document for
+  predicting environmental concentrations of active substances of plant
+  protection products and transformation products of these active substances
+  in soil. \emph{EFSA Journal} \bold{13}(4) 4093
+  doi:10.2903/j.efsa.2015.4093
 }
 

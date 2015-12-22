@@ -29,7 +29,7 @@
 #' @export
 #' @author Johannes Ranke
 #' @examples
-#' pfm_degradation("SFO", DT50 = 10)
+#' head(pfm_degradation("SFO", DT50 = 10))
 pfm_degradation <- function(model = "SFO", DT50 = 1000, parms = c(k_parent_sink = log(2)/DT50),
                             years = 1, step_days = 1,
                             times = seq(0, years * 365, by = step_days))

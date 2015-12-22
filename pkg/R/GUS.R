@@ -1,8 +1,25 @@
+# Copyright (C) 2015  Johannes Ranke
+# Contact: jranke@uni-bremen.de
+# This file is part of the R package pfm
+
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later
+# version.
+
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <http://www.gnu.org/licenses/>
+
 #' Groundwater ubiquity score based on Gustafson (1989)
 #' 
 #' The groundwater ubiquity score GUS is calculated according to
 #' the following equation
-#' \deqn{GUS = \log_10 DT50_{soil} (4 - \log_10 K_{oc}}{GUS = log10 DT50soil * (4 - log10 Koc)}
+#' \deqn{GUS = \log_{10} DT50_{soil} (4 - \log_{10} K_{oc})}{GUS = log10 DT50soil * (4 - log10 Koc)}
 #' 
 #' @references Gustafson, David I. (1989) Groundwater ubiquity score: a simple
 #' method for assessing pesticide leachability. \emph{Environmental

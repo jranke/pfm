@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Index. pfm 0.3-1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">pfm 0.3-1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <div class="row">
+  <div class="span8">
+    Utilities for simple calculations of predicted environmental
+concentrations (PECs) and for dealing with data from some FOCUS pesticide
+fate modelling software packages.
+
+    <h2>Help topics</h2>
+
+    <h3>Degradation</h3>
+    <p>Functions related to degradation</p>
+
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="pfm_degradation.html">pfm_degradation</a></code><br />Calculate a time course of relative concentrations based on an mkinmod model</li>
+            
+      <li>
+        <code><a href="SFO_actual_twa.html">SFO_actual_twa</a></code><br />Actual and maximum moving window time average concentrations for SFO kinetics</li>
+    
+    </ul>
+    <h3>Mobility</h3>
+    <p>Indicators related to mobility</p>
+
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="GUS.html">GUS</a></code>(GUS.chent, GUS.numeric, print.GUS_result)<br />Groundwater ubiquity score based on Gustafson (1989)</li>
+            
+      <li>
+        <code><a href="SSLRC_mobility_classification.html">SSLRC_mobility_classification</a></code><br />Determine the SSLRC mobility classification for a chemical substance from its Koc</li>
+    
+    </ul>
+    <h3>Soil</h3>
+    <p>Predicted environmental concentrations in soil</p>
+
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="PEC_soil.html">PEC_soil</a></code><br />Calculate predicted environmental concentrations in soil</li>
+            
+      <li>
+        <code><a href="soil_scenario_data_EFSA_2015.html">soil_scenario_data_EFSA_2015</a></code><br />Properties of the predefined scenarios from the EFSA guidance from 2015</li>
+    
+    </ul>
+    <h3>Surface water</h3>
+    <p>Predicted environmental concentrations in surface water</p>
+
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="PEC_sw_drift.html">PEC_sw_drift</a></code><br />Calculate predicted environmental concentrations in surface water due to drift</li>
+            
+      <li>
+        <code><a href="PEC_sw_sed.html">PEC_sw_sed</a></code><br />Calculate predicted environmental concentrations in sediment from surface
+</li>
+            
+      <li>
+        <code><a href="drift_data_JKI.html">drift_data_JKI</a></code><br />Deposition from spray drift expressed as percent of the applied dose as
+</li>
+            
+      <li>
+        <code><a href="PEC_sw_drainage_UK.html">PEC_sw_drainage_UK</a></code><br />Calculate initial predicted environmental concentrations in surface water due to drainage using the UK method</li>
+            
+      <li>
+        <code><a href="TOXSWA_cwa.html">TOXSWA_cwa</a></code><br />R6 class for holding TOXSWA cwa concentration data and associated statistics</li>
+            
+      <li>
+        <code><a href="read.TOXSWA_cwa.html">read.TOXSWA_cwa</a></code><br />Read TOXSWA surface water concentrations</li>
+            
+      <li>
+        <code><a href="plot.TOXSWA_cwa.html">plot.TOXSWA_cwa</a></code><br />Plot TOXSWA surface water concentrations</li>
+    
+    </ul>
+    <h3>Groundwater</h3>
+    <p>Predicted environmental concentrations in groundwater</p>
+
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="FOCUS_GW_scenarios_2012.html">FOCUS_GW_scenarios_2012</a></code><br />A very small subset of the FOCUS Groundwater scenario defitions</li>
+    
+    </ul>
+    <h3>Chemical entities</h3>
+    <p>Work with input stored in chemical entites as R objects using the chent package</p>
+
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="endpoint.html">endpoint</a></code>(soil_DT50, soil_Kfoc, soil_N, soil_sorption)<br />Retrieve endpoint information from the chyaml field of a chent object</li>
+    
+    </ul>
+    <h3>General</h3>
+    <p>Utilities that are generally useful</p>
+
+    
+    <ul class="index">
+        
+      <li>
+        <code><a href="geomean.html">geomean</a></code><br />Calculate the geometric mean</li>
+    
+    </ul>
+  </div>
+  
+  <div class="span3 offset1">
+        
+    <h2>Dependencies</h2>
+    <ul>
+      <li><strong>Depends</strong>: R6, mkin</li>
+      <li><strong>Imports</strong>: graphics, chents</li>
+      <li><strong>Suggests</strong>: testthat</li>
+      
+    </ul>
+    <h2>Authors</h2>
+    <ul>
+      <li><a href="mailto:jranke@uni-bremen.de">Johannes Ranke</a> [aut, cre, cph]</li>
+    </ul>
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -22,8 +22,6 @@ published by the German Julius-Kühn Institute (JKI).
 The data were extracted from the spreadsheet cited below using the R code
 given in the example section. The spreadsheet is not included in the package
 as its licence is not clear.
-
-
 }
 \examples{
 
@@ -45,6 +43,8 @@ as its licence is not clear.
   save(drift_data_JKI, file = "data/drift_data_JKI.RData")
 }
 
+# And this is the resulting data
+drift_data_JKI
 }
 \keyword{datasets}
 

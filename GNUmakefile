@@ -12,6 +12,7 @@ usage:
 	@echo ""
 	@echo "  clean     - Clean up."
 	@echo "  roxygen   - Roxygenize."
+	@echo "  sd        - Build static documentation."
 	@echo "  build     - Build source package."
 	@echo "  check     - Run CRAN check on the package."
 	@echo "  install   - Install the package."
@@ -19,6 +20,7 @@ usage:
 pkgfiles = pkg/DESCRIPTION \
 	   README.html \
 	   pkg/inst/testdata/* \
+	   pkg/inst/staticdocs/index.r \
 		 pkg/tests/testthat.R \
 		 pkg/tests/testthat/* \
 		 pkg/data/* \
@@ -32,6 +34,14 @@ clean:
 roxygen: 
 	@echo "Roxygenizing package..."
 	"$(R_HOME)/bin/Rscript" -e 'library(devtools); document("pkg")'
+	@echo "DONE."
+
+sd: roxygen
+	@echo "Building static documentation..."
+	# suppressWarnings to get rid of mbcsToSbcs warnings when plotting the 'µ' character
+	cd pkg; "$(R_HOME)/bin/Rscript" -e 'suppressWarnings(staticdocs::build_site())'
+	# The following workaround (setting the pdf encoding) as of stackoverflow 13251665 did not do it
+	#cd pkg; "$(R_HOME)/bin/Rscript" -e 'pdf.options(encoding="ISOLatin1.enc"); staticdocs::build_site()'
 	@echo "DONE."
 
 $(TGZ): $(pkgfiles)

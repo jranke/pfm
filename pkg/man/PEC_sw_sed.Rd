@@ -2,8 +2,8 @@
 % Please edit documentation in R/PEC_sw_sed.R
 \name{PEC_sw_sed}
 \alias{PEC_sw_sed}
-\title{Calculate initial predicted environmental concentrations in sediment from
-surface water concentrations}
+\title{Calculate predicted environmental concentrations in sediment from surface
+water concentrations}
 \usage{
 PEC_sw_sed(PEC_sw, percentage = 100, method = "percentage",
   sediment_depth = 5, water_depth = 30, sediment_density = 1.3,
@@ -34,7 +34,7 @@ The method 'percentage' is equivalent to what is used in the CRD spreadsheet
 PEC calculator
 }
 \examples{
-PEC_sw_sed(PEC_sw_drift_ini(100, distances = 1), percentage = 50)
+PEC_sw_sed(PEC_sw_drift(100, distances = 1), percentage = 50)
 }
 \author{
 Johannes Ranke

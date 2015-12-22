@@ -39,4 +39,6 @@
 #'   save(drift_data_JKI, file = "data/drift_data_JKI.RData")
 #' }
 #' 
+#' # And this is the resulting data
+#' drift_data_JKI
 NULL

@@ -27,7 +27,7 @@ is calculated (SFO model).}
 Calculate a time course of relative concentrations based on an mkinmod model
 }
 \examples{
-pfm_degradation("SFO", DT50 = 10)
+head(pfm_degradation("SFO", DT50 = 10))
 }
 \author{
 Johannes Ranke

@@ -4,6 +4,11 @@
 #' and can hold a list of information loaded from a chemical yaml file in their
 #' chyaml field. Such information is extracted and optionally aggregated by
 #' this function.
+#' 
+#' The functions \code{soil_*} are functions to extract soil specific endpoints.
+#' For the Freundlich exponent, the capital letter \code{N} is used in order to
+#' facilitate dealing with such data in R. In pesticide fate modelling, this
+#' exponent is often called 1/n.
 #'
 #' @import chents
 #' @export
@@ -48,9 +53,8 @@ endpoint <- function(chent,
   else return(signif(aggregator(as.numeric(values)), signif))
 }
 
-#' Obtain soil DT50
-#'
 #' @inheritParams endpoint
+#' @rdname endpoint
 #' @export
 soil_DT50 <- function(chent, aggregator = geomean, signif = 3, 
                       lab_field = "laboratory", value = "DT50ref",
@@ -61,9 +65,8 @@ soil_DT50 <- function(chent, aggregator = geomean, signif = 3,
   return(ep)
 }
 
-#' Obtain soil Kfoc
-#'
 #' @inheritParams endpoint
+#' @rdname endpoint
 #' @export
 soil_Kfoc <- function(chent, aggregator = geomean, signif = 3, 
                       value = "Kfoc", raw = FALSE) {
@@ -72,12 +75,8 @@ soil_Kfoc <- function(chent, aggregator = geomean, signif = 3,
   return(ep)
 }
 
-#' Obtain soil Freundlich exponent
-#'
-#' In pesticide fate modelling, this exponent is often called 1/n. Here, in 
-#' order to facilitate dealing with such data in R, it is called N.
-#'
 #' @inheritParams endpoint
+#' @rdname endpoint
 #' @export
 soil_N <- function(chent, aggregator = mean, signif = 3, raw = FALSE) {
   ep <- endpoint(chent, medium = "soil", type = "sorption", 
@@ -85,9 +84,8 @@ soil_N <- function(chent, aggregator = mean, signif = 3, raw = FALSE) {
   return(ep)
 }
 
-#' Obtain soil sorption data
-#'
 #' @inheritParams endpoint
+#' @rdname endpoint
 #' @param values The values to be returned
 #' @param aggregators A named vector of aggregator functions to be used
 #' @export

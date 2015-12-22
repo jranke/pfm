@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>plot.TOXSWA_cwa. pfm 0.3-1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Johannes Ranke
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">pfm 0.3-1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Plot TOXSWA surface water concentrations</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>"plot"(x, time_column&nbsp;=&nbsp;c("datetime", "t", "t_firstjan", "t_rel_to_max"), xlab&nbsp;=&nbsp;"default", ylab&nbsp;=&nbsp;"default", add&nbsp;=&nbsp;FALSE, total&nbsp;=&nbsp;FALSE, LC_TIME&nbsp;=&nbsp;"C", ...)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>The TOXSWA_cwa object to be plotted.</dd>
+      <dt>time_column</dt>
+      <dd>What should be used for the time axis. If "t_firstjan" is chosen,
+the time is given in days relative to the first of January in the first year.</dd>
+      <dt>xlab, ylab</dt>
+      <dd>Labels for x and y axis.</dd>
+      <dt>add</dt>
+      <dd>Should we add to an existing plot?</dd>
+      <dt>total</dt>
+      <dd>Should the total concentration in water be plotted, including substance sorbed
+to suspended matter?</dd>
+      <dt>LC_TIME</dt>
+      <dd>Specification of the locale used to format dates</dd>
+      <dt>...</dt>
+      <dd>Further arguments passed to <code>plot</code> if we are not adding to an existing plot</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Plot TOXSWA hourly concentrations of a chemical substance in a specific
+segment of a TOXSWA surface water body.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>H_sw_D4_pond  &lt;- read.TOXSWA_cwa(&quot;00001p_pa.cwa&quot;,
+                                 basedir = &quot;SwashProjects/project_H_sw/TOXSWA&quot;,
+                                 zipfile = system.file(&quot;testdata/SwashProjects.zip&quot;,
+                                             package = &quot;pfm&quot;))
+plot(H_sw_D4_pond)
+</div>
+<p><img src='plot.TOXSWA_cwa-2.png' alt='' width='540' height='400' /></p></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>plot.TOXSWA_cwa</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    
+    <h2>Author</h2>
+    
+Johannes Ranke
+
+    
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

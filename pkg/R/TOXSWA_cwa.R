@@ -56,7 +56,7 @@ read.TOXSWA_cwa <- function(filename, basedir = ".", zipfile = NULL,
 #' Plot TOXSWA surface water concentrations
 #'
 #' Plot TOXSWA hourly concentrations of a chemical substance in a specific
-#' segment of a segment of a TOXSWA surface water body.
+#' segment of a TOXSWA surface water body.
 #'
 #' @import graphics
 #' @param x The TOXSWA_cwa object to be plotted.

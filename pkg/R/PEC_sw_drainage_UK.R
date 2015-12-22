@@ -25,15 +25,15 @@
 #' @param Koc The sorption coefficient normalised to organic carbon in L/kg
 #' @param latest_application Latest application date, formatted as e.g. "01 July"
 #' @param soil_DT50 Soil degradation half-life, if SFO kinetics are to be used
-#' @param model The degradation model to be used. Either one of "FOMC", "DFOP", 
-#'   "HS", or "IORE", or an mkinmod object
+#' @param model The soil degradation model to be used. Either one of "FOMC",
+#'   "DFOP", "HS", or "IORE", or an mkinmod object
 #' @param model_parms A named numeric vector containing the model parameters
 #' @return The predicted concentration in surface water in µg/L
 #' @export
 #' @author Johannes Ranke
 #' @examples
-#' PEC_sw_drainage_UK_ini(150, Koc = 100)
-PEC_sw_drainage_UK_ini <- function(rate, interception = 0, Koc,
+#' PEC_sw_drainage_UK(150, Koc = 100)
+PEC_sw_drainage_UK <- function(rate, interception = 0, Koc,
                                    latest_application = NULL, soil_DT50 = NULL,
                                    model = NULL, model_parms = NULL)
 {
