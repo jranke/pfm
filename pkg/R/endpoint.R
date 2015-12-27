@@ -61,6 +61,7 @@ soil_DT50 <- function(chent, aggregator = geomean, signif = 3,
                       redox = "aerobic", raw = FALSE) {
   ep <- endpoint(chent, medium = "soil", type = "degradation", 
                  lab_field = "laboratory", redox = redox,
+                 signif = signif,
                  value = value, aggregator = aggregator, raw = raw)
   return(ep)
 }
@@ -71,6 +72,7 @@ soil_DT50 <- function(chent, aggregator = geomean, signif = 3,
 soil_Kfoc <- function(chent, aggregator = geomean, signif = 3, 
                       value = "Kfoc", raw = FALSE) {
   ep <- endpoint(chent, medium = "soil", type = "sorption", 
+                 signif = signif,
                  value = value, aggregator = aggregator, raw = raw)
   return(ep)
 }
@@ -80,6 +82,7 @@ soil_Kfoc <- function(chent, aggregator = geomean, signif = 3,
 #' @export
 soil_N <- function(chent, aggregator = mean, signif = 3, raw = FALSE) {
   ep <- endpoint(chent, medium = "soil", type = "sorption", 
+                 signif = signif,
                  value = "N", aggregator = aggregator, raw = raw)
   return(ep)
 }
@@ -91,11 +94,12 @@ soil_N <- function(chent, aggregator = mean, signif = 3, raw = FALSE) {
 #' @export
 soil_sorption <- function(chent, values = c("Kfoc", "N"), 
                           aggregators = c(Kfoc = geomean, Koc = geomean, N = mean), 
-                          signif = rep(3, length(values)),
+                          signif = c(Kfoc = 3, N = 3),
                           raw = FALSE) {
   res <- sapply(values, 
                 function(x) {
                   endpoint(chent, medium = "soil", type = "sorption",
+                           signif = signif[[x]],
                            value = x, aggregator = aggregators[[x]], raw = raw)
                 }
   )

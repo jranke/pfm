@@ -23,7 +23,7 @@ soil_Kfoc(chent, aggregator = geomean, signif = 3, value = "Kfoc",
 soil_N(chent, aggregator = mean, signif = 3, raw = FALSE)
 
 soil_sorption(chent, values = c("Kfoc", "N"), aggregators = c(Kfoc =
-  geomean, Koc = geomean, N = mean), signif = rep(3, length(values)),
+  geomean, Koc = geomean, N = mean), signif = c(Kfoc = 3, N = 3),
   raw = FALSE)
 }
 \arguments{
