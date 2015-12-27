@@ -42,6 +42,8 @@ sd: roxygen
 	cd pkg; "$(R_HOME)/bin/Rscript" -e 'suppressWarnings(staticdocs::build_site())'
 	# The following workaround (setting the pdf encoding) as of stackoverflow 13251665 did not do it
 	#cd pkg; "$(R_HOME)/bin/Rscript" -e 'pdf.options(encoding="ISOLatin1.enc"); staticdocs::build_site()'
+	# The following also does not work (Konvertierungsfehler)
+	#cd pkg; "$(R_HOME)/bin/Rscript" -e 'options(encoding="latin1"); staticdocs::build_site()'
 	@echo "DONE."
 
 $(TGZ): $(pkgfiles)
