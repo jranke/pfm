@@ -34,6 +34,7 @@
 #'   maximum time weighted average concentrations and areas under the curve.
 #' @param thresholds Numeric vector of threshold concentrations in µg/L for
 #'   generating event statistics.  
+#' @importFrom readr read_fwf fwf_empty
 #' @return An instance of an R6 object of class
 #' \code{\link{TOXSWA_cwa}}.
 #' @export
@@ -174,17 +175,18 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
       } else {
         try(file_connection <- file(file.path(basedir, filename), "rt"))
       }
+      
 
       if (grepl(".cwa$", filename)) {
         # cwa file from FOCUS TOXSWA 3 (TOXSWA 2.x.y)
-        cwa_all_segments <- try(read.table(file_connection,
-                                           sep = "", skip = 40, 
-                                           encoding = "UTF-8",
-                                           colClasses = c("character", "numeric",
-                                                          "integer", rep("numeric", 5)),
-                                           col.names = c("datetime", "t", "segment",
-                                                         "xcd", "cwa_tot", "cwa",
-                                                         "Xss", "Xmp")))
+        cwa_all_segments <- try(
+          read.table(file_connection,
+          sep = "", skip = 40,
+          encoding = "UTF-8",
+          colClasses = c("character", "numeric",
+                         "integer", rep("numeric", 5)),
+          col.names = c("datetime", "t", "segment",
+                        "xcd", "cwa_tot", "cwa", "Xss", "Xmp")))
         if (is.null(zipfile)) close(file_connection) # only needed for files
 
         if (!inherits(cwa_all_segments, "try-error")) {
@@ -225,15 +227,17 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
           stop("Could not read ", filename)
         } else {
           cwa_lines <- outfile[grep("ConLiqWatLay_", outfile)] # hourly concentrations
-          cwa_all_segments <- read.table(text = cwa_lines) 
+
+          cwa_all_segments <- read_fwf(paste(cwa_lines, collapse = "\n"), 
+                                       fwf_empty(paste(tail(cwa_lines), collapse = "\n")))
 
           available_segments = 1:(ncol(cwa_all_segments) - 3)
           if (segment == "last") segment = max(available_segments)
           if (!segment %in% available_segments) stop("Invalid segment specified")
           self$segment <- segment
           cwa <- data.frame(
-            datetime = as.character(cwa_all_segments$V2),
-            t = cwa_all_segments$V1,
+            datetime = as.character(cwa_all_segments$X2),
+            t = cwa_all_segments$X1,
             cwa = cwa_all_segments[[3 + segment]]
           )
           if (total) {

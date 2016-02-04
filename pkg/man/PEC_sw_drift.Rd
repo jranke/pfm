@@ -6,7 +6,7 @@
 \usage{
 PEC_sw_drift(rate, applications = 1, water_depth = 30, drift_data = "JKI",
   crop = "Ackerbau", distances = c(1, 5, 10, 20), rate_units = "g/ha",
-  PEC_units = "µg/L")
+  PEC_units = "<U+00B5>g/L")
 }
 \arguments{
 \item{rate}{Application rate in units specified below}

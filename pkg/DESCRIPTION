@@ -13,7 +13,8 @@ Depends:
     mkin
 Imports:
     graphics,
-    chents
+    chents,
+    readr
 Suggests:
     testthat
 License: GPL
