@@ -187,6 +187,7 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
                          "integer", rep("numeric", 5)),
           col.names = c("datetime", "t", "segment",
                         "xcd", "cwa_tot", "cwa", "Xss", "Xmp")))
+
         if (is.null(zipfile)) close(file_connection) # only needed for files
 
         if (!inherits(cwa_all_segments, "try-error")) {
@@ -219,9 +220,7 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
         # out file from FOCUS TOXSWA 4 (TOXSWA 4.4.2 or similar)
         outfile <- try(readLines(file_connection))
 
-        if (is.null(zipfile)) {
-          close(file_connection) # only needed for files
-        } 
+        close(file_connection) # only needed for files
 
         if (inherits(outfile, "try-error")) {
           stop("Could not read ", filename)

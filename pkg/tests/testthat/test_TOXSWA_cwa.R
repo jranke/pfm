@@ -12,6 +12,13 @@ H_sw_R1_stream  <- read.TOXSWA_cwa("00003s_pa.cwa",
                                  basedir = basedir_test,
                                  zipfile = zipfile_test)
 
+basedir_test_2 = "SwashProjects/Project_1/TOXSWA"
+
+EXSW2_R1_stream  <- read.TOXSWA_cwa("3.out",
+                                 basedir = basedir_test_2,
+                                 zipfile = zipfile_test)
+
+
 
 test_that("TOXSWA cwa file is correctly read and printed", {
 
@@ -26,6 +33,12 @@ test_that("TOXSWA cwa file is correctly read and printed", {
 
   H_sw_R1_stream_printed <- capture.output(print(H_sw_R1_stream))
   expect_equal(H_sw_R1_stream_printed, readLines("H_sw_R1_stream_printed.txt"))
+
+  # The basedir is not printed, therefore tested separately
+  expect_equal(H_sw_D4_pond$basedir, basedir_test)
+
+  EXSW2_R1_stream_printed <- capture.output(print(EXSW2_R1_stream))
+  expect_equal(EXSW2_R1_stream_printed, readLines("EXSW2_R1_stream_printed.txt"))
 
   # The basedir is not printed, therefore tested separately
   expect_equal(H_sw_D4_pond$basedir, basedir_test)
