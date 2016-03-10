@@ -23,6 +23,8 @@
 #'
 #' @param rate Application rate in units specified below
 #' @param applications Number of applications for selection of drift percentile
+#' @param drift_percentages Percentage drift values for which to calculate PECsw.
+#'   'drift_data' and 'distances' if not NULL.
 #' @param drift_data Source of drift percentage data
 #' @param crop Crop name (use German names for JKI data), defaults to "Ackerbau"
 #' @param distances The distances in m for which to get PEC values
@@ -37,6 +39,7 @@
 PEC_sw_drift <- function(rate, 
                          applications = 1,
                          water_depth = 30, 
+                         drift_percentages = NULL,
                          drift_data = "JKI",
                          crop = "Ackerbau",
                          distances = c(1, 5, 10, 20),
@@ -49,7 +52,14 @@ PEC_sw_drift <- function(rate,
   water_volume <- 100 * 100 * (water_depth/100) * 1000   # in L (for 1 ha)
   PEC_sw_overspray <- rate * 1e6 / water_volume          # in µg/L
   dist_index <- as.character(distances)
-  PEC_sw_drift <- PEC_sw_overspray * pfm::drift_data_JKI[[applications]][dist_index, crop] / 100
-  names(PEC_sw_drift) <- paste(dist_index, "m")
+
+  if (is.null(drift_percentages)) {
+    drift_percentages <- pfm::drift_data_JKI[[applications]][dist_index, crop]
+    names(drift_percentages) <- paste(dist_index, "m")
+  } else {
+    names(drift_percentages) <- paste(drift_percentages, "%")
+  }
+
+  PEC_sw_drift <- PEC_sw_overspray * drift_percentages / 100
   return(PEC_sw_drift)
 }
