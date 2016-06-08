@@ -1,4 +1,4 @@
-# Copyright (C) 2014,2015  Johannes Ranke
+# Copyright (C) 2014,2015,2016  Johannes Ranke
 # Contact: jranke@uni-bremen.de
 # This file is part of the R package pfm
 
@@ -19,7 +19,9 @@
 #'
 #' Read TOXSWA hourly concentrations of a chemical substance in a specific
 #' segment of a TOXSWA surface water body. Per default, the data for the last
-#' segment are imported.
+#' segment are imported. As TOXSWA reports the values at the end of the hour
+#' (ConLiqWatLayCur) in its summary file, we use this value as well instead
+#' of the hourly averages (ConLiqWatLay).
 #'
 #' @param filename The filename of the cwa file (TOXSWA 2.x.y  or similar) or the
 #'  out file (FOCUS TOXSWA 4, i.e. TOXSWA 4.4.2 or similar).
@@ -225,7 +227,7 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
         if (inherits(outfile, "try-error")) {
           stop("Could not read ", filename)
         } else {
-          cwa_lines <- outfile[grep("ConLiqWatLay_", outfile)] # hourly concentrations
+          cwa_lines <- outfile[grep("ConLiqWatLayCur_", outfile)] # concentrations at end of hour
 
           cwa_all_segments <- read_fwf(paste(cwa_lines, collapse = "\n"), 
                                        fwf_empty(paste(tail(cwa_lines), collapse = "\n")))
