@@ -35,7 +35,9 @@ An instance of an R6 object of class
 \description{
 Read TOXSWA hourly concentrations of a chemical substance in a specific
 segment of a TOXSWA surface water body. Per default, the data for the last
-segment are imported.
+segment are imported. As TOXSWA reports the values at the end of the hour
+(ConLiqWatLayCur) in its summary file, we use this value as well instead
+of the hourly averages (ConLiqWatLay).
 }
 \examples{
 H_sw_D4_pond  <- read.TOXSWA_cwa("00001p_pa.cwa",
