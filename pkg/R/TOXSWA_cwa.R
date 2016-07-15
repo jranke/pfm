@@ -232,6 +232,12 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
           cwa_all_segments <- read_fwf(paste(cwa_lines, collapse = "\n"), 
                                        fwf_empty(paste(tail(cwa_lines), collapse = "\n")))
 
+          # Append time "-00h00" to datetime in first row, as this is not (always?) present
+          # in the line ConLiqWatLayCur
+          if (nchar(cwa_all_segments[1, "X2"]) == 11) {
+            cwa_all_segments[1, "X2"] = paste0(cwa_all_segments[1, "X2"], "-00h00")
+          }
+
           available_segments = 1:(ncol(cwa_all_segments) - 3)
           if (segment == "last") segment = max(available_segments)
           if (!segment %in% available_segments) stop("Invalid segment specified")
