@@ -38,6 +38,7 @@ if(getRversion() >= '2.15.1') utils::globalVariables(c("destination", "study_typ
 #'   e.g. in the EFSA scenarios, the DT50 for groundwater modelling
 #'   (destination 'PECgw') is taken from the chent object, otherwise the DT50
 #'   with destination 'PECsoil'.
+#' @importFrom methods is
 #' @param rate Application rate in units specified below
 #' @param rate_units Defaults to g/ha
 #' @param interception The fraction of the application rate that does not reach the soil
