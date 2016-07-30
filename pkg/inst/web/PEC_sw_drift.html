@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>PEC_sw_drift. pfm 0.3-1</title>
+<title>PEC_sw_drift. pfm 0.3-7</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="
 Johannes Ranke
@@ -34,7 +34,7 @@ Johannes Ranke
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">pfm 0.3-1</a>
+      <a class="brand" href="#">pfm 0.3-7</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -54,7 +54,7 @@ Johannes Ranke
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>PEC_sw_drift(rate, applications&nbsp;=&nbsp;1, water_depth&nbsp;=&nbsp;30, drift_data&nbsp;=&nbsp;"JKI", crop&nbsp;=&nbsp;"Ackerbau", distances&nbsp;=&nbsp;c(1, 5, 10, 20), rate_units&nbsp;=&nbsp;"g/ha", PEC_units&nbsp;=&nbsp;"µg/L")</div></pre>
+    <pre><div>PEC_sw_drift(rate, applications&nbsp;=&nbsp;1, water_depth&nbsp;=&nbsp;30, drift_percentages&nbsp;=&nbsp;NULL, drift_data&nbsp;=&nbsp;"JKI", crop&nbsp;=&nbsp;"Ackerbau", distances&nbsp;=&nbsp;c(1, 5, 10, 20), rate_units&nbsp;=&nbsp;"g/ha", PEC_units&nbsp;=&nbsp;"µg/L")</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -64,6 +64,9 @@ Johannes Ranke
       <dd>Number of applications for selection of drift percentile</dd>
       <dt>water_depth</dt>
       <dd>Depth of the water body in cm</dd>
+      <dt>drift_percentages</dt>
+      <dd>Percentage drift values for which to calculate PECsw.
+'drift_data' and 'distances' if not NULL.</dd>
       <dt>drift_data</dt>
       <dd>Source of drift percentage data</dd>
       <dt>crop</dt>
