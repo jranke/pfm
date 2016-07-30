@@ -14,7 +14,8 @@ Depends:
 Imports:
     graphics,
     chents,
-    readr
+    readr,
+    methods
 Suggests:
     testthat
 License: GPL
