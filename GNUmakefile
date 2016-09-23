@@ -55,8 +55,11 @@ $(TGZ): $(pkgfiles)
 	"$(R_HOME)/bin/R" CMD build pkg > build.log 2>&1
 	@echo "DONE."
 
-README.html: README.md
-	"$(R_HOME)/bin/Rscript" -e "rmarkdown::render('README.md', output_format = 'html_document')"
+README.html: README.rmd
+	"$(R_HOME)/bin/Rscript" -e "rmarkdown::render('README.rmd', output_format = 'html_document', clean = FALSE)"
+	mv README.utf8.md README.md
+	rm README.knit.md
+	rm -rf README_files
 
 build: $(TGZ)
 

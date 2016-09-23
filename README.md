@@ -1,7 +1,7 @@
 # pfm
 
 The R package **pfm** provides some utilities for dealing with FOCUS pesticide fate modelling tools,
-(currently only TOXSWA cwa files), made available under the GNU public license.
+(currently only TOXSWA cwa and out files), made available under the GNU public license.
 This means:
 
     This program is free software: you can redistribute it and/or modify it under
@@ -37,12 +37,15 @@ install_github("jranke/pfm", subdir = "pkg", quick = TRUE)
 Read in and analyse a cwa file:
 
 
+
 ```r
-library(pfm)
+library(pfm, quietly = TRUE)
 ```
 
 ```
-## Loading required package: R6
+## 
+## Initialize Python Version 2.7.9 (default, Jun 29 2016, 13:11:10) 
+## [GCC 4.9.2]
 ```
 
 ```r
@@ -50,7 +53,12 @@ example_cwa <- read.TOXSWA_cwa("00003s_pa.cwa")
 plot(example_cwa)
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+<img src="README_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+
+Get events above thresholds of 20 and 100 µg/L,
+and do a moving window analysis for windows of 7 days
+and 21 days, print the results:
+
 
 ```r
 example_cwa$get_events(c(20, 100))
@@ -85,6 +93,11 @@ print(example_cwa)
 ## No events found
 ```
 
+This can also be done with out files, the function reads
+out files from current TOXSWA versions as well as cwa files
+from old TOXSWA versions.
+
+
 ### Calculate PEC soil
 
 Simple PEC soil calculation for an application rate of 100 g/ha and
@@ -92,18 +105,22 @@ Simple PEC soil calculation for an application rate of 100 g/ha and
 density of 1.5 kg/L, output in mg/kg:
 
 
+
 ```r
-PEC_soil(100, int = 0.25)
+PEC_soil(100, interception = 0.25)
 ```
 
 ```
-## [1] 0.1
+##      scenario
+## t_avg default
+##     0     0.1
 ```
 
 ### Rautmann drift data
 
 Some of the drift percentage data published by the JKI are included. To
 see the data for one application:
+
 
 
 ```r
@@ -113,16 +130,16 @@ drift_data_JKI[1]
 ```
 ## [[1]]
 ##         crop
-## distance Ackerbau Obstbau früh Obstbau spät
-##       1      2.77           NA           NA
-##       3        NA        29.20        15.73
-##       5      0.57        19.89         8.41
-##       10     0.29        11.81         3.60
-##       15     0.20         5.55         1.81
-##       20     0.15         2.77         1.09
-##       30     0.10         1.04         0.54
-##       40     0.07         0.52         0.32
-##       50     0.06         0.30         0.22
+## distance Ackerbau Obstbau frueh Obstbau spaet
+##       1      2.77            NA            NA
+##       3        NA         29.20         15.73
+##       5      0.57         19.89          8.41
+##       10     0.29         11.81          3.60
+##       15     0.20          5.55          1.81
+##       20     0.15          2.77          1.09
+##       30     0.10          1.04          0.54
+##       40     0.07          0.52          0.32
+##       50     0.06          0.30          0.22
 ```
 
 ### PEC surface water due to drift
@@ -131,8 +148,9 @@ Initial PEC values for an application of 100 g/ha in the vicinity of a 30 cm
 deep water body are obtained using
 
 
+
 ```r
-PEC_sw_drift_ini(100, applications = 1)
+PEC_sw_drift(100, applications = 1)
 ```
 
 ```

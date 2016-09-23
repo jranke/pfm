@@ -5,7 +5,7 @@ options(device = function(file, width = 7, height = 7, ...) {
 })
 ```
 The R package **pfm** provides some utilities for dealing with FOCUS pesticide fate modelling tools,
-(currently only TOXSWA cwa files), made available under the GNU public license.
+(currently only TOXSWA cwa and out files), made available under the GNU public license.
 This means:
 
     This program is free software: you can redistribute it and/or modify it under
@@ -31,4 +31,63 @@ fast and painless as possible.
 ```{r, eval = FALSE}
 library(devtools)
 install_github("jranke/pfm", subdir = "pkg", quick = TRUE)
+```
+
+## Use
+
+### Analyse TOXSWA output
+
+Read in and analyse a cwa file:
+
+
+```{r}
+library(pfm, quietly = TRUE)
+example_cwa <- read.TOXSWA_cwa("00003s_pa.cwa")
+plot(example_cwa)
+```
+
+Get events above thresholds of 20 and 100 µg/L,
+and do a moving window analysis for windows of 7 days
+and 21 days, print the results:
+
+```{r}
+example_cwa$get_events(c(20, 100))
+example_cwa$moving_windows(c(7, 21))
+print(example_cwa)
+```
+
+This can also be done with out files, the function reads
+out files from current TOXSWA versions as well as cwa files
+from old TOXSWA versions.
+
+
+### Calculate PEC soil
+
+Simple PEC soil calculation for an application rate of 100 g/ha and
+25% interception, assuming complete mixing into 5 cm and a soil bulk
+density of 1.5 kg/L, output in mg/kg:
+
+
+```{r}
+PEC_soil(100, interception = 0.25)
+```
+
+### Rautmann drift data
+
+Some of the drift percentage data published by the JKI are included. To
+see the data for one application:
+
+
+```{r}
+drift_data_JKI[1]
+```
+
+### PEC surface water due to drift
+
+Initial PEC values for an application of 100 g/ha in the vicinity of a 30 cm
+deep water body are obtained using
+
+
+```{r}
+PEC_sw_drift(100, applications = 1)
 ```
