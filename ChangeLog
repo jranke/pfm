@@ -1,0 +1,392 @@
+commit 0d958ab6f84b569b5437f231c56004890c4ae23b
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-09-27 17:50:34 +0200
+
+    Make the chents package optional
+
+commit 399383adcdb37c4a3e32f1a2133a2fa3663618d0
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-09-23 18:23:00 +0200
+
+    Keep the graph for the markdown file
+    
+    The markdown file is not self-contained as the html file...
+
+commit 9fb69b042924045df90119e47ad4dc666dbc8b4d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-09-23 18:16:51 +0200
+
+    Slightly update the README
+
+commit 2f618da8cfbeb0379f4d38af6f608a69c6d54bd5
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-07-30 11:29:09 +0200
+
+    Update static documentation
+
+commit 3b8730a58f7846b5261922ec90e582e0158a54c7
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-07-30 11:09:47 +0200
+
+    Add 'methods' to dependecies
+
+commit 3260b0e875b7af24f2aef7bc2464418525a192df
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-07-30 11:08:05 +0200
+
+    Fix the TOXSWA reading test
+    
+    Since a recent commit we are reading the concentrations at the end
+    of each hour, so the test needed to be updated accordingly
+
+commit b8f953d04e4094c79b4f860d99f3c1466ed3ad6a
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-07-30 11:06:53 +0200
+
+    Import 'is' from methods
+
+commit 1ceb226d999d56276c9e361f359368287a0749c4
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-07-30 10:42:48 +0200
+
+    Read cwas from .out files with metabolites
+    
+    TOXSWA 4 stores the detailed output for SWASH runs with metabolites
+    in its .out files. With this commit it is possible to read in
+    .out files from such runs with metabolites. Default is to read in
+    the concentrations for the parent, a newly gained "substance" argument
+    makes it possible to specify the metabolite for which the data should
+    be read.
+
+commit d6b230cd1b415a112009227bc9e0ff50316c42f7
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-07-15 15:05:22 +0200
+
+    Fix calculation of t_firstjan
+    
+    There is an inconsistency in (some?) output files, so the first
+    datetime needs to be fixed before reading it into a data frame
+
+commit b45c9bfae9e5578dd455ed417363b4996cffd46a
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-06-08 08:36:48 +0200
+
+    Clean up remainders of NL drift calculation function
+
+commit 234a20018fe9fe9824bcfaae2c391e59d09f9871
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-06-08 08:29:39 +0200
+
+    Use the concentration at the end of the hour
+    
+    This is also what TOXSWA presents in the summary files
+
+commit 4284c57c7d53a9aef0c917a050ccf2ab779cfce3
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-06-08 08:29:39 +0200
+
+    Use the concentration at the end of the hour
+    
+    This is also what TOXSWA presents in the summary files
+
+commit 057d53d0faed7b297bbb99de8cd4bf3e3e448538
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-03-10 05:28:03 +0100
+
+    Merge the NL drift calculations based on percentages into PEC_sw_drift
+
+commit 527d927371083e784ad583a6b3c7465c49a53cdc
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-03-10 05:17:45 +0100
+
+    Add NL specific drift calculations
+
+commit 1ab6d4c9f186fb7ea9bb8b968e47a9f1eab64583
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-03-02 17:51:21 +0100
+
+    Fix the name of the Chateadun scenario
+
+commit d14923ae1ac023c8f8f5ae8b5c0884f4247f764b
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-02-04 18:06:15 +0100
+
+    Test reading .out files and close connections
+
+commit 98a706373107188496a1df295697e739e51d6b06
+Author: Johannes Ranke <johannes.ranke@jrwb.de>
+Date:   2016-02-04 17:45:02 +0100
+
+    Improve reading spead for new TOXSWA format
+
+commit 057ba40426d49e09c06db26fb7d4072741b4cb8d
+Author: Johannes Ranke <johannes.ranke@jrwb.de>
+Date:   2016-02-04 12:21:02 +0100
+
+    Read cwa data from TOXSWA 4.4.2 .out files
+
+commit e7f8a0e82b24d28b74681dafc97f1cf8a4662b51
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-12-27 12:30:20 +0100
+
+    Fix rounding of endpoint retrieval functions
+
+commit f9373e361dde232b08fe7431e85bf367a1cfc269
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-12-27 12:29:37 +0100
+
+    Another useless variant to avoid warnings in staticdoc plots
+
+commit 3a579d87820ccbec514f1be5eb090e874fd87eec
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-12-22 19:32:54 +0100
+
+    EFSA 2015 tier 1 PEC soil, clean up, add static docs
+
+commit 9851a97ec915ddbfc8357f1a7e2cabae56c89f7d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-12-18 14:45:24 +0100
+
+    Documentation fixes, chents is currently a hard dependency
+
+commit 6b4e342b240baaf18150360986d15895fc80a937
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-10-15 14:41:26 +0200
+
+    Add endpoint and GUS functions, roxygenize
+
+commit c43b4947007b3c26bc56260499af51c41b8cd702
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-10-01 14:42:14 +0200
+
+    Add some soil data for FOCUS groundwater scenarios
+
+commit 697e0554bf89a63f23b9ab5548e31f218bc483e9
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-09-11 10:07:53 +0200
+
+    Added PEC soil for products as defined in chents v0.1-2
+
+commit 634d4a0a93882a3b2d3961abbdd33694fd93dcc6
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-09-10 16:18:17 +0200
+
+    Add PEC soil for product with serveral ais
+
+commit 1ec3ee4a03d4e47fdd3be1bcbe754e478353410b
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-08-22 12:10:06 +0200
+
+    Updates of DESCRIPTION and NAMESPACE
+
+commit 51aa1a77c9b9b9a6becdb2a5a85213946719b051
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-08-22 12:06:37 +0200
+
+    Add README.html for cgit on jrwb.de
+
+commit 83c8575e2abde12208584b9c80935d4a873689fd
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-08-22 12:01:57 +0200
+
+    Small documentation updates
+
+commit 5038ba57fef6cc386566ec30f3d5dd67e62decff
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-08-21 15:10:42 +0200
+
+    Adapt the description to R CMD check requirements
+
+commit 4477e69b46e88c196f354463190753650157ea0d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-08-21 15:01:10 +0200
+
+    Updates to pass checks and tests
+
+commit ad4cd5d9a1f8c3976d08048a441129b1fb49a62b
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-07-02 16:05:59 +0200
+
+    Changes to pass R CMD check --as-cran, roxygen run
+
+commit fef0bb7fe916f91dcff089c17aa3290c0ea1ab1f
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-12 02:19:38 +0200
+
+    Add sediment PEC calculations using the percentage method
+
+commit 5b32c30549bfa3cb42ffde7e13f75608b98c79c2
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-12 02:19:01 +0200
+
+    Make UK drainage with non-SFO soil degradation work
+
+commit 9b8e5cb80ba4a89578d979bee134f8342ca0a527
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 17:38:01 +0200
+
+    Now we pass R CMD check
+
+commit dd803b191062925eda830543236836e7822fd884
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 16:57:43 +0200
+
+    Add UK tier 1 drainage PEC calculations
+
+commit 09cf970942706cfab43753d298b42e8d85216d80
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 15:25:22 +0200
+
+    Now there is enough content to warrant 0.2-x
+
+commit 3aa5fb86772c28402047c7ebd07841061dbcdbba
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 15:23:22 +0200
+
+    Add facilities to calculate decline curves
+
+commit d3daa7b73fa5d0508ff51a843247d126c2a11691
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 13:17:13 +0200
+
+    Generate README.md with current pfm version
+
+commit cb0d72e2c2d431bd32ffb129b62ea1a522cbdfeb
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 13:09:10 +0200
+
+    Rename PEC_sw_drift() to PEC_sw_drift_ini()
+
+commit ea9b75183bcf41fcdd6f61ec6060e94c4bc321a2
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 12:13:47 +0200
+
+    Add simple drift PEC ini calculations
+    
+    These are tested for field crops with the CRD spreadsheet
+
+commit cbba81d73faa83c63a33afc61be5efc1964925bb
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 12:12:40 +0200
+
+    Use devtools for roxygenizing, improve logging
+
+commit 6e4a152925011528c21937f12bc53042a53f72de
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 10:13:18 +0200
+
+    JKI drift percentage data for field crops and pome/stone fruit
+
+commit 53099978c971ee8e5c94e67bf972f51629d67fd3
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 10:04:22 +0200
+
+    and the incomplete documentation
+
+commit 372ab2f2f59f0baaee759ce966a705f9f754cf6d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 10:03:32 +0200
+
+    Intermediate stage for pfm_chent
+
+commit 586b248f5d249f4ebaad2175c9f78fcae8646636
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-06-11 09:54:57 +0200
+
+    Formatting
+
+commit fd1609aafd2f40266c1e29d8dfdf5e08e8838d35
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-05-24 03:52:28 +0200
+
+    Start of a pfm_chent data object
+
+commit e2b1d510e921f7721647b0df6602c2618937c1da
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-05-08 08:47:11 +0200
+
+    Update the Figure in the README
+
+commit 8021c7cb9aac06e961227a3c0e0b013ec2d2d501
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-05-07 16:15:23 +0200
+
+    Bugfix: Reset maximum event concentration for each event
+
+commit 508d883f7689d617d15915dbd26a27f1613bb857
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-05-07 12:04:28 +0200
+
+    Make quarterly labels for plot.TOXSWA_cwa
+
+commit c6e57ab29170266b3038b01c54bf161ab361d440
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-04-24 02:22:21 +0200
+
+    Do not test the path to the zip file
+
+commit 7d2096855edcc196629c1c7a9983a56ec6addd1e
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-04-24 02:21:04 +0200
+
+    Add a geometric mean function
+
+commit bcfe0af7970efe36c3aa661e89953fbe3689c310
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-04-24 02:20:21 +0200
+
+    Clean the Makefile a bit
+
+commit 768a043848dd84b9e699916657d0a23b2f3b9e83
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-04-22 13:48:42 +0200
+
+    Fix header formatting
+
+commit 04502ca0c658a6c929debd61aee87be8c7eceb04
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-04-22 13:46:32 +0200
+
+    Update markdown version of README
+
+commit ec79637749d300ab4ca170805c673905e52d67dd
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-04-22 13:42:10 +0200
+
+    Add simplest PEC soil calcs, use testthat
+
+commit 8ffbc49b3f01deac6f9e83aaa6d318d4e2f8552b
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-01-23 16:44:04 +0100
+
+    Add option to plot relative to maximum
+
+commit 8975dc148d0a6f222174980eb60314054be9b6cf
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-01-13 14:54:58 +0100
+
+    Fix warning in README
+
+commit 891af5d0f1ee8d45cd4403af43293463d23ba96b
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-01-13 14:05:31 +0100
+
+    README.rmd with example, fix reading unzipped files
+
+commit 4d74570f1ca4a94d894c6c5169684a8246d0a51c
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-01-13 12:58:26 +0100
+
+    Correctly initialize R6 fields, read from zip files
+
+commit ee070c11f7c7faff2f573d27cf32aafab78971a8
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2015-01-07 23:56:54 +0100
+
+    Pass ... parameters to added cwa lines
+
+commit 92d97ba99d7b90d95a67796cb5e68f28f752b70b
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2014-12-17 21:39:42 +0100
+
+    Initial commit: R6 class for TOXSWA cwa files

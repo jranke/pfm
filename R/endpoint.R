@@ -1,6 +1,6 @@
 #' Retrieve endpoint information from the chyaml field of a chent object
 #'
-#' R6 class objects of class \code{\link{chent}} represent chemical entities
+#' R6 class objects of class chent represent chemical entities
 #' and can hold a list of information loaded from a chemical yaml file in their
 #' chyaml field. Such information is extracted and optionally aggregated by
 #' this function.
@@ -10,9 +10,8 @@
 #' facilitate dealing with such data in R. In pesticide fate modelling, this
 #' exponent is often called 1/n.
 #'
-#' @import chents
 #' @export
-#' @param chent The \code{\link{chent}} object to get the information from
+#' @param chent The chent object to get the information from
 #' @param medium The medium for which information is sought
 #' @param type The information type
 #' @param lab_field If not NA, do we want laboratory or field endpoints

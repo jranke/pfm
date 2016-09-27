@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>SFO_actual_twa. pfm 0.3-8</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Johannes Ranke
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">pfm 0.3-8</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Actual and maximum moving window time average concentrations for SFO kinetics</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='SFO_actual_twa.html'>SFO_actual_twa</a></span><span class="keyword">(</span><span class="argument">DT50</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1000</span><span class="keyword">,</span> <span class="argument">times</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">0</span><span class="keyword">,</span> <span class="number">1</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">,</span> <span class="number">4</span><span class="keyword">,</span> <span class="number">7</span><span class="keyword">,</span> <span class="number">14</span><span class="keyword">,</span> <span class="number">21</span><span class="keyword">,</span> <span class="number">28</span><span class="keyword">,</span> <span class="number">42</span><span class="keyword">,</span> <span class="number">50</span><span class="keyword">,</span>
+  <span class="number">100</span><span class="keyword">)</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>DT50</dt>
+      <dd>The half-life.</dd>
+      <dt>times</dt>
+      <dd>The output times, and window sizes for time weighted average concentrations</dd>
+    </dl>
+    
+    <div class="Source">
+      <h2>Source</h2>
+
+      <p>FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
+  Kinetics from Environmental Fate Studies on Pesticides in EU Registratin, Version 1.1, 
+  18 December 2014, p. 251</p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Actual and maximum moving window time average concentrations for SFO kinetics</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="functioncall"><a href='SFO_actual_twa.html'>SFO_actual_twa</a></span><span class="keyword">(</span><span class="number">10</span><span class="keyword">)</span></div>
+<div class='output'>          actual       twa
+0   1.0000000000       NaN
+1   0.9330329915 0.9661297
+2   0.8705505633 0.9337803
+4   0.7578582833 0.8733416
+7   0.6155722067 0.7923030
+14  0.3789291416 0.6400113
+21  0.2332582479 0.5267498
+28  0.1435872944 0.4412651
+42  0.0544094102 0.3248093
+50  0.0312500000 0.2795222
+100 0.0009765625 0.1441286
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>SFO_actual_twa</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+    <h2>Author</h2>
+    
+Johannes Ranke
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

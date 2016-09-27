@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>endpoint. pfm 0.3-8</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">pfm 0.3-8</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Retrieve endpoint information from the chyaml field of a chent object</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='endpoint.html'>endpoint</a></span><span class="keyword">(</span><span class="symbol">chent</span><span class="keyword">,</span> <span class="argument">medium</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"soil"</span><span class="keyword">,</span> <span class="argument">type</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"degradation"</span><span class="keyword">,</span> <span class="string">"sorption"</span><span class="keyword">)</span><span class="keyword">,</span>
+  <span class="argument">lab_field</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">NA</span><span class="keyword">,</span> <span class="string">"laboratory"</span><span class="keyword">,</span> <span class="string">"field"</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">redox</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">NA</span><span class="keyword">,</span> <span class="string">"aerobic"</span><span class="keyword">,</span>
+  <span class="string">"anaerobic"</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">value</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"DT50ref"</span><span class="keyword">,</span> <span class="string">"Kfoc"</span><span class="keyword">,</span> <span class="string">"N"</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">aggregator</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">geomean</span><span class="keyword">,</span>
+  <span class="argument">raw</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">signif</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">3</span><span class="keyword">)</span>
+
+<span class="functioncall"><a href='endpoint.html'>soil_DT50</a></span><span class="keyword">(</span><span class="symbol">chent</span><span class="keyword">,</span> <span class="argument">aggregator</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">geomean</span><span class="keyword">,</span> <span class="argument">signif</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">3</span><span class="keyword">,</span>
+  <span class="argument">lab_field</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"laboratory"</span><span class="keyword">,</span> <span class="argument">value</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"DT50ref"</span><span class="keyword">,</span> <span class="argument">redox</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"aerobic"</span><span class="keyword">,</span>
+  <span class="argument">raw</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span>
+
+<span class="functioncall"><a href='endpoint.html'>soil_Kfoc</a></span><span class="keyword">(</span><span class="symbol">chent</span><span class="keyword">,</span> <span class="argument">aggregator</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">geomean</span><span class="keyword">,</span> <span class="argument">signif</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">3</span><span class="keyword">,</span> <span class="argument">value</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"Kfoc"</span><span class="keyword">,</span>
+  <span class="argument">raw</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span>
+
+<span class="functioncall"><a href='endpoint.html'>soil_N</a></span><span class="keyword">(</span><span class="symbol">chent</span><span class="keyword">,</span> <span class="argument">aggregator</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">mean</span><span class="keyword">,</span> <span class="argument">signif</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">3</span><span class="keyword">,</span> <span class="argument">raw</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span>
+
+<span class="functioncall"><a href='endpoint.html'>soil_sorption</a></span><span class="keyword">(</span><span class="symbol">chent</span><span class="keyword">,</span> <span class="argument">values</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"Kfoc"</span><span class="keyword">,</span> <span class="string">"N"</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">aggregators</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="argument">Kfoc</span> <span class="argument">=</span>
+  <span class="symbol">geomean</span><span class="keyword">,</span> <span class="argument">Koc</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">geomean</span><span class="keyword">,</span> <span class="argument">N</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="symbol">mean</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">signif</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="argument">Kfoc</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">3</span><span class="keyword">,</span> <span class="argument">N</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">3</span><span class="keyword">)</span><span class="keyword">,</span>
+  <span class="argument">raw</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>chent</dt>
+      <dd>The chent object to get the information from</dd>
+      <dt>medium</dt>
+      <dd>The medium for which information is sought</dd>
+      <dt>type</dt>
+      <dd>The information type</dd>
+      <dt>lab_field</dt>
+      <dd>If not NA, do we want laboratory or field endpoints</dd>
+      <dt>redox</dt>
+      <dd>If not NA, are we looking for aerobic or anaerobic data</dd>
+      <dt>value</dt>
+      <dd>The name of the value we want. The list given in the 
+usage section is not exclusive</dd>
+      <dt>aggregator</dt>
+      <dd>The aggregator function. Can be mean, 
+<code><a href='geomean.html'>geomean</a></code>, or identity, for example.</dd>
+      <dt>raw</dt>
+      <dd>Should the number(s) be returned as stored in the chent
+object (could be a character value) to retain original information
+about precision?</dd>
+      <dt>signif</dt>
+      <dd>How many significant digits do we want</dd>
+      <dt>values</dt>
+      <dd>The values to be returned</dd>
+      <dt>aggregators</dt>
+      <dd>A named vector of aggregator functions to be used</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+The result from applying the aggregator function to
+  the values converted to a numeric vector, rounded to the
+  given number of significant digits, or, if raw = TRUE,
+  the values as a character value, retaining any implicit
+  information on precision that may be present.
+</dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>R6 class objects of class chent represent chemical entities
+and can hold a list of information loaded from a chemical yaml file in their
+chyaml field. Such information is extracted and optionally aggregated by
+this function.</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>The functions <code>soil_*</code> are functions to extract soil specific endpoints.
+For the Freundlich exponent, the capital letter <code>N</code> is used in order to
+facilitate dealing with such data in R. In pesticide fate modelling, this
+exponent is often called 1/n.</p>
+
+    </div>
+      </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>endpoint</li><li>soil_DT50</li><li>soil_Kfoc</li><li>soil_N</li><li>soil_sorption</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

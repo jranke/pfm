@@ -1,0 +1,10 @@
+^pfm_.*.tar.gz
+^GNUmakefile$
+^README.rmd$
+^00003s_pa.cwa$
+^README_files$
+^README.html$
+^build.log$
+^test.log$
+^inst/extdata/Tabelle\ der\ Abdrifteckwerte.xls$
+^docs$

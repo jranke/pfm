@@ -27,7 +27,7 @@ soil_sorption(chent, values = c("Kfoc", "N"), aggregators = c(Kfoc =
   raw = FALSE)
 }
 \arguments{
-\item{chent}{The \code{\link{chent}} object to get the information from}
+\item{chent}{The chent object to get the information from}
 
 \item{medium}{The medium for which information is sought}
 
@@ -61,7 +61,7 @@ The result from applying the aggregator function to
   information on precision that may be present.
 }
 \description{
-R6 class objects of class \code{\link{chent}} represent chemical entities
+R6 class objects of class chent represent chemical entities
 and can hold a list of information loaded from a chemical yaml file in their
 chyaml field. Such information is extracted and optionally aggregated by
 this function.

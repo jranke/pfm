@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Home. pfm 0.3-8</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">pfm 0.3-8</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <div class="row">
+  <div class="span8">
+    <h1>pfm</h1>
+
+<p>The R package <strong>pfm</strong> provides some utilities for dealing with FOCUS pesticide fate modelling tools,
+(currently only TOXSWA cwa and out files), made available under the GNU public license.
+This means:</p>
+
+<pre><code>This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see &lt;http://www.gnu.org/licenses/&gt;
+</code></pre>
+
+<h2>Installation</h2>
+
+<p>You can install the package from <a href="http://github.com/jranke/pfm">github</a>, e.g.
+using the <code>devtools</code> package.  Using <code>quick = TRUE</code> skips docs,
+multiple-architecture builds, demos, and vignettes, to make installation as
+fast and painless as possible.</p>
+
+<pre><code class="r">library(devtools)
+install_github(&quot;jranke/pfm&quot;, subdir = &quot;pkg&quot;, quick = TRUE)
+</code></pre>
+
+<h2>Use</h2>
+
+<h3>Analyse TOXSWA output</h3>
+
+<p>Read in and analyse a cwa file:</p>
+
+<pre><code class="r">library(pfm, quietly = TRUE)
+</code></pre>
+
+<pre><code>## 
+## Initialize Python Version 2.7.9 (default, Jun 29 2016, 13:11:10) 
+## [GCC 4.9.2]
+</code></pre>
+
+<pre><code class="r">example_cwa &lt;- read.TOXSWA_cwa(&quot;00003s_pa.cwa&quot;)
+plot(example_cwa)
+</code></pre>
+
+<p><img src="README_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+
+<p>Get events above thresholds of 20 and 100 µg/L,
+and do a moving window analysis for windows of 7 days
+and 21 days, print the results:</p>
+
+<pre><code class="r">example_cwa$get_events(c(20, 100))
+example_cwa$moving_windows(c(7, 21))
+print(example_cwa)
+</code></pre>
+
+<pre><code>## &lt;TOXSWA_cwa&gt; data from file 00003s_pa.cwa segment 20 
+##                datetime     t t_firstjan t_rel_to_max cwa_mug_per_L
+## 20  1978-10-01 00:00:00 0.000   273.0000      -55.333             0
+## 40  1978-10-01 01:00:00 0.042   273.0417      -55.291             0
+## 60  1978-10-01 02:00:00 0.083   273.0833      -55.250             0
+## 80  1978-10-01 03:00:00 0.125   273.1250      -55.208             0
+## 100 1978-10-01 04:00:00 0.167   273.1667      -55.166             0
+## 120 1978-10-01 05:00:00 0.208   273.2083      -55.125             0
+##     cwa_tot_mug_per_L
+## 20                  0
+## 40                  0
+## 60                  0
+## 80                  0
+## 100                 0
+## 120                 0
+## Moving window analysis
+##    window  max_TWAC max_AUC_h max_AUC_d
+## 1  7 days 2.3926551  401.9660  16.74859
+## 2 21 days 0.8369248  421.8101  17.57542
+## Event statistics for threshold 20 
+##   t_start  cwa_max duration pre_interval    AUC_h   AUC_d
+## 1  55.083 40.58401    0.417       55.083 365.7912 15.2413
+## Event statistics for threshold 100 
+## No events found
+</code></pre>
+
+<p>This can also be done with out files, the function reads
+out files from current TOXSWA versions as well as cwa files
+from old TOXSWA versions.</p>
+
+<h3>Calculate PEC soil</h3>
+
+<p>Simple PEC soil calculation for an application rate of 100 g/ha and
+25% interception, assuming complete mixing into 5 cm and a soil bulk
+density of 1.5 kg/L, output in mg/kg:</p>
+
+<pre><code class="r">PEC_soil(100, interception = 0.25)
+</code></pre>
+
+<pre><code>##      scenario
+## t_avg default
+##     0     0.1
+</code></pre>
+
+<h3>Rautmann drift data</h3>
+
+<p>Some of the drift percentage data published by the JKI are included. To
+see the data for one application:</p>
+
+<pre><code class="r">drift_data_JKI[1]
+</code></pre>
+
+<pre><code>## [[1]]
+##         crop
+## distance Ackerbau Obstbau frueh Obstbau spaet
+##       1      2.77            NA            NA
+##       3        NA         29.20         15.73
+##       5      0.57         19.89          8.41
+##       10     0.29         11.81          3.60
+##       15     0.20          5.55          1.81
+##       20     0.15          2.77          1.09
+##       30     0.10          1.04          0.54
+##       40     0.07          0.52          0.32
+##       50     0.06          0.30          0.22
+</code></pre>
+
+<h3>PEC surface water due to drift</h3>
+
+<p>Initial PEC values for an application of 100 g/ha in the vicinity of a 30 cm
+deep water body are obtained using</p>
+
+<pre><code class="r">PEC_sw_drift(100, applications = 1)
+</code></pre>
+
+<pre><code>##        1 m        5 m       10 m       20 m 
+## 0.92333333 0.19000000 0.09666667 0.05000000
+</code></pre>
+
+  </div>
+
+  <div class="span3 offset1 sidebar">
+        <h2>Authors</h2>
+    <ul>
+      <li><a href='mailto:jranke@uni-bremen.de'>Johannes Ranke</a> [aut, cre, cph]</li>
+    </ul>
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

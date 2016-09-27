@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>soil_scenario_data_EFSA_2015. pfm 0.3-8</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">pfm 0.3-8</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Properties of the predefined scenarios from the EFSA guidance from 2015</h1>
+
+<div class="row">
+  <div class="span8">
+        
+    <div class="Format">
+      <h2>Format</h2>
+
+      <p>A data frame with one row for each scenario. Row names are the scenario codes, 
+  e.g. CTN for the Northern scenario for the total concentration in soil. Columns are 
+  mostly self-explanatory. <code>rho</code> is the dry bulk density of the top soil.</p>
+
+    </div>
+
+    <div class="Source">
+      <h2>Source</h2>
+
+      <p>EFSA (European Food Safety Authority) (2015)
+EFSA guidance document for predicting environmental concentrations
+of active substances of plant protection products and transformation products of these
+active substances in soil. <em>EFSA Journal</em> <b>13</b>(4) 4093
+doi:10.2903/j.efsa.2015.4093</p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Properties of the predefined scenarios used at Tier 1, Tier 2A and Tier 3A for the 
+concentration in soil as given in the EFSA guidance (2015, p. 13/14). Also, the 
+scenario and model adjustment factors from p. 15 and p. 17 are included.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="comment">## Not run: ------------------------------------</span>
+<span class="comment">#   # This is the code that was used to define the data</span>
+<span class="comment">#   soil_scenario_data_EFSA_2015 &lt;- data.frame(</span>
+<span class="comment">#     Zone = rep(c("North", "Central", "South"), 2),</span>
+<span class="comment">#     Country = c("Estonia", "Germany", "France", "Denmark", "Czech Republik", "Spain"),</span>
+<span class="comment">#     T_arit = c(4.7, 8.0, 11.0, 8.2, 9.1, 12.8),</span>
+<span class="comment">#     T_arr = c(7.0, 10.1, 12.3, 9.8, 11.2, 14.7),</span>
+<span class="comment">#     Texture = c("Coarse", "Coarse", "Medium fine", "Medium", "Medium", "Medium"),</span>
+<span class="comment">#     f_om = c(0.118, 0.086, 0.048, 0.023, 0.018, 0.011),</span>
+<span class="comment">#     theta_fc = c(0.244, 0.244, 0.385, 0.347, 0.347, 0.347),</span>
+<span class="comment">#     rho = c(0.95, 1.05, 1.22, 1.39, 1.43, 1.51),</span>
+<span class="comment">#     f_sce = c(3, 2, 2, 2, 1.5, 1.5),</span>
+<span class="comment">#     f_mod = c(2, 2, 2, 4, 4, 4),</span>
+<span class="comment">#     stringsAsFactors = FALSE,</span>
+<span class="comment">#     row.names = c("CTN", "CTC", "CTS", "CLN", "CLC", "CLS")</span>
+<span class="comment">#   )</span>
+<span class="comment">#   save(soil_scenario_data_EFSA_2015, file = '../data/soil_scenario_data_EFSA_2015.RData')</span>
+<span class="comment">## ---------------------------------------------</span>
+
+<span class="comment"># And this is the resulting dataframe</span>
+<span class="symbol">soil_scenario_data_EFSA_2015</span></div>
+<div class='output'>       Zone        Country T_arit T_arr     Texture  f_om theta_fc  rho f_sce
+CTN   North        Estonia    4.7   7.0      Coarse 0.118    0.244 0.95   3.0
+CTC Central        Germany    8.0  10.1      Coarse 0.086    0.244 1.05   2.0
+CTS   South         France   11.0  12.3 Medium fine 0.048    0.385 1.22   2.0
+CLN   North        Denmark    8.2   9.8      Medium 0.023    0.347 1.39   2.0
+CLC Central Czech Republik    9.1  11.2      Medium 0.018    0.347 1.43   1.5
+CLS   South          Spain   12.8  14.7      Medium 0.011    0.347 1.51   1.5
+    f_mod
+CTN     2
+CTC     2
+CTS     2
+CLN     4
+CLC     4
+CLS     4
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>soil_scenario_data_EFSA_2015</li>
+    </ul>
+    <ul>
+      <li>datasets</li>
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

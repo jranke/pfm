@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>pfm_degradation. pfm 0.3-8</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="
+Johannes Ranke
+">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">pfm 0.3-8</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Calculate a time course of relative concentrations based on an mkinmod model</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='pfm_degradation.html'>pfm_degradation</a></span><span class="keyword">(</span><span class="argument">model</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"SFO"</span><span class="keyword">,</span> <span class="argument">DT50</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1000</span><span class="keyword">,</span> <span class="argument">parms</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="argument">k_parent_sink</span> <span class="argument">=</span>
+  <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/Log'>log</a></span><span class="keyword">(</span><span class="number">2</span><span class="keyword">)</span><span class="keyword">/</span><span class="symbol">DT50</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">years</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1</span><span class="keyword">,</span> <span class="argument">step_days</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1</span><span class="keyword">,</span> <span class="argument">times</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span><span class="keyword">(</span><span class="number">0</span><span class="keyword">,</span> <span class="symbol">years</span> <span class="keyword">*</span> <span class="number">365</span><span class="keyword">,</span> <span class="argument">by</span> <span class="argument">=</span>
+  <span class="symbol">step_days</span><span class="keyword">)</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>model</dt>
+      <dd>The degradation model to be used. Either a parent only model like
+&#39;SFO&#39; or &#39;FOMC&#39;, or an mkinmod object</dd>
+      <dt>DT50</dt>
+      <dd>The half-life. This is only used when simple exponential decline
+is calculated (SFO model).</dd>
+      <dt>parms</dt>
+      <dd>The parameters used for the degradation model</dd>
+      <dt>years</dt>
+      <dd>For how many years should the degradation be predicted?</dd>
+      <dt>step_days</dt>
+      <dd>What step size in days should the output have?</dd>
+      <dt>times</dt>
+      <dd>The output times</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Calculate a time course of relative concentrations based on an mkinmod model</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/utils/topics/head'>head</a></span><span class="keyword">(</span><span class="functioncall"><a href='pfm_degradation.html'>pfm_degradation</a></span><span class="keyword">(</span><span class="string">"SFO"</span><span class="keyword">,</span> <span class="argument">DT50</span> <span class="argument">=</span> <span class="number">10</span><span class="keyword">)</span><span class="keyword">)</span></div>
+<div class='output'>  time    parent
+1    0 1.0000000
+2    1 0.9330330
+3    2 0.8705506
+4    3 0.8122524
+5    4 0.7578583
+6    5 0.7071068
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>pfm_degradation</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+    <h2>Author</h2>
+    
+Johannes Ranke
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

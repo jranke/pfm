@@ -1,7 +1,6 @@
-PKGSRC  := $(shell basename $(CURDIR))
-PKGNAME := $(shell sed -n "s/Package: *\([^ ]*\)/\1/p" pkg/DESCRIPTION)
-PKGVERS := $(shell sed -n "s/Version: *\([^ ]*\)/\1/p" pkg/DESCRIPTION)
-TGZ     := $(PKGSRC)_$(PKGVERS).tar.gz
+PKGNAME := $(shell sed -n "s/Package: *\([^ ]*\)/\1/p" DESCRIPTION)
+PKGVERS := $(shell sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION)
+TGZ     := $(PKGNAME)_$(PKGVERS).tar.gz
 R_HOME  ?= $(shell R RHOME)
 DATE    := $(shell date +%Y-%m-%d)
 
@@ -17,38 +16,39 @@ usage:
 	@echo "  check     - Run CRAN check on the package."
 	@echo "  install   - Install the package."
 
-pkgfiles = pkg/DESCRIPTION \
+pkgfiles = DESCRIPTION \
 	   README.html \
-	   pkg/inst/testdata/* \
-	   pkg/inst/staticdocs/index.r \
-		 pkg/tests/testthat.R \
-		 pkg/tests/testthat/* \
-		 pkg/data/* \
-	   pkg/R/*
+		 .Rbuildignore \
+	   inst/testdata/* \
+	   inst/staticdocs/index.r \
+		 tests/testthat.R \
+		 tests/testthat/* \
+		 data/* \
+	   R/*
 
 clean:
 	@echo "Cleaning up..."
-	rm -fR pkg.Rcheck
+	rm -fR pfm.Rcheck
 	@echo "DONE."
 
 roxygen: 
 	@echo "Roxygenizing package..."
-	"$(R_HOME)/bin/Rscript" -e 'library(devtools); document("pkg")'
+	"$(R_HOME)/bin/Rscript" -e 'library(devtools); document()'
 	@echo "DONE."
 
 sd: roxygen
 	@echo "Building static documentation..."
 	# suppressWarnings to get rid of mbcsToSbcs warnings when plotting the 'µ' character
-	cd pkg; "$(R_HOME)/bin/Rscript" -e 'suppressWarnings(staticdocs::build_site())'
+	"$(R_HOME)/bin/Rscript" -e 'suppressWarnings(staticdocs::build_site())'
 	@echo "DONE."
 
 $(TGZ): $(pkgfiles)
-	sed -i -e "s/Date:.*/Date: $(DATE)/" pkg/DESCRIPTION
+	sed -i -e "s/Date:.*/Date: $(DATE)/" DESCRIPTION
 	@echo "Roxygenizing package..."
-	"$(R_HOME)/bin/Rscript" -e 'library(devtools); document("pkg")'
+	"$(R_HOME)/bin/Rscript" -e 'library(devtools); document()'
 	@echo "Building package..."
-	git log --no-merges -M --date=iso pkg/ > pkg/ChangeLog
-	"$(R_HOME)/bin/R" CMD build pkg > build.log 2>&1
+	git log --no-merges -M --date=iso > ChangeLog
+	"$(R_HOME)/bin/R" CMD build . > build.log 2>&1
 	@echo "DONE."
 
 README.html: README.rmd
@@ -60,7 +60,7 @@ build: $(TGZ)
 
 test: build
 	@echo "Running testthat tests..."
-	"$(R_HOME)/bin/Rscript" -e 'library(devtools); devtools::test("pkg")' 2>&1 | tee test.log
+	"$(R_HOME)/bin/Rscript" -e 'library(devtools); devtools::test()' 2>&1 | tee test.log
 	@echo "DONE."
 
 quickcheck: build

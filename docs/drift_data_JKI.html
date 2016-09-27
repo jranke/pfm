@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>drift_data_JKI. pfm 0.3-8</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">pfm 0.3-8</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Deposition from spray drift expressed as percent of the applied dose as
+published by the JKI</h1>
+
+<div class="row">
+  <div class="span8">
+        
+    <div class="Format">
+      <h2>Format</h2>
+
+      <p>A list currently containing matrices with spray drift percentage
+data for field crops (Ackerbau), and Pome/stone fruit, early and late
+(Obstbau frueh, spaet).</p>
+
+    </div>
+
+    <div class="Source">
+      <h2>Source</h2>
+
+      <p>JKI (2010) Spreadsheet &#39;Tabelle der Abdrifteckwerte.xls&#39;, retrieved
+from
+http://www.jki.bund.de/no_cache/de/startseite/institute/anwendungstechnik/abdrift-eckwerte.html
+on 2015-06-11</p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Deposition from spray drift expressed as percent of the applied dose as
+published by the German Julius-Kühn Institute (JKI).</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>The data were extracted from the spreadsheet cited below using the R code
+given in the example section. The spreadsheet is not included in the package
+as its licence is not clear.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class="comment">## Not run: ------------------------------------</span>
+<span class="comment">#   # This is the code that was used to extract the data</span>
+<span class="comment">#   library(readxl)</span>
+<span class="comment">#   abdrift_path &lt;- "inst/extdata/Tabelle der Abdrifteckwerte.xls"</span>
+<span class="comment">#   JKI_crops &lt;- c("Ackerbau", "Obstbau frueh", "Obstbau spaet")</span>
+<span class="comment">#   names(JKI_crops) &lt;- c("Field crops", "Pome/stone fruit, early", "Pome/stone fruit, late")</span>
+<span class="comment">#   drift_data_JKI &lt;- list()</span>
+<span class="comment"># </span>
+<span class="comment">#   for (n in 1:8) {</span>
+<span class="comment">#     drift_data_raw &lt;- read_excel(abdrift_path, sheet = n + 1, skip = 2)</span>
+<span class="comment">#     drift_data &lt;- as.matrix(drift_data_raw[1:9, 2:4]) </span>
+<span class="comment">#     dimnames(drift_data) &lt;- list(distance = as.integer(drift_data_raw[1:9, 1]),</span>
+<span class="comment">#                                             crop = JKI_crops)</span>
+<span class="comment">#     drift_data_JKI[[n]] &lt;- drift_data</span>
+<span class="comment">#   }</span>
+<span class="comment">#   save(drift_data_JKI, file = "data/drift_data_JKI.RData")</span>
+<span class="comment">## ---------------------------------------------</span>
+
+<span class="comment"># And this is the resulting data</span>
+<span class="symbol">drift_data_JKI</span></div>
+<div class='output'>[[1]]
+        crop
+distance Ackerbau Obstbau frueh Obstbau spaet
+      1      2.77            NA            NA
+      3        NA         29.20         15.73
+      5      0.57         19.89          8.41
+      10     0.29         11.81          3.60
+      15     0.20          5.55          1.81
+      20     0.15          2.77          1.09
+      30     0.10          1.04          0.54
+      40     0.07          0.52          0.32
+      50     0.06          0.30          0.22
+
+[[2]]
+        crop
+distance Ackerbau Obstbau frueh Obstbau spaet
+      1      2.38            NA            NA
+      3        NA         25.53         12.13
+      5      0.47         16.87          6.81
+      10     0.24          9.61          3.11
+      15     0.16          5.61          1.58
+      20     0.12          2.59          0.90
+      30     0.08          0.87          0.40
+      40     0.06          0.40          0.23
+      50     0.05          0.22          0.15
+
+[[3]]
+        crop
+distance Ackerbau Obstbau frueh Obstbau spaet
+      1      2.01            NA            NA
+      3        NA         23.96         11.01
+      5      0.41         15.79          6.04
+      10     0.20          8.96          2.67
+      15     0.14          4.24          1.39
+      20     0.10          2.01          0.80
+      30     0.07          0.70          0.36
+      40     0.05          0.33          0.21
+      50     0.04          0.19          0.13
+
+[[4]]
+        crop
+distance Ackerbau Obstbau frueh Obstbau spaet
+      1      1.85            NA            NA
+      3        NA         23.61         10.12
+      5      0.38         15.42          5.60
+      10     0.19          8.66          2.50
+      15     0.13          4.01          1.28
+      20     0.10          1.89          0.75
+      30     0.06          0.66          0.35
+      40     0.05          0.31          0.20
+      50     0.04          0.17          0.13
+
+[[5]]
+        crop
+distance Ackerbau Obstbau frueh Obstbau spaet
+      1      1.75            NA            NA
+      3        NA         23.12          9.74
+      5      0.36         15.06          5.41
+      10     0.18          8.42          2.43
+      15     0.12          3.83          1.24
+      20     0.09          1.81          0.72
+      30     0.06          0.63          0.34
+      40     0.05          0.30          0.20
+      50     0.04          0.17          0.13
+
+[[6]]
+        crop
+distance Ackerbau Obstbau frueh Obstbau spaet
+      1      1.64            NA            NA
+      3        NA         22.76          9.21
+      5      0.34         14.64          5.18
+      10     0.17          8.04          2.38
+      15     0.11          3.71          1.20
+      20     0.09          1.75          0.68
+      30     0.06          0.61          0.31
+      40     0.04          0.29          0.17
+      50     0.03          0.16          0.11
+
+[[7]]
+        crop
+distance Ackerbau Obstbau frueh Obstbau spaet
+      1      1.61            NA            NA
+      3        NA         22.69          9.10
+      5      0.33         14.45          5.11
+      10     0.17          7.83          2.33
+      15     0.11          3.62          1.20
+      20     0.08          1.71          0.67
+      30     0.06          0.60          0.30
+      40     0.04          0.28          0.17
+      50     0.03          0.16          0.11
+
+[[8]]
+        crop
+distance Ackerbau Obstbau frueh Obstbau spaet
+      1      1.52            NA            NA
+      3        NA         22.24          8.66
+      5      0.31         14.09          4.92
+      10     0.16          7.58          2.29
+      15     0.11          3.48          1.14
+      20     0.08          1.65          0.65
+      30     0.05          0.57          0.29
+      40     0.04          0.27          0.16
+      50     0.03          0.15          0.11
+
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>drift_data_JKI</li>
+    </ul>
+    <ul>
+      <li>datasets</li>
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
