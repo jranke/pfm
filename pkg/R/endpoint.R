@@ -41,6 +41,9 @@ endpoint <- function(chent,
                      raw = FALSE,
                      signif = 3)
 {
+  if (!is(chent, "chent")) {
+    stop("Please supply a chent object as created using the package 'chents' available from jrwb.de")
+  }
   ep_list <- chent$chyaml[[medium]][[type]] 
   if (!is.na(lab_field[1])) {
     ep_list <- ep_list[[lab_field]]
