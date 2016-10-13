@@ -6,16 +6,6 @@ DATE    := $(shell date +%Y-%m-%d)
 
 .PHONEY: usage check clean
 
-usage:
-	@echo "Usage: make TARGET with TARGET being:"
-	@echo ""
-	@echo "  clean     - Clean up."
-	@echo "  roxygen   - Roxygenize."
-	@echo "  sd        - Build static documentation."
-	@echo "  build     - Build source package."
-	@echo "  check     - Run CRAN check on the package."
-	@echo "  install   - Install the package."
-
 pkgfiles = DESCRIPTION \
 	   README.html \
 		 .Rbuildignore \
@@ -77,6 +67,9 @@ install: build
 	@echo "Installing package..."
 	"$(R_HOME)/bin/R" CMD INSTALL --no-multiarch $(TGZ)
 	@echo "DONE."
+
+drat: build
+	"$(R_HOME)/bin/Rscript" -e "drat::insertPackage('$(TGZ)', commit = TRUE)"
 
 winbuilder: build
 	date
