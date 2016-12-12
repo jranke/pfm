@@ -236,7 +236,7 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
         } else {
           # Get the substance name(s)
           sub_lines <- grep(".*0.000.*ConLiqWatLayCur_", outfile[1:50], value = TRUE)
-          substances <- gsub(".*ConLiqWatLayCur_(.*?) *[0-9].*", "\\1", sub_lines)
+          substances <- gsub(".*ConLiqWatLayCur_(.*?) +[0-9].*", "\\1", sub_lines)
           if (!substance %in% c("parent", substances)) {
             stop("No data for substance ", substance, " present in the .out file.")
           }
