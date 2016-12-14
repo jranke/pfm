@@ -254,11 +254,6 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
           cwa_all_segments <- read_fwf(paste(cwa_lines, collapse = "\n"), 
                                        fwf_empty(paste(tail(cwa_lines), collapse = "\n")))
 
-          # Append time "-00h00" to datetime in first row, as this is not (always?) present
-          # in the line ConLiqWatLayCur
-          if (nchar(cwa_all_segments[1, "X2"]) == 11) {
-            cwa_all_segments[1, "X2"] = paste0(cwa_all_segments[1, "X2"], "-00h00")
-          }
 
           available_segments = 1:(ncol(cwa_all_segments) - 3)
           if (segment == "last") segment = max(available_segments)
@@ -269,6 +264,16 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
             t = cwa_all_segments$X1,
             cwa = cwa_all_segments[[3 + segment]]
           )
+
+          # Append time "-00h00" to datetime if there is not time (only 11 characters)
+          # The fact that the time is missing at 00h00 was reported to Mark
+          # Liedekerke, Wim Beltman, Paulien Adriaanse, and Chris Lythgo 
+          # on 14 December 2016 
+          cwa <- within(cwa, 
+            datetime <- ifelse(nchar(datetime == 11),
+              paste0(datetime, "-00h00"),
+              datetime))
+
           if (total) {
             cwa_tot_lines <- outfile[grep("ConSysWatLay_", outfile)] # hourly total conc.
             cwa_tot_all_segments <- read.table(text = cwa_lines) 
