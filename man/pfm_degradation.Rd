@@ -32,4 +32,3 @@ head(pfm_degradation("SFO", DT50 = 10))
 \author{
 Johannes Ranke
 }
-

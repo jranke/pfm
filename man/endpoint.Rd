@@ -72,4 +72,3 @@ For the Freundlich exponent, the capital letter \code{N} is used in order to
 facilitate dealing with such data in R. In pesticide fate modelling, this
 exponent is often called 1/n.
 }
-

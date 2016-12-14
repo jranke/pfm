@@ -39,4 +39,3 @@ plot(H_sw_D4_pond)
 \author{
 Johannes Ranke
 }
-

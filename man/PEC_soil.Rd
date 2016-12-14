@@ -100,9 +100,6 @@ results_pfm <- PEC_soil(100/300 * 0.7 * 1 * 1000, interval = 365, DT50 = 250, t_
 results_pfm_pw <- PEC_soil(100/300 * 0.7 * 1000, interval = 365, DT50 = 250, t_av = c(0, 21),
                            Kom = 100, scenarios = "EFSA_2015", porewater = TRUE)
 }
-\author{
-Johannes Ranke
-}
 \references{
 EFSA Panel on Plant Protection Products and their Residues (2012)
   Scientific Opinion on the science behind the guidance for scenario
@@ -116,4 +113,6 @@ EFSA Panel on Plant Protection Products and their Residues (2012)
   in soil. \emph{EFSA Journal} \bold{13}(4) 4093
   doi:10.2903/j.efsa.2015.4093
 }
-
+\author{
+Johannes Ranke
+}

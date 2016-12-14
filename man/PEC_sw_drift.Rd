@@ -6,7 +6,7 @@
 \usage{
 PEC_sw_drift(rate, applications = 1, water_depth = 30,
   drift_percentages = NULL, drift_data = "JKI", crop = "Ackerbau",
-  distances = c(1, 5, 10, 20), rate_units = "g/ha", PEC_units = "<U+00B5>g/L")
+  distances = c(1, 5, 10, 20), rate_units = "g/ha", PEC_units = "µg/L")
 }
 \arguments{
 \item{rate}{Application rate in units specified below}
@@ -42,4 +42,3 @@ PEC_sw_drift(100)
 \author{
 Johannes Ranke
 }
-
