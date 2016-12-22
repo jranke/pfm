@@ -207,10 +207,11 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
           cwa <- subset(cwa_all_segments, segment == self$segment, 
                         c("datetime", "t", "segment", "cwa", "cwa_tot"))
           lct <- Sys.getlocale("LC_TIME"); Sys.setlocale("LC_TIME", "C")
-          cwa$datetime <- strptime(cwa$datetime, "%d-%b-%Y-%H:%M")
+          cwa$datetime <- strptime(cwa$datetime, "%d-%b-%Y-%H:%M", tz = "UTC")
           Sys.setlocale("LC_TIME", lct)
           startyear = format(cwa$datetime[1], "%Y") 
-          firstjan <- strptime(paste0(startyear, "-01-01"), "%Y-%m-%d")
+          firstjan <- strptime(paste0(startyear, "-01-01"), "%Y-%m-%d",
+                               tz = "UTC")
           cwa$t_firstjan <- as.numeric(difftime(cwa$datetime, 
                                                       firstjan, units = "days"))
 
@@ -262,15 +263,16 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
           cwa <- data.frame(
             datetime = as.character(cwa_all_segments$X2),
             t = cwa_all_segments$X1,
-            cwa = cwa_all_segments[[3 + segment]]
+            cwa = cwa_all_segments[[3 + segment]],
+            stringsAsFactors = FALSE
           )
 
-          # Append time "-00h00" to datetime if there is not time (only 11 characters)
+          # Append time "-00h00" to datetime if there is no time (only 11 characters)
           # The fact that the time is missing at 00h00 was reported to Mark
           # Liedekerke, Wim Beltman, Paulien Adriaanse, and Chris Lythgo 
           # on 14 December 2016 
           cwa <- within(cwa, 
-            datetime <- ifelse(nchar(datetime == 11),
+            datetime <- ifelse(nchar(datetime) == 11,
               paste0(datetime, "-00h00"),
               datetime))
 
@@ -280,11 +282,12 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
             cwa$cwa_tot = cwa_tot_all_segments[[3 + segment]]
           }
           lct <- Sys.getlocale("LC_TIME"); Sys.setlocale("LC_TIME", "C")
-          cwa$datetime <- strptime(cwa$datetime, "%d-%b-%Y-%Hh%M")
+          cwa$datetime <- strptime(cwa$datetime, "%d-%b-%Y-%Hh%M", tz = "UTC")
           Sys.setlocale("LC_TIME", lct)
 
           startyear = format(cwa$datetime[1], "%Y") 
-          firstjan <- strptime(paste0(startyear, "-01-01"), "%Y-%m-%d")
+          firstjan <- strptime(paste0(startyear, "-01-01"), "%Y-%m-%d", 
+                               tz = "UTC")
           cwa$t_firstjan <- as.numeric(difftime(cwa$datetime, 
                                                 firstjan, units = "days"))
           t_max = cwa[which.max(cwa$cwa), "t"]

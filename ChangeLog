@@ -1,3 +1,20 @@
+commit 5a04ad3061c1484b45703e44149f49ec97cfbf15
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-12-14 16:52:14 +0100
+
+    Set time correctly for 00:00 hours in .out file
+    
+    For ConLiqWatLayCur_xxxxx entries which are output at 00:00 (midnight),
+    no time is listed in the .out file for this time. This commit introduces
+    a workaround, setting the time to 00:00 when there is no time
+    information.
+
+commit e51e063564bffcb75dbb6ab7a364704c8d8e992e
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-12-12 21:24:24 +0100
+
+    Fix reading .out for acronyms containing numbers
+
 commit 9124e0f7d673c65584c1b2f838a3b944ea89c31d
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2016-10-13 17:49:18 +0200
