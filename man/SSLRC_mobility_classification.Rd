@@ -23,4 +23,3 @@ SSLRC_mobility_classification(100)
 \author{
 Johannes Ranke
 }
-

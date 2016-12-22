@@ -2,8 +2,8 @@
 % Please edit documentation in R/GUS.R
 \name{GUS}
 \alias{GUS}
-\alias{GUS.chent}
 \alias{GUS.numeric}
+\alias{GUS.chent}
 \alias{print.GUS_result}
 \title{Groundwater ubiquity score based on Gustafson (1989)}
 \usage{
@@ -70,12 +70,11 @@ The groundwater ubiquity score GUS is calculated according to
 the following equation
 \deqn{GUS = \log_{10} DT50_{soil} (4 - \log_{10} K_{oc})}{GUS = log10 DT50soil * (4 - log10 Koc)}
 }
-\author{
-Johannes Ranke
-}
 \references{
 Gustafson, David I. (1989) Groundwater ubiquity score: a simple
 method for assessing pesticide leachability. \emph{Environmental
 toxicology and chemistry} \bold{8}(4) 339–57.
 }
-
+\author{
+Johannes Ranke
+}

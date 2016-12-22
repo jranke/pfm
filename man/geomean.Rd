@@ -28,4 +28,3 @@ geomean(c(1, 3, NA, 9))
 \author{
 Johannes Ranke
 }
-

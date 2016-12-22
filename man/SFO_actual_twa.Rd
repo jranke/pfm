@@ -26,4 +26,3 @@ SFO_actual_twa(10)
 \author{
 Johannes Ranke
 }
-
