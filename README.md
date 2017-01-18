@@ -32,11 +32,11 @@ install_github("jranke/pfm", subdir = "pkg", quick = TRUE)
 
 ## Use
 
-Please refer to the [reference](docs/index.html).
+Please refer to the [reference](http://jranke.github.io/pfm/reference/index.html).
 
 ## Examples
 
 One recent nice example of the usage of this package is the visualisation
 of a time weighted average for a sawtooth curve obtained from several overlays
-of mkinfit predictions as shown [here](docs/reference/plot.one_box.html).
+of mkinfit predictions as shown [here](http://jranke.github.io/pfm/reference/plot.one_box.html).
 
