@@ -7,12 +7,10 @@ DATE    := $(shell date +%Y-%m-%d)
 .PHONEY: usage check clean
 
 pkgfiles = DESCRIPTION \
-	   README.html \
 		 .Rbuildignore \
 	   inst/testdata/* \
-	   inst/staticdocs/index.r \
-		 tests/testthat.R \
-		 tests/testthat/* \
+	   docs/* \
+		 docs/reference/* \
 		 data/* \
 	   R/*
 
@@ -40,11 +38,6 @@ $(TGZ): $(pkgfiles)
 	git log --no-merges -M --date=iso > ChangeLog
 	"$(R_HOME)/bin/R" CMD build . > build.log 2>&1
 	@echo "DONE."
-
-README.html: README.rmd
-	"$(R_HOME)/bin/Rscript" -e "rmarkdown::render('README.rmd', output_format = 'html_document', clean = FALSE)"
-	mv README.utf8.md README.md
-	rm README.knit.md
 
 build: $(TGZ)
 
