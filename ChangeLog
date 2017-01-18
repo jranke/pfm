@@ -1,3 +1,20 @@
+commit bba2cf3a70849ba86f37520d3e909cf1c706f416
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-12-22 11:06:57 +0100
+
+    Fix reading in times from .out files
+    
+    The code from the previous commit was broken. Also, the time
+    zone for the times that are read is now wet to 'UTC', in order to
+    avoid setting different time zones due to daylight savings, which
+    introduces artificial one-hour offsets on changeover days.
+
+commit 0af7c7b8c34067fc4756929925239c329b28ed32
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2016-12-14 18:26:14 +0100
+
+    Changelog update and roxygen run
+
 commit 5a04ad3061c1484b45703e44149f49ec97cfbf15
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2016-12-14 16:52:14 +0100
