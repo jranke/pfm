@@ -1,0 +1,32 @@
+title: pfm
+
+template:
+  bootswatch: spacelab
+
+reference:
+  - title: General utility functions
+    desc: Functions that are independent of specific fate modelling areas
+    contents:
+      - geomean
+      - one_box
+      - plot.one_box
+      - sawtooth
+      - twa
+      - max_twa
+  - title: Predicted environmental concentrations in soil
+    contents:
+      - PEC_soil
+      - soil_scenario_data_EFSA_2015
+  - title: Predicted environmental concentrations in surface water
+    contents:
+      - PEC_sw_drift
+      - drift_data_JKI
+      - PEC_sw_drainage_UK
+      - TOXSWA_cwa
+      - read.TOXSWA_cwa
+      - plot.TOXSWA_cwa
+  - title: Classifications and indicators
+    desc: Evaluating environmental fate properties
+    contents:
+      - SSLRC_mobility_classification
+      - GUS

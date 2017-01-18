@@ -33,13 +33,13 @@ plot(pred_0)
 
 # Use a fitted mkinfit model
 require(mkin)
-fit <- mkinfit("FOMC", FOCUS_2006_C)
+fit <- mkinfit("FOMC", FOCUS_2006_C, quiet = TRUE)
 pred_1 <- one_box(fit)
 plot(pred_1)
 
 # Use a model with more than one observed variable
 m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
-fit_2 <- mkinfit(m_2, FOCUS_2006_D)
+fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
 pred_2 <- one_box(fit_2)
 plot(pred_2)
 }

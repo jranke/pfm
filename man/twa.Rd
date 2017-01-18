@@ -25,5 +25,5 @@ pred <- sawtooth(one_box(10),
 max_twa(pred)
 }
 \seealso{
-max_twa
+\code{\link{max_twa}}
 }

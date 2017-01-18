@@ -30,7 +30,7 @@ pred <- one_box(10)
 plot(sawtooth(pred, applications = applications))
 
 m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
-fit_2 <- mkinfit(m_2, FOCUS_2006_D)
+fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
 pred_2 <- one_box(fit_2)
 pred_2_saw <- sawtooth(pred_2, 2, 7)
 plot(pred_2_saw, max_twa = 21, max_twa_var = "m1")

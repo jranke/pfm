@@ -35,13 +35,13 @@
 #'
 #' # Use a fitted mkinfit model
 #' require(mkin)
-#' fit <- mkinfit("FOMC", FOCUS_2006_C)
+#' fit <- mkinfit("FOMC", FOCUS_2006_C, quiet = TRUE)
 #' pred_1 <- one_box(fit)
 #' plot(pred_1)
 #'
 #' # Use a model with more than one observed variable
 #' m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
-#' fit_2 <- mkinfit(m_2, FOCUS_2006_D)
+#' fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
 #' pred_2 <- one_box(fit_2)
 #' plot(pred_2)
 one_box <- function(x,
@@ -138,7 +138,7 @@ plot.one_box <- function(x,
 #' plot(sawtooth(pred, applications = applications))
 #'
 #' m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
-#' fit_2 <- mkinfit(m_2, FOCUS_2006_D)
+#' fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
 #' pred_2 <- one_box(fit_2)
 #' pred_2_saw <- sawtooth(pred_2, 2, 7)
 #' plot(pred_2_saw, max_twa = 21, max_twa_var = "m1")
@@ -178,7 +178,7 @@ sawtooth <- function(x, n = 1, i = 365,
 #'
 #' @param x An object of type \code{\link{one_box}}
 #' @param window The size of the moving window
-#' @seealso max_twa
+#' @seealso \code{\link{max_twa}}
 #' @export
 #' @examples
 #' pred <- sawtooth(one_box(10),
@@ -200,7 +200,7 @@ twa.one_box <- function(x, window = 21)
 
 #' The maximum time weighted average concentration for a moving window
 #' 
-#' @seealso twa
+#' @seealso \code{\link{twa}}
 #' @inheritParams twa
 #' @export
 max_twa <- function(x, window = 21) UseMethod("max_twa")

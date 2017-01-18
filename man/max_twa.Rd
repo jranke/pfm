@@ -15,5 +15,5 @@ max_twa(x, window = 21)
 The maximum time weighted average concentration for a moving window
 }
 \seealso{
-twa
+\code{\link{twa}}
 }
