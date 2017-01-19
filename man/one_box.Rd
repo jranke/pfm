@@ -3,12 +3,15 @@
 \name{one_box}
 \alias{one_box}
 \alias{one_box.numeric}
+\alias{one_box.character}
 \alias{one_box.mkinfit}
 \title{Create a time series of decline data}
 \usage{
 one_box(x, t_end = 100, res = 0.01, ...)
 
 \method{one_box}{numeric}(x, t_end = 100, res = 0.01, ...)
+
+\method{one_box}{character}(x, parms, t_end = 100, res = 0.01, ...)
 
 \method{one_box}{mkinfit}(x, t_end = 100, res = 0.01, ...)
 }
@@ -21,6 +24,8 @@ decline. If x is an mkinfit object, the decline is calculated from this object}
 \item{res}{Resolution of the time series}
 
 \item{...}{Further arguments passed to methods}
+
+\item{parms}{A named numeric vector containing the model parameters}
 }
 \description{
 The time series starts with the amount specified for the first application.

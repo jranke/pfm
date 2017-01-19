@@ -31,9 +31,15 @@ be shown if max_twa is not NULL.}
 Plot time series of decline data
 }
 \examples{
-fomc_fit <- mkinfit("FOMC", FOCUS_2006_C, quiet = TRUE)
-fomc_pred <- one_box(fomc_fit)
-plot(sawtooth(fomc_pred, 3, 7), max_twa = 21)
+dfop_pred <- one_box("DFOP", parms = c(k1 = 0.2, k2 = 0.02, g = 0.7))
+plot(dfop_pred)
+plot(sawtooth(dfop_pred, 3, 7), max_twa = 21)
+
+# Use a fitted mkinfit model
+m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
+fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
+pred_2_saw <- sawtooth(pred_2, 2, 7)
+plot(pred_2_saw, max_twa = 21, max_twa_var = "m1")
 }
 \seealso{
 \code{\link{sawtooth}}

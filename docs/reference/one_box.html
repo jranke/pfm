@@ -79,6 +79,9 @@ This does not create objects of type <code>ts</code>.</p>
 <span class='co'># S3 method for numeric</span>
 <span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='no'>...</span>)
 
+<span class='co'># S3 method for character</span>
+<span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='no'>parms</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='no'>...</span>)
+
 <span class='co'># S3 method for mkinfit</span>
 <span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='no'>...</span>)</pre>
     
@@ -93,6 +96,8 @@ decline. If x is an mkinfit object, the decline is calculated from this object</
       <dd>Resolution of the time series</dd>
       <dt>...</dt>
       <dd>Further arguments passed to methods</dd>
+      <dt>parms</dt>
+      <dd>A named numeric vector containing the model parameters</dd>
     </dl>
     
 

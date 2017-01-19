@@ -3,6 +3,7 @@
 S3method(GUS,chent)
 S3method(GUS,numeric)
 S3method(max_twa,one_box)
+S3method(one_box,character)
 S3method(one_box,mkinfit)
 S3method(one_box,numeric)
 S3method(plot,TOXSWA_cwa)

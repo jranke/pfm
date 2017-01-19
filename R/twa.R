@@ -66,6 +66,34 @@ one_box.numeric <- function(x,
 }
 
 #' @rdname one_box
+#' @param parms A named numeric vector containing the model parameters
+#' @export
+one_box.character <- function(x, parms,
+  t_end = 100, res = 0.01, ...)
+{
+  parent_models_available = c("SFO", "FOMC", "DFOP", "HS", "SFORB", "IORE")
+  if (length(x) == 1 & x %in% parent_models_available) {
+    m <- mkinmod(parent = mkinsub(x))
+  } else {
+    stop("If you specify the decline model using a character string, ",
+         "x has to be one of\n ",
+          paste(parent_models_available, collapse = ", "))
+  }
+  
+  if (!setequal(names(parms), m$par)) {
+    stop("Please supply the parameters\n",
+         paste(m$par, collapse = ", "))
+  }
+
+  t_out <- seq(0, t_end, by = res)
+  pred <- mkinpredict(m, odeparms = parms, odeini = c(parent = 1), 
+                      outtimes = t_out, solution_type = "analytical")[-1]
+  result <- ts(pred, 0, t_end, frequency = 1/res)
+  class(result) <- c("one_box", "ts")
+  return(result)
+}
+
+#' @rdname one_box
 #' @importFrom mkin mkinpredict
 #' @export
 one_box.mkinfit <- function(x, t_end = 100, res = 0.01, ...) {
@@ -99,9 +127,15 @@ one_box.mkinfit <- function(x, t_end = 100, res = 0.01, ...) {
 #' @seealso \code{\link{sawtooth}}
 #' @export
 #' @examples
-#' fomc_fit <- mkinfit("FOMC", FOCUS_2006_C, quiet = TRUE)
-#' fomc_pred <- one_box(fomc_fit)
-#' plot(sawtooth(fomc_pred, 3, 7), max_twa = 21)
+#' dfop_pred <- one_box("DFOP", parms = c(k1 = 0.2, k2 = 0.02, g = 0.7))
+#' plot(dfop_pred)
+#' plot(sawtooth(dfop_pred, 3, 7), max_twa = 21)
+#' 
+#' # Use a fitted mkinfit model
+#' m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
+#' fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
+#' pred_2_saw <- sawtooth(pred_2, 2, 7)
+#' plot(pred_2_saw, max_twa = 21, max_twa_var = "m1")
 plot.one_box <- function(x,
                          xlim = range(time(x)), ylim = c(0, max(x)),
                          xlab = "Time", ylab = "Fraction of initial",
