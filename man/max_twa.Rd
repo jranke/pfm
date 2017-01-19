@@ -12,7 +12,11 @@ max_twa(x, window = 21)
 \item{window}{The size of the moving window}
 }
 \description{
-The maximum time weighted average concentration for a moving window
+If you generate your time series using \code{\link{sawtooth}},
+you need to make sure that the length of the time series allows
+for finding the maximum. It is therefore recommended to check this using
+\code{\link{plot.one_box}} using the window size for the argument
+\code{max_twa}.
 }
 \seealso{
 \code{\link{twa}}

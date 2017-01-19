@@ -1,3 +1,15 @@
+commit 74ed85b07f09ea99476208749cd274a476ba4536
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-19 09:27:36 +0100
+
+    Documentation updates
+
+commit a6d61c06d573574cf574ed893cc13808a9e8b785
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-19 09:20:22 +0100
+
+    Fix order of arguments to one_box, correct docs
+
 commit b8ac1393b9e1bef8c48b26b790cf5759ccd69fed
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-19 09:10:37 +0100

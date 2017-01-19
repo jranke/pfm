@@ -79,14 +79,14 @@ one_box.character <- function(x, parms, ...,
          "x has to be one of\n ",
           paste(parent_models_available, collapse = ", "))
   }
-  
+
   if (!setequal(names(parms), m$par)) {
     stop("Please supply the parameters\n",
          paste(m$par, collapse = ", "))
   }
 
   t_out <- seq(0, t_end, by = res)
-  pred <- mkinpredict(m, odeparms = parms, odeini = c(parent = 1), 
+  pred <- mkinpredict(m, odeparms = parms, odeini = c(parent = 1),
                       outtimes = t_out, solution_type = "analytical")[-1]
   result <- ts(pred, 0, t_end, frequency = 1/res)
   class(result) <- c("one_box", "ts")
@@ -130,7 +130,7 @@ one_box.mkinfit <- function(x, ..., t_end = 100, res = 0.01) {
 #' dfop_pred <- one_box("DFOP", parms = c(k1 = 0.2, k2 = 0.02, g = 0.7))
 #' plot(dfop_pred)
 #' plot(sawtooth(dfop_pred, 3, 7), max_twa = 21)
-#' 
+#'
 #' # Use a fitted mkinfit model
 #' m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
 #' fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
@@ -227,6 +227,11 @@ twa <- function(x, window = 21) UseMethod("twa")
 #' @export
 twa.one_box <- function(x, window = 21)
 {
+  length_ts <- end(x) - start(x)
+  if (window >= length_ts[1]) {
+    stop("The window must be smaller than the length of the time series")
+  }
+
   resolution = 1/frequency(x)
   n_filter = window/resolution
   result = filter(x, rep(1/n_filter, n_filter), method = "convolution", sides = 1)
@@ -237,6 +242,11 @@ twa.one_box <- function(x, window = 21)
 
 #' The maximum time weighted average concentration for a moving window
 #'
+#' If you generate your time series using \code{\link{sawtooth}},
+#' you need to make sure that the length of the time series allows
+#' for finding the maximum. It is therefore recommended to check this using
+#' \code{\link{plot.one_box}} using the window size for the argument
+#' \code{max_twa}.
 #' @seealso \code{\link{twa}}
 #' @inheritParams twa
 #' @export
