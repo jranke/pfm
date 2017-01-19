@@ -23,11 +23,11 @@ e.g. \code{FOMC}, \code{parms} must contain the corresponding paramters.
 If x is an \code{\link{mkinfit}} object, the decline is calculated from this
 object.}
 
-\item{ini}{The initial amount for the parent compound. If x is an 
-\code{\link{mkinfit}} object, and ini is 'model', the fitted initial
-concentrations are used. Otherwise, ini must be numeric. If it has
-length one, it is used for the parent and initial values of metabolites
-are zero, otherwise, it must give values for all observed variables.}
+\item{ini}{The initial amount. If x is an \code{\link{mkinfit}} object, and
+ini is 'model', the fitted initial concentrations are used. Otherwise, ini
+must be numeric. If it has length one, it is used for the parent and
+initial values of metabolites are zero, otherwise, it must give values for
+all observed variables.}
 
 \item{...}{Further arguments passed to methods}
 
