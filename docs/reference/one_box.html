@@ -74,28 +74,28 @@
 This does not create objects of type <code>ts</code>.</p>
     
 
-    <pre><span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='no'>...</span>)
+    <pre><span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>)
 
 <span class='co'># S3 method for numeric</span>
-<span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='no'>...</span>)
+<span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>)
 
 <span class='co'># S3 method for character</span>
-<span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='no'>parms</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='no'>...</span>)
+<span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='no'>parms</span>, <span class='no'>...</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>)
 
 <span class='co'># S3 method for mkinfit</span>
-<span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>x</dt>
       <dd>When numeric, this is the half-life to be used for an exponential
 decline. If x is an mkinfit object, the decline is calculated from this object</dd>
+      <dt>...</dt>
+      <dd>Further arguments passed to methods</dd>
       <dt>t_end</dt>
       <dd>End of the time series</dd>
       <dt>res</dt>
       <dd>Resolution of the time series</dd>
-      <dt>...</dt>
-      <dd>Further arguments passed to methods</dd>
       <dt>parms</dt>
       <dd>A named numeric vector containing the model parameters</dd>
     </dl>

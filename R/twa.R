@@ -44,16 +44,16 @@
 #' fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
 #' pred_2 <- one_box(fit_2)
 #' plot(pred_2)
-one_box <- function(x,
-  t_end = 100, res = 0.01, ...)
+one_box <- function(x, ...,
+  t_end = 100, res = 0.01)
 {
   UseMethod("one_box")
 }
 
 #' @rdname one_box
 #' @export
-one_box.numeric <- function(x,
-  t_end = 100, res = 0.01, ...)
+one_box.numeric <- function(x, ...,
+  t_end = 100, res = 0.01)
 {
   half_life = x
   k = log(2)/half_life
@@ -68,8 +68,8 @@ one_box.numeric <- function(x,
 #' @rdname one_box
 #' @param parms A named numeric vector containing the model parameters
 #' @export
-one_box.character <- function(x, parms,
-  t_end = 100, res = 0.01, ...)
+one_box.character <- function(x, parms, ...,
+  t_end = 100, res = 0.01)
 {
   parent_models_available = c("SFO", "FOMC", "DFOP", "HS", "SFORB", "IORE")
   if (length(x) == 1 & x %in% parent_models_available) {
@@ -96,7 +96,7 @@ one_box.character <- function(x, parms,
 #' @rdname one_box
 #' @importFrom mkin mkinpredict
 #' @export
-one_box.mkinfit <- function(x, t_end = 100, res = 0.01, ...) {
+one_box.mkinfit <- function(x, ..., t_end = 100, res = 0.01) {
   fit <- x
   t_out = seq(0, t_end, by = res)
   odeini <- c(1, rep(0, length(fit$mkinmod$spec) - 1))
@@ -134,6 +134,7 @@ one_box.mkinfit <- function(x, t_end = 100, res = 0.01, ...) {
 #' # Use a fitted mkinfit model
 #' m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
 #' fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
+#' pred_2 <- one_box(fit_2)
 #' pred_2_saw <- sawtooth(pred_2, 2, 7)
 #' plot(pred_2_saw, max_twa = 21, max_twa_var = "m1")
 plot.one_box <- function(x,

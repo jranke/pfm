@@ -7,23 +7,23 @@
 \alias{one_box.mkinfit}
 \title{Create a time series of decline data}
 \usage{
-one_box(x, t_end = 100, res = 0.01, ...)
+one_box(x, ..., t_end = 100, res = 0.01)
 
-\method{one_box}{numeric}(x, t_end = 100, res = 0.01, ...)
+\method{one_box}{numeric}(x, ..., t_end = 100, res = 0.01)
 
-\method{one_box}{character}(x, parms, t_end = 100, res = 0.01, ...)
+\method{one_box}{character}(x, parms, ..., t_end = 100, res = 0.01)
 
-\method{one_box}{mkinfit}(x, t_end = 100, res = 0.01, ...)
+\method{one_box}{mkinfit}(x, ..., t_end = 100, res = 0.01)
 }
 \arguments{
 \item{x}{When numeric, this is the half-life to be used for an exponential
 decline. If x is an mkinfit object, the decline is calculated from this object}
 
+\item{...}{Further arguments passed to methods}
+
 \item{t_end}{End of the time series}
 
 \item{res}{Resolution of the time series}
-
-\item{...}{Further arguments passed to methods}
 
 \item{parms}{A named numeric vector containing the model parameters}
 }
