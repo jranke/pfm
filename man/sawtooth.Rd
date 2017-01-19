@@ -10,14 +10,13 @@ sawtooth(x, n = 1, i = 365, applications = data.frame(time = seq(0, 0 + n
 \arguments{
 \item{x}{A \code{\link{one_box}} object}
 
-\item{n}{The number of applications. If \code{applications} is specified, \code{n} is not used}
+\item{n}{The number of applications. If \code{applications} is specified, \code{n} is ignored}
 
 \item{i}{The interval between applications. If \code{applications} is specified, \code{i}
-is not used}
+is ignored}
 
 \item{applications}{A data frame holding the application times in the first column and
-the corresponding amounts applied in the second column for each application cycle.
-If \code{n} is one, the application pattern specified here is used only once.}
+the corresponding amounts applied in the second column.}
 }
 \description{
 If the number of application cycles \code{n} is greater than 1, the

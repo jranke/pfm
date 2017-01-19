@@ -163,12 +163,11 @@ plot.one_box <- function(x,
 #' application pattern specified in \code{applications} is repeated \code{n}
 #' times, with an interval \code{i}.
 #' @param x A \code{\link{one_box}} object
-#' @param n The number of applications. If \code{applications} is specified, \code{n} is not used
+#' @param n The number of applications. If \code{applications} is specified, \code{n} is ignored
 #' @param i The interval between applications. If \code{applications} is specified, \code{i}
-#'   is not used
+#'   is ignored
 #' @param applications A data frame holding the application times in the first column and
-#'   the corresponding amounts applied in the second column for each application cycle.
-#'   If \code{n} is one, the application pattern specified here is used only once.
+#'   the corresponding amounts applied in the second column.
 #' @export
 #' @examples
 #' applications = data.frame(time = seq(0, 14, by = 7), amount = c(1, 2, 3))

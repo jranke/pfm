@@ -1,7 +1,8 @@
 # pfm
 
-The R package **pfm** provides some utilities for dealing with FOCUS pesticide fate modelling tools,
-(currently only TOXSWA cwa and out files), made available under the GNU public license.
+The R package **pfm** provides some utilities for fate modelling, including
+dealing with FOCUS pesticide fate modelling tools, (currently only TOXSWA cwa
+and out files), made available under the GNU public license.
 This means:
 
     This program is free software: you can redistribute it and/or modify it under
