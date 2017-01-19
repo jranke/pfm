@@ -116,7 +116,7 @@ decline. If x is an mkinfit object, the decline is calculated from this object</
 <span class='fu'>plot</span>(<span class='no'>pred_1</span>)</div><img src='one_box-4.png' alt='' width='540' height='400' /><div class='input'>
 <span class='co'># Use a model with more than one observed variable</span>
 <span class='no'>m_2</span> <span class='kw'>&lt;-</span> <span class='fu'>mkinmod</span>(<span class='kw'>parent</span> <span class='kw'>=</span> <span class='fu'>mkinsub</span>(<span class='st'>"SFO"</span>, <span class='st'>"m1"</span>), <span class='kw'>m1</span> <span class='kw'>=</span> <span class='fu'>mkinsub</span>(<span class='st'>"SFO"</span>))</div><div class='output co'>#&gt; <span class='message'>Successfully compiled differential equation model from auto-generated C code.</span></div><div class='input'><span class='no'>fit_2</span> <span class='kw'>&lt;-</span> <span class='fu'>mkinfit</span>(<span class='no'>m_2</span>, <span class='no'>FOCUS_2006_D</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>pred_2</span> <span class='kw'>&lt;-</span> <span class='fu'>one_box</span>(<span class='no'>fit_2</span>)
+<span class='no'>pred_2</span> <span class='kw'>&lt;-</span> <span class='fu'>one_box</span>(<span class='no'>fit_2</span>, <span class='kw'>ini</span> <span class='kw'>=</span> <span class='st'>"model"</span>)
 <span class='fu'>plot</span>(<span class='no'>pred_2</span>)</div><img src='one_box-8.png' alt='' width='540' height='400' /></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

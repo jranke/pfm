@@ -49,6 +49,6 @@ plot(pred_1)
 # Use a model with more than one observed variable
 m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
 fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
-pred_2 <- one_box(fit_2)
+pred_2 <- one_box(fit_2, ini = "model")
 plot(pred_2)
 }

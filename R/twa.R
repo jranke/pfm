@@ -43,7 +43,7 @@
 #' # Use a model with more than one observed variable
 #' m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
 #' fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
-#' pred_2 <- one_box(fit_2)
+#' pred_2 <- one_box(fit_2, ini = "model")
 #' plot(pred_2)
 one_box <- function(x, ini, ...,
   t_end = 100, res = 0.01)
@@ -99,11 +99,10 @@ one_box.character <- function(x, ini = 1, parms, ...,
 #' @export
 one_box.mkinfit <- function(x, ini = c("model", 1), ..., t_end = 100, res = 0.01) {
   fit <- x
-
-  ini = match.arg(ini)
-  if (ini == "model") {
+  if (ini[1] == "model") {
     odeini = x$bparms.state
   } else {
+    if (ini[1] != 1) stop ("Argument ini can only be 'model' or 1")
     odeini <- c(1, rep(0, length(fit$mkinmod$spec) - 1))
     names(odeini) <- names(fit$mkinmod$spec)
   }
@@ -142,7 +141,7 @@ one_box.mkinfit <- function(x, ini = c("model", 1), ..., t_end = 100, res = 0.01
 #' # Use a fitted mkinfit model
 #' m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
 #' fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
-#' pred_2 <- one_box(fit_2)
+#' pred_2 <- one_box(fit_2, ini = 1)
 #' pred_2_saw <- sawtooth(pred_2, 2, 7)
 #' plot(pred_2_saw, max_twa = 21, max_twa_var = "m1")
 plot.one_box <- function(x,
@@ -184,7 +183,7 @@ plot.one_box <- function(x,
 #'
 #' m_2 <- mkinmod(parent = mkinsub("SFO", "m1"), m1 = mkinsub("SFO"))
 #' fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
-#' pred_2 <- one_box(fit_2)
+#' pred_2 <- one_box(fit_2, ini = 1)
 #' pred_2_saw <- sawtooth(pred_2, 2, 7)
 #' plot(pred_2_saw, max_twa = 21, max_twa_var = "m1")
 #'

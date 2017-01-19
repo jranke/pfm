@@ -1,3 +1,16 @@
+commit dd30f0d0ff1d8d0cc46aaef6e0917c51fe798f52
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-19 10:36:19 +0100
+
+    Move mkin::twa to pfm::max_twa.mkinfit
+    
+    - Add max_twa.mkinfit() recently introduced to mkin as mkin::twa() but
+      never released with it
+    - Add a test to check max_twa.one_box() against analytical solutions in
+      max_twa.mkinfit().
+    - Clean up R CMD check
+    - Update docs
+
 commit 3ead7acba845b4f2552f555dfb29da889ed0cda8
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-19 09:42:21 +0100
