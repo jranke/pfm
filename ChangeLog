@@ -1,3 +1,15 @@
+commit 46883a0c3a3c00127a563a7befa0af440573baaa
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-19 11:22:08 +0100
+
+    Correct default y axis label for plot.one_box
+
+commit 3947731a5a8c3598271b26f5201dea4bcb13ef6d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-19 10:47:09 +0100
+
+    Fix one_box for ini = 1, use in sawtooth examples
+
 commit dd30f0d0ff1d8d0cc46aaef6e0917c51fe798f52
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-19 10:36:19 +0100

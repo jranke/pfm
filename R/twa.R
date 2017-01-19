@@ -18,15 +18,20 @@
 
 #' Create a time series of decline data
 #'
-#' The time series starts with the amount specified for the first application.
-#' This does not create objects of type \code{\link{ts}}.
-#'
 #' @param x When numeric, this is the half-life to be used for an exponential
-#' decline. If x is an mkinfit object, the decline is calculated from this object
-#' @param ini The initial amount for each compound
+#'   decline. When a character string specifying a parent decline model is given
+#'   e.g. \code{FOMC}, \code{parms} must contain the corresponding paramters.
+#'   If x is an \code{\link{mkinfit}} object, the decline is calculated from this
+#'   object.  
+#' @param ini The initial amount for the parent compound. If x is an 
+#'   \code{\link{mkinfit}} object, and ini is 'model', the fitted initial
+#'   concentrations are used. Otherwise, ini must be numeric. If it has
+#'   length one, it is used for the parent and initial values of metabolites
+#'   are zero, otherwise, it must give values for all observed variables.
 #' @param t_end End of the time series
 #' @param res Resolution of the time series
 #' @param ... Further arguments passed to methods
+#' @return An object of class \code{one_box}, inheriting from \code{\link{ts}}.
 #' @importFrom stats filter frequency time ts
 #' @export
 #' @examples
@@ -59,7 +64,7 @@ one_box.numeric <- function(x, ini = 1, ...,
   half_life = x
   k = log(2)/half_life
   t_out <- seq(0, t_end, by = res)
-  raw <- matrix(exp( - k * t_out), ncol = 1)
+  raw <- matrix(ini * exp( - k * t_out), ncol = 1)
   dimnames(raw) <- list(NULL, "parent")
   result <- ts(raw, 0, t_end, frequency = 1/res)
   class(result) <- c("one_box", "ts")
@@ -87,7 +92,7 @@ one_box.character <- function(x, ini = 1, parms, ...,
   }
 
   t_out <- seq(0, t_end, by = res)
-  pred <- mkinpredict(m, odeparms = parms, odeini = c(parent = 1),
+  pred <- mkinpredict(m, odeparms = parms, odeini = c(parent = ini),
                       outtimes = t_out, solution_type = "analytical")[-1]
   result <- ts(pred, 0, t_end, frequency = 1/res)
   class(result) <- c("one_box", "ts")
@@ -97,13 +102,14 @@ one_box.character <- function(x, ini = 1, parms, ...,
 #' @rdname one_box
 #' @importFrom mkin mkinpredict
 #' @export
-one_box.mkinfit <- function(x, ini = c("model", 1), ..., t_end = 100, res = 0.01) {
+one_box.mkinfit <- function(x, ini = "model", ..., t_end = 100, res = 0.01) {
   fit <- x
   if (ini[1] == "model") {
     odeini = x$bparms.state
   } else {
-    if (ini[1] != 1) stop ("Argument ini can only be 'model' or 1")
-    odeini <- c(1, rep(0, length(fit$mkinmod$spec) - 1))
+    if (!is.numeric(ini[1])) stop ("Argument ini can only be 'model' or numeric")
+    if (length(ini) == 1) odeini <- c(ini[1], rep(0, length(fit$mkinmod$spec) - 1))
+    else odeini = ini
     names(odeini) <- names(fit$mkinmod$spec)
   }
 

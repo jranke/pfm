@@ -70,8 +70,7 @@
     </div>
 
     
-    <p>The time series starts with the amount specified for the first application.
-This does not create objects of type <code>ts</code>.</p>
+    <p>Create a time series of decline data</p>
     
 
     <pre><span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='no'>ini</span>, <span class='no'>...</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>)
@@ -84,16 +83,22 @@ This does not create objects of type <code>ts</code>.</p>
   <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>)
 
 <span class='co'># S3 method for mkinfit</span>
-<span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='kw'>ini</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"model"</span>, <span class='fl'>1</span>), <span class='no'>...</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>)</pre>
+<span class='fu'>one_box</span>(<span class='no'>x</span>, <span class='kw'>ini</span> <span class='kw'>=</span> <span class='st'>"model"</span>, <span class='no'>...</span>, <span class='kw'>t_end</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>res</span> <span class='kw'>=</span> <span class='fl'>0.01</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>x</dt>
       <dd>When numeric, this is the half-life to be used for an exponential
-decline. If x is an mkinfit object, the decline is calculated from this object</dd>
+decline. When a character string specifying a parent decline model is given
+e.g. <code>FOMC</code>, <code>parms</code> must contain the corresponding paramters.
+If x is an <code>mkinfit</code> object, the decline is calculated from this
+object.</dd>
       <dt>ini</dt>
-      <dd>The initial amount for each compound</dd>
+      <dd>The initial amount for the parent compound. If x is an 
+<code>mkinfit</code> object, and ini is &#39;model&#39;, the fitted initial
+concentrations are used. Otherwise, ini must be numeric. If it has
+length one, it is used for the parent and initial values of metabolites
+are zero, otherwise, it must give values for all observed variables.</dd>
       <dt>...</dt>
       <dd>Further arguments passed to methods</dd>
       <dt>t_end</dt>
@@ -103,6 +108,10 @@ decline. If x is an mkinfit object, the decline is calculated from this object</
       <dt>parms</dt>
       <dd>A named numeric vector containing the model parameters</dd>
     </dl>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An object of class <code>one_box</code>, inheriting from <code>ts</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -123,7 +132,9 @@ decline. If x is an mkinfit object, the decline is calculated from this object</
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#value">Value</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

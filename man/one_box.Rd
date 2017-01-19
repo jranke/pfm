@@ -14,14 +14,20 @@ one_box(x, ini, ..., t_end = 100, res = 0.01)
 \method{one_box}{character}(x, ini = 1, parms, ..., t_end = 100,
   res = 0.01)
 
-\method{one_box}{mkinfit}(x, ini = c("model", 1), ..., t_end = 100,
-  res = 0.01)
+\method{one_box}{mkinfit}(x, ini = "model", ..., t_end = 100, res = 0.01)
 }
 \arguments{
 \item{x}{When numeric, this is the half-life to be used for an exponential
-decline. If x is an mkinfit object, the decline is calculated from this object}
+decline. When a character string specifying a parent decline model is given
+e.g. \code{FOMC}, \code{parms} must contain the corresponding paramters.
+If x is an \code{\link{mkinfit}} object, the decline is calculated from this
+object.}
 
-\item{ini}{The initial amount for each compound}
+\item{ini}{The initial amount for the parent compound. If x is an 
+\code{\link{mkinfit}} object, and ini is 'model', the fitted initial
+concentrations are used. Otherwise, ini must be numeric. If it has
+length one, it is used for the parent and initial values of metabolites
+are zero, otherwise, it must give values for all observed variables.}
 
 \item{...}{Further arguments passed to methods}
 
@@ -31,9 +37,11 @@ decline. If x is an mkinfit object, the decline is calculated from this object}
 
 \item{parms}{A named numeric vector containing the model parameters}
 }
+\value{
+An object of class \code{one_box}, inheriting from \code{\link{ts}}.
+}
 \description{
-The time series starts with the amount specified for the first application.
-This does not create objects of type \code{\link{ts}}.
+Create a time series of decline data
 }
 \examples{
 # Only use a half-life
