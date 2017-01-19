@@ -18,6 +18,25 @@ for finding the maximum. It is therefore recommended to check this using
 \code{\link{plot.one_box}} using the window size for the argument
 \code{max_twa}.
 }
+\details{
+The method working directly on fitted \code{\link{mkinfit}} objects uses the
+equations given in the PEC soil section of the FOCUS guidance and is restricted
+SFO, FOMC and DFOP models and to the parent compound
+}
+\examples{
+pred <- sawtooth(one_box(10),
+  applications = data.frame(time = c(0, 7), amount = c(1, 1)))
+max_twa(pred)
+pred_FOMC <- mkinfit("FOMC", FOCUS_2006_C, quiet = TRUE)
+max_twa(pred_FOMC)
+}
+\references{
+FOCUS (2006) \dQuote{Guidance Document on Estimating Persistence and
+  Degradation Kinetics from Environmental Fate Studies on Pesticides in EU
+  Registration} Report of the FOCUS Work Group on Degradation Kinetics,
+  EC Document Reference Sanco/10058/2005 version 2.0, 434 pp,
+  \url{http://esdac.jrc.ec.europa.eu/projects/degradation-kinetics}
+}
 \seealso{
 \code{\link{twa}}
 }

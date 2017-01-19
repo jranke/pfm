@@ -7,17 +7,21 @@
 \alias{one_box.mkinfit}
 \title{Create a time series of decline data}
 \usage{
-one_box(x, ..., t_end = 100, res = 0.01)
+one_box(x, ini, ..., t_end = 100, res = 0.01)
 
-\method{one_box}{numeric}(x, ..., t_end = 100, res = 0.01)
+\method{one_box}{numeric}(x, ini = 1, ..., t_end = 100, res = 0.01)
 
-\method{one_box}{character}(x, parms, ..., t_end = 100, res = 0.01)
+\method{one_box}{character}(x, ini = 1, parms, ..., t_end = 100,
+  res = 0.01)
 
-\method{one_box}{mkinfit}(x, ..., t_end = 100, res = 0.01)
+\method{one_box}{mkinfit}(x, ini = c("model", 1), ..., t_end = 100,
+  res = 0.01)
 }
 \arguments{
 \item{x}{When numeric, this is the half-life to be used for an exponential
 decline. If x is an mkinfit object, the decline is calculated from this object}
+
+\item{ini}{The initial amount for each compound}
 
 \item{...}{Further arguments passed to methods}
 

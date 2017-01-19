@@ -1,4 +1,4 @@
-# Copyright (C) 2017  Johannes Ranke
+# Copyright (C) 2016,2017  Johannes Ranke
 
 # Contact: jranke@uni-bremen.de
 # This file is part of the R package pfm
@@ -23,6 +23,7 @@
 #'
 #' @param x When numeric, this is the half-life to be used for an exponential
 #' decline. If x is an mkinfit object, the decline is calculated from this object
+#' @param ini The initial amount for each compound
 #' @param t_end End of the time series
 #' @param res Resolution of the time series
 #' @param ... Further arguments passed to methods
@@ -44,7 +45,7 @@
 #' fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
 #' pred_2 <- one_box(fit_2)
 #' plot(pred_2)
-one_box <- function(x, ...,
+one_box <- function(x, ini, ...,
   t_end = 100, res = 0.01)
 {
   UseMethod("one_box")
@@ -52,7 +53,7 @@ one_box <- function(x, ...,
 
 #' @rdname one_box
 #' @export
-one_box.numeric <- function(x, ...,
+one_box.numeric <- function(x, ini = 1, ...,
   t_end = 100, res = 0.01)
 {
   half_life = x
@@ -68,7 +69,7 @@ one_box.numeric <- function(x, ...,
 #' @rdname one_box
 #' @param parms A named numeric vector containing the model parameters
 #' @export
-one_box.character <- function(x, parms, ...,
+one_box.character <- function(x, ini = 1, parms, ...,
   t_end = 100, res = 0.01)
 {
   parent_models_available = c("SFO", "FOMC", "DFOP", "HS", "SFORB", "IORE")
@@ -96,11 +97,18 @@ one_box.character <- function(x, parms, ...,
 #' @rdname one_box
 #' @importFrom mkin mkinpredict
 #' @export
-one_box.mkinfit <- function(x, ..., t_end = 100, res = 0.01) {
+one_box.mkinfit <- function(x, ini = c("model", 1), ..., t_end = 100, res = 0.01) {
   fit <- x
+
+  ini = match.arg(ini)
+  if (ini == "model") {
+    odeini = x$bparms.state
+  } else {
+    odeini <- c(1, rep(0, length(fit$mkinmod$spec) - 1))
+    names(odeini) <- names(fit$mkinmod$spec)
+  }
+
   t_out = seq(0, t_end, by = res)
-  odeini <- c(1, rep(0, length(fit$mkinmod$spec) - 1))
-  names(odeini) <- names(fit$mkinmod$spec)
   if (length(fit$mkinmod$spec) == 1) solution_type = "analytical"
   else solution_type = "deSolve"
 
@@ -216,6 +224,7 @@ sawtooth <- function(x, n = 1, i = 365,
 #' @param x An object of type \code{\link{one_box}}
 #' @param window The size of the moving window
 #' @seealso \code{\link{max_twa}}
+#' @importFrom stats start end
 #' @export
 #' @examples
 #' pred <- sawtooth(one_box(10),
@@ -247,10 +256,75 @@ twa.one_box <- function(x, window = 21)
 #' for finding the maximum. It is therefore recommended to check this using
 #' \code{\link{plot.one_box}} using the window size for the argument
 #' \code{max_twa}.
+#' 
+#' The method working directly on fitted \code{\link{mkinfit}} objects uses the
+#' equations given in the PEC soil section of the FOCUS guidance and is restricted
+#' SFO, FOMC and DFOP models and to the parent compound
+#' @references FOCUS (2006) \dQuote{Guidance Document on Estimating Persistence and
+#'   Degradation Kinetics from Environmental Fate Studies on Pesticides in EU
+#'   Registration} Report of the FOCUS Work Group on Degradation Kinetics,
+#'   EC Document Reference Sanco/10058/2005 version 2.0, 434 pp,
+#'   \url{http://esdac.jrc.ec.europa.eu/projects/degradation-kinetics}
 #' @seealso \code{\link{twa}}
 #' @inheritParams twa
 #' @export
+#' @examples
+#' pred <- sawtooth(one_box(10),
+#'   applications = data.frame(time = c(0, 7), amount = c(1, 1)))
+#' max_twa(pred)
+#' pred_FOMC <- mkinfit("FOMC", FOCUS_2006_C, quiet = TRUE)
+#' max_twa(pred_FOMC)
 max_twa <- function(x, window = 21) UseMethod("max_twa")
+
+#' @export
+max_twa.mkinfit <- function(x, window = 21) {
+  fit <- x
+  parms.all <- c(fit$bparms.optim, fit$bparms.fixed)
+  obs_vars <- fit$obs_vars
+  if (length(obs_vars) > 1) {
+    warning("Calculation of maximum time weighted average concentrations is",
+            "currently only implemented for the parent compound using",
+            "analytical solutions")
+  }
+  obs_var <- obs_vars[1]
+  spec = fit$mkinmod$spec
+  type = spec[[1]]$type
+
+  M0 <- parms.all[paste0(obs_var, "_0")]
+
+  if (type == "SFO") {
+    k_name <- paste0("k_", obs_var)
+    if (fit$mkinmod$use_of_ff == "min") {
+      k_name <- paste0(k_name, "_sink")
+    }
+    k <- parms.all[k_name]
+    twafunc <- function(t) {
+      M0 * (1 - exp(- k * t)) / (k * t)
+    }
+  }
+  if (type == "FOMC") {
+    alpha <- parms.all["alpha"]
+    beta <- parms.all["beta"]
+    twafunc <- function(t) {
+      M0 * (beta)/(t * (1 - alpha)) * ((t/beta + 1)^(1 - alpha) - 1)
+    }
+  }
+  if (type == "DFOP") {
+    k1 <- parms.all["k1"]
+    k2 <- parms.all["k2"]
+    g <- parms.all["g"]
+    twafunc <- function(t) {
+      M0/t * ((g/k1) * (1 - exp(- k1 * t)) + ((1 - g)/k2) * (1 - exp(- k2 * t)))
+    }
+  }
+  if (type %in% c("HS", "IORE", "SFORB")) {
+    stop("Calculation of maximum time weighted average concentrations is currently ",
+         "not implemented for the ", type, " model.")
+  }
+  res <- twafunc(t = window)
+  names(res) <- window
+  return(res)
+}
 
 #' @export
 max_twa.one_box <- function(x, window = 21)

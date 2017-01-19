@@ -7,4 +7,5 @@
 ^build.log$
 ^test.log$
 ^inst/extdata/Tabelle\ der\ Abdrifteckwerte.xls$
+^_pkgdown.yml$
 ^docs$

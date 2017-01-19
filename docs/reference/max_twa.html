@@ -70,7 +70,11 @@
     </div>
 
     
-    <p>The maximum time weighted average concentration for a moving window</p>
+    <p>If you generate your time series using <code><a href='sawtooth.html'>sawtooth</a></code>,
+you need to make sure that the length of the time series allows
+for finding the maximum. It is therefore recommended to check this using
+<code><a href='plot.one_box.html'>plot.one_box</a></code> using the window size for the argument
+<code>max_twa</code>.</p>
     
 
     <pre><span class='fu'>max_twa</span>(<span class='no'>x</span>, <span class='kw'>window</span> <span class='kw'>=</span> <span class='fl'>21</span>)</pre>
@@ -83,19 +87,56 @@
       <dd>The size of the moving window</dd>
     </dl>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The method working directly on fitted <code>mkinfit</code> objects uses the
+equations given in the PEC soil section of the FOCUS guidance and is restricted
+SFO, FOMC and DFOP models and to the parent compound</p>
+    
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>FOCUS (2006) &#8220;Guidance Document on Estimating Persistence and
+  Degradation Kinetics from Environmental Fate Studies on Pesticides in EU
+  Registration&#8221; Report of the FOCUS Work Group on Degradation Kinetics,
+  EC Document Reference Sanco/10058/2005 version 2.0, 434 pp,
+  <a href = 'http://esdac.jrc.ec.europa.eu/projects/degradation-kinetics'>http://esdac.jrc.ec.europa.eu/projects/degradation-kinetics</a></p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p><code><a href='twa.html'>twa</a></code></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>pred</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sawtooth.html'>sawtooth</a></span>(<span class='fu'><a href='one_box.html'>one_box</a></span>(<span class='fl'>10</span>),
+  <span class='kw'>applications</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>time</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>7</span>), <span class='kw'>amount</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>)))
+<span class='fu'>max_twa</span>(<span class='no'>pred</span>)</div><div class='output co'>#&gt; $max
+#&gt;    parent 
+#&gt; 0.9537545 
+#&gt; 
+#&gt; $window_start
+#&gt; parent 
+#&gt;      0 
+#&gt; 
+#&gt; $window_end
+#&gt; parent 
+#&gt;     21 
+#&gt; </div><div class='input'><span class='no'>pred_FOMC</span> <span class='kw'>&lt;-</span> <span class='fu'>mkinfit</span>(<span class='st'>"FOMC"</span>, <span class='no'>FOCUS_2006_C</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>max_twa</span>(<span class='no'>pred_FOMC</span>)</div><div class='output co'>#&gt;       21 
+#&gt; 18.22124 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#references">References</a></li>
+
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

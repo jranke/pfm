@@ -1,3 +1,9 @@
+commit 3ead7acba845b4f2552f555dfb29da889ed0cda8
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-19 09:42:21 +0100
+
+    Make max_twa() a bit safer
+
 commit 74ed85b07f09ea99476208749cd274a476ba4536
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-19 09:27:36 +0100
