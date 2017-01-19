@@ -100,15 +100,23 @@ be shown if max_twa is not NULL.</dd>
       <dd>Further arguments passed to methods</dd>
     </dl>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='sawtooth.html'>sawtooth</a></code></p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>plot</span>(<span class='fu'><a href='sawtooth.html'>sawtooth</a></span>(<span class='fu'><a href='one_box.html'>one_box</a></span>(<span class='fl'>10</span>), <span class='fl'>3</span>, <span class='fl'>7</span>), <span class='kw'>max_twa</span> <span class='kw'>=</span> <span class='fl'>21</span>)</div><img src='plot.one_box-2.png' alt='' width='540' height='400' /></pre>
+    <pre class="examples"><div class='input'><span class='no'>fomc_fit</span> <span class='kw'>&lt;-</span> <span class='fu'>mkinfit</span>(<span class='st'>"FOMC"</span>, <span class='no'>FOCUS_2006_C</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>fomc_pred</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='one_box.html'>one_box</a></span>(<span class='no'>fomc_fit</span>)
+<span class='fu'>plot</span>(<span class='fu'><a href='sawtooth.html'>sawtooth</a></span>(<span class='no'>fomc_pred</span>, <span class='fl'>3</span>, <span class='fl'>7</span>), <span class='kw'>max_twa</span> <span class='kw'>=</span> <span class='fl'>21</span>)</div><img src='plot.one_box-2.png' alt='' width='540' height='400' /></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#see-also">See also</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

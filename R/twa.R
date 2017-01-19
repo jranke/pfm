@@ -84,7 +84,7 @@ one_box.mkinfit <- function(x, t_end = 100, res = 0.01, ...) {
 }
 
 #' Plot time series of decline data
-#' 
+#'
 #' @param x The object of type \code{\link{one_box}} to be plotted
 #' @param xlim Limits for the x axis
 #' @param ylim Limits for the y axis
@@ -96,10 +96,13 @@ one_box.mkinfit <- function(x, t_end = 100, res = 0.01, ...) {
 #'   be shown if max_twa is not NULL.
 #' @param ... Further arguments passed to methods
 #' @importFrom stats plot.ts
+#' @seealso \code{\link{sawtooth}}
 #' @export
 #' @examples
-#' plot(sawtooth(one_box(10), 3, 7), max_twa = 21)
-plot.one_box <- function(x, 
+#' fomc_fit <- mkinfit("FOMC", FOCUS_2006_C, quiet = TRUE)
+#' fomc_pred <- one_box(fomc_fit)
+#' plot(sawtooth(fomc_pred, 3, 7), max_twa = 21)
+plot.one_box <- function(x,
                          xlim = range(time(x)), ylim = c(0, max(x)),
                          xlab = "Time", ylab = "Fraction of initial",
                          max_twa = NULL, max_twa_var = dimnames(x)[[2]][1], ...)
@@ -111,7 +114,7 @@ plot.one_box <- function(x,
   if (!is.null(max_twa)) {
     x_twa <- max_twa(x, window = max_twa)
     value <- x_twa$max[max_twa_var]
-    rect(x_twa$window_start[max_twa_var], 0, 
+    rect(x_twa$window_start[max_twa_var], 0,
          x_twa$window_end[max_twa_var], value, col = "grey")
     text(x_twa$window_end[max_twa_var], value, paste("Maximum:", signif(value, 3)), pos = 4)
     # Plot a second time to cover the grey rectangle
@@ -126,7 +129,7 @@ plot.one_box <- function(x,
 #' times, with an interval \code{i}.
 #' @param x A \code{\link{one_box}} object
 #' @param n The number of applications. If \code{applications} is specified, \code{n} is not used
-#' @param i The interval between applications. If \code{applications} is specified, \code{i} 
+#' @param i The interval between applications. If \code{applications} is specified, \code{i}
 #'   is not used
 #' @param applications A data frame holding the application times in the first column and
 #'   the corresponding amounts applied in the second column for each application cycle.
@@ -144,8 +147,8 @@ plot.one_box <- function(x,
 #' plot(pred_2_saw, max_twa = 21, max_twa_var = "m1")
 #'
 #' max_twa(pred_2_saw)
-sawtooth <- function(x, n = 1, i = 365, 
-                     applications = data.frame(time = seq(0, 0 + n * i, length.out = n), 
+sawtooth <- function(x, n = 1, i = 365,
+                     applications = data.frame(time = seq(0, 0 + n * i, length.out = n),
                                                amount = 1))
 {
   n_obs = ncol(as.matrix(x))
@@ -199,7 +202,7 @@ twa.one_box <- function(x, window = 21)
 }
 
 #' The maximum time weighted average concentration for a moving window
-#' 
+#'
 #' @seealso \code{\link{twa}}
 #' @inheritParams twa
 #' @export

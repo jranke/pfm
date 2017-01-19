@@ -12,7 +12,7 @@ sawtooth(x, n = 1, i = 365, applications = data.frame(time = seq(0, 0 + n
 
 \item{n}{The number of applications. If \code{applications} is specified, \code{n} is not used}
 
-\item{i}{The interval between applications. If \code{applications} is specified, \code{i} 
+\item{i}{The interval between applications. If \code{applications} is specified, \code{i}
 is not used}
 
 \item{applications}{A data frame holding the application times in the first column and
