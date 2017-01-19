@@ -5,7 +5,7 @@
 \title{Plot time series of decline data}
 \usage{
 \method{plot}{one_box}(x, xlim = range(time(x)), ylim = c(0, max(x)),
-  xlab = "Time", ylab = "Fraction of initial", max_twa = NULL,
+  xlab = "Time", ylab = "Residue", max_twa = NULL,
   max_twa_var = dimnames(x)[[2]][1], ...)
 }
 \arguments{

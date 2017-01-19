@@ -146,7 +146,7 @@ one_box.mkinfit <- function(x, ini = c("model", 1), ..., t_end = 100, res = 0.01
 #' plot(pred_2_saw, max_twa = 21, max_twa_var = "m1")
 plot.one_box <- function(x,
                          xlim = range(time(x)), ylim = c(0, max(x)),
-                         xlab = "Time", ylab = "Fraction of initial",
+                         xlab = "Time", ylab = "Residue",
                          max_twa = NULL, max_twa_var = dimnames(x)[[2]][1], ...)
 {
   obs_vars <- dimnames(x)[[2]]
