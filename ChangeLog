@@ -1,10 +1,17 @@
-commit 8f943c9dd2322482f64e1c6348c1ad7cfd253ee8
+commit 8fd050e57b7babfbdb1ccfabb468a0398396d466
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-27 07:54:53 +0100
+
+    Include a run with metabolites in PELMO test data
+
+commit b38055278d4a801598ece9d2c93716a9bf67134a
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-27 01:00:07 +0100
 
     Set up FOCUS PELMO runs and run them in parallel
     
-    - This works on Linux using wine.
+    - This works on Linux using wine
+    - PELMO runs (including pelmo.inp files) are correctly generated
     - The PLM files for FOCUS Pesticide_D in the test data archive are
       correctly reproduced
     - The data files (including FOCUS groundwater scenario data) are now

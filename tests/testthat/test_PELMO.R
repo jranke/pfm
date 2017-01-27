@@ -1,10 +1,4 @@
-# Remove when the test is ready to be run by testthat
-#library(testthat)
-#test_dir <- "/tmp/Rtmp8DFCT5"
-#psm_name <- "D_rel_1"
-#source("~/git/pfm/inst/extdata/FOCUS_PELMO_data.R")
-#source("~/git/pfm/R/PELMO_runs.R")
-
+library(testthat)
 library(pfm)
 context("Create PELMO runs from psm files and execute them")
 PELMO_base <- system.file("FOCUSPELMO.553", package = "PELMO.installeR")
@@ -22,22 +16,26 @@ runs <- list(
     psm = "Pesticide_D_1_day_pre_em_every_third_year",
     pot = c("Cha", "Ham")),
   list(
-    psm = "Pesticide_D_1_May_every_other_year",
+    psm = "Pesticide_D_1_May_every_other_year_mets",
     mai = c("Cha")))
 
-psm_paths = c(
-   D_rel_1 = PELMO_path(runs[1]$psm, "fbe", "Por"),
-   D_rel_3 = PELMO_path(runs[2]$psm, "pot", "Ham"),
-   D_abs_2 = PELMO_path(runs[3]$psm, "mai", "Cha"))
 
-# Get psm files and put them into PELMO_base
-psm_new_locations <- character(0)
-for (psm_name in names(psm_paths)) {
-  psm_file <- file.path(test_dir, psm_paths[psm_name], paste0(runs[1]$psm, ".psm"))
-  psm_new_location <- file.path(PELMO_base, basename(psm_file))
-  psm_new_locations[psm_name] <- psm_new_location
-  file.copy(psm_file, psm_new_location)
-}
+test_that("PELMO paths are correctly created", {
+  psm_paths = c(
+     PELMO_path(runs[[1]]$psm, "fbe", "Por"),
+     PELMO_path(runs[[2]]$psm, "pot", "Ham"),
+     PELMO_path(runs[[3]]$psm, "mai", "Cha"))
+
+  # Check for psm files and put them into PELMO_base
+  psm_new_locations <- character(0)
+  for (i in seq_along(psm_paths)) {
+    psm_file <- file.path(test_dir, psm_paths[i], paste0(runs[[i]]$psm, ".psm"))
+    expect_true(file.exists(psm_file))
+    psm_new_location <- file.path(PELMO_base, basename(psm_file))
+    psm_new_locations[i] <- psm_new_location
+    file.copy(psm_file, psm_new_location)
+  }
+})
 
 test_that("PELMO runs are correctly set up", {
 
@@ -47,12 +45,12 @@ test_that("PELMO runs are correctly set up", {
   # Check that input files are correctly generated in the right location
   for (run in runs) {
     psm <- run$psm
-    message(psm)
+    # message(psm)
     crops <- setdiff(names(run), "psm")
     for (crop in crops) {
-       message(crop)
+      # message(crop)
       for (scenario in run[[crop]]) {
-         message(scenario)
+        # message(scenario)
         pp <- PELMO_path(psm, crop, scenario)
 
         input_new <- readLines(file.path(PELMO_base, "FOCUS", pp, "pelmo.inp"))
@@ -66,10 +64,11 @@ test_that("PELMO runs are correctly set up", {
 })
 
 test_that("PELMO runs can be run and give the expected result files", {
-  run_PELMO(runs, psm_dir = PELMO_base, cores = 5)
+  run_PELMO(runs, cores = 5)
 
-  plm_files <- c("CHEM.PLM", "ECHO.PLM", "KONZCHEM.PLM", "PLNTPEST.plm",
-                 "PLOT.PLM", "WASSER.PLM")
+  plm_files <- c("CHEM.PLM", "ECHO.PLM",
+                 "KONZCHEM.PLM", "KONZC_A1", "KONZC_B1",
+                 "PLNTPEST.plm", "PLOT.PLM", "WASSER.PLM")
 
   # Check that if output is the same as in the test archive
   for (run in runs) {
@@ -82,11 +81,13 @@ test_that("PELMO runs can be run and give the expected result files", {
         pp <- PELMO_path(psm, crop, scenario)
 
         for (plm in plm_files) {
-          new <- readLines(file.path(PELMO_base, "FOCUS", pp, plm))
-          test <- readLines(file.path(test_dir, pp, plm))
+          if (file.exists(file.path(test_dir, pp, plm))) {
+            new <- readLines(file.path(PELMO_base, "FOCUS", pp, plm))
+            test <- readLines(file.path(test_dir, pp, plm))
 
-          # Check if the ouput files are correctly reproduced
-          expect_identical(new, test)
+            # Check if the ouput files are correctly reproduced
+            expect_identical(new, test)
+          }
         }
       }
     }
@@ -94,6 +95,8 @@ test_that("PELMO runs can be run and give the expected result files", {
 })
 
 test_that("PELMO runs are correctly evaluated", {
+  evaluate_PELMO(runs, psm_dir = PELMO_base)
+
 
 })
 

@@ -158,7 +158,7 @@ PELMO_runs <- function(runs, psm_dir = ".", version = "5.5.3", PELMO_base = "aut
 #' @inheritParams PELMO_runs
 #' @importFrom parallel mclapply
 #' @export
-run_PELMO <- function(runs, psm_dir = ".", version = "5.5.3", PELMO_base = "auto",
+run_PELMO <- function(runs, version = "5.5.3", PELMO_base = "auto",
                       cores = getOption("mc.cores", 2L))
 {
 
@@ -204,7 +204,8 @@ run_PELMO <- function(runs, psm_dir = ".", version = "5.5.3", PELMO_base = "auto
 
     # We need to go the directory to simplify calling pelmo with wine
     setwd(run_dir_exe)
-    psm_file <- file.path(psm_dir, paste0(psm, ".psm"))
+    psm_file <- paste0(psm, ".psm")
+    message("Starting ", pelmo_exe, " with ", psm_file)
     system(paste("wine", pelmo_exe, psm_file), ignore.stdout = TRUE)
 
     # Copy the results to the original run directory
