@@ -1,3 +1,51 @@
+commit 8f943c9dd2322482f64e1c6348c1ad7cfd253ee8
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-27 01:00:07 +0100
+
+    Set up FOCUS PELMO runs and run them in parallel
+    
+    - This works on Linux using wine.
+    - The PLM files for FOCUS Pesticide_D in the test data archive are
+      correctly reproduced
+    - The data files (including FOCUS groundwater scenario data) are now
+      created and documented in R files
+
+commit 40c2f387775a168df1be699813807586cf098648
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-26 10:30:32 +0100
+
+    Improved test data with 'irrigation'
+
+commit 228ab628b407af4812a48f20693a9a3a6bba8af4
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-25 16:45:24 +0100
+
+    More variable selection of test data
+
+commit bf6634b7d9a5033a217f04060f77e0c7d5b3046a
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-25 15:27:05 +0100
+
+    Use tar.bz2 to correctly transfer file names
+
+commit 476d556cb6a490b138e47d487dd732f298aa6c3d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-25 14:29:41 +0100
+
+    Add FOCUS PELMO 5.5.3 output for dummy pesticide D
+
+commit 9f16be247e851c948edb30ac756550d89ba0af52
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-19 11:44:22 +0100
+
+    Another correction of the docs
+
+commit 2ab822d51c4c7e29d62076336d7a3f02a46e41a5
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-19 11:41:19 +0100
+
+    Corrections in the documentation
+
 commit 46883a0c3a3c00127a563a7befa0af440573baaa
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-19 11:22:08 +0100
