@@ -17,6 +17,9 @@ reference:
     contents:
       - PEC_soil
       - soil_scenario_data_EFSA_2015
+  - title: Predicted environmental concentrations in groundwater
+    contents:
+      - PELMO_runs
   - title: Predicted environmental concentrations in surface water
     contents:
       - PEC_sw_drift

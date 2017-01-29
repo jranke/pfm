@@ -2,11 +2,18 @@
 % Please edit documentation in R/PELMO_runs.R
 \name{PELMO_runs}
 \alias{PELMO_runs}
+\alias{run_PELMO}
+\alias{evaluate_PELMO}
 \title{Set up runs for FOCUS PELMO}
 \usage{
 PELMO_runs(runs, psm_dir = ".", version = "5.5.3", PELMO_base = "auto",
   execute = TRUE, cores = getOption("mc.cores", 2L), evaluate = TRUE,
   overwrite = FALSE)
+
+run_PELMO(runs, version = "5.5.3", PELMO_base = "auto",
+  cores = getOption("mc.cores", 2L))
+
+evaluate_PELMO(runs, version = "5.5.3", PELMO_base = "auto")
 }
 \arguments{
 \item{runs}{A list of lists. Each inner lists has an element named 'psm'
@@ -31,5 +38,13 @@ as used in \code{\link{FOCUS_GW_scenarios_2012}}.}
 }
 \description{
 Per default, the runs are also executed with FOCUS PELMO, and the results are processed
-and returned.
+and returned. Currently, only FOCUS PELMO as installed on Linux (or other Unix systems)
+using the \code{\link{install_PELMO}} from the \code{PELMO.installeR} package
+maintained on github is supported. In such installations, FOCUS PELMO is installed into
+package installation directory of \code{PELMO.installeR} and run with \code{wine}.
+}
+\references{
+PELMO.installeR \url{https://jranke.github.io/PELMO.installeR}
+
+Wine \url{https://winehq.org}
 }

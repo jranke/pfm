@@ -17,40 +17,33 @@ runs <- list(
     pot = c("Cha", "Ham")),
   list(
     psm = "Pesticide_D_1_May_every_other_year_mets",
-    mai = c("Cha")))
-
+    win = names(FOCUS_GW_scenarios_2012$names)))
 
 test_that("PELMO paths are correctly created", {
   psm_paths = c(
      PELMO_path(runs[[1]]$psm, "fbe", "Por"),
      PELMO_path(runs[[2]]$psm, "pot", "Ham"),
-     PELMO_path(runs[[3]]$psm, "mai", "Cha"))
+     PELMO_path(runs[[3]]$psm, "win", "Cha"))
 
-  # Check for psm files and put them into PELMO_base
-  psm_new_locations <- character(0)
   for (i in seq_along(psm_paths)) {
     psm_file <- file.path(test_dir, psm_paths[i], paste0(runs[[i]]$psm, ".psm"))
     expect_true(file.exists(psm_file))
     psm_new_location <- file.path(PELMO_base, basename(psm_file))
-    psm_new_locations[i] <- psm_new_location
-    file.copy(psm_file, psm_new_location)
+    file.copy(psm_file, psm_new_location, overwrite = TRUE)
   }
 })
 
 test_that("PELMO runs are correctly set up", {
 
   # Prepare runs in analogy to the test archive
-  PELMO_runs(runs, psm_dir = PELMO_base, execute = FALSE, overwrite = TRUE)
+  PELMO_runs(runs, psm_dir = PELMO_base, execute = FALSE, evaluate = FALSE, overwrite = TRUE)
 
   # Check that input files are correctly generated in the right location
   for (run in runs) {
     psm <- run$psm
-    # message(psm)
     crops <- setdiff(names(run), "psm")
     for (crop in crops) {
-      # message(crop)
       for (scenario in run[[crop]]) {
-        # message(scenario)
         pp <- PELMO_path(psm, crop, scenario)
 
         input_new <- readLines(file.path(PELMO_base, "FOCUS", pp, "pelmo.inp"))
@@ -64,7 +57,7 @@ test_that("PELMO runs are correctly set up", {
 })
 
 test_that("PELMO runs can be run and give the expected result files", {
-  run_PELMO(runs, cores = 5)
+  run_PELMO(runs, cores = 7)
 
   plm_files <- c("CHEM.PLM", "ECHO.PLM",
                  "KONZCHEM.PLM", "KONZC_A1", "KONZC_B1",
@@ -75,9 +68,7 @@ test_that("PELMO runs can be run and give the expected result files", {
     psm <- run$psm
     crops <- setdiff(names(run), "psm")
     for (crop in crops) {
-      # message(crop)
       for (scenario in run[[crop]]) {
-        # message(scenario)
         pp <- PELMO_path(psm, crop, scenario)
 
         for (plm in plm_files) {
@@ -95,10 +86,57 @@ test_that("PELMO runs can be run and give the expected result files", {
 })
 
 test_that("PELMO runs are correctly evaluated", {
-  evaluate_PELMO(runs, psm_dir = PELMO_base)
+  results <- evaluate_PELMO(runs)
 
+  # Check that if output is the same as in the test archive
+  for (run in runs) {
+    psm <- run$psm
+    crops <- setdiff(names(run), "psm")
+    for (crop in crops) {
+      for (scenario in run[[crop]]) {
+        pp <- PELMO_path(psm, crop, scenario)
 
+        period_file <- readLines(file.path(test_dir, pp, "period.plm"), encoding = "latin1")
+
+        result_lines <- grep("^\tResults for.*in the percolate at 1 m soil depth$", period_file)
+        acronyms <- gsub(".*\\((.*)\\).*", "\\1", period_file[result_lines])
+        names(result_lines) <- acronyms
+
+        results <- list()
+        for (acronym in acronyms) {
+          results[[acronym]] <- list()
+          conc_lines <- result_lines[acronym] + 5:24
+          tmp <- read.table(text = period_file[conc_lines], sep = "\t")
+          results[[acronym]]$periods <- data.frame(
+            period = as.integer(tmp$V2),
+            flux = tmp$V3,
+            percolate = tmp$V4,
+            conc = tmp$V5)
+          tmp80 <- read.table(text = period_file[result_lines[acronym] + 27], sep = "\t")
+          results[[acronym]]$focus <- tmp80[[1, "V5"]]
+        }
+
+        period_pfm_file <- file.path(PELMO_base, "FOCUS", pp, "period_pfm.rda")
+        load(period_pfm_file)
+
+        # Test for equality of all the components separately,
+        # as we need to adapt the tolerance
+        for (acronym in acronyms) {
+          p_pelmo <- results[[acronym]]$periods
+          p_test <- results_pfm[[acronym]]$periods
+          expect_equal(p_test$flux, p_pelmo$flux, tol = 1e-6, scale = 1)
+          expect_equal(p_test$percolate, p_pelmo$percolate)
+          # PELMO sets the concentration to 0 when the percolate is zero.
+          # We get NaN, which is more reasonable, but we need to
+          # take this into account for testing
+          p_test$conc <- ifelse(is.na(p_test$conc), 0, p_test$conc)
+          expect_equal(p_test$conc, p_pelmo$conc, tol = 1e-3, scale = 1)
+
+          # FOCUS PEC
+          expect_equal(results_pfm[[acronym]]$focus, results[[acronym]]$focus,
+                       tol = 1e-3, scale = 1)
+        }
+      }
+    }
+  }
 })
-
-# Clean up
-unlink(psm_new_locations)

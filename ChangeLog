@@ -1,3 +1,32 @@
+commit 15c1b8c5ddadf938ce13d3dd9da2a09d8749f740
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-29 16:58:53 +0100
+
+    Setting up PELMO runs, execution and evaluation
+    
+    It all works!
+
+commit bc97a35a32c4f47e29364488a3601f94c6e68d45
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-27 18:33:45 +0100
+
+    Really use all scenarios in test data
+    
+    Maize, that was used in the last commit, is not parameterised for
+    Jokioinen
+
+commit a4081ddfea726283874968c0b62a7f46e4fd1232
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-27 18:23:35 +0100
+
+    Use all scenarios in the test data
+
+commit 3c82d26206e2f2e74600acd71a49c70eaed555c4
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-27 08:17:08 +0100
+
+    Also test run with metabolites
+
 commit 8fd050e57b7babfbdb1ccfabb468a0398396d466
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-27 07:54:53 +0100

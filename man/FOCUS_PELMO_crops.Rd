@@ -11,8 +11,8 @@ FOCUS_PELMO_crops
 \description{
 A named character vector with the crop names used in the PELMO 5.5.3 GUI.
 For the names, three letter codes were constructed by generally taking the
-first three letters in lower case. Only when there is an expression in 
-parentheses, the first letter of this expression becomes the first letter 
+first three letters in lower case. Only when there is an expression in
+parentheses, the first letter of this expression becomes the first letter
 in the three letter code, i.e. 'Peas (animals)' has the code \code{ape}.
 }
 \examples{

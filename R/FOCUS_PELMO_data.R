@@ -2,10 +2,10 @@
 #'
 #' A named character vector with the crop names used in the PELMO 5.5.3 GUI.
 #' For the names, three letter codes were constructed by generally taking the
-#' first three letters in lower case. Only when there is an expression in 
-#' parentheses, the first letter of this expression becomes the first letter 
+#' first three letters in lower case. Only when there is an expression in
+#' parentheses, the first letter of this expression becomes the first letter
 #' in the three letter code, i.e. 'Peas (animals)' has the code \code{ape}.
-#' 
+#'
 #' @docType data
 #' @export
 #' @examples
@@ -37,13 +37,13 @@ FOCUS_PELMO_crops = c(
   tom = "Tomatoes",
   vin = "Vines")
 
-#' FOCUS PELMO crop acronyms used for naming sceneario files 
+#' FOCUS PELMO crop acronyms used for naming sceneario files
 #'
 #' A named character vector with the crop acronyms used in FOCUS PELMO 5.5.3
 #' for naming the .sze files located in the FOCUS directory. The crop acronyms
 #' in the file names are sometimes capitalized, sometimes not. The scenario
 #' files used for Beans (field) and Beans (vegetable) are the same.
-#' 
+#'
 #' @docType data
 #' @export
 #' @examples
@@ -85,6 +85,6 @@ FOCUS_PELMO_crop_sze_names = c(
 #' @examples
 #' print(FOCUS_PELMO_location_codes)
 FOCUS_PELMO_location_codes = c(
-  Cha = "C", Ham = "H", Jok = "J", 
-  Kre = "K", Oke = "N", Pia = "P", 
+  Cha = "C", Ham = "H", Jok = "J",
+  Kre = "K", Oke = "N", Pia = "P",
   Por = "O", Sev = "S", Thi = "T")
