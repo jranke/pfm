@@ -1,4 +1,5 @@
 ^pfm_.*.tar.gz
+^pfm_.*.zip
 ^GNUmakefile$
 ^README.rmd$
 ^00003s_pa.cwa$
