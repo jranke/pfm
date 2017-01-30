@@ -41,3 +41,5 @@ One recent nice example of the usage of this package is the visualisation
 of a time weighted average for a sawtooth curve obtained from several overlays
 of mkinfit predictions as shown [here](http://jranke.github.io/pfm/reference/plot.one_box.html).
 
+Another, even more recent example shows how FOCUS PELMO can be run in parallel under Linux
+as shown [here](http://jranke.github.io/pfm/reference/PELMO_runs.html).

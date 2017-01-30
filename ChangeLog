@@ -1,3 +1,18 @@
+commit 39d202b0a0f833c756bc98fb4961483de1b15353
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-30 16:14:15 +0100
+
+    Ignore windows binary builds in git and in R package
+
+commit e6bb9654679f43af6958d6e28cb5206abb91d574
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-30 16:10:30 +0100
+
+    Test reproducing the FOCUS Summary information
+    
+    generated from the FOCUS PELMO GUI, as copied into the text files
+    in the testdata directory.
+
 commit 80b451ddb4e749041c2b216603274a012dc83d59
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-30 14:28:23 +0100
