@@ -119,12 +119,14 @@ test_that("PELMO runs are correctly evaluated", {
         period_pfm_file <- file.path(PELMO_base, "FOCUS", pp, "period_pfm.rda")
         load(period_pfm_file)
 
+        #message(psm, " ", crop, " ", scenario)
+
         # Test for equality of all the components separately,
         # as we need to adapt the tolerance
         for (acronym in acronyms) {
           p_pelmo <- results[[acronym]]$periods
           p_test <- results_pfm[[acronym]]$periods
-          expect_equal(p_test$flux, p_pelmo$flux, tol = 1e-6, scale = 1)
+          expect_equal(p_test$flux, p_pelmo$flux, tol = 1e-6)
           expect_equal(p_test$percolate, p_pelmo$percolate)
           # PELMO sets the concentration to 0 when the percolate is zero.
           # We get NaN, which is more reasonable, but we need to

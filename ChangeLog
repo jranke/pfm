@@ -1,3 +1,15 @@
+commit eea72720956dc8358fac98b29c9a627a9363cbd2
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-30 13:12:24 +0100
+
+    Better documentation of PELMO_runs().
+
+commit d78d2effd517ab3c27412ae6f4ae701c456ae590
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-30 12:46:57 +0100
+
+    pfm for windows in my drat
+
 commit eaf3b558747ff8228e87ded727a6c0e91a6579f8
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-30 12:01:14 +0100
