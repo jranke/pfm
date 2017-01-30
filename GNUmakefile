@@ -1,6 +1,7 @@
 PKGNAME := $(shell sed -n "s/Package: *\([^ ]*\)/\1/p" DESCRIPTION)
 PKGVERS := $(shell sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION)
 TGZ     := $(PKGNAME)_$(PKGVERS).tar.gz
+WINBIN  := $(PKGNAME)_$(PKGVERS).zip
 R_HOME  ?= $(shell R RHOME)
 DATE    := $(shell date +%Y-%m-%d)
 
@@ -41,6 +42,13 @@ $(TGZ): $(pkgfiles)
 
 build: $(TGZ)
 
+$(WINBIN): build
+	@echo "Building windows binary package..."
+	"$(R_HOME)/bin/R" CMD INSTALL $(TGZ) --build
+	@echo "DONE."
+
+winbin: $(WINBIN)
+
 test: build
 	@echo "Running testthat tests..."
 	"$(R_HOME)/bin/Rscript" -e 'library(devtools); devtools::test()' 2>&1 | tee test.log
@@ -63,6 +71,9 @@ install: build
 
 drat: build
 	"$(R_HOME)/bin/Rscript" -e "drat::insertPackage('$(TGZ)', commit = TRUE)"
+
+dratwin: winbin
+	"$(R_HOME)/bin/Rscript" -e "drat::insertPackage('$(WINBIN)', 'e:/git/drat/', commit = TRUE)"
 
 winbuilder: build
 	date
