@@ -85,8 +85,9 @@ test_that("PELMO runs can be run and give the expected result files", {
   }
 })
 
+pfm_PECgw <- evaluate_PELMO(runs)
+
 test_that("PELMO runs are correctly evaluated", {
-  results <- evaluate_PELMO(runs)
 
   # Check that if output is the same as in the test archive
   for (run in runs) {
@@ -141,4 +142,37 @@ test_that("PELMO runs are correctly evaluated", {
       }
     }
   }
+})
+
+test_that("PECgw from FOCUS summary files can be reproduced", {
+  focus_summary <- list()
+
+  for (run in runs) {
+    psm <- run$psm
+    focus_summary[[psm]] <- list()
+
+    crops <- setdiff(names(run), "psm")
+    for (crop in crops) {
+      scenarios <- run[[crop]]
+
+      # Read contents of summary text file copied from the GUI output. We only
+      # have results for one crop per psm file, so the crop is not in the file
+      # name.
+      sumfile_path <- system.file(paste0("testdata/FOCUS_Summary_", psm,
+                                         ".txt"), package = "pfm")
+      sumfile <- readLines(sumfile_path, encoding = "latin1")
+      result_anchors <- grep("Results for", sumfile)
+      acronyms <- gsub(".*\\((.*)\\).*", "\\1", sumfile[result_anchors])
+      names(result_anchors) <- acronyms
+      focus_summary[[psm]][[crop]] <- matrix(nrow = length(scenarios), ncol = length(acronyms),
+                                             dimnames = list(scenarios, acronyms))
+      for (acronym in acronyms) {
+        tmp <- sumfile[result_anchors[acronym] + 4 + (1:length(scenarios))]
+        tmp_frame <- read.table(text = tmp, sep = "\t")
+        PECgw <- tmp_frame$V5
+        focus_summary[[psm]][[crop]][, acronym] <- PECgw
+      }
+    }
+  }
+  expect_equal(pfm_PECgw, focus_summary)
 })

@@ -4,7 +4,7 @@
 \alias{PELMO_path}
 \title{Create a path of run directories as the PELMO GUI does}
 \usage{
-PELMO_path(psm, crop, scenario)
+PELMO_path(psm, crop, scenario = NA)
 }
 \arguments{
 \item{psm}{The psm identifier}

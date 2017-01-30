@@ -1,3 +1,17 @@
+commit 80b451ddb4e749041c2b216603274a012dc83d59
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-30 14:28:23 +0100
+
+    PELMO summary files for testing
+
+commit 826cf9a2687ff1d7ca5b568882f5686f76f82074
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-30 14:11:34 +0100
+
+    Use relative tolerance of 1e-6 for flux test
+    
+    to pass test also for more extreme situations as in the current test data.
+
 commit eea72720956dc8358fac98b29c9a627a9363cbd2
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-30 13:12:24 +0100
