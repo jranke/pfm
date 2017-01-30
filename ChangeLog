@@ -1,4 +1,10 @@
-commit 15c1b8c5ddadf938ce13d3dd9da2a09d8749f740
+commit eaf3b558747ff8228e87ded727a6c0e91a6579f8
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-30 12:01:14 +0100
+
+    More extreme parameters for metabolites for testing
+
+commit a6c13f70f6c6669a8088827a602ac475fdf9b624
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-29 16:58:53 +0100
 

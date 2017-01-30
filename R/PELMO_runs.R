@@ -1,10 +1,12 @@
 #' Set up runs for FOCUS PELMO
 #'
-#' Per default, the runs are also executed with FOCUS PELMO, and the results are processed
-#' and returned. Currently, only FOCUS PELMO as installed on Linux (or other Unix systems)
+#' Per default, the runs are not only set up but also executed with FOCUS
+#' PELMO, the results are processed and returned. Currently, only FOCUS PELMO
+#' as installed on Linux (or other Unix systems)
 #' using the \code{\link{install_PELMO}} from the \code{PELMO.installeR} package
-#' maintained on github is supported. In such installations, FOCUS PELMO is installed into
-#' package installation directory of \code{PELMO.installeR} and run with \code{wine}.
+#' maintained on github is supported. In such installations, FOCUS PELMO is
+#' installed into the package installation directory of \code{PELMO.installeR}
+#' and run using \code{wine}.
 #'
 #' @param runs A list of lists. Each inner lists has an element named 'psm'
 #'   that holds the psm string, and elements named using three letter crop acronyms,
