@@ -34,7 +34,7 @@ as used in \code{\link{FOCUS_GW_scenarios_2012}}.}
 
 \item{evaluate}{Should the results be returned?}
 
-\item{overwrite}{Should an existing run directories be overwritten}
+\item{overwrite}{Should existing run directories be overwritten?}
 }
 \value{
 If evaluate is TRUE, a list of lists of matrices holding the

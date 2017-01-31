@@ -1,3 +1,15 @@
+commit 4e696997516543e29119e94d67283f513be4484d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-30 18:08:50 +0100
+
+    Regenerate static documentation
+
+commit 03bda75d343402dad99df2aad55611e11279b833
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-30 18:04:53 +0100
+
+    Correct psm file in the example with metabolites
+
 commit 39d202b0a0f833c756bc98fb4961483de1b15353
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-30 16:14:15 +0100
