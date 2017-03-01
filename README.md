@@ -28,7 +28,7 @@ fast and painless as possible.
 
 ```r
 library(devtools)
-install_github("jranke/pfm", subdir = "pkg", quick = TRUE)
+install_github("jranke/pfm", quick = TRUE)
 ```
 
 ## Use
