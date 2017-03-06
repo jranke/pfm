@@ -33,13 +33,13 @@ install_github("jranke/pfm", quick = TRUE)
 
 ## Use
 
-Please refer to the [reference](http://jranke.github.io/pfm/reference/index.html).
+Please refer to the [reference](http://pkgdown.jrwb.de/pfm/reference/index.html).
 
 ## Examples
 
 One recent nice example of the usage of this package is the visualisation
 of a time weighted average for a sawtooth curve obtained from several overlays
-of mkinfit predictions as shown [here](http://jranke.github.io/pfm/reference/plot.one_box.html).
+of mkinfit predictions as shown [here](http://pkgdown.jrwb.de/pfm/reference/plot.one_box.html).
 
 Another, even more recent example shows how FOCUS PELMO can be run in parallel under Linux
-as shown [here](http://jranke.github.io/pfm/reference/PELMO_runs.html).
+as shown [here](http://pkgdown.jrwb.de/pfm/reference/PELMO_runs.html).
