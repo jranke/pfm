@@ -1,3 +1,21 @@
+commit 90e5ff0a9fdadd65e179c04c7d43b4db6e301984
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-03-06 17:59:16 +0100
+
+    Move static docs to pkdown.jrwb.de, update them
+
+commit 68e36eb0a5f1b611588d47f77e0ef7c3d9ba0beb
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-03-01 11:37:31 +0100
+
+    The package is not in subdir `pkg` any more
+
+commit f67ea0c4aeb68631e9f93c95e86c14364718477a
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-01-31 07:33:21 +0100
+
+    Small documentation fix
+
 commit 4e696997516543e29119e94d67283f513be4484d
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-01-30 18:08:50 +0100
