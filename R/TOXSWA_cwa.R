@@ -97,14 +97,14 @@ plot.TOXSWA_cwa <- function(x, time_column = c("datetime", "t", "t_firstjan", "t
   cwa_column = ifelse(total, "cwa_tot_mug_per_L", "cwa_mug_per_L")
   lct <- Sys.getlocale("LC_TIME")
   tmp <- Sys.setlocale("LC_TIME", LC_TIME)
-  if (xlab == "default") {
+  if (identical(xlab, "default")) {
     xlab = switch(time_column,
                 datetime = "Time",
                 t = "Time [days]",
                 t_firstjan = "Time since first of January [days]",
                 t_rel_to_max = "Time relative to maximum concentration [days]")  
   }
-  if (ylab == "default") {
+  if (identical(ylab, "default")) {
     ylab = paste( ifelse(total, "Total concentration", "Concentration"), "[\u03bcg/L]")
   }
   if (add) {
