@@ -1,6 +1,6 @@
 pfm*\.tar.gz
 pfm*\.zip
 pfm\.Rcheck
-pkg/ChangeLog
 test.R
-pkg/inst/extdata/Tabelle\ der\ Abdrifteckwerte.xls
+inst/extdata/Tabelle\ der\ Abdrifteckwerte.xls
+inst/extdata/FOCUS_Step_12_scenarios.txt
