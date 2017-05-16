@@ -4,9 +4,8 @@
 \alias{PEC_sw_focus}
 \title{Calculate FOCUS Step 1 PEC surface water}
 \usage{
-PEC_sw_focus(parent, rate, n = 1, i = NA, applications = data.frame(time =
-  seq(0, 0 + n * i, length.out = n), amount = rate), met = NULL, step = 1,
-  f_drift = 0.02759, f_rd = 0.1)
+PEC_sw_focus(parent, rate, n = 1, i = NA, met = NULL, f_drift = NA,
+  f_rd = 0.1, scenario = FOCUS_Step_12_scenarios$names)
 }
 \arguments{
 \item{parent}{A list containing substance specific parameters}
@@ -18,19 +17,51 @@ applications are given explicitly}
 
 \item{i}{The application interval}
 
-\item{applications}{A dataframe containing times and amounts of each application}
+\item{met}{A list containing metabolite specific parameters. If not NULL, 
+the PEC is calculated for this compound, not the parent.}
 
-\item{step}{At the moment, only Step 1 is implemented}
+\item{f_drift}{The fraction of the application rate reaching the waterbody
+via drift. If NA, this is derived from the scenario name and the number
+of applications via the drift data defined by the 
+\code{\link{FOCUS_Step_12_scenarios}}}
+
+\item{f_rd}{The fraction of the amount applied reaching the waterbody via
+runoff/drainage. At Step 1, it is assumed to be 10%, be it the
+parent or a metabolite}
+
+\item{scenario}{The name of the scenario. Must be one of the scenario
+names given in \code{\link{FOCUS_Step_12_scenarios}}}
 }
 \description{
-This is an attempt to reimplement the FOCUS Step 1 and 2 calculator authored
-by Michael Klein. The Step 1 and 2 scenario assumes an area ratio of 10:1
-between field and waterbody, and a water depth of 30 cm.
-I did not (yet) implement the TWA formulas for times later than day 1, as I
-did not understand them right away.
-Also, Step 2 is not implemented (yet).
+This is reimplementation of Step 1 of the FOCUS Step 1 and 2 calculator
+version 3.2, authored by Michael Klein. Note that results for multiple
+applications should be compared to the corresponding results for a
+single application. At current, this is not done automatically in
+this implementation.
+}
+\note{
+The formulas for input to the waterbody via runoff/drainage of the
+  parent and subsequent formation of the metabolite in water is not
+  documented in the model description coming with the calculator
+
+Step 2 is not implemented
 }
 \examples{
+# Parent only
 dummy_1 <- chent_focus_sw(cwsat = 6000, DT50_ws = 6, Koc = 344.8)
 PEC_sw_focus(dummy_1, 3000, f_drift = 0)
+
+# Metabolite
+new_dummy <- chent_focus_sw(mw = 250, Koc = 100)
+M1 <- chent_focus_sw(mw = 100, cwsat = 100, DT50_ws = 100, Koc = 50, max_ws = 0, max_soil = 0.5)
+PEC_sw_focus(new_dummy, 1000, scenario = "cereals, winter", met = M1)
+}
+\references{
+FOCUS (2014) Generic guidance for Surface Water Scenarios (version 1.4).
+ FOrum for the Co-ordination of pesticde fate models and their USe.
+ http://esdac.jrc.ec.europa.eu/public_path/projects_data/focus/sw/docs/Generic%20FOCUS_SWS_vc1.4.pdf
+
+Website of the Steps 1 and 2 calculator at the Joint Research
+  Center of the European Union:
+  http://esdac.jrc.ec.europa.eu/projects/stepsonetwo
 }

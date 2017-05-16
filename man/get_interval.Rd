@@ -6,6 +6,11 @@
 \usage{
 get_interval(psm_file, location_code)
 }
+\arguments{
+\item{psm_file}{The path to the .psm file}
+
+\item{location_code}{The location code}
+}
 \description{
 Get the application interval in years from a psm file
 }

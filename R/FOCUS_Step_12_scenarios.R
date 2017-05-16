@@ -1,3 +1,6 @@
+# Register global variables
+if(getRversion() >= '2.15.1') utils::globalVariables("FOCUS_Step_12_scenarios")
+
 #' Step 1/2 scenario data as distributed with the FOCUS Step 1/2 calculator
 #'
 #' The data were extracted from the scenario.txt file using the R code shown below.

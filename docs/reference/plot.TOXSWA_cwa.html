@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -74,30 +76,45 @@
 segment of a TOXSWA surface water body.</p>
     
 
-    <pre><span class='co'># S3 method for TOXSWA_cwa</span>
+    <pre class="usage"><span class='co'># S3 method for TOXSWA_cwa</span>
 <span class='fu'>plot</span>(<span class='no'>x</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"datetime"</span>, <span class='st'>"t"</span>, <span class='st'>"t_firstjan"</span>,
   <span class='st'>"t_rel_to_max"</span>), <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"default"</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"default"</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>total</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>LC_TIME</span> <span class='kw'>=</span> <span class='st'>"C"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>x</dt>
-      <dd>The TOXSWA_cwa object to be plotted.</dd>
-      <dt>time_column</dt>
-      <dd>What should be used for the time axis. If &quot;t_firstjan&quot; is chosen,
-the time is given in days relative to the first of January in the first year.</dd>
-      <dt>xlab, ylab</dt>
-      <dd>Labels for x and y axis.</dd>
-      <dt>add</dt>
-      <dd>Should we add to an existing plot?</dd>
-      <dt>total</dt>
-      <dd>Should the total concentration in water be plotted, including substance sorbed
-to suspended matter?</dd>
-      <dt>LC_TIME</dt>
-      <dd>Specification of the locale used to format dates</dd>
-      <dt>...</dt>
-      <dd>Further arguments passed to <code>plot</code> if we are not adding to an existing plot</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>The TOXSWA_cwa object to be plotted.</p></td>
+    </tr>
+    <tr>
+      <th>time_column</th>
+      <td><p>What should be used for the time axis. If "t_firstjan" is chosen,
+the time is given in days relative to the first of January in the first year.</p></td>
+    </tr>
+    <tr>
+      <th>xlab, ylab</th>
+      <td><p>Labels for x and y axis.</p></td>
+    </tr>
+    <tr>
+      <th>add</th>
+      <td><p>Should we add to an existing plot?</p></td>
+    </tr>
+    <tr>
+      <th>total</th>
+      <td><p>Should the total concentration in water be plotted, including substance sorbed
+to suspended matter?</p></td>
+    </tr>
+    <tr>
+      <th>LC_TIME</th>
+      <td><p>Specification of the locale used to format dates</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Further arguments passed to <code>plot</code> if we are not adding to an existing plot</p></td>
+    </tr>
+    </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

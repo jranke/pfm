@@ -9,11 +9,13 @@ DATE    := $(shell date +%Y-%m-%d)
 
 pkgfiles = DESCRIPTION \
 		 .Rbuildignore \
-	   inst/testdata/* \
+		 data/* \
 	   docs/* \
 		 docs/reference/* \
-		 data/* \
-	   R/*
+	   inst/testdata/* \
+	   R/* \
+     tests/testthat.R \
+     tests/testthat/*
 
 clean:
 	@echo "Cleaning up..."

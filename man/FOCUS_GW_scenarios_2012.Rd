@@ -3,7 +3,7 @@
 \docType{data}
 \name{FOCUS_GW_scenarios_2012}
 \alias{FOCUS_GW_scenarios_2012}
-\title{A very small subset of the FOCUS Groundwater scenario defitions}
+\title{A very small subset of the FOCUS Groundwater scenario definitions}
 \format{An object of class \code{list} of length 2.}
 \usage{
 FOCUS_GW_scenarios_2012

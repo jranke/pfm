@@ -8,5 +8,6 @@
 ^build.log$
 ^test.log$
 ^inst/extdata/Tabelle\ der\ Abdrifteckwerte.xls$
+^inst/extdata/FOCUS_Step_12_scenarios.txt$
 ^_pkgdown.yml$
 ^docs$

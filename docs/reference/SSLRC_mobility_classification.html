@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -74,13 +76,16 @@
 checked against the spreadsheet published on the CRC website</p>
     
 
-    <pre><span class='fu'>SSLRC_mobility_classification</span>(<span class='no'>Koc</span>)</pre>
+    <pre class="usage"><span class='fu'>SSLRC_mobility_classification</span>(<span class='no'>Koc</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>Koc</dt>
-      <dd>The sorption coefficient normalised to organic carbon in L/kg</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>Koc</th>
+      <td><p>The sorption coefficient normalised to organic carbon in L/kg</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
@@ -90,7 +95,7 @@ checked against the spreadsheet published on the CRC website</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>SSLRC_mobility_classification</span>(<span class='fl'>100</span>)</div><div class='output co'>#&gt; $`Mobility classification`
-#&gt; [1] &quot;Moderately mobile&quot;
+#&gt; [1] "Moderately mobile"
 #&gt; 
 #&gt; $`Percentage drained per mm of drain water`
 #&gt; [1] 0.7

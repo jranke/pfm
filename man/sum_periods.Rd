@@ -6,6 +6,11 @@
 \usage{
 sum_periods(annual, interval)
 }
+\arguments{
+\item{annual}{The annual flux as obtained by \code{get_flux}}
+
+\item{interval}{The interval in years}
+}
 \description{
 Sum up values according to FOCUS periods
 }

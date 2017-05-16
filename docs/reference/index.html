@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -66,113 +68,171 @@
       <div class="row">
   <div class="col-md-9">
     <div class="page-header">
-      <h1>Function reference</h1>
-      <h4>version&nbsp;0.4-2</h4>
+      <h1>
+        Reference
+        <small>version&nbsp;0.4-3</small>
+      </h1>
     </div>
 
     <div class="contents">
-      <h2 id="section-general-utility-functions" class="hasAnchor"><a href="#section-general-utility-functions" class="anchor"></a>General utility functions</h2>
-      <p class="section-desc"><p>Functions that are independent of specific fate modelling areas</p></p>
+      <table class="ref-index">
 
-      
-      <p><a href="geomean.html">Calculate the geometric mean</a></p>
-      <ul>
-        <li><code><a href="geomean.html">geomean</a></code></li>
-      </ul>
-      
-      <p><a href="one_box.html">Create a time series of decline data</a></p>
-      <ul>
-        <li><code><a href="one_box.html">one_box</a></code></li><li><code><a href="one_box.html">one_box.numeric</a></code></li><li><code><a href="one_box.html">one_box.character</a></code></li><li><code><a href="one_box.html">one_box.mkinfit</a></code></li>
-      </ul>
-      
-      <p><a href="plot.one_box.html">Plot time series of decline data</a></p>
-      <ul>
-        <li><code><a href="plot.one_box.html">plot.one_box</a></code></li>
-      </ul>
-      
-      <p><a href="sawtooth.html">Create decline time series for multiple applications</a></p>
-      <ul>
-        <li><code><a href="sawtooth.html">sawtooth</a></code></li>
-      </ul>
-      
-      <p><a href="twa.html">Calculate a time weighted average concentration</a></p>
-      <ul>
-        <li><code><a href="twa.html">twa</a></code></li><li><code><a href="twa.html">twa.one_box</a></code></li>
-      </ul>
-      
-      <p><a href="max_twa.html">The maximum time weighted average concentration for a moving window</a></p>
-      <ul>
-        <li><code><a href="max_twa.html">max_twa</a></code></li>
-      </ul>
-          <h2 id="section-predicted-environmental-concentrations-in-soil" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-soil" class="anchor"></a>Predicted environmental concentrations in soil</h2>
-      <p class="section-desc"></p>
+      <colgroup>
+        <col class="alias" />
+        <col class="title" />
+      </colgroup>
 
-      
-      <p><a href="PEC_soil.html">Calculate predicted environmental concentrations in soil</a></p>
-      <ul>
-        <li><code><a href="PEC_soil.html">PEC_soil</a></code></li>
-      </ul>
-      
-      <p><a href="soil_scenario_data_EFSA_2015.html">Properties of the predefined scenarios from the EFSA guidance from 2015</a></p>
-      <ul>
-        <li><code><a href="soil_scenario_data_EFSA_2015.html">soil_scenario_data_EFSA_2015</a></code></li>
-      </ul>
-          <h2 id="section-predicted-environmental-concentrations-in-groundwater" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-groundwater" class="anchor"></a>Predicted environmental concentrations in groundwater</h2>
-      <p class="section-desc"></p>
-
-      
-      <p><a href="PELMO_runs.html">Set up runs for FOCUS PELMO</a></p>
-      <ul>
-        <li><code><a href="PELMO_runs.html">PELMO_runs</a></code></li><li><code><a href="PELMO_runs.html">run_PELMO</a></code></li><li><code><a href="PELMO_runs.html">evaluate_PELMO</a></code></li>
-      </ul>
-          <h2 id="section-predicted-environmental-concentrations-in-surface-water" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-surface-water" class="anchor"></a>Predicted environmental concentrations in surface water</h2>
-      <p class="section-desc"></p>
-
-      
-      <p><a href="PEC_sw_drift.html">Calculate predicted environmental concentrations in surface water due to drift</a></p>
-      <ul>
-        <li><code><a href="PEC_sw_drift.html">PEC_sw_drift</a></code></li>
-      </ul>
-      
-      <p><a href="drift_data_JKI.html">Deposition from spray drift expressed as percent of the applied dose as
-</a></p>
-      <ul>
-        <li><code><a href="drift_data_JKI.html">drift_data_JKI</a></code></li>
-      </ul>
-      
-      <p><a href="PEC_sw_drainage_UK.html">Calculate initial predicted environmental concentrations in surface water due to drainage using the UK method</a></p>
-      <ul>
-        <li><code><a href="PEC_sw_drainage_UK.html">PEC_sw_drainage_UK</a></code></li>
-      </ul>
-      
-      <p><a href="TOXSWA_cwa.html">R6 class for holding TOXSWA cwa concentration data and associated statistics</a></p>
-      <ul>
-        <li><code><a href="TOXSWA_cwa.html">TOXSWA_cwa</a></code></li>
-      </ul>
-      
-      <p><a href="read.TOXSWA_cwa.html">Read TOXSWA surface water concentrations</a></p>
-      <ul>
-        <li><code><a href="read.TOXSWA_cwa.html">read.TOXSWA_cwa</a></code></li>
-      </ul>
-      
-      <p><a href="plot.TOXSWA_cwa.html">Plot TOXSWA surface water concentrations</a></p>
-      <ul>
-        <li><code><a href="plot.TOXSWA_cwa.html">plot.TOXSWA_cwa</a></code></li>
-      </ul>
-          <h2 id="section-classifications-and-indicators" class="hasAnchor"><a href="#section-classifications-and-indicators" class="anchor"></a>Classifications and indicators</h2>
-      <p class="section-desc"><p>Evaluating environmental fate properties</p></p>
-
-      
-      <p><a href="SSLRC_mobility_classification.html">Determine the SSLRC mobility classification for a chemical substance from its Koc</a></p>
-      <ul>
-        <li><code><a href="SSLRC_mobility_classification.html">SSLRC_mobility_classification</a></code></li>
-      </ul>
-      
-      <p><a href="GUS.html">Groundwater ubiquity score based on Gustafson (1989)</a></p>
-      <ul>
-        <li><code><a href="GUS.html">GUS</a></code></li><li><code><a href="GUS.html">GUS.numeric</a></code></li><li><code><a href="GUS.html">GUS.chent</a></code></li><li><code><a href="GUS.html">print.GUS_result</a></code></li>
-      </ul>
-    
+      <tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-general-utility-functions" class="hasAnchor"><a href="#section-general-utility-functions" class="anchor"></a>General utility functions</h2>
+            <p class="section-desc"><p>Functions that are independent of specific fate modelling areas</p></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="geomean.html">geomean</a></code> </p>
+          </td>
+          <td><p>Calculate the geometric mean</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="one_box.html">one_box</a></code> </p>
+          </td>
+          <td><p>Create a time series of decline data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plot.one_box.html">plot</a></code> </p>
+          </td>
+          <td><p>Plot time series of decline data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="sawtooth.html">sawtooth</a></code> </p>
+          </td>
+          <td><p>Create decline time series for multiple applications</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="twa.html">twa</a></code> </p>
+          </td>
+          <td><p>Calculate a time weighted average concentration</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="max_twa.html">max_twa</a></code> </p>
+          </td>
+          <td><p>The maximum time weighted average concentration for a moving window</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-predicted-environmental-concentrations-in-soil" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-soil" class="anchor"></a>Predicted environmental concentrations in soil</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="PEC_soil.html">PEC_soil</a></code> </p>
+          </td>
+          <td><p>Calculate predicted environmental concentrations in soil</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="soil_scenario_data_EFSA_2015.html">soil_scenario_data_EFSA_2015</a></code> </p>
+          </td>
+          <td><p>Properties of the predefined scenarios from the EFSA guidance from 2015</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-predicted-environmental-concentrations-in-groundwater" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-groundwater" class="anchor"></a>Predicted environmental concentrations in groundwater</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="PELMO_runs.html">PELMO_runs</a></code> <code><a href="PELMO_runs.html">run_PELMO</a></code> <code><a href="PELMO_runs.html">evaluate_PELMO</a></code> </p>
+          </td>
+          <td><p>Set up runs for FOCUS PELMO</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-predicted-environmental-concentrations-in-surface-water" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-surface-water" class="anchor"></a>Predicted environmental concentrations in surface water</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="PEC_sw_drift.html">PEC_sw_drift</a></code> </p>
+          </td>
+          <td><p>Calculate predicted environmental concentrations in surface water due to drift</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="drift_data_JKI.html">drift_data_JKI</a></code> </p>
+          </td>
+          <td><p>Deposition from spray drift expressed as percent of the applied dose as
+published by the JKI</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="PEC_sw_drainage_UK.html">PEC_sw_drainage_UK</a></code> </p>
+          </td>
+          <td><p>Calculate initial predicted environmental concentrations in surface water due to drainage using the UK method</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="PEC_sw_focus.html">PEC_sw_focus</a></code> </p>
+          </td>
+          <td><p>Calculate FOCUS Step 1 PEC surface water</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="TOXSWA_cwa.html">TOXSWA_cwa</a></code> </p>
+          </td>
+          <td><p>R6 class for holding TOXSWA cwa concentration data and associated statistics</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="read.TOXSWA_cwa.html">read.TOXSWA_cwa</a></code> </p>
+          </td>
+          <td><p>Read TOXSWA surface water concentrations</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plot.TOXSWA_cwa.html">plot</a></code> </p>
+          </td>
+          <td><p>Plot TOXSWA surface water concentrations</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-classifications-and-indicators" class="hasAnchor"><a href="#section-classifications-and-indicators" class="anchor"></a>Classifications and indicators</h2>
+            <p class="section-desc"><p>Evaluating environmental fate properties</p></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="SSLRC_mobility_classification.html">SSLRC_mobility_classification</a></code> </p>
+          </td>
+          <td><p>Determine the SSLRC mobility classification for a chemical substance from its Koc</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="GUS.html">GUS</a></code> <code><a href="GUS.html">print</a></code> </p>
+          </td>
+          <td><p>Groundwater ubiquity score based on Gustafson (1989)</p></td>
+        </tr>
+      </tbody>
+      </table>
     </div>
   </div>
 

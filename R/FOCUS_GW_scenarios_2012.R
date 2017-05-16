@@ -1,4 +1,4 @@
-#' A very small subset of the FOCUS Groundwater scenario defitions
+#' A very small subset of the FOCUS Groundwater scenario definitions
 #' 
 #' Currently, only scenario names with acronyms and a small subset of the soil definitions are provided. The 
 #' soil definitions are from page 46ff. from FOCUS (2012).

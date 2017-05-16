@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -73,32 +75,49 @@
     <p>Plot time series of decline data</p>
     
 
-    <pre><span class='co'># S3 method for one_box</span>
+    <pre class="usage"><span class='co'># S3 method for one_box</span>
 <span class='fu'>plot</span>(<span class='no'>x</span>, <span class='kw'>xlim</span> <span class='kw'>=</span> <span class='fu'>range</span>(<span class='fu'>time</span>(<span class='no'>x</span>)), <span class='kw'>ylim</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fu'>max</span>(<span class='no'>x</span>)),
   <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Time"</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Residue"</span>, <span class='kw'>max_twa</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>max_twa_var</span> <span class='kw'>=</span> <span class='fu'>dimnames</span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='fl'>2</span>]][<span class='fl'>1</span>], <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>x</dt>
-      <dd>The object of type <code><a href='one_box.html'>one_box</a></code> to be plotted</dd>
-      <dt>xlim</dt>
-      <dd>Limits for the x axis</dd>
-      <dt>ylim</dt>
-      <dd>Limits for the y axis</dd>
-      <dt>xlab</dt>
-      <dd>Label for the x axis</dd>
-      <dt>ylab</dt>
-      <dd>Label for the y axis</dd>
-      <dt>max_twa</dt>
-      <dd>If a numeric value is given, the maximum time weighted
-average concentration(s) is/are shown in the graph.</dd>
-      <dt>max_twa_var</dt>
-      <dd>Variable for which the maximum time weighted average should
-be shown if max_twa is not NULL.</dd>
-      <dt>...</dt>
-      <dd>Further arguments passed to methods</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>The object of type <code><a href='one_box.html'>one_box</a></code> to be plotted</p></td>
+    </tr>
+    <tr>
+      <th>xlim</th>
+      <td><p>Limits for the x axis</p></td>
+    </tr>
+    <tr>
+      <th>ylim</th>
+      <td><p>Limits for the y axis</p></td>
+    </tr>
+    <tr>
+      <th>xlab</th>
+      <td><p>Label for the x axis</p></td>
+    </tr>
+    <tr>
+      <th>ylab</th>
+      <td><p>Label for the y axis</p></td>
+    </tr>
+    <tr>
+      <th>max_twa</th>
+      <td><p>If a numeric value is given, the maximum time weighted
+average concentration(s) is/are shown in the graph.</p></td>
+    </tr>
+    <tr>
+      <th>max_twa_var</th>
+      <td><p>Variable for which the maximum time weighted average should
+be shown if max_twa is not NULL.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Further arguments passed to methods</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

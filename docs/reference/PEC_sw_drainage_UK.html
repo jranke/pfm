@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -74,27 +76,42 @@
 published on the CRC website</p>
     
 
-    <pre><span class='fu'>PEC_sw_drainage_UK</span>(<span class='no'>rate</span>, <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='no'>Koc</span>, <span class='kw'>latest_application</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>PEC_sw_drainage_UK</span>(<span class='no'>rate</span>, <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='no'>Koc</span>, <span class='kw'>latest_application</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>soil_DT50</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>model_parms</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>rate</dt>
-      <dd>Application rate in g/ha</dd>
-      <dt>interception</dt>
-      <dd>The fraction of the application rate that does not reach the soil</dd>
-      <dt>Koc</dt>
-      <dd>The sorption coefficient normalised to organic carbon in L/kg</dd>
-      <dt>latest_application</dt>
-      <dd>Latest application date, formatted as e.g. &quot;01 July&quot;</dd>
-      <dt>soil_DT50</dt>
-      <dd>Soil degradation half-life, if SFO kinetics are to be used</dd>
-      <dt>model</dt>
-      <dd>The soil degradation model to be used. Either one of &quot;FOMC&quot;,
-&quot;DFOP&quot;, &quot;HS&quot;, or &quot;IORE&quot;, or an mkinmod object</dd>
-      <dt>model_parms</dt>
-      <dd>A named numeric vector containing the model parameters</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>rate</th>
+      <td><p>Application rate in g/ha</p></td>
+    </tr>
+    <tr>
+      <th>interception</th>
+      <td><p>The fraction of the application rate that does not reach the soil</p></td>
+    </tr>
+    <tr>
+      <th>Koc</th>
+      <td><p>The sorption coefficient normalised to organic carbon in L/kg</p></td>
+    </tr>
+    <tr>
+      <th>latest_application</th>
+      <td><p>Latest application date, formatted as e.g. "01 July"</p></td>
+    </tr>
+    <tr>
+      <th>soil_DT50</th>
+      <td><p>Soil degradation half-life, if SFO kinetics are to be used</p></td>
+    </tr>
+    <tr>
+      <th>model</th>
+      <td><p>The soil degradation model to be used. Either one of "FOMC",
+"DFOP", "HS", or "IORE", or an mkinmod object</p></td>
+    </tr>
+    <tr>
+      <th>model_parms</th>
+      <td><p>A named numeric vector containing the model parameters</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

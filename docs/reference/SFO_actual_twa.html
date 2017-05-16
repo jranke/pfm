@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -73,16 +75,21 @@
     <p>Actual and maximum moving window time average concentrations for SFO kinetics</p>
     
 
-    <pre><span class='fu'>SFO_actual_twa</span>(<span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>7</span>, <span class='fl'>14</span>, <span class='fl'>21</span>, <span class='fl'>28</span>, <span class='fl'>42</span>, <span class='fl'>50</span>,
+    <pre class="usage"><span class='fu'>SFO_actual_twa</span>(<span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>7</span>, <span class='fl'>14</span>, <span class='fl'>21</span>, <span class='fl'>28</span>, <span class='fl'>42</span>, <span class='fl'>50</span>,
   <span class='fl'>100</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>DT50</dt>
-      <dd>The half-life.</dd>
-      <dt>times</dt>
-      <dd>The output times, and window sizes for time weighted average concentrations</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>DT50</th>
+      <td><p>The half-life.</p></td>
+    </tr>
+    <tr>
+      <th>times</th>
+      <td><p>The output times, and window sizes for time weighted average concentrations</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 

@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -75,22 +77,31 @@ application pattern specified in <code>applications</code> is repeated <code>n</
 times, with an interval <code>i</code>.</p>
     
 
-    <pre><span class='fu'>sawtooth</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>365</span>, <span class='kw'>applications</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>time</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>0</span> + <span class='no'>n</span>
+    <pre class="usage"><span class='fu'>sawtooth</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>365</span>, <span class='kw'>applications</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>time</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>0</span> + <span class='no'>n</span>
   * <span class='no'>i</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='no'>n</span>), <span class='kw'>amount</span> <span class='kw'>=</span> <span class='fl'>1</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>x</dt>
-      <dd>A <code><a href='one_box.html'>one_box</a></code> object</dd>
-      <dt>n</dt>
-      <dd>The number of applications. If <code>applications</code> is specified, <code>n</code> is ignored</dd>
-      <dt>i</dt>
-      <dd>The interval between applications. If <code>applications</code> is specified, <code>i</code>
-is ignored</dd>
-      <dt>applications</dt>
-      <dd>A data frame holding the application times in the first column and
-the corresponding amounts applied in the second column.</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>A <code><a href='one_box.html'>one_box</a></code> object</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>The number of applications. If <code>applications</code> is specified, <code>n</code> is ignored</p></td>
+    </tr>
+    <tr>
+      <th>i</th>
+      <td><p>The interval between applications. If <code>applications</code> is specified, <code>i</code>
+is ignored</p></td>
+    </tr>
+    <tr>
+      <th>applications</th>
+      <td><p>A data frame holding the application times in the first column and
+the corresponding amounts applied in the second column.</p></td>
+    </tr>
+    </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

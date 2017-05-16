@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -73,27 +75,40 @@
     <p>Calculate a time course of relative concentrations based on an mkinmod model</p>
     
 
-    <pre><span class='fu'>pfm_degradation</span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"SFO"</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>parms</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='kw'>k_parent_sink</span> <span class='kw'>=</span>
+    <pre class="usage"><span class='fu'>pfm_degradation</span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"SFO"</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>parms</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='kw'>k_parent_sink</span> <span class='kw'>=</span>
   <span class='fu'>log</span>(<span class='fl'>2</span>)/<span class='no'>DT50</span>), <span class='kw'>years</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>step_days</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='no'>years</span> * <span class='fl'>365</span>, <span class='kw'>by</span> <span class='kw'>=</span>
   <span class='no'>step_days</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>model</dt>
-      <dd>The degradation model to be used. Either a parent only model like
-&#39;SFO&#39; or &#39;FOMC&#39;, or an mkinmod object</dd>
-      <dt>DT50</dt>
-      <dd>The half-life. This is only used when simple exponential decline
-is calculated (SFO model).</dd>
-      <dt>parms</dt>
-      <dd>The parameters used for the degradation model</dd>
-      <dt>years</dt>
-      <dd>For how many years should the degradation be predicted?</dd>
-      <dt>step_days</dt>
-      <dd>What step size in days should the output have?</dd>
-      <dt>times</dt>
-      <dd>The output times</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>model</th>
+      <td><p>The degradation model to be used. Either a parent only model like
+'SFO' or 'FOMC', or an mkinmod object</p></td>
+    </tr>
+    <tr>
+      <th>DT50</th>
+      <td><p>The half-life. This is only used when simple exponential decline
+is calculated (SFO model).</p></td>
+    </tr>
+    <tr>
+      <th>parms</th>
+      <td><p>The parameters used for the degradation model</p></td>
+    </tr>
+    <tr>
+      <th>years</th>
+      <td><p>For how many years should the degradation be predicted?</p></td>
+    </tr>
+    <tr>
+      <th>step_days</th>
+      <td><p>What step size in days should the output have?</p></td>
+    </tr>
+    <tr>
+      <th>times</th>
+      <td><p>The output times</p></td>
+    </tr>
+    </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

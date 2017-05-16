@@ -1,0 +1,48 @@
+Ver 02 FOCUS step 1 & 2 scenario data file														
+water depth (cm):	30													
+sediment depth(cm):	5													
+effective sediment depth (cm):	1													
+sediment oc (%):	5													
+sediment bulk density (kg/L):	0.8													
+ratio of field to water body:	10													
+Spray drift	Number of crops:	29	Number of variations:	9	Number of Interception classes:	4								
+Crop	Distance crop-water	1	2	3	4	5	6	7	8	>8	no interception	minimal crop cover	average crop cover	full canopy
+cereals, spring	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0	0.2	0.7
+cereals, winter	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0	0.2	0.7
+citrus	3	15.725	12.129	11.011	10.124	9.743	9.204	9.102	8.656	8.656	0	0.8	0.8	0.8
+cotton	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.3	0.6	0.75
+field beans	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.25	0.4	0.7
+grass / alfalfa	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.4	0.6	0.75
+hops	3	19.326	17.723	15.928	15.378	15.114	14.902	14.628	13.52	13.52	0	0.2	0.5	0.7
+legumes	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.25	0.5	0.7
+maize	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.25	0.5	0.75
+oil seed rape, spring	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.4	0.7	0.75
+oil seed rape, winter	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.4	0.7	0.75
+olives	3	15.725	12.129	11.011	10.124	9.743	9.204	9.102	8.656	8.656	0	0.7	0.7	0.7
+pome / stone fruit, early applns	3	29.197	25.531	23.96	23.603	23.116	22.76	22.69	22.241	22.241	0	0.2	0.4	0.65
+pome / stone fruit, late applns	3	15.725	12.129	11.011	10.124	9.743	9.204	9.102	8.656	8.656	0	0.2	0.4	0.65
+potatoes	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.15	0.5	0.7
+soybeans	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.2	0.5	0.75
+sugar beets	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.2	0.7	0.75
+sunflowers	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.2	0.5	0.75
+tobacco	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.2	0.7	0.75
+vegetables, bulb	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.1	0.25	0.4
+vegetables, fruiting	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.25	0.5	0.7
+vegetables, leafy	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.25	0.4	0.7
+vegetables, root	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.25	0.5	0.7
+vines, early applns	3	2.699	2.496	2.546	2.499	2.398	2.336	2.283	2.265	2.265	0	0.4	0.5	0.6
+vines, late applns	3	8.028	7.119	6.898	6.631	6.636	6.431	6.227	6.173	6.173	0	0.4	0.5	0.6
+appln, aerial	3	33.2	33.2	33.2	33.2	33.2	33.2	33.2	33.2	33.2	0	0.2	0.5	0.7
+appln, hand (crop < 50 cm)	1	2.759	2.438	2.024	1.862	1.794	1.631	1.578	1.512	1.512	0	0.2	0.5	0.7
+appln, hand (crop > 50 cm)	3	8.028	7.119	6.898	6.631	6.636	6.431	6.227	6.173	6.173	0	0.2	0.5	0.7
+no drift (incorp or seed trtmt)	1	0	0	0	0	0	0	0	0	0	0	0	0	0
+Runoff/Drainage	Numbers for step 1	1	Numbers for step 2	7										
+Step 1	10													
+North Europe, Oct. - Feb.	5													
+North Europe, Mar. - May	2													
+North Europe, June - Sep.	2													
+South Europe, Oct. - Feb.	4													
+South Europe, Mar. - May	4													
+South Europe, June - Sep.	3													
+No Runoff/Drainage	0													
+Equilibrium Factor	1.5													

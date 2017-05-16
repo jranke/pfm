@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -75,32 +77,51 @@ concentration in surface water based on complete, instantaneous mixing
 with input via spray drift.</p>
     
 
-    <pre><span class='fu'>PEC_sw_drift</span>(<span class='no'>rate</span>, <span class='kw'>applications</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>water_depth</span> <span class='kw'>=</span> <span class='fl'>30</span>,
+    <pre class="usage"><span class='fu'>PEC_sw_drift</span>(<span class='no'>rate</span>, <span class='kw'>applications</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>water_depth</span> <span class='kw'>=</span> <span class='fl'>30</span>,
   <span class='kw'>drift_percentages</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drift_data</span> <span class='kw'>=</span> <span class='st'>"JKI"</span>, <span class='kw'>crop</span> <span class='kw'>=</span> <span class='st'>"Ackerbau"</span>,
   <span class='kw'>distances</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>5</span>, <span class='fl'>10</span>, <span class='fl'>20</span>), <span class='kw'>rate_units</span> <span class='kw'>=</span> <span class='st'>"g/ha"</span>, <span class='kw'>PEC_units</span> <span class='kw'>=</span> <span class='st'>"µg/L"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>rate</dt>
-      <dd>Application rate in units specified below</dd>
-      <dt>applications</dt>
-      <dd>Number of applications for selection of drift percentile</dd>
-      <dt>water_depth</dt>
-      <dd>Depth of the water body in cm</dd>
-      <dt>drift_percentages</dt>
-      <dd>Percentage drift values for which to calculate PECsw.
-&#39;drift_data&#39; and &#39;distances&#39; if not NULL.</dd>
-      <dt>drift_data</dt>
-      <dd>Source of drift percentage data</dd>
-      <dt>crop</dt>
-      <dd>Crop name (use German names for JKI data), defaults to &quot;Ackerbau&quot;</dd>
-      <dt>distances</dt>
-      <dd>The distances in m for which to get PEC values</dd>
-      <dt>rate_units</dt>
-      <dd>Defaults to g/ha</dd>
-      <dt>PEC_units</dt>
-      <dd>Requested units for the calculated PEC. Only µg/L currently supported</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>rate</th>
+      <td><p>Application rate in units specified below</p></td>
+    </tr>
+    <tr>
+      <th>applications</th>
+      <td><p>Number of applications for selection of drift percentile</p></td>
+    </tr>
+    <tr>
+      <th>water_depth</th>
+      <td><p>Depth of the water body in cm</p></td>
+    </tr>
+    <tr>
+      <th>drift_percentages</th>
+      <td><p>Percentage drift values for which to calculate PECsw.
+'drift_data' and 'distances' if not NULL.</p></td>
+    </tr>
+    <tr>
+      <th>drift_data</th>
+      <td><p>Source of drift percentage data</p></td>
+    </tr>
+    <tr>
+      <th>crop</th>
+      <td><p>Crop name (use German names for JKI data), defaults to "Ackerbau"</p></td>
+    </tr>
+    <tr>
+      <th>distances</th>
+      <td><p>The distances in m for which to get PEC values</p></td>
+    </tr>
+    <tr>
+      <th>rate_units</th>
+      <td><p>Defaults to g/ha</p></td>
+    </tr>
+    <tr>
+      <th>PEC_units</th>
+      <td><p>Requested units for the calculated PEC. Only µg/L currently supported</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

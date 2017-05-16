@@ -20,6 +20,7 @@ runs <- list(
     win = names(FOCUS_GW_scenarios_2012$names)))
 
 test_that("PELMO paths are correctly created", {
+  skip("A wine installation is needed for this test")
   psm_paths = c(
      PELMO_path(runs[[1]]$psm, "fbe", "Por"),
      PELMO_path(runs[[2]]$psm, "pot", "Ham"),
@@ -34,6 +35,7 @@ test_that("PELMO paths are correctly created", {
 })
 
 test_that("PELMO runs are correctly set up", {
+  skip("A wine installation is needed for this test")
 
   # Prepare runs in analogy to the test archive
   PELMO_runs(runs, psm_dir = PELMO_base, execute = FALSE, evaluate = FALSE, overwrite = TRUE)
@@ -57,6 +59,7 @@ test_that("PELMO runs are correctly set up", {
 })
 
 test_that("PELMO runs can be run and give the expected result files", {
+  skip("A wine installation is needed for this test")
   run_PELMO(runs, cores = 7)
 
   plm_files <- c("CHEM.PLM", "ECHO.PLM",
@@ -85,9 +88,10 @@ test_that("PELMO runs can be run and give the expected result files", {
   }
 })
 
-pfm_PECgw <- evaluate_PELMO(runs)
+# pfm_PECgw <- evaluate_PELMO(runs)
 
 test_that("PELMO runs are correctly evaluated", {
+  skip("A wine installation is needed for this test")
 
   # Check that if output is the same as in the test archive
   for (run in runs) {
@@ -145,6 +149,7 @@ test_that("PELMO runs are correctly evaluated", {
 })
 
 test_that("PECgw from FOCUS summary files can be reproduced", {
+  skip("A wine installation is needed for this test")
   focus_summary <- list()
 
   for (run in runs) {

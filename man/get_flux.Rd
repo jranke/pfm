@@ -6,6 +6,9 @@
 \usage{
 get_flux(chem_file)
 }
+\arguments{
+\item{chem_file}{The full path to a CHEM*.PLM file}
+}
 \description{
 Get the flux of a chemical out of the FOCUS layer from a CHEM*.PLM file
 }

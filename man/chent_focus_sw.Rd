@@ -2,9 +2,10 @@
 % Please edit documentation in R/PEC_sw_focus.R
 \name{chent_focus_sw}
 \alias{chent_focus_sw}
-\title{Create an chemical compound object for FOCUS Step 1 and 2 calculations}
+\title{Create a chemical compound object for FOCUS Step 1 calculations}
 \usage{
-chent_focus_sw(Koc, DT50_ws, cwsat = 1000)
+chent_focus_sw(Koc, DT50_ws = NA, cwsat = 1000, mw = NA, max_soil = 1,
+  max_ws = 1)
 }
 \arguments{
 \item{Koc}{Partition coefficient between organic carbon and water
@@ -13,10 +14,17 @@ in L/kg.}
 \item{DT50_ws}{Half-life in water/sediment systems in days}
 
 \item{cwsat}{Water solubility in mg/L}
+
+\item{mw}{Molar weight in g/mol}
+
+\item{max_soil}{Maximum observed fraction (dimensionless) in soil}
+
+\item{max_ws}{Maximum observed fraction (dimensionless) in water/sediment
+systems}
 }
 \value{
 A list with the substance specific properties
 }
 \description{
-Create an chemical compound object for FOCUS Step 1 and 2 calculations
+Create a chemical compound object for FOCUS Step 1 calculations
 }

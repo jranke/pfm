@@ -3,7 +3,7 @@
 #' Per default, the runs are not only set up but also executed with FOCUS
 #' PELMO, the results are processed and returned. Currently, only FOCUS PELMO
 #' as installed on Linux (or other Unix systems)
-#' using the \code{\link{install_PELMO}} from the \code{PELMO.installeR} package
+#' using the \code{install_PELMO} from the \code{PELMO.installeR} package
 #' maintained on github is supported. In such installations, FOCUS PELMO is
 #' installed into the package installation directory of \code{PELMO.installeR}
 #' and run using \code{wine}.
@@ -33,6 +33,8 @@
 #' PELMO test results \url{http://esdac.jrc.ec.europa.eu/public_path/projects_data/focus/gw/models/pelmo/test-results/test_results_FOCUS_PELMO_5_5_3.doc}
 #' @export
 #' @examples
+#' # At the moment I can not run the examples, as my wine installation is not working
+#' \dontrun{
 #' # Reproduce the official test results for annual application of Pesticide D
 #' # to winter cereals at the day before emergence
 #' runs_1 <- list(
@@ -54,6 +56,7 @@
 #' PECgw_2 <- PELMO_runs(runs_2, psm_dir = system.file("testdata", package = "pfm"),
 #'   cores = 3, overwrite = TRUE)
 #' print(PECgw_2)
+#' }
 PELMO_runs <- function(runs, psm_dir = ".", version = "5.5.3", PELMO_base = "auto",
                        execute = TRUE, cores = getOption("mc.cores", 2L),
                        evaluate = TRUE, overwrite = FALSE)
@@ -410,6 +413,9 @@ evaluate_PELMO <- function(runs, version = "5.5.3", PELMO_base = "auto")
 }
 
 #' Get the application interval in years from a psm file
+#'
+#' @param psm_file The path to the .psm file
+#' @param location_code The location code
 get_interval <- function(psm_file, location_code) {
   # How many years do we calculate (26, 46 or 66)?
   psm <- readLines(psm_file, encoding = "latin1")
@@ -433,6 +439,9 @@ get_interval <- function(psm_file, location_code) {
 }
 
 #' Sum up values according to FOCUS periods
+#' 
+#' @param annual The annual flux as obtained by \code{get_flux}
+#' @param interval The interval in years
 sum_periods <- function(annual, interval) {
   n_years <- switch(as.character(interval),
     "1" = 26,
@@ -446,6 +455,8 @@ sum_periods <- function(annual, interval) {
 }
 
 #' Get the flux of a chemical out of the FOCUS layer from a CHEM*.PLM file
+#' 
+#' @param chem_file The full path to a CHEM*.PLM file
 get_flux <- function(chem_file) {
   chem <- readLines(chem_file)
   lowest_focus_comp_lines <- grep("^    .     21      ", chem, value = TRUE)

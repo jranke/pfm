@@ -1,3 +1,21 @@
+commit d042f8f06b313e8595087587455daac73d84f17b
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-05-15 20:01:28 +0200
+
+    Start of an Steps 1/2 calculator in R
+
+commit b052bf8d1e090e07bf0853f0aa8b895db8f41a2a
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-03-29 19:24:37 +0200
+
+    Make it possible to use expressions in axis labels
+
+commit d69fda8d8f854b735394ecdaec9d59fb18c42b00
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-03-28 10:09:45 +0200
+
+    Update Changelog
+
 commit 90e5ff0a9fdadd65e179c04c7d43b4db6e301984
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-03-06 17:59:16 +0100

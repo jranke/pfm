@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -73,21 +75,28 @@
     <p>Create a list of runs that we can traverse</p>
     
 
-    <pre><span class='fu'>create_run_list</span>(<span class='no'>runs</span>, <span class='kw'>psm_dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>check_psm_files</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>create_run_list</span>(<span class='no'>runs</span>, <span class='kw'>psm_dir</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>check_psm_files</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>runs</dt>
-      <dd>A list of lists. Each inner lists has an element named &#39;psm&#39;
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>runs</th>
+      <td><p>A list of lists. Each inner lists has an element named 'psm'
 that holds the psm string, and elements named using three letter crop acronyms,
 as used in <code><a href='FOCUS_PELMO_crops.html'>FOCUS_PELMO_crops</a></code>,
 that hold character vectors of three letter scenario acronyms
-as used in <code><a href='FOCUS_GW_scenarios_2012.html'>FOCUS_GW_scenarios_2012</a></code>.</dd>
-      <dt>psm_dir</dt>
-      <dd>The directory where the psm files are located</dd>
-      <dt>check_psm_files</dt>
-      <dd>Should we check if the psm file exists</dd>
-    </dl>
+as used in <code><a href='FOCUS_GW_scenarios_2012.html'>FOCUS_GW_scenarios_2012</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>psm_dir</th>
+      <td><p>The directory where the psm files are located</p></td>
+    </tr>
+    <tr>
+      <th>check_psm_files</th>
+      <td><p>Should we check if the psm file exists</p></td>
+    </tr>
+    </table>
     
 
   </div>
