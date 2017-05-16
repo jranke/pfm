@@ -1,3 +1,12 @@
+commit 36036b5901223591e7e21e8b73d8cd1fb034f4cb
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-05-16 15:43:50 +0200
+
+    Finish the Step 1 calculator including tests
+    
+    Some cleaning up. PELMO facilities do not currently work at my end,
+    as I have no working wine installation on this computer
+
 commit d042f8f06b313e8595087587455daac73d84f17b
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-05-15 20:01:28 +0200

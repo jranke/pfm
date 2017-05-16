@@ -26,7 +26,7 @@
 #' @param cores The number of cores to execute PELMO runs in parallel
 #' @param evaluate Should the results be returned?
 #' @param overwrite Should existing run directories be overwritten?
-#' @references PELMO.installeR \url{https://jranke.github.io/PELMO.installeR}
+#' @references PELMO.installeR \url{https://pkgdown.jrwb.de/PELMO.installeR}
 #'
 #' Wine \url{https://winehq.org}
 #'

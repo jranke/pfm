@@ -10,9 +10,9 @@ test_that("Results of Steps 1/2 calculator for Dummy 1 are reproduced", {
     dimnames = list(Time = t_out, type = c("PECsw", "TWAECsw", "PECsed", "TWAECsed")))
 
   PEC_orig_1[, "PECsw"]  = c(685.06, 610.32, 543.73, 431.56)
-  PEC_orig_1["1", "TWAECsw"]  = 647.69 # Later TWAEC not implemented
+  PEC_orig_1[, "TWAECsw"]  = c(NA, 647.69, 612.03, 548.76)
   PEC_orig_1[, "PECsed"]  = c(2.36, 2.1, 1.87, 1.49) * 1e3
-  PEC_orig_1["1", "TWAECsed"]  = 2.23e3 # Later TWAEC not implemented
+  PEC_orig_1[, "TWAECsed"]  = c(NA, 2.23e3, 2.11e3, 1.89e3)
 
   expect_equal(res_dummy_1$PEC[1:4, c(1, 2)], PEC_orig_1[, c(1, 2)], tolerance = 0.01, scale = 1)
   expect_equal(res_dummy_1$PEC[1:4, c(3, 4)], PEC_orig_1[, c(3, 4)], tolerance = 10, scale = 1)
@@ -26,9 +26,9 @@ test_that("Results of Steps 1/2 calculator for Dummy 2 are reproduced", {
     dimnames = list(Time = t_out, type = c("PECsw", "TWAECsw", "PECsed", "TWAECsed")))
 
   PEC_orig_2[, "PECsw"]  = c(299.89, 290.86, 283.21, 268.50)
-  PEC_orig_2["1", "TWAECsw"]  = 295.38 # Later TWAEC not implemented
+  PEC_orig_2[, "TWAECsw"]  = c(NA, 295.38, 291.20, 283.49)
   PEC_orig_2[, "PECsed"]  = c(319.77, 319.95, 311.53, 295.35)
-  PEC_orig_2["1", "TWAECsed"]  = 319.86 # Later TWAEC not implemented
+  PEC_orig_2[, "TWAECsed"]  = c(NA, 319.86, 317.79, 310.58)
 
   expect_equal(res_dummy_2$PEC[1:4, c(1, 2)], PEC_orig_2[, c(1, 2)], tolerance = 0.01, scale = 1)
   expect_equal(res_dummy_2$PEC[1:4, c(3, 4)], PEC_orig_2[, c(3, 4)], tolerance = 0.01, scale = 1)
@@ -43,9 +43,9 @@ test_that("Results of Steps 1/2 calculator for Dummy 4 are reproduced", {
     dimnames = list(Time = t_out, type = c("PECsw", "TWAECsw", "PECsed", "TWAECsed")))
 
   PEC_orig_4[, "PECsw"]  = c(1.82, 1.18, 1.00, 0.70)
-  PEC_orig_4["1", "TWAECsw"]  = 1.50 # Later TWAEC not implemented
+  PEC_orig_4[, "TWAECsw"]  = c(NA, 1.50, 1.29, 1.07)
   PEC_orig_4[, "PECsed"]  = c(10.57, 11.49, 9.66, 6.83)
-  PEC_orig_4["1", "TWAECsed"]  = 11.03 # Later TWAEC not implemented
+  PEC_orig_4[, "TWAECsed"]  = c(NA, 11.03, 10.79, 9.48)
 
   expect_equal(res_dummy_4$PEC[1:4, c(1, 2)], PEC_orig_4[, c(1, 2)], tolerance = 0.01, scale = 1)
   expect_equal(res_dummy_4$PEC[1:4, c(3, 4)], PEC_orig_4[, c(3, 4)], tolerance = 0.01, scale = 1)
@@ -60,9 +60,9 @@ test_that("Results of Steps 1/2 calculator for Dummy 5 are reproduced", {
     dimnames = list(Time = t_out, type = c("PECsw", "TWAECsw", "PECsed", "TWAECsed")))
 
   PEC_orig_5[, "PECsw"]  = c(61.60, 59.45, 59.10, 58.41)
-  PEC_orig_5["1", "TWAECsw"]  = 60.53 # Later TWAEC not implemented
+  PEC_orig_5[, "TWAECsw"]  = c(NA, 60.53, 59.90, 59.33)
   PEC_orig_5[, "PECsed"]  = c(500.78, 511.28, 508.29, 502.35)
-  PEC_orig_5["1", "TWAECsed"]  = 506.03 # Later TWAEC not implemented
+  PEC_orig_5[, "TWAECsed"]  = c(NA, 506.03, 507.90, 506.61)
 
   expect_equal(res_dummy_5$PEC[1:4, c(1, 2)], PEC_orig_5[, c(1, 2)], tolerance = 0.01, scale = 1)
   expect_equal(res_dummy_5$PEC[1:4, c(3, 4)], PEC_orig_5[, c(3, 4)], tolerance = 0.01, scale = 1)
@@ -77,9 +77,9 @@ test_that("Results of Steps 1/2 calculator for Dummy 7 are reproduced", {
     dimnames = list(Time = t_out, type = c("PECsw", "TWAECsw", "PECsed", "TWAECsed")))
 
   PEC_orig_7[, "PECsw"]  = c(626.99, 601.13, 586.43, 558.10)
-  PEC_orig_7["1", "TWAECsw"]  = 614.06 # Later TWAEC not implemented
+  PEC_orig_7[, "TWAECsw"]  = c(NA, 614.06, 603.90, 588.03)
   PEC_orig_7[, "PECsed"]  = c(3.0, 3.01, 2.93, 2.79) * 1e3
-  PEC_orig_7["1", "TWAECsed"]  = 3.01e3 # Later TWAEC not implemented
+  PEC_orig_7[, "TWAECsed"]  = c(NA, 3.01e3, 2.99e3, 2.92e3)
 
   expect_equal(res_dummy_7$PEC[1:4, c(1, 2)], PEC_orig_7[, c(1, 2)], tolerance = 0.01, scale = 1)
   expect_equal(res_dummy_7$PEC[1:4, c(3, 4)], PEC_orig_7[, c(3, 4)], tolerance = 10, scale = 1)
@@ -95,9 +95,9 @@ test_that("Results of Steps 1/2 calculator for New Dummy (M1-M3) are reproduced"
     dimnames = list(Time = t_out, type = c("PECsw", "TWAECsw", "PECsed", "TWAECsed")))
 
   PEC_orig_M1[, "PECsw"]  = c(62.5, 62.07, 61.64, 60.79)
-  PEC_orig_M1["1", "TWAECsw"]  = 62.28 # Later TWAEC not implemented
+  PEC_orig_M1[, "TWAECsw"]  = c(NA, 62.28, 62.07, 61.64)
   PEC_orig_M1[, "PECsed"]  = c(31.25, 31.03, 30.82, 30.40)
-  PEC_orig_M1["1", "TWAECsed"]  = 31.14 # Later TWAEC not implemented
+  PEC_orig_M1[, "TWAECsed"]  = c(NA, 31.14, 31.03, 30.82)
 
   expect_equal(res_M1$PEC[1:4, c(1, 2)], PEC_orig_M1[, c(1, 2)], tolerance = 0.01, scale = 1)
   expect_equal(res_M1$PEC[1:4, c(3, 4)], PEC_orig_M1[, c(3, 4)], tolerance = 0.01, scale = 1)
@@ -110,9 +110,9 @@ test_that("Results of Steps 1/2 calculator for New Dummy (M1-M3) are reproduced"
     dimnames = list(Time = t_out, type = c("PECsw", "TWAECsw", "PECsed", "TWAECsed")))
 
   PEC_orig_M2[, "PECsw"]  = c(64.34, 63.78, 63.34, 62.47)
-  PEC_orig_M2["1", "TWAECsw"]  = 64.06 # Later TWAEC not implemented
+  PEC_orig_M2[, "TWAECsw"]  = c(NA, 64.06, 63.81, 63.36)
   PEC_orig_M2[, "PECsed"]  = c(31.25, 31.89, 31.67, 31.23)
-  PEC_orig_M2["1", "TWAECsed"]  = 31.57 # Later TWAEC not implemented
+  PEC_orig_M2[, "TWAECsed"]  = c(NA, 31.57, 31.68, 31.56)
 
   expect_equal(res_M2$PEC[1:4, c(1, 2)], PEC_orig_M2[, c(1, 2)], tolerance = 0.01, scale = 1)
   expect_equal(res_M2$PEC[1:4, c(3, 4)], PEC_orig_M2[, c(3, 4)], tolerance = 0.01, scale = 1)

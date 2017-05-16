@@ -81,7 +81,7 @@ print(PECgw_2)
 }
 }
 \references{
-PELMO.installeR \url{https://jranke.github.io/PELMO.installeR}
+PELMO.installeR \url{https://pkgdown.jrwb.de/PELMO.installeR}
 
 Wine \url{https://winehq.org}
 
