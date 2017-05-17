@@ -1,3 +1,31 @@
+commit d60bb9c0b52c8e0452bfbe507e60d5f651589cc8
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-05-16 18:57:16 +0200
+
+    Update static documentation
+
+commit 14fa47b1ea1651fc2cb7bbf0086741a8004d35ee
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-05-16 18:54:34 +0200
+
+    Remove external data also from git as their licence is unclear
+
+commit 608c4f89a2656f67ba915aab17633d41acc789a7
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-05-16 18:44:22 +0200
+
+    Add build and test logs to the git repo
+
+commit 3e26a8ab76a434c3465ea1db1b4a2a2ff3ea8ec8
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-05-16 18:40:25 +0200
+
+    Add TWA concentrations for days > 1, fix link
+    
+    Now we have seven test calculations for the Step 1 calculator, all
+    perfectly passing. This provides confidence that this is a
+    correct reimplementation of the Step 1 part of the Step 1/2 calculator.
+
 commit 36036b5901223591e7e21e8b73d8cd1fb034f4cb
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-05-16 15:43:50 +0200

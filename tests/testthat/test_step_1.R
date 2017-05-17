@@ -1,6 +1,6 @@
 context("FOCUS Step 1 calculations")
 
-t_out <- c(0, 1, 2, 4) # Checking the first four days should be sufficient for Step 1
+t_out <- c(0, 1, 2, 4) # Checking the first four days is sufficient for Step 1
 
 test_that("Results of Steps 1/2 calculator for Dummy 1 are reproduced", {
   dummy_1 <- chent_focus_sw(cwsat = 6000, DT50_ws = 6, Koc = 344.8)
@@ -30,8 +30,7 @@ test_that("Results of Steps 1/2 calculator for Dummy 2 are reproduced", {
   PEC_orig_2[, "PECsed"]  = c(319.77, 319.95, 311.53, 295.35)
   PEC_orig_2[, "TWAECsed"]  = c(NA, 319.86, 317.79, 310.58)
 
-  expect_equal(res_dummy_2$PEC[1:4, c(1, 2)], PEC_orig_2[, c(1, 2)], tolerance = 0.01, scale = 1)
-  expect_equal(res_dummy_2$PEC[1:4, c(3, 4)], PEC_orig_2[, c(3, 4)], tolerance = 0.01, scale = 1)
+  expect_equal(res_dummy_2$PEC[1:4, ], PEC_orig_2[, ], tolerance = 0.01, scale = 1)
 })
 
 test_that("Results of Steps 1/2 calculator for Dummy 4 are reproduced", {
@@ -47,8 +46,7 @@ test_that("Results of Steps 1/2 calculator for Dummy 4 are reproduced", {
   PEC_orig_4[, "PECsed"]  = c(10.57, 11.49, 9.66, 6.83)
   PEC_orig_4[, "TWAECsed"]  = c(NA, 11.03, 10.79, 9.48)
 
-  expect_equal(res_dummy_4$PEC[1:4, c(1, 2)], PEC_orig_4[, c(1, 2)], tolerance = 0.01, scale = 1)
-  expect_equal(res_dummy_4$PEC[1:4, c(3, 4)], PEC_orig_4[, c(3, 4)], tolerance = 0.01, scale = 1)
+  expect_equal(res_dummy_4$PEC[1:4, ], PEC_orig_4[, ], tolerance = 0.01, scale = 1)
 })
 
 test_that("Results of Steps 1/2 calculator for Dummy 5 are reproduced", {
@@ -64,8 +62,7 @@ test_that("Results of Steps 1/2 calculator for Dummy 5 are reproduced", {
   PEC_orig_5[, "PECsed"]  = c(500.78, 511.28, 508.29, 502.35)
   PEC_orig_5[, "TWAECsed"]  = c(NA, 506.03, 507.90, 506.61)
 
-  expect_equal(res_dummy_5$PEC[1:4, c(1, 2)], PEC_orig_5[, c(1, 2)], tolerance = 0.01, scale = 1)
-  expect_equal(res_dummy_5$PEC[1:4, c(3, 4)], PEC_orig_5[, c(3, 4)], tolerance = 0.01, scale = 1)
+  expect_equal(res_dummy_5$PEC[1:4, ], PEC_orig_5[, ], tolerance = 0.01, scale = 1)
 })
 
 test_that("Results of Steps 1/2 calculator for Dummy 7 are reproduced", {
@@ -99,8 +96,7 @@ test_that("Results of Steps 1/2 calculator for New Dummy (M1-M3) are reproduced"
   PEC_orig_M1[, "PECsed"]  = c(31.25, 31.03, 30.82, 30.40)
   PEC_orig_M1[, "TWAECsed"]  = c(NA, 31.14, 31.03, 30.82)
 
-  expect_equal(res_M1$PEC[1:4, c(1, 2)], PEC_orig_M1[, c(1, 2)], tolerance = 0.01, scale = 1)
-  expect_equal(res_M1$PEC[1:4, c(3, 4)], PEC_orig_M1[, c(3, 4)], tolerance = 0.01, scale = 1)
+  expect_equal(res_M1$PEC[1:4, ], PEC_orig_M1[, ], tolerance = 0.01, scale = 1)
 
   M2 <- chent_focus_sw(mw = 100, cwsat = 100, DT50_ws = 100, Koc = 50, max_ws = 0.5, max_soil = 0)
   res_M2 <- PEC_sw_focus(new_dummy, 1000, scenario = "cereals, winter",
@@ -114,6 +110,5 @@ test_that("Results of Steps 1/2 calculator for New Dummy (M1-M3) are reproduced"
   PEC_orig_M2[, "PECsed"]  = c(31.25, 31.89, 31.67, 31.23)
   PEC_orig_M2[, "TWAECsed"]  = c(NA, 31.57, 31.68, 31.56)
 
-  expect_equal(res_M2$PEC[1:4, c(1, 2)], PEC_orig_M2[, c(1, 2)], tolerance = 0.01, scale = 1)
-  expect_equal(res_M2$PEC[1:4, c(3, 4)], PEC_orig_M2[, c(3, 4)], tolerance = 0.01, scale = 1)
+  expect_equal(res_M2$PEC[1:4, ], PEC_orig_M2[, ], tolerance = 0.01, scale = 1)
 })
