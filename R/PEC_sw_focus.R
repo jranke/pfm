@@ -16,8 +16,8 @@
 #' @note The formulas for input to the waterbody via runoff/drainage of the
 #'   parent and subsequent formation of the metabolite in water is not
 #'   documented in the model description coming with the calculator. As one would
-#'   expecte, this additional input appears to be (as we get the same results)
-#'   calculated by multiplying the application rate with the molar weight
+#'   expect, this appears to be (as we get the same results) calculated by
+#'   multiplying the application rate with the molar weight
 #'   correction and the formation fraction in water/sediment systems.
 #' @note Step 2 is not implemented.
 #' @export
