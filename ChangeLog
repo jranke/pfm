@@ -1,3 +1,15 @@
+commit 539ea37b45ddc41b36dd199f06ffe5936ab13f21
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-05-17 12:23:38 +0200
+
+    Documentation fix
+
+commit 62bffd4873bc53fa9cd81336efa716b220c83e0a
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-05-17 09:36:22 +0200
+
+    Simplify tests where possible
+
 commit d60bb9c0b52c8e0452bfbe507e60d5f651589cc8
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-05-16 18:57:16 +0200

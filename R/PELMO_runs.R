@@ -33,8 +33,6 @@
 #' PELMO test results \url{http://esdac.jrc.ec.europa.eu/public_path/projects_data/focus/gw/models/pelmo/test-results/test_results_FOCUS_PELMO_5_5_3.doc}
 #' @export
 #' @examples
-#' # At the moment I can not run the examples, as my wine installation is not working
-#' \dontrun{
 #' # Reproduce the official test results for annual application of Pesticide D
 #' # to winter cereals at the day before emergence
 #' runs_1 <- list(
@@ -56,7 +54,6 @@
 #' PECgw_2 <- PELMO_runs(runs_2, psm_dir = system.file("testdata", package = "pfm"),
 #'   cores = 3, overwrite = TRUE)
 #' print(PECgw_2)
-#' }
 PELMO_runs <- function(runs, psm_dir = ".", version = "5.5.3", PELMO_base = "auto",
                        execute = TRUE, cores = getOption("mc.cores", 2L),
                        evaluate = TRUE, overwrite = FALSE)

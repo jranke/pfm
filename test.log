@@ -13,21 +13,10 @@ Check max_twa for parent mkinfit models against analytical solutions: .
 Simple PEC sediment calculations: .
 Simple PEC soil calculations: ...........
 Simple PEC surface water calculations with drift entry: ..
-Create PELMO runs from psm files and execute them: SSSSS
+Create PELMO runs from psm files and execute them: ...........................................................................................................................................................................................................................
 Actual and time weighted average concentrations for SFO kinetics: .
 FOCUS Step 1 calculations: .........
 Read and analyse TOXSWA cwa files: .......
 UK drainage PEC calculations: ............
-
-Skipped --------------------------------------------------------------------------------------------
-1. PELMO paths are correctly created (@test_PELMO.R#23) - A wine installation is needed for this test
-
-2. PELMO runs are correctly set up (@test_PELMO.R#38) - A wine installation is needed for this test
-
-3. PELMO runs can be run and give the expected result files (@test_PELMO.R#62) - A wine installation is needed for this test
-
-4. PELMO runs are correctly evaluated (@test_PELMO.R#94) - A wine installation is needed for this test
-
-5. PECgw from FOCUS summary files can be reproduced (@test_PELMO.R#152) - A wine installation is needed for this test
 
 DONE ===============================================================================================
