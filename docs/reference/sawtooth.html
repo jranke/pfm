@@ -77,8 +77,8 @@ application pattern specified in <code>applications</code> is repeated <code>n</
 times, with an interval <code>i</code>.</p>
     
 
-    <pre class="usage"><span class='fu'>sawtooth</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>365</span>, <span class='kw'>applications</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>time</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>0</span> + <span class='no'>n</span>
-  * <span class='no'>i</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='no'>n</span>), <span class='kw'>amount</span> <span class='kw'>=</span> <span class='fl'>1</span>))</pre>
+    <pre class="usage"><span class='fu'>sawtooth</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>365</span>, <span class='kw'>applications</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>time</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, (<span class='no'>n</span> -
+  <span class='fl'>1</span>) * <span class='no'>i</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='no'>n</span>), <span class='kw'>amount</span> <span class='kw'>=</span> <span class='fl'>1</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -114,15 +114,15 @@ the corresponding amounts applied in the second column.</p></td>
 <span class='fu'>plot</span>(<span class='no'>pred_2_saw</span>, <span class='kw'>max_twa</span> <span class='kw'>=</span> <span class='fl'>21</span>, <span class='kw'>max_twa_var</span> <span class='kw'>=</span> <span class='st'>"m1"</span>)</div><img src='sawtooth-6.png' alt='' width='540' height='400' /><div class='input'>
 <span class='fu'><a href='max_twa.html'>max_twa</a></span>(<span class='no'>pred_2_saw</span>)</div><div class='output co'>#&gt; $max
 #&gt;    parent        m1 
-#&gt; 0.6627707 0.8542785 
+#&gt; 0.7834480 0.8617048 
 #&gt; 
 #&gt; $window_start
 #&gt; parent     m1 
-#&gt;   0.00  32.09 
+#&gt;   0.00  26.85 
 #&gt; 
 #&gt; $window_end
 #&gt; parent     m1 
-#&gt;  21.00  53.09 
+#&gt;  21.00  47.85 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

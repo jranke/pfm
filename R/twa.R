@@ -195,7 +195,7 @@ plot.one_box <- function(x,
 #'
 #' max_twa(pred_2_saw)
 sawtooth <- function(x, n = 1, i = 365,
-                     applications = data.frame(time = seq(0, 0 + n * i, length.out = n),
+                     applications = data.frame(time = seq(0, (n - 1) * i, length.out = n),
                                                amount = 1))
 {
   n_obs = ncol(as.matrix(x))
