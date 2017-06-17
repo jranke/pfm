@@ -1,10 +1,20 @@
 context("FOCUS Step 1 calculations")
 
 t_out <- c(0, 1, 2, 4) # Checking the first four days is sufficient for Step 1
+test_txt <- readLines(
+  system.file("testdata/Steps_12_pesticide.txt", package = "pfm")
+)
 
 test_that("Results of Steps 1/2 calculator for Dummy 1 are reproduced", {
-  dummy_1 <- chent_focus_sw(cwsat = 6000, DT50_ws = 6, Koc = 344.8)
-  res_dummy_1 <- PEC_sw_focus(dummy_1, 3000, f_drift = 0)
+  dummy_1 <- chent_focus_sw("Dummy 1", cwsat = 6000, DT50_ws = 6, Koc = 344.8)
+  res_dummy_1 <- PEC_sw_focus(dummy_1, 3000,
+    comment = "Potatoes, Southern Europe, spring, 1 app/season, soil incorporation",
+    f_drift = 0,
+    append = FALSE, overwrite = TRUE)
+
+  pest_txt <- readLines("pesticide.txt")
+  expect_equal(test_txt[1], pest_txt[1])
+  strsplit(test_txt[2], "\t")[[1]]
 
   PEC_orig_1 = matrix(NA, nrow = length(t_out), ncol = 4,
     dimnames = list(Time = t_out, type = c("PECsw", "TWAECsw", "PECsed", "TWAECsed")))
@@ -112,3 +122,4 @@ test_that("Results of Steps 1/2 calculator for New Dummy (M1-M3) are reproduced"
 
   expect_equal(res_M2$PEC[1:4, ], PEC_orig_M2[, ], tolerance = 0.01, scale = 1)
 })
+unlink("pesticide.txt")

@@ -5,7 +5,8 @@
 \title{Calculate FOCUS Step 1 PEC surface water}
 \usage{
 PEC_sw_focus(parent, rate, n = 1, i = NA, met = NULL, f_drift = NA,
-  f_rd = 0.1, scenario = FOCUS_Step_12_scenarios$names)
+  f_rd = 0.1, scenario = FOCUS_Step_12_scenarios$names,
+  txt_file = "pesticide.txt", overwrite = FALSE, append = TRUE)
 }
 \arguments{
 \item{parent}{A list containing substance specific parameters, e.g.
@@ -33,6 +34,15 @@ parent or a metabolite}
 
 \item{scenario}{The name of the scenario. Must be one of the scenario
 names given in \code{\link{FOCUS_Step_12_scenarios}}}
+
+\item{txt_file}{the name, and potentially the full path to the
+Steps.12 input text file to which the specification of the run(s)
+should be written}
+
+\item{overwrite}{Should an existing file a the location specified in
+\code{txt_file} be overwritten?}
+
+\item{append}{Should the input text file be appended?}
 }
 \description{
 This is reimplementation of Step 1 of the FOCUS Step 1 and 2 calculator
