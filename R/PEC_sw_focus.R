@@ -1,10 +1,12 @@
-#' Calculate FOCUS Step 1 PEC surface water
+#' Calculate PEC surface water at FOCUS Step 1
 #'
-#' This is reimplementation of Step 1 of the FOCUS Step 1 and 2 calculator
-#' version 3.2, authored by Michael Klein. Note that results for multiple
+#' This is reimplementation of the FOCUS Step 1 and 2 calculator version 3.2,
+#' authored by Michael Klein, in R. Note that results for multiple
 #' applications should be compared to the corresponding results for a
 #' single application. At current, this is not done automatically in
-#' this implementation.
+#' this implementation. Only Step 1 PECs are calculated. However,
+#' input files are generated that are suitable as input also for Step 2
+#' to be used with the FOCUS calculator.
 #'
 #' @importFrom utils read.table
 #' @references FOCUS (2014) Generic guidance for Surface Water Scenarios (version 1.4).
@@ -40,6 +42,12 @@
 #'   parent or a metabolite
 #' @param scenario The name of the scenario. Must be one of the scenario
 #'   names given in \code{\link{FOCUS_Step_12_scenarios}}
+#' @param region 'n' for Northern Europe or 's' for Southern Europe. If NA, only
+#'   Step 1 PECsw are calculated
+#' @param season 'of' for October to February, 'mm' for March to May, and 'js'
+#'   for June to September. If NA, only step 1 PECsw are calculated
+#' @param interception One of 'no interception' (default), 'minimal crop cover',
+#'   'average crop cover' or 'full canopy'
 #' @param txt_file the name, and potentially the full path to the
 #'   Steps.12 input text file to which the specification of the run(s)
 #'   should be written
@@ -48,11 +56,11 @@
 #' @param append Should the input text file be appended?
 #' @examples
 #' # Parent only
-#' dummy_1 <- chent_focus_sw(cwsat = 6000, DT50_ws = 6, Koc = 344.8)
+#' dummy_1 <- chent_focus_sw("Dummy 1", cwsat = 6000, DT50_ws = 6, Koc = 344.8)
 #' PEC_sw_focus(dummy_1, 3000, f_drift = 0)
 #'
 #' # Metabolite
-#' new_dummy <- chent_focus_sw(mw = 250, Koc = 100)
+#' new_dummy <- chent_focus_sw("New Dummy", mw = 250, Koc = 100)
 #' M1 <- chent_focus_sw(mw = 100, cwsat = 100, DT50_ws = 100, Koc = 50, max_ws = 0, max_soil = 0.5)
 #' PEC_sw_focus(new_dummy, 1000, scenario = "cereals, winter", met = M1)
 PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
@@ -60,6 +68,9 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
   met = NULL,
   f_drift = NA, f_rd = 0.1,
   scenario = FOCUS_Step_12_scenarios$names,
+  region = c("n", "s"),
+  season = c(NA, "of", "mm", "js"),
+  interception = "no interception",
   txt_file = "pesticide.txt", overwrite = FALSE, append = TRUE)
 {
   if (n > 1 & is.na(i)) stop("Please specify the interval i if n > 1")
@@ -67,17 +78,17 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
   if (is.na(f_drift)) {
     scenario = match.arg(scenario)
     f_drift = FOCUS_Step_12_scenarios$drift[scenario, "1"] / 100
-    # For Step 2 we would/will select the reduced percentiles for multiple apps:
-    # if (n <= 8) {
-    #  f_drift = FOCUS_Step_12_scenarios$drift[scenario, as.character(n)] / 100
-    # } else {
-    #   f_drift = FOCUS_Step_12_scenarios$drift[scenario, ">8"] / 100
-    # }
+    # For Step 2 we would select the reduced percentiles for multiple apps:
+    if (n <= 8) {
+      f_drift_2 = FOCUS_Step_12_scenarios$drift[scenario, as.character(n)] / 100
+    } else {
+      f_drift_2 = FOCUS_Step_12_scenarios$drift[scenario, ">8"] / 100
+    }
   }
 
+  interception = match.arg(interception)
+
   # Write to txt file if requested
-  add_line <- function(x) cat(paste0(x, "\r\n"), file = txt, append = TRUE)
-  add <- function(x) cat(paste(x, "\t"), file = txt, append = TRUE)
   if (file.exists(txt_file)) {
     if (append) {
       txt <- file(txt_file, "a")
@@ -89,20 +100,26 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
              "appending or overwriting it")
       }
     }
+  } else {
+    txt <- file(txt_file, "w")
   }
   on.exit(close(txt))
+  add_line <- function(x) cat(paste0(x, "\r\n"), file = txt, append = TRUE)
 
   # Write header to txt file
-  header <- c("Active Substance", "Compound", "Comment", "Mol mass a.i.",
-              "Mol mass met.", "Water solubility", "KOC assessed compound",
-              "KOC parent compound", "DT50", "Max. in Water",
+  header <- c("Active Substance", "Compound", "Comment",
+              "Mol mass a.i.", "Mol mass met.",
+              "Water solubility",
+              "KOC assessed compound", "KOC parent compound",
+              "DT50",
+              "Max. in Water",
               "Max. in Soil asessed compound", # we reproduce the typo...
-              "App. Rate", "Number of App.", "Time between app.",
-              "App. Type", "DT50 soil parent compound", "DT50 soil",
-              "DT50 water", "DT50 sediment", "Region / Season",
+              "App. Rate", "Number of App.", "Time between app.", "App. Type",
+              "DT50 soil parent compound", "DT50 soil",
+              "DT50 water", "DT50 sediment",
+              "Region / Season",
               "Interception class")
   add_line(paste(header, collapse = "\t"))
-
 
   if (is.null(met)) {
     compound = parent$name
@@ -110,31 +127,84 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
     mw_ratio = 1
     max_soil = 1
     max_ws = 1
-    Koc = parent$Koc
+    Koc_assessed = parent$Koc
     DT50_ws = parent$DT50_ws
+    DT50_soil = parent$DT50_soil
   } else {
     compound = met$name
     cwsat = met$cwsat
     mw_ratio = met$mw / parent$mw
     max_soil = met$max_soil
     max_ws = met$max_ws
-    Koc = met$Koc
+    Koc_assessed = met$Koc
     DT50_ws = met$DT50_ws
+    DT50_soil = met$DT50_soil
   }
 
-  add(parent$name)
-  add(compound)
-  add(comment)
-  if (is.na(parent$mw)) add("-99.00")
-  else add(sprintf("%.2f", parent$mw))
-  if (is.na(met$mw)) add("-99.00")
-  else add(sprintf("%.2f", met$mw))
-  add(sprintf("%.2f", cwsat))
-  add(sprintf("%.2f", Koc))
-  if (is.null(met)) add("0.00E+00")
-  else add(sprintf("%.2f", parent$Koc))
+  # In the Step 12 input file, the application type is the index of the drift
+  # scenarios, with numbering starting at 0
+  app_type = which(scenario == rownames(FOCUS_Step_12_scenarios$drift)) - 1
+  # The interception class is a number from 1.00 (no interception) to 4.00 (full canopy)
+  int_class = which(interception == colnames(FOCUS_Step_12_scenarios$interception))
 
-  # Rates for a single application
+  # We calculate Step 2 if a season is specified
+  # Interception and region/season code
+  if (is.na(season[1])) {
+    f_int = 0
+    reg_sea = 0
+  } else {
+    f_int = FOCUS_Step_12_scenarios$interception[scenario, interception]
+
+    # the code for region / season is the sum of the region code
+    reg_code = switch(region,
+      "n" = 0,
+      "s" = 3)
+    # and the season code
+    sea_code = switch(season,
+      "of" = 0,
+      "mm" = 1,
+      "js" = 2)
+    reg_sea = reg_code + sea_code
+  }
+
+  run_txt <- c(
+    ai = parent$name, compound = compound,
+    comment = comment)
+
+  run_numeric <- c(
+    mw_ai = NA, mw_met = NA,
+    cwsat = cwsat, Koc_assessed = Koc_assessed, Koc_parent = 0,
+    DT50_ws = DT50_ws,
+    max_ws = 0, max_soil = 0,
+    rate = rate, n = n, i = if(is.na(i)) 0 else i,
+    app_type = app_type,
+    DT50_soil_parent = 0, DT50_soil = 0, DT50_water = 0, DT50_sediment = 0,
+    reg_sea = reg_sea, int_class = int_class)
+
+  if (is.null(met)) {
+    run_numeric["DT50_soil"] = parent$DT50_soil
+    run_numeric["DT50_water"] = parent$DT50_water
+    run_numeric["DT50_sediment"] = parent$DT50_sediment
+  } else {
+    run_numeric["mw_ai"] = parent$mw
+    run_numeric["mw_met"] = met$mw
+    run_numeric["Koc_parent"] = parent$Koc
+    run_numeric["DT50_soil"] = met$DT50_soil
+    run_numeric["DT50_soil_parent"] = parent$DT50_soil
+    run_numeric["DT50_water"] = met$DT50_water
+    run_numeric["DT50_sediment"] = met$DT50_sediment
+  }
+
+  print_numeric <- function(x) {
+    ifelse(is.na(x), "  -99.00",
+      ifelse(x < 0.01,
+        sprintf("%8.2E", x),
+        sprintf("%8.2f", x)))
+  }
+  run_line <- paste(c(run_txt, print_numeric(run_numeric)), collapse = "\t")
+  add_line(run_line)
+
+  # Rates for a single application (suffix _s)
   eq_rate_drift_s = mw_ratio * max_ws * rate
   # Parent only, or metabolite formed in soil:
   eq_rate_rd_s = mw_ratio * max_soil * rate
@@ -156,6 +226,7 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
   input_rd_s = f_rd * eq_rate_rd_s_tot * ratio_field_wb / 10
   input_rd = n * input_rd_s
 
+  # Step 1 accumulation in the aquatic system
   # No accumulation between multiple applications if 3 * DT50 < i
   if (n > 1 && (3 * DT50_ws < i)) {
     input_drift = input_drift_s
@@ -165,13 +236,19 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
     input_rd = n * input_rd_s
   }
 
+  # Step 2 accumulation in soil
+  # Use interception and degradation in soil for Step 2
+  k_soil = log(2)/DT50_soil
+  f_deg_soil = exp(- 4 * k_soil) * # Four days of degradation
+    (1 - exp(-n * i * k_soil)) / (1 - exp(-i * k_soil)) # multiple applications
+
   # Fraction of compound entering the water phase via runoff/drainage
   depth_sw  = 0.3  # m
   depth_sed = 0.05 # m
   depth_sed_eff = 0.01 # m, only relevant for sorption
   rho_sed = 0.8 # kg/L
   f_OC = 0.05 # 5% organic carbon in sediment
-  f_rd_sw = depth_sw / (depth_sw + (depth_sed_eff * rho_sed * f_OC * Koc))
+  f_rd_sw = depth_sw / (depth_sw + (depth_sed_eff * rho_sed * f_OC * Koc_assessed))
   f_rd_sed = 1 - f_rd_sw
 
   # Initial PECs
@@ -237,6 +314,9 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
 #' @param name Length one character vector containing the name
 #' @param cwsat Water solubility in mg/L
 #' @param DT50_ws Half-life in water/sediment systems in days
+#' @param DT50_soil Half-life in soil in days
+#' @param DT50_water Half-life in water in days (Step 2)
+#' @param DT50_sediment Half-life in sediment in days (Step 2)
 #' @param Koc Partition coefficient between organic carbon and water
 #'   in L/kg.
 #' @param mw Molar weight in g/mol.
@@ -244,8 +324,11 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
 #' @param max_ws Maximum observed fraction (dimensionless) in water/sediment
 #'   systems
 #' @return A list with the substance specific properties
-chent_focus_sw <- function(name, Koc, DT50_ws = NA, cwsat = 1000, mw = NA, max_soil = 1, max_ws = 1)
+chent_focus_sw <- function(name, Koc, DT50_ws = NA, DT50_soil = NA,
+                           DT50_water = NA, DT50_sediment = NA,
+                           cwsat = 1000, mw = NA, max_soil = 1, max_ws = 1)
 {
-  list(Koc = Koc, DT50_ws = DT50_ws, cwsat = cwsat,
+  list(name = name, Koc = Koc, DT50_ws = DT50_ws, DT50_soil = DT50_soil,
+       DT50_water = DT50_water, DT50_sediment = DT50_sediment, cwsat = cwsat,
        mw = mw, max_soil = max_soil, max_ws = max_ws)
 }

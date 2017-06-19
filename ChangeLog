@@ -1,3 +1,27 @@
+commit c9bcd8e68db61515080ff377c6a04fa807337258
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-06-17 16:36:13 +0200
+
+    Start with the generation of an input file
+
+commit e6f968cf97ed6ca9268e6098d86ba63ff2c6d2b0
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-05-24 16:07:35 +0200
+
+    Fix for the sawtooth function for repeated applications
+    
+    For n > 2, the second application was made at 2 * i instead of i.
+
+commit 4835e20d1d08203657ab616600286ad9dfd71344
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-05-24 15:46:44 +0200
+
+    Re-enable PELMO examples and tests
+    
+    - Add .gitattributes to make sure CRLF line endings are kept for PELMO
+    .psm files
+    - Update static docs
+
 commit 539ea37b45ddc41b36dd199f06ffe5936ab13f21
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-05-17 12:23:38 +0200

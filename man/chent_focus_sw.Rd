@@ -4,18 +4,26 @@
 \alias{chent_focus_sw}
 \title{Create a chemical compound object for FOCUS Step 1 calculations}
 \usage{
-chent_focus_sw(Koc, DT50_ws = NA, cwsat = 1000, mw = NA, max_soil = 1,
-  max_ws = 1)
+chent_focus_sw(name, Koc, DT50_ws = NA, DT50_soil = NA, DT50_water = NA,
+  DT50_sediment = NA, cwsat = 1000, mw = NA, max_soil = 1, max_ws = 1)
 }
 \arguments{
+\item{name}{Length one character vector containing the name}
+
 \item{Koc}{Partition coefficient between organic carbon and water
 in L/kg.}
 
 \item{DT50_ws}{Half-life in water/sediment systems in days}
 
+\item{DT50_soil}{Half-life in soil in days}
+
+\item{DT50_water}{Half-life in water in days (Step 2)}
+
+\item{DT50_sediment}{Half-life in sediment in days (Step 2)}
+
 \item{cwsat}{Water solubility in mg/L}
 
-\item{mw}{Molar weight in g/mol}
+\item{mw}{Molar weight in g/mol.}
 
 \item{max_soil}{Maximum observed fraction (dimensionless) in soil}
 

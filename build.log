@@ -1,6 +1,9 @@
 * checking for file ‘./DESCRIPTION’ ... OK
 * preparing ‘pfm’:
 * checking DESCRIPTION meta-information ... OK
+* excluding invalid files
+Subdirectory 'R' contains invalid file names:
+  ‘pesticide.txt’ ‘xxx.txt’
 * checking for LF line-endings in source and make files
 * checking for empty or unneeded directories
 * looking to see if a ‘data/datalist’ file should be added
