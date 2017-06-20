@@ -89,24 +89,6 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
   interception = match.arg(interception)
 
   # Write to txt file if requested
-  if (file.exists(txt_file)) {
-    if (append) {
-      txt <- file(txt_file, "a")
-    } else {
-      if (overwrite) {
-        txt <- file(txt_file, "w")
-      } else {
-        stop("The file", txt_file, "already exists, and you did not request",
-             "appending or overwriting it")
-      }
-    }
-  } else {
-    txt <- file(txt_file, "w")
-  }
-  on.exit(close(txt))
-  add_line <- function(x) cat(paste0(x, "\r\n"), file = txt, append = TRUE)
-
-  # Write header to txt file
   header <- c("Active Substance", "Compound", "Comment",
               "Mol mass a.i.", "Mol mass met.",
               "Water solubility",
@@ -119,7 +101,25 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
               "DT50 water", "DT50 sediment",
               "Region / Season",
               "Interception class")
-  add_line(paste(header, collapse = "\t"))
+  add_line <- function(x) cat(paste0(x, "\r\n"), file = txt, append = TRUE)
+  if (file.exists(txt_file)) {
+    if (append) {
+      txt <- file(txt_file, "a")
+    } else {
+      if (overwrite) {
+        txt <- file(txt_file, "w")
+        add_line(paste(header, collapse = "\t"))
+      } else {
+        stop("The file", txt_file, "already exists, and you did not request",
+             "appending or overwriting it")
+      }
+    }
+  } else {
+    txt <- file(txt_file, "w")
+    add_line(paste(header, collapse = "\t"))
+  }
+  on.exit(close(txt))
+
 
   if (is.null(met)) {
     compound = parent$name
@@ -188,6 +188,8 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
   } else {
     run_numeric["mw_ai"] = parent$mw
     run_numeric["mw_met"] = met$mw
+    run_numeric["max_soil"] = 100 * met$max_soil
+    run_numeric["max_ws"] = 100 * met$max_ws
     run_numeric["Koc_parent"] = parent$Koc
     run_numeric["DT50_soil"] = met$DT50_soil
     run_numeric["DT50_soil_parent"] = parent$DT50_soil
@@ -328,7 +330,8 @@ chent_focus_sw <- function(name, Koc, DT50_ws = NA, DT50_soil = NA,
                            DT50_water = NA, DT50_sediment = NA,
                            cwsat = 1000, mw = NA, max_soil = 1, max_ws = 1)
 {
-  list(name = name, Koc = Koc, DT50_ws = DT50_ws, DT50_soil = DT50_soil,
-       DT50_water = DT50_water, DT50_sediment = DT50_sediment, cwsat = cwsat,
-       mw = mw, max_soil = max_soil, max_ws = max_ws)
+  list(name = name, Koc = Koc,
+       DT50_ws = DT50_ws, DT50_soil = DT50_soil, DT50_water = DT50_water,
+       DT50_sediment = DT50_sediment,
+       cwsat = cwsat, mw = mw, max_soil = max_soil, max_ws = max_ws)
 }
