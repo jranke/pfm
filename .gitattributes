@@ -1,1 +1,2 @@
 inst/testdata/*.psm text eol=crlf
+inst/testdata/Steps_12_pesticide.txt
