@@ -1,4 +1,4 @@
-context("FOCUS Step 1 and 2 calculations")
+context("FOCUS Step 1 calculations") # {{{1
 
 test_txt <- readLines(
   system.file("testdata/Steps_12_pesticide.txt", package = "pfm")
@@ -7,18 +7,27 @@ test_txt <- readLines(
 # Define test compounds as in pesticide.txt
 dummy_1 <- chent_focus_sw("Dummy 1", cwsat = 6000, DT50_ws = 6, DT50_soil = 6, Koc = 344.8,
                           DT50_water = 6, DT50_sediment = 6)
-dummy_2 <- chent_focus_sw("Dummy 2", cwsat = 30, DT50_ws = 26, Koc = 110)
-dummy_4 <- chent_focus_sw("Dummy 4", cwsat = 2e-3, DT50_ws = 4, Koc = 970)
-dummy_5 <- chent_focus_sw("Dummy 5", cwsat = 1.15, DT50_ws = 118, Koc = 860)
-dummy_7 <- chent_focus_sw("Dummy 7", cwsat = 2.60, DT50_ws = 28, Koc = 500)
-new_dummy <- chent_focus_sw("New Dummy", mw = 250, Koc = 100)
-M1 <- chent_focus_sw("M1", mw = 100, cwsat = 100, DT50_ws = 100,
-                     Koc = 50, max_ws = 0, max_soil = 0.5)
-M2 <- chent_focus_sw("M2", mw = 100, cwsat = 100, DT50_ws = 100,
-                     Koc = 50, max_ws = 0.5, max_soil = 0)
+dummy_2 <- chent_focus_sw("Dummy 2", cwsat = 30, DT50_ws = 26, DT50_soil = 56, Koc = 110,
+                          DT50_water = 26, DT50_sediment = 26)
+dummy_4 <- chent_focus_sw("Dummy 4", cwsat = 2e-3, DT50_ws = 4, Koc = 970,
+                          DT50_soil = 19, DT50_water = 4, DT50_sediment = 4)
+dummy_5 <- chent_focus_sw("Dummy 5", cwsat = 1.15, DT50_ws = 118, Koc = 860,
+                          DT50_soil = 250, DT50_water = 6, DT50_sediment = 118)
+dummy_7 <- chent_focus_sw("Dummy 7", cwsat = 2.60, DT50_ws = 28, Koc = 500,
+                          DT50_soil = 50, DT50_water = 2.5, DT50_sediment = 28)
+new_dummy <- chent_focus_sw("New Dummy", mw = 250, Koc = 100,
+                            DT50_soil = 10)
+M1 <- chent_focus_sw("Metabolite M1",
+                     mw = 100, cwsat = 100, DT50_ws = 100,
+                     Koc = 50, max_ws = 0, max_soil = 0.5,
+                     DT50_soil = 20, DT50_water = 10, DT50_sediment = 100)
+M2 <- chent_focus_sw("Metabolite M2",
+                     mw = 100, cwsat = 100, DT50_ws = 100,
+                     Koc = 50, max_ws = 0.5, max_soil = 0,
+                     DT50_soil = 20, DT50_water = 10, DT50_sediment = 100)
 
 # When we compare the generated input file with the test file,
-# we can ignore some fields
+# we can ignore some fields if we are looking at the parent ai
 field_index <- c(ai = 1, compound = 2, comment = 3,
   mw_ai = 4, mw_met = 5,
   cwsat = 6, Koc_assessed = 7,
@@ -36,18 +45,12 @@ PEC_template_1 <- matrix(NA, nrow = length(t_out_1), ncol = 4,
 
 t_out_2 <- c(0, 1, 2, 4, 7, 14, 21, 28, 42, 50, 100) # We read in text from rtf reports for Step 2
 
-test_that("Results of Steps 1/2 calculator for Dummy 1 are reproduced", {
+test_that("Results of Steps 1/2 calculator for Dummy 1 are reproduced", { # {{{1
   res_step_1_1 <- PEC_sw_focus(dummy_1, 3000,
     comment = "Potatoes, Southern Europe, spring, 1 app/season, soil incorporation",
     scenario = "no drift (incorp or seed trtmt)",
     region = "s", season = "mm",
     append = FALSE, overwrite = TRUE)
-
-  pest_txt <- readLines("pesticide.txt")
-  expect_equal(test_txt[1], pest_txt[1]) # Header
-  test_1 <- strsplit(test_txt[2], "\t")[[1]][field_index_parent]
-  pest_1 <- strsplit(pest_txt[2], "\t")[[1]][field_index_parent]
-  expect_equal(test_1, pest_1) # Parent fields
 
   PEC_step_1_1 <- PEC_template_1
   PEC_step_1_1[, "PECsw"]  = c(685.06, 610.32, 543.73, 431.56)
@@ -74,11 +77,14 @@ test_that("Results of Steps 1/2 calculator for Dummy 1 are reproduced", {
   dimnames(PEC_step_2_1) = list(Time = t_out_2,
     type = c("PECsw", "TWAECsw", "PECsed", "TWAECsed"))
 
-  # Step 2 is not implemented.
+  # Step 2 is not implemented, so this can not be tested.
 })
 
-test_that("Results of Steps 1/2 calculator for Dummy 2 are reproduced", {
-  res_dummy_2 <- PEC_sw_focus(dummy_2, 1000)
+test_that("Results of Steps 1/2 calculator for Dummy 2 are reproduced", { # {{{1
+  res_dummy_2 <- PEC_sw_focus(dummy_2, 1000,
+    comment = "Maize, Southern Europe, spring, 1 app/season",
+    scenario = "maize",
+    region = "s", season = "mm")
 
   PEC_step_1_2 = PEC_template_1
 
@@ -90,9 +96,11 @@ test_that("Results of Steps 1/2 calculator for Dummy 2 are reproduced", {
   expect_equal(res_dummy_2$PEC[1:4, ], PEC_step_1_2[, ], tolerance = 0.01, scale = 1)
 })
 
-test_that("Results of Steps 1/2 calculator for Dummy 4 are reproduced", {
+test_that("Results of Steps 1/2 calculator for Dummy 4 are reproduced", { # {{{1
   res_dummy_4 <- PEC_sw_focus(dummy_4, 7.5, n = 3, i = 14,
-                              scenario = "pome / stone fruit, early")
+    comment = "Apples, Southern  Europe, spring, 3 app./season, 14 d int, orchards",
+    region = "s", season = "mm",
+    scenario = "pome / stone fruit, early")
 
   PEC_step_1_4 = PEC_template_1
 
@@ -104,9 +112,11 @@ test_that("Results of Steps 1/2 calculator for Dummy 4 are reproduced", {
   expect_equal(res_dummy_4$PEC[1:4, ], PEC_step_1_4[, ], tolerance = 0.01, scale = 1)
 })
 
-test_that("Results of Steps 1/2 calculator for Dummy 5 are reproduced", {
+test_that("Results of Steps 1/2 calculator for Dummy 5 are reproduced", { # {{{1
   res_dummy_5 <- PEC_sw_focus(dummy_5, 75, n = 5, i = 14,
-                              scenario = "vines, early")
+    comment = "Vines, Northern Europe, spring, 5 app/seaon 14 d int.",
+    region = "n", season = "mm",
+    scenario = "vines, early")
 
   PEC_step_1_5 = PEC_template_1
 
@@ -118,9 +128,11 @@ test_that("Results of Steps 1/2 calculator for Dummy 5 are reproduced", {
   expect_equal(res_dummy_5$PEC[1:4, ], PEC_step_1_5[, ], tolerance = 0.01, scale = 1)
 })
 
-test_that("Results of Steps 1/2 calculator for Dummy 7 are reproduced", {
+test_that("Results of Steps 1/2 calculator for Dummy 7 are reproduced", { # {{{1
   res_dummy_7 <- PEC_sw_focus(dummy_7, 750, n = 4, i = 14,
-                              scenario = "vines, early")
+    comment = "Vines, Southern Europe, spring, 4 app/seaon 14 d int.",
+    region = "s", season = "mm",
+    scenario = "vines, early")
 
   PEC_step_1_7 = PEC_template_1
 
@@ -133,8 +145,10 @@ test_that("Results of Steps 1/2 calculator for Dummy 7 are reproduced", {
   expect_equal(res_dummy_7$PEC[1:4, c(3, 4)], PEC_step_1_7[, c(3, 4)], tolerance = 10, scale = 1)
 })
 
-test_that("Results of Steps 1/2 calculator for New Dummy (M1-M3) are reproduced", {
+test_that("Results of Steps 1/2 calculator for New Dummy (M1-M2) are reproduced", { # {{{1
   res_M1 <- PEC_sw_focus(new_dummy, 1000, scenario = "cereals, winter",
+                         comment = "Soil Metabolite",
+                         region = "n", season = "of",
                          met = M1)
 
   PEC_step_1_M1 = PEC_template_1
@@ -147,6 +161,8 @@ test_that("Results of Steps 1/2 calculator for New Dummy (M1-M3) are reproduced"
   expect_equal(res_M1$PEC[1:4, ], PEC_step_1_M1[, ], tolerance = 0.01, scale = 1)
 
   res_M2 <- PEC_sw_focus(new_dummy, 1000, scenario = "cereals, winter",
+                         comment = "Water Metabolite",
+                         region = "n", season = "of",
                          met = M2)
 
   PEC_step_1_M2 = PEC_template_1
@@ -158,4 +174,48 @@ test_that("Results of Steps 1/2 calculator for New Dummy (M1-M3) are reproduced"
 
   expect_equal(res_M2$PEC[1:4, ], PEC_step_1_M2[, ], tolerance = 0.01, scale = 1)
 })
+
+context("FOCUS Steps 12 input files") # {{{1
+test_that("Runs are correctly defined in the Steps 12 input file", { # {{{1
+
+  pest_txt <- readLines("pesticide.txt")
+  expect_equal(test_txt[1], pest_txt[1]) # Header
+
+  # Dummy 1
+  test_1 <- strsplit(test_txt[2], "\t")[[1]][field_index_parent]
+  pest_1 <- strsplit(pest_txt[2], "\t")[[1]][field_index_parent]
+  expect_equal(test_1, pest_1) # Parent fields
+
+  # Dummy 2
+  test_2 <- strsplit(test_txt[3], "\t")[[1]][field_index_parent]
+  pest_2 <- strsplit(pest_txt[3], "\t")[[1]][field_index_parent]
+  expect_equal(test_2, pest_2) # Parent fields
+
+  # Dummy 4
+  test_4 <- strsplit(test_txt[5], "\t")[[1]][field_index_parent]
+  pest_4 <- strsplit(pest_txt[4], "\t")[[1]][field_index_parent]
+  expect_equal(test_4, pest_4) # Parent fields
+
+  # Dummy 5
+  test_5 <- strsplit(test_txt[6], "\t")[[1]][field_index_parent]
+  pest_5 <- strsplit(pest_txt[5], "\t")[[1]][field_index_parent]
+  expect_equal(test_5, pest_5) # Parent fields
+
+  # Dummy 7
+  test_7 <- strsplit(test_txt[9], "\t")[[1]][field_index_parent]
+  pest_7 <- strsplit(pest_txt[6], "\t")[[1]][field_index_parent]
+  expect_equal(test_7, pest_7) # Parent fields
+
+  # New Dummy / M1
+  test_m1 <- strsplit(test_txt[10], "\t")[[1]]
+  pest_m1 <- strsplit(pest_txt[7], "\t")[[1]]
+  expect_equal(test_m1, pest_m1) # All fields
+
+  # New Dummy / M2
+  test_m2 <- strsplit(test_txt[11], "\t")[[1]]
+  pest_m2 <- strsplit(pest_txt[8], "\t")[[1]]
+  expect_equal(test_m2, pest_m2) # All fields
+
+})
 unlink("pesticide.txt")
+# vim: set foldmethod=marker: {{{

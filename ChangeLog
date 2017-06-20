@@ -1,3 +1,19 @@
+commit 34d4915297faf6236479f0e6474f8aa6b8d4b416
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-06-20 04:30:52 +0200
+
+    Fix generation of input files
+    
+    - Write header only if not appending
+    - Write max_soil and max_ws for metabolites
+    - Formatting
+
+commit 7233eed00b799e08c31ae971f997b4b3c14eaea2
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-06-19 20:10:21 +0200
+
+    Single line of generated Step12  input file partially validated
+
 commit c9bcd8e68db61515080ff377c6a04fa807337258
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-06-17 16:36:13 +0200
