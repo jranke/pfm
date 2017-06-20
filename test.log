@@ -13,34 +13,11 @@ Check max_twa for parent mkinfit models against analytical solutions: .
 Simple PEC sediment calculations: .
 Simple PEC soil calculations: ...........
 Simple PEC surface water calculations with drift entry: ..
-Create PELMO runs from psm files and execute them: ..................................................1...........2............................................................................................................................................................
+Create PELMO runs from psm files and execute them: ...........................................................................................................................................................................................................................
 Actual and time weighted average concentrations for SFO kinetics: .
 FOCUS Step 1 calculations: .........
 FOCUS Steps 12 input files: ........
 Read and analyse TOXSWA cwa files: .......
 UK drainage PEC calculations: ............
-
-Failed ---------------------------------------------------------------------------------------------
-1. Failure: PELMO runs can be run and give the expected result files (@test_PELMO.R#93) ------------
-`new` not identical to `test`.
-1/17288 mismatches
-x[15376]: " 14958 24 0.900E-01 0.420E-01 0.000E+00 0.000E+00 0.292E+00 0.292E+00 0.2
-x[15376]: 68E+01\xa00.244E+01 0.000E+00 0.753E-04 0.209E-05 0.175E-02 0.000E+00 0.00
-x[15376]: 0E+00 0.000E+00"
-y[15376]: " 14958 24 0.900E-01 0.420E-01 0.000E+00 0.000E+00 0.292E+00 0.292E+00 0.2
-y[15376]: 68E+01 0.244E+01 0.000E+00 0.753E-04 0.209E-05 0.175E-02 0.000E+00 0.000E+
-y[15376]: 00 0.000E+00"
-
-
-2. Failure: PELMO runs can be run and give the expected result files (@test_PELMO.R#93) ------------
-`new` not identical to `test`.
-1/17460 mismatches
-x[16928]: " 16293 24 0.510E+00 0.480E+00 0.000E+00 0.000E+00 0.334E+00 0.2\xb57E+00 
-x[16928]: 0.232E+02 0.235E+02 0.000E+00 0.190E-02 0.695E-04 0.992E-02 0.000E+00 0.00
-x[16928]: 0E+00 0.000E+00"
-y[16928]: " 16293 24 0.510E+00 0.480E+00 0.000E+00 0.000E+00 0.334E+00 0.257E+00 0.2
-y[16928]: 32E+02 0.235E+02 0.000E+00 0.190E-02 0.695E-04 0.992E-02 0.000E+00 0.000E+
-y[16928]: 00 0.000E+00"
-
 
 DONE ===============================================================================================
