@@ -70,8 +70,8 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
   scenario = FOCUS_Step_12_scenarios$names,
   region = c("n", "s"),
   season = c(NA, "of", "mm", "js"),
-  interception = c("no interception", "minimal crop cover", 
-                   "average crop cover", "full canopy"), 
+  interception = c("no interception", "minimal crop cover",
+                   "average crop cover", "full canopy"),
   txt_file = "pesticide.txt", overwrite = FALSE, append = TRUE)
 {
   if (n > 1 & is.na(i)) stop("Please specify the interval i if n > 1")
@@ -102,7 +102,7 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
               "DT50 water", "DT50 sediment",
               "Region / Season",
               "Interception class")
-  add_line <- function(x) cat(x, sep = "\r\n", 
+  add_line <- function(x) cat(x, sep = "\r\n",
                               file = txt, append = TRUE)
   if (file.exists(txt_file)) {
     if (append) {
@@ -169,8 +169,15 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
     reg_sea = reg_code + sea_code
   }
 
+  if (is.null(met)) {
+    name_input <- paste(parent$name, scenario, region, season)
+  } else {
+    name_input <- paste(met$name, scenario, region, season)
+  }
+  if (comment != "") name_input = paste(name_input, comment)
+
   run_txt <- c(
-    ai = parent$name, compound = compound,
+    ai = name_input, compound = name_input,
     comment = comment)
 
   run_numeric <- c(

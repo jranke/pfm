@@ -1,3 +1,36 @@
+commit 7df0f45b785841e9e490a945a9f6091a68e6333c
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-06-22 08:23:13 +0200
+
+    Add region and season to run name
+
+commit 0d60c88ba7e0693a832056ea3db5cc0eaf3b0819
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-06-20 14:16:14 +0200
+
+    Fix line endings and allow all interception classes
+
+commit dc1e49c8bb27cac81268719055bc4336843c0506
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-06-20 06:16:19 +0200
+
+    Keep dos format for pesticide.txt test data
+
+commit fd40f74907e89077bd81af5d779ae93e1434d8c6
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-06-20 06:11:12 +0200
+
+    Now the errors in PELMO output are gone - not reproducible
+
+commit 88044fd98c5b95d3f3f9bbef7416af66552189c1
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-06-20 06:04:14 +0200
+
+    Tests for Step 1 and 2 (input file only) pass, PELMO fails
+    
+    There are spurious errors in the output PELMO generates. Two examples
+    are in the test.log
+
 commit 34d4915297faf6236479f0e6474f8aa6b8d4b416
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-06-20 04:30:52 +0200

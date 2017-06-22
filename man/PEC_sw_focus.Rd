@@ -7,7 +7,8 @@
 PEC_sw_focus(parent, rate, n = 1, i = NA, comment = "", met = NULL,
   f_drift = NA, f_rd = 0.1, scenario = FOCUS_Step_12_scenarios$names,
   region = c("n", "s"), season = c(NA, "of", "mm", "js"),
-  interception = "no interception", txt_file = "pesticide.txt",
+  interception = c("no interception", "minimal crop cover",
+  "average crop cover", "full canopy"), txt_file = "pesticide.txt",
   overwrite = FALSE, append = TRUE)
 }
 \arguments{

@@ -26,19 +26,6 @@ M2 <- chent_focus_sw("Metabolite M2",
                      Koc = 50, max_ws = 0.5, max_soil = 0,
                      DT50_soil = 20, DT50_water = 10, DT50_sediment = 100)
 
-# When we compare the generated input file with the test file,
-# we can ignore some fields if we are looking at the parent ai
-field_index <- c(ai = 1, compound = 2, comment = 3,
-  mw_ai = 4, mw_met = 5,
-  cwsat = 6, Koc_assessed = 7,
-  Koc_parent = 8,
-  DT50_ws = 9,
-  max_ws = 10, max_soil = 11,
-  rate = 12, n = 13, i = 14, app_type = 15,
-  DT50_soil_parent = 16, DT50_soil = 17, DT50_water = 18, DT50_sediment = 19,
-  reg_sea = 20, int_class = 21)
-field_index_parent <- field_index[-c(4:5, 8, 10:11, 16)]
-
 t_out_1 <- c(0, 1, 2, 4) # Checking the first four days is sufficient for Step 1
 PEC_template_1 <- matrix(NA, nrow = length(t_out_1), ncol = 4,
     dimnames = list(Time = t_out_1, type = c("PECsw", "TWAECsw", "PECsed", "TWAECsed")))
@@ -176,6 +163,23 @@ test_that("Results of Steps 1/2 calculator for New Dummy (M1-M2) are reproduced"
 })
 
 context("FOCUS Steps 12 input files") # {{{1
+# When we compare the generated input file with the test file,
+# we can ignore some fields if we are looking at the parent ai
+# Also, the ai and compound names are not checked, as we append
+# scenario, region and season in order to get unique names
+# for Step 2 result files of the Step12 calculator
+field_index <- c(ai = 1, compound = 2, comment = 3,
+  mw_ai = 4, mw_met = 5,
+  cwsat = 6, Koc_assessed = 7,
+  Koc_parent = 8,
+  DT50_ws = 9,
+  max_ws = 10, max_soil = 11,
+  rate = 12, n = 13, i = 14, app_type = 15,
+  DT50_soil_parent = 16, DT50_soil = 17, DT50_water = 18, DT50_sediment = 19,
+  reg_sea = 20, int_class = 21)
+field_index_mets <- field_index[-c(1, 2)]
+field_index_parent <- field_index[-c(1:2, 4:5, 8, 10:11, 16)]
+
 test_that("Runs are correctly defined in the Steps 12 input file", { # {{{1
 
   pest_txt <- readLines("pesticide.txt")
@@ -207,14 +211,14 @@ test_that("Runs are correctly defined in the Steps 12 input file", { # {{{1
   expect_equal(test_7, pest_7) # Parent fields
 
   # New Dummy / M1
-  test_m1 <- strsplit(test_txt[10], "\t")[[1]]
-  pest_m1 <- strsplit(pest_txt[7], "\t")[[1]]
-  expect_equal(test_m1, pest_m1) # All fields
+  test_m1 <- strsplit(test_txt[10], "\t")[[1]][field_index_mets]
+  pest_m1 <- strsplit(pest_txt[7], "\t")[[1]][field_index_mets]
+  expect_equal(test_m1, pest_m1) # All fields except ai and met names
 
   # New Dummy / M2
-  test_m2 <- strsplit(test_txt[11], "\t")[[1]]
-  pest_m2 <- strsplit(pest_txt[8], "\t")[[1]]
-  expect_equal(test_m2, pest_m2) # All fields
+  test_m2 <- strsplit(test_txt[11], "\t")[[1]][field_index_mets]
+  pest_m2 <- strsplit(pest_txt[8], "\t")[[1]][field_index_mets]
+  expect_equal(test_m2, pest_m2) # All fields except ai and met names
 
 })
 unlink("pesticide.txt")
