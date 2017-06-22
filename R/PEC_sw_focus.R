@@ -48,6 +48,9 @@
 #'   for June to September. If NA, only step 1 PECsw are calculated
 #' @param interception One of 'no interception' (default), 'minimal crop cover',
 #'   'average crop cover' or 'full canopy'
+#' @param met_form_water Should the metabolite formation in water be taken into
+#'   account? This can be switched off to check the influence and to compare
+#'   with previous versions of the Steps 12 calculator
 #' @param txt_file the name, and potentially the full path to the
 #'   Steps.12 input text file to which the specification of the run(s)
 #'   should be written
@@ -72,6 +75,7 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
   season = c(NA, "of", "mm", "js"),
   interception = c("no interception", "minimal crop cover",
                    "average crop cover", "full canopy"),
+  met_form_water = TRUE,
   txt_file = "pesticide.txt", overwrite = FALSE, append = TRUE)
 {
   if (n > 1 & is.na(i)) stop("Please specify the interval i if n > 1")
@@ -222,8 +226,13 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
   # Metabolite formed in water (this part is not documented in the Help files
   # of the Steps 1/2 calculator):
   if (!is.null(met)) {
-    eq_rate_rd_parent_s = mw_ratio * max_ws * rate
-    eq_rate_rd_s_tot = eq_rate_rd_s + eq_rate_rd_parent_s
+    if (met_form_water) {
+      eq_rate_rd_parent_s = mw_ratio * max_ws * rate
+      eq_rate_rd_s_tot = eq_rate_rd_s + eq_rate_rd_parent_s
+    } else {
+      eq_rate_rd_parent_s = NA
+      eq_rate_rd_s_tot = eq_rate_rd_s
+    }
   } else {
     eq_rate_rd_parent_s = NA
     eq_rate_rd_s_tot = eq_rate_rd_s
