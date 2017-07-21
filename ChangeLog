@@ -1,8 +1,17 @@
-commit 7df0f45b785841e9e490a945a9f6091a68e6333c
+commit dffa31a5ad5026d4d67327da622f45c00be40584
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-06-22 08:23:13 +0200
 
-    Add region and season to run name
+    Add scenario, region and season to run name
+
+commit 0607a619d92d582ba40f9c0c3b32a1d0a8791655
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-06-20 16:40:21 +0200
+
+    Possibility to turn off formation in water
+    
+    This makes it possible to compare the Step 1 output with earlier
+    versions of the Steps 12 tool.
 
 commit 0d60c88ba7e0693a832056ea3db5cc0eaf3b0819
 Author: Johannes Ranke <jranke@uni-bremen.de>

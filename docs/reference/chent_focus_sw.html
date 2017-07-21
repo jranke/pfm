@@ -75,12 +75,16 @@
     <p>Create a chemical compound object for FOCUS Step 1 calculations</p>
     
 
-    <pre class="usage"><span class='fu'>chent_focus_sw</span>(<span class='no'>Koc</span>, <span class='kw'>DT50_ws</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>cwsat</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>mw</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>max_soil</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>max_ws</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>chent_focus_sw</span>(<span class='no'>name</span>, <span class='no'>Koc</span>, <span class='kw'>DT50_ws</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>DT50_soil</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>DT50_water</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>DT50_sediment</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>cwsat</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>mw</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>max_soil</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>max_ws</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>name</th>
+      <td><p>Length one character vector containing the name</p></td>
+    </tr>
     <tr>
       <th>Koc</th>
       <td><p>Partition coefficient between organic carbon and water
@@ -91,12 +95,24 @@ in L/kg.</p></td>
       <td><p>Half-life in water/sediment systems in days</p></td>
     </tr>
     <tr>
+      <th>DT50_soil</th>
+      <td><p>Half-life in soil in days</p></td>
+    </tr>
+    <tr>
+      <th>DT50_water</th>
+      <td><p>Half-life in water in days (Step 2)</p></td>
+    </tr>
+    <tr>
+      <th>DT50_sediment</th>
+      <td><p>Half-life in sediment in days (Step 2)</p></td>
+    </tr>
+    <tr>
       <th>cwsat</th>
       <td><p>Water solubility in mg/L</p></td>
     </tr>
     <tr>
       <th>mw</th>
-      <td><p>Molar weight in g/mol</p></td>
+      <td><p>Molar weight in g/mol.</p></td>
     </tr>
     <tr>
       <th>max_soil</th>

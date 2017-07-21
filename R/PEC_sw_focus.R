@@ -64,7 +64,8 @@
 #'
 #' # Metabolite
 #' new_dummy <- chent_focus_sw("New Dummy", mw = 250, Koc = 100)
-#' M1 <- chent_focus_sw(mw = 100, cwsat = 100, DT50_ws = 100, Koc = 50, max_ws = 0, max_soil = 0.5)
+#' M1 <- chent_focus_sw("M1", mw = 100, cwsat = 100, DT50_ws = 100, Koc = 50, 
+#'   max_ws = 0, max_soil = 0.5)
 #' PEC_sw_focus(new_dummy, 1000, scenario = "cereals, winter", met = M1)
 PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
   comment = "",

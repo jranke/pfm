@@ -8,8 +8,8 @@ PEC_sw_focus(parent, rate, n = 1, i = NA, comment = "", met = NULL,
   f_drift = NA, f_rd = 0.1, scenario = FOCUS_Step_12_scenarios$names,
   region = c("n", "s"), season = c(NA, "of", "mm", "js"),
   interception = c("no interception", "minimal crop cover",
-  "average crop cover", "full canopy"), txt_file = "pesticide.txt",
-  overwrite = FALSE, append = TRUE)
+  "average crop cover", "full canopy"), met_form_water = TRUE,
+  txt_file = "pesticide.txt", overwrite = FALSE, append = TRUE)
 }
 \arguments{
 \item{parent}{A list containing substance specific parameters, e.g.
@@ -49,6 +49,10 @@ for June to September. If NA, only step 1 PECsw are calculated}
 \item{interception}{One of 'no interception' (default), 'minimal crop cover',
 'average crop cover' or 'full canopy'}
 
+\item{met_form_water}{Should the metabolite formation in water be taken into
+account? This can be switched off to check the influence and to compare
+with previous versions of the Steps 12 calculator}
+
 \item{txt_file}{the name, and potentially the full path to the
 Steps.12 input text file to which the specification of the run(s)
 should be written}
@@ -84,7 +88,8 @@ PEC_sw_focus(dummy_1, 3000, f_drift = 0)
 
 # Metabolite
 new_dummy <- chent_focus_sw("New Dummy", mw = 250, Koc = 100)
-M1 <- chent_focus_sw(mw = 100, cwsat = 100, DT50_ws = 100, Koc = 50, max_ws = 0, max_soil = 0.5)
+M1 <- chent_focus_sw("M1", mw = 100, cwsat = 100, DT50_ws = 100, Koc = 50, 
+  max_ws = 0, max_soil = 0.5)
 PEC_sw_focus(new_dummy, 1000, scenario = "cereals, winter", met = M1)
 }
 \references{
