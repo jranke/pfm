@@ -24,7 +24,7 @@ clean:
 
 roxygen: 
 	@echo "Roxygenizing package..."
-	"$(R_HOME)/bin/Rscript" -e 'library(devtools); document()'
+	"$(R_HOME)/bin/Rscript" -e 'devtools::document()'
 	@echo "DONE."
 
 pd: roxygen
@@ -36,7 +36,7 @@ pd: roxygen
 $(TGZ): $(pkgfiles)
 	sed -i -e "s/Date:.*/Date: $(DATE)/" DESCRIPTION
 	@echo "Roxygenizing package..."
-	"$(R_HOME)/bin/Rscript" -e 'library(devtools); document()'
+	"$(R_HOME)/bin/Rscript" -e 'devtools::document()'
 	@echo "Building package..."
 	git log --no-merges -M --date=iso > ChangeLog
 	"$(R_HOME)/bin/R" CMD build . > build.log 2>&1
@@ -53,7 +53,7 @@ winbin: $(WINBIN)
 
 test: build
 	@echo "Running testthat tests..."
-	"$(R_HOME)/bin/Rscript" -e 'library(devtools); devtools::test()' 2>&1 | tee test.log
+	"$(R_HOME)/bin/Rscript" -e 'devtools::test()' 2>&1 | tee test.log
 	@echo "DONE."
 
 quickcheck: build
