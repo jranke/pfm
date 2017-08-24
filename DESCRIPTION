@@ -2,7 +2,7 @@ Package: pfm
 Type: Package
 Title: Utilities for Pesticide Fate Modelling
 Version: 0.4-4
-Date: 2017-07-24
+Date: 2017-08-24
 Authors@R: person("Johannes Ranke", email = "jranke@uni-bremen.de",
                   role = c("aut", "cre", "cph"))
 Description: Utilities for simple calculations of predicted environmental
@@ -25,4 +25,4 @@ License: GPL
 LazyLoad: yes
 LazyData: yes
 Encoding: UTF-8
-RoxygenNote: 6.0.1
+RoxygenNote: 6.0.1.9000

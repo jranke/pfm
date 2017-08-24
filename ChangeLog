@@ -1,3 +1,29 @@
+commit a8a2a9d57f40ec7a4fc70df3dc470d88cd10c525
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-07-24 16:31:07 +0200
+
+    Improve Makefile
+
+commit 89fc0926722fbfd6420297194c8b18f5b8a9447d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-07-24 16:26:51 +0200
+
+    Version bump as I had 0.4.3 in my drat already
+
+commit 762880a78620e50814351248c02d012a7b030fb8
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-07-24 16:23:22 +0200
+
+    Avoid warning about possibly mis-spelled word
+
+commit a2e24495c01f837474b69263a9861a89050cbfd1
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-07-21 11:15:41 +0200
+
+    New Option for Step 1, fix example, update docs
+    
+    Also add the reference file for testing Step12 input file generation
+
 commit dffa31a5ad5026d4d67327da622f45c00be40584
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-06-22 08:23:13 +0200
