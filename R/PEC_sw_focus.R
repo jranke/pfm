@@ -55,7 +55,7 @@
 #'   Steps.12 input text file to which the specification of the run(s)
 #'   should be written
 #' @param overwrite Should an existing file a the location specified in
-#'   \code{txt_file} be overwritten?
+#'   \code{txt_file} be overwritten? Only takes effect if append is FALSE.
 #' @param append Should the input text file be appended?
 #' @examples
 #' # Parent only
@@ -310,7 +310,7 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
 
   # Check if PEC_sw_max is above water solubility
   PEC_sw_max = max(PEC[, "PECsw"])
-  if (PEC_sw_max > 1000 * cwsat) {
+  if (!is.na(PEC_sw_max) & PEC_sw_max > 1000 * cwsat) {
     warning("The maximum PEC surface water exceeds the water solubility")
   }
 
