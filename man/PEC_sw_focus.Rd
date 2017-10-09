@@ -58,7 +58,7 @@ Steps.12 input text file to which the specification of the run(s)
 should be written}
 
 \item{overwrite}{Should an existing file a the location specified in
-\code{txt_file} be overwritten?}
+\code{txt_file} be overwritten? Only takes effect if append is FALSE.}
 
 \item{append}{Should the input text file be appended?}
 }

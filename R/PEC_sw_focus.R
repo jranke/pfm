@@ -107,8 +107,9 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
               "DT50 water", "DT50 sediment",
               "Region / Season",
               "Interception class")
-  add_line <- function(x) cat(x, sep = "\r\n",
-                              file = txt, append = TRUE)
+  add_line <- function(x) {
+    cat(paste0(x, "\r\n"), file = txt, append = TRUE)
+  }
   if (file.exists(txt_file)) {
     if (append) {
       txt <- file(txt_file, "a")

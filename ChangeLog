@@ -1,3 +1,18 @@
+commit 311c4fbcc51ad727551da41569d64e6bc290c2b2
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-10-06 09:30:21 +0200
+
+    Update docs, small bugfix
+
+commit 72d7358581bca88af8c507b6c80791100aaafafc
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-08-24 10:30:11 +0200
+
+    Build for windows using roxygen from master
+    
+    Now that roxygen can handle UTF8 characters in function
+    arguments thanks to Hadley Wickham and Jim Hester
+
 commit a8a2a9d57f40ec7a4fc70df3dc470d88cd10c525
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-07-24 16:31:07 +0200
