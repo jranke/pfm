@@ -4,7 +4,8 @@ Title: Utilities for Pesticide Fate Modelling
 Version: 0.4-5
 Date: 2017-10-06
 Authors@R: person("Johannes Ranke", email = "jranke@uni-bremen.de",
-                  role = c("aut", "cre", "cph"))
+                  role = c("aut", "cre", "cph"),
+                  comment = c(ORCID = "0000-0003-4371-6538")),
 Description: Utilities for simple calculations of predicted environmental
     concentrations ('PEC' values) and for dealing with data from some FOCUS
     pesticide fate modelling software packages.
