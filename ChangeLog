@@ -1,3 +1,15 @@
+commit 6f6575701d9b028af4b3b1b4b61c36d4989e2812
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-10-10 14:03:20 +0200
+
+    Add ORCID
+
+commit a33f1bbbf6f6121e8ad40284690a463733a00bc2
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-10-09 08:48:39 +0200
+
+    Write Step 2 input files on windows
+
 commit 311c4fbcc51ad727551da41569d64e6bc290c2b2
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-10-06 09:30:21 +0200

@@ -63,7 +63,7 @@ should be written}
 \item{append}{Should the input text file be appended?}
 }
 \description{
-This is reimplementation of the FOCUS Step 1 and 2 calculator version 3.2,
+This is a reimplementation of the FOCUS Step 1 and 2 calculator version 3.2,
 authored by Michael Klein, in R. Note that results for multiple
 applications should be compared to the corresponding results for a
 single application. At current, this is not done automatically in
