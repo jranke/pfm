@@ -8,6 +8,7 @@ Loading required package: inline
 Loading required package: methods
 Loading required package: parallel
 Testing pfm
+Exposit runoff calculations: ...
 Geometric mean calculation: ......
 Check max_twa for parent mkinfit models against analytical solutions: .
 Simple PEC sediment calculations: .
