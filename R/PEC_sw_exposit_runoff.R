@@ -69,6 +69,7 @@ perc_runoff_reduction_exposit <- list(
 #' @param V_event The unreduced runoff volume, equivalent to 10 mm precipitation on 1 ha
 #' @return A list containing the following components
 #'   \describe{
+#'     \item{perc_runoff}{The runoff percentages for dissolved and bound substance}
 #'     \item{Input}{A matrix containing dissolved and bound input for the different distances}
 #'     \item{PEC_sw_runoff}{A matrix containing PEC values for dissolved and bound substance
 #'       for the different distances. If the rate was given in g/ha, the PECsw are in microg/L.}
@@ -111,9 +112,9 @@ PEC_sw_exposit_runoff <- function(rate, Koc, DT50 = Inf, t_runoff = 3,
 
   PEC_sw_runoff <- 1000 * runoff_input / V_flowing_ditch_runoff
 
-  result <- list(Rate = rate,
-                 Koc = Koc,
-                 Input = runoff_input,
-                 PEC_sw_runoff = PEC_sw_runoff)
+  result <- list(
+    perc_runoff = 100 * f_runoff,
+    runoff = runoff_input,
+    PEC_sw_runoff = PEC_sw_runoff)
   return(result)
 }

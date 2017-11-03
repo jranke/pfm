@@ -30,6 +30,7 @@ PEC_sw_exposit_runoff(rate, Koc, DT50 = Inf, t_runoff = 3,
 \value{
 A list containing the following components
   \describe{
+    \item{perc_runoff}{The runoff percentages for dissolved and bound substance}
     \item{Input}{A matrix containing dissolved and bound input for the different distances}
     \item{PEC_sw_runoff}{A matrix containing PEC values for dissolved and bound substance
       for the different distances. If the rate was given in g/ha, the PECsw are in microg/L.}
