@@ -1,3 +1,9 @@
+commit eb4465035dd44907eae3ea0340221316b7cfca12
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-11-03 11:18:10 +0100
+
+    Also return runoff percentages
+
 commit 06b528f0c19ca9f7a311612c0e9ae80c0d0c1d3f
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-10-27 18:15:29 +0200

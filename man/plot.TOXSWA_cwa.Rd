@@ -6,7 +6,8 @@
 \usage{
 \method{plot}{TOXSWA_cwa}(x, time_column = c("datetime", "t", "t_firstjan",
   "t_rel_to_max"), xlab = "default", ylab = "default", add = FALSE,
-  total = FALSE, LC_TIME = "C", ...)
+  threshold_factor = 1000, thin_low = 1, total = FALSE, LC_TIME = "C",
+  ...)
 }
 \arguments{
 \item{x}{The TOXSWA_cwa object to be plotted.}
@@ -17,6 +18,13 @@ the time is given in days relative to the first of January in the first year.}
 \item{xlab, ylab}{Labels for x and y axis.}
 
 \item{add}{Should we add to an existing plot?}
+
+\item{threshold_factor}{The factor by which the data have to be lower than the maximum
+in order to get thinned for plotting (see next argument).}
+
+\item{thin_low}{If an integer greater than 1, the data close to zero (smaller than
+1/threshold_factor of the maximum) in the series will be thinned by this factor
+in order to decrease the amount of data that is included in the plots}
 
 \item{total}{Should the total concentration in water be plotted, including substance sorbed
 to suspended matter?}
@@ -31,10 +39,17 @@ segment of a TOXSWA surface water body.
 }
 \examples{
 H_sw_D4_pond  <- read.TOXSWA_cwa("00001p_pa.cwa",
-                                 basedir = "SwashProjects/project_H_sw/TOXSWA",
-                                 zipfile = system.file("testdata/SwashProjects.zip",
-                                             package = "pfm"))
+  basedir = "SwashProjects/project_H_sw/TOXSWA",
+  zipfile = system.file("testdata/SwashProjects.zip", package = "pfm"))
 plot(H_sw_D4_pond)
+plot(H_sw_D4_pond, time_column = "t")
+plot(H_sw_D4_pond, time_column = "t_firstjan")
+plot(H_sw_D4_pond, time_column = "t_rel_to_max")
+
+H_sw_R1_stream  <- read.TOXSWA_cwa("00003s_pa.cwa",
+  basedir = "SwashProjects/project_H_sw/TOXSWA",
+  zipfile = system.file("testdata/SwashProjects.zip", package = "pfm"))
+plot(H_sw_R1_stream, time_column = "t_rel_to_max")
 }
 \author{
 Johannes Ranke
