@@ -1,4 +1,4 @@
-# Copyright (C) 2014,2015,2016  Johannes Ranke
+# Copyright (C) 2014,2015,2016,2017  Johannes Ranke
 # Contact: jranke@uni-bremen.de
 # This file is part of the R package pfm
 
