@@ -1,10 +1,10 @@
 * checking for file ‘./DESCRIPTION’ ... OK
 * preparing ‘pfm’:
 * checking DESCRIPTION meta-information ... OK
-Warnung: /tmp/RtmpPy0RQl/Rbuild17321b2b74b/pfm/man/TOXSWA_cwa.Rd:29: unknown macro '\u00B5g'
-Warnung: /tmp/RtmpPy0RQl/Rbuild17321b2b74b/pfm/man/TOXSWA_cwa.Rd:29: unknown macro '\u00B5g'
-Warnung: /tmp/RtmpPy0RQl/Rbuild17321b2b74b/pfm/man/TOXSWA_cwa.Rd:38: unknown macro '\u00B5g'
-Warnung: /tmp/RtmpPy0RQl/Rbuild17321b2b74b/pfm/man/read.TOXSWA_cwa.Rd:33: unknown macro '\u00B5g'
+Warnung: /tmp/Rtmp1wb3oS/Rbuild6f0542d0d193/pfm/man/TOXSWA_cwa.Rd:29: unknown macro '\u00B5g'
+Warnung: /tmp/Rtmp1wb3oS/Rbuild6f0542d0d193/pfm/man/TOXSWA_cwa.Rd:29: unknown macro '\u00B5g'
+Warnung: /tmp/Rtmp1wb3oS/Rbuild6f0542d0d193/pfm/man/TOXSWA_cwa.Rd:38: unknown macro '\u00B5g'
+Warnung: /tmp/Rtmp1wb3oS/Rbuild6f0542d0d193/pfm/man/read.TOXSWA_cwa.Rd:33: unknown macro '\u00B5g'
 * checking for LF line-endings in source and make files and shell scripts
 * checking for empty or unneeded directories
 * looking to see if a ‘data/datalist’ file should be added
