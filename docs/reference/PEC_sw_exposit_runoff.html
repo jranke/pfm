@@ -121,9 +121,10 @@ in the worksheet "Konzept Runoff". Calculation of sediment PEC values is not imp
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list containing the following components</p><dl class='dl-horizontal'>
-    <dt>Input</dt><dd><p>A matrix containing dissolved and bound input for the different distances</p></dd>
-    <dt>PEC_sw_runoo</dt><dd><p>A matrix containing PEC values for dissolved and bound substance
-      for the different distances. If the rate was given in g/ha, the PECsw are in /L.</p></dd>
+    <dt>perc_runoff</dt><dd><p>The runoff percentages for dissolved and bound substance</p></dd>
+    <dt>runoff</dt><dd><p>A matrix containing dissolved and bound input for the different distances</p></dd>
+    <dt>PEC_sw_runoff</dt><dd><p>A matrix containing PEC values for dissolved and bound substance
+      for the different distances. If the rate was given in g/ha, the PECsw are in microg/L.</p></dd>
   </dl>
 
     
@@ -133,13 +134,11 @@ in the worksheet "Konzept Runoff". Calculation of sediment PEC values is not imp
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>PEC_sw_exposit_runoff</span>(<span class='fl'>500</span>, <span class='fl'>150</span>)</div><div class='output co'>#&gt; $Rate
-#&gt; [1] 500
+    <pre class="examples"><div class='input'>  <span class='fu'>PEC_sw_exposit_runoff</span>(<span class='fl'>500</span>, <span class='fl'>150</span>)</div><div class='output co'>#&gt; $perc_runoff
+#&gt; dissolved     bound 
+#&gt;     0.248     0.001 
 #&gt; 
-#&gt; $Koc
-#&gt; [1] 150
-#&gt; 
-#&gt; $Input
+#&gt; $runoff
 #&gt;           dissolved   bound   total
 #&gt; No buffer     1.240 0.00500 1.24500
 #&gt; 5 m           0.744 0.00300 0.74700

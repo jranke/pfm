@@ -1,3 +1,9 @@
+commit 87d63e649da5e12409c50cb06d3d2a01e9880759
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2017-12-15 17:25:21 +0100
+
+    Improve handling of µ in y axis for plot.TOXSWA_cwa
+
 commit 4944d7ade227f1dd54c94b6a02c3c849dc1fb8ab
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2017-12-14 10:19:43 +0100

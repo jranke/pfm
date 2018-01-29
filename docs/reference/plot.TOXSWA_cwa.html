@@ -79,7 +79,8 @@ segment of a TOXSWA surface water body.</p>
     <pre class="usage"><span class='co'># S3 method for TOXSWA_cwa</span>
 <span class='fu'>plot</span>(<span class='no'>x</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"datetime"</span>, <span class='st'>"t"</span>, <span class='st'>"t_firstjan"</span>,
   <span class='st'>"t_rel_to_max"</span>), <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"default"</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"default"</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>total</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>LC_TIME</span> <span class='kw'>=</span> <span class='st'>"C"</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>threshold_factor</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>thin_low</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>total</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>LC_TIME</span> <span class='kw'>=</span> <span class='st'>"C"</span>,
+  <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -102,6 +103,17 @@ the time is given in days relative to the first of January in the first year.</p
       <td><p>Should we add to an existing plot?</p></td>
     </tr>
     <tr>
+      <th>threshold_factor</th>
+      <td><p>The factor by which the data have to be lower than the maximum
+in order to get thinned for plotting (see next argument).</p></td>
+    </tr>
+    <tr>
+      <th>thin_low</th>
+      <td><p>If an integer greater than 1, the data close to zero (smaller than
+1/threshold_factor of the maximum) in the series will be thinned by this factor
+in order to decrease the amount of data that is included in the plots</p></td>
+    </tr>
+    <tr>
       <th>total</th>
       <td><p>Should the total concentration in water be plotted, including substance sorbed
 to suspended matter?</p></td>
@@ -119,10 +131,13 @@ to suspended matter?</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>H_sw_D4_pond</span>  <span class='kw'>&lt;-</span> <span class='fu'><a href='read.TOXSWA_cwa.html'>read.TOXSWA_cwa</a></span>(<span class='st'>"00001p_pa.cwa"</span>,
-                                 <span class='kw'>basedir</span> <span class='kw'>=</span> <span class='st'>"SwashProjects/project_H_sw/TOXSWA"</span>,
-                                 <span class='kw'>zipfile</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"testdata/SwashProjects.zip"</span>,
-                                             <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"pfm"</span>))
-<span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>)</div><img src='plot.TOXSWA_cwa-2.png' alt='' width='540' height='400' /></pre>
+  <span class='kw'>basedir</span> <span class='kw'>=</span> <span class='st'>"SwashProjects/project_H_sw/TOXSWA"</span>,
+  <span class='kw'>zipfile</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"testdata/SwashProjects.zip"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"pfm"</span>))
+<span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>)</div><img src='plot.TOXSWA_cwa-2.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>)</div><img src='plot.TOXSWA_cwa-4.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_firstjan"</span>)</div><img src='plot.TOXSWA_cwa-6.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_rel_to_max"</span>)</div><img src='plot.TOXSWA_cwa-8.png' alt='' width='540' height='400' /><div class='input'>
+<span class='no'>H_sw_R1_stream</span>  <span class='kw'>&lt;-</span> <span class='fu'><a href='read.TOXSWA_cwa.html'>read.TOXSWA_cwa</a></span>(<span class='st'>"00003s_pa.cwa"</span>,
+  <span class='kw'>basedir</span> <span class='kw'>=</span> <span class='st'>"SwashProjects/project_H_sw/TOXSWA"</span>,
+  <span class='kw'>zipfile</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"testdata/SwashProjects.zip"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"pfm"</span>))
+<span class='fu'>plot</span>(<span class='no'>H_sw_R1_stream</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_rel_to_max"</span>)</div><img src='plot.TOXSWA_cwa-10.png' alt='' width='540' height='400' /></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
