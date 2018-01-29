@@ -3,7 +3,6 @@
 \docType{data}
 \name{perc_runoff_reduction_exposit}
 \alias{perc_runoff_reduction_exposit}
-\alias{buffers}
 \title{Runoff reduction percentages as used in Exposit}
 \format{A named list of data frames with reduction percentage values for the
 dissolved fraction and the fraction bound to eroding particles, with
@@ -18,7 +17,7 @@ Excel 3.01 spreadsheet available from
   \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
 }
 \usage{
-buffers
+perc_runoff_reduction_exposit
 }
 \description{
 A table of the runoff reduction percentages used in Exposit 3 for different vegetated buffer widths

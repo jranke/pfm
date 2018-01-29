@@ -1,10 +1,6 @@
 * checking for file ‘./DESCRIPTION’ ... OK
 * preparing ‘pfm’:
 * checking DESCRIPTION meta-information ... OK
-Warnung: /tmp/RtmpcrkMKU/Rbuild6cab5b5f6c51/pfm/man/TOXSWA_cwa.Rd:29: unknown macro '\u00B5g'
-Warnung: /tmp/RtmpcrkMKU/Rbuild6cab5b5f6c51/pfm/man/TOXSWA_cwa.Rd:29: unknown macro '\u00B5g'
-Warnung: /tmp/RtmpcrkMKU/Rbuild6cab5b5f6c51/pfm/man/TOXSWA_cwa.Rd:38: unknown macro '\u00B5g'
-Warnung: /tmp/RtmpcrkMKU/Rbuild6cab5b5f6c51/pfm/man/read.TOXSWA_cwa.Rd:33: unknown macro '\u00B5g'
 * checking for LF line-endings in source and make files and shell scripts
 * checking for empty or unneeded directories
 * looking to see if a ‘data/datalist’ file should be added

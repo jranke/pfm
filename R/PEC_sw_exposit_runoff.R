@@ -13,12 +13,12 @@
 #'   }
 #' @source Excel 3.01 spreadsheet available from
 #'   \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
-#' @export
+#' @export perc_runoff_exposit
 #' @examples
 #' print(perc_runoff_exposit)
-Koc_breaks <- c(0, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, Inf)
+{Koc_breaks <- c(0, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, Inf)
 tmp <- paste(Koc_breaks[1:11], Koc_breaks[2:12], sep = "-")
-Koc_classes <- c(tmp[1], paste0(">", tmp[2:11]), ">50000")
+Koc_classes <- c(tmp[1], paste0(">", tmp[2:11]), ">50000")}
 perc_runoff_exposit <- data.frame(
   Koc_lower_bound = Koc_breaks[1:12],
   dissolved = c(0.11, 0.151, 0.197, 0.248, 0.224, 0.184, 0.133, 0.084, 0.037, 0.031, 0.014, 0.001),
@@ -43,12 +43,11 @@ rownames(perc_runoff_exposit) <- Koc_classes
 #' @export
 #' @examples
 #' print(perc_runoff_reduction_exposit)
-buffers <- c("No buffer", paste(c(5, 10, 20), "m"))
 perc_runoff_reduction_exposit <- list(
    "3.01" = data.frame(
     dissolved = c(0, 40, 60, 80),
     bound = c(0, 40, 85, 95),
-    row.names = buffers),
+    row.names = c("No buffer", paste(c(5, 10, 20), "m"))),
   "2.0" = data.frame(
     dissolved = c(0, 97.5),
     bound = c(0, 97.5),
