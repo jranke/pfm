@@ -30,7 +30,7 @@ files. For .cwa files, the total concentration is always read as well.}
 \item{windows}{Numeric vector of width of moving windows in days, for calculating
 maximum time weighted average concentrations and areas under the curve.}
 
-\item{thresholds}{Numeric vector of threshold concentrations in \u00B5g/L for
+\item{thresholds}{Numeric vector of threshold concentrations in µg/L for
 generating event statistics.}
 }
 \value{

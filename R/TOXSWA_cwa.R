@@ -1,4 +1,4 @@
-# Copyright (C) 2014,2015,2016,2017  Johannes Ranke
+# Copyright (C) 2014,2015,2016,2017,2018  Johannes Ranke
 # Contact: jranke@uni-bremen.de
 # This file is part of the R package pfm
 
@@ -14,6 +14,7 @@
 
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http://www.gnu.org/licenses/>
+if(getRversion() >= '2.15.1') utils::globalVariables(c("cwa"))
 
 #' Read TOXSWA surface water concentrations
 #'
@@ -40,6 +41,7 @@
 #' @param thresholds Numeric vector of threshold concentrations in µg/L for
 #'   generating event statistics.
 #' @importFrom readr read_fwf fwf_empty
+#' @importFrom grDevices dev.cur
 #' @return An instance of an R6 object of class
 #' \code{\link{TOXSWA_cwa}}.
 #' @export
