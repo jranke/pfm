@@ -18,12 +18,21 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  
+  
+<meta property="og:title" content="Properties of the predefined scenarios from the EFSA guidance from 2015 — soil_scenario_data_EFSA_2015" />
 
+<meta property="og:description" content="Properties of the predefined scenarios used at Tier 1, Tier 2A and Tier 3A for the 
+concentration in soil as given in the EFSA guidance (2015, p. 13/14). Also, the 
+scenario and model adjustment factors from p. 15 and p. 17 are included." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,6 +60,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
@@ -94,25 +109,24 @@ doi:10.2903/j.efsa.2015.4093</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>not_run</span>({
-    <span class='co'># This is the code that was used to define the data</span>
-    <span class='no'>soil_scenario_data_EFSA_2015</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
-      <span class='kw'>Zone</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='st'>"North"</span>, <span class='st'>"Central"</span>, <span class='st'>"South"</span>), <span class='fl'>2</span>),
-      <span class='kw'>Country</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Estonia"</span>, <span class='st'>"Germany"</span>, <span class='st'>"France"</span>, <span class='st'>"Denmark"</span>, <span class='st'>"Czech Republik"</span>, <span class='st'>"Spain"</span>),
-      <span class='kw'>T_arit</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>4.7</span>, <span class='fl'>8.0</span>, <span class='fl'>11.0</span>, <span class='fl'>8.2</span>, <span class='fl'>9.1</span>, <span class='fl'>12.8</span>),
-      <span class='kw'>T_arr</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>7.0</span>, <span class='fl'>10.1</span>, <span class='fl'>12.3</span>, <span class='fl'>9.8</span>, <span class='fl'>11.2</span>, <span class='fl'>14.7</span>),
-      <span class='kw'>Texture</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Coarse"</span>, <span class='st'>"Coarse"</span>, <span class='st'>"Medium fine"</span>, <span class='st'>"Medium"</span>, <span class='st'>"Medium"</span>, <span class='st'>"Medium"</span>),
-      <span class='kw'>f_om</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.118</span>, <span class='fl'>0.086</span>, <span class='fl'>0.048</span>, <span class='fl'>0.023</span>, <span class='fl'>0.018</span>, <span class='fl'>0.011</span>),
-      <span class='kw'>theta_fc</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.244</span>, <span class='fl'>0.244</span>, <span class='fl'>0.385</span>, <span class='fl'>0.347</span>, <span class='fl'>0.347</span>, <span class='fl'>0.347</span>),
-      <span class='kw'>rho</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.95</span>, <span class='fl'>1.05</span>, <span class='fl'>1.22</span>, <span class='fl'>1.39</span>, <span class='fl'>1.43</span>, <span class='fl'>1.51</span>),
-      <span class='kw'>f_sce</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1.5</span>, <span class='fl'>1.5</span>),
-      <span class='kw'>f_mod</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>4</span>, <span class='fl'>4</span>),
-      <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-      <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"CTN"</span>, <span class='st'>"CTC"</span>, <span class='st'>"CTS"</span>, <span class='st'>"CLN"</span>, <span class='st'>"CLC"</span>, <span class='st'>"CLS"</span>)
-    )
-    <span class='fu'>save</span>(<span class='no'>soil_scenario_data_EFSA_2015</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>'../data/soil_scenario_data_EFSA_2015.RData'</span>)
-})
-
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+  <span class='co'># This is the code that was used to define the data</span>
+  <span class='no'>soil_scenario_data_EFSA_2015</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+    <span class='kw'>Zone</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fu'>c</span>(<span class='st'>"North"</span>, <span class='st'>"Central"</span>, <span class='st'>"South"</span>), <span class='fl'>2</span>),
+    <span class='kw'>Country</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Estonia"</span>, <span class='st'>"Germany"</span>, <span class='st'>"France"</span>, <span class='st'>"Denmark"</span>, <span class='st'>"Czech Republik"</span>, <span class='st'>"Spain"</span>),
+    <span class='kw'>T_arit</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>4.7</span>, <span class='fl'>8.0</span>, <span class='fl'>11.0</span>, <span class='fl'>8.2</span>, <span class='fl'>9.1</span>, <span class='fl'>12.8</span>),
+    <span class='kw'>T_arr</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>7.0</span>, <span class='fl'>10.1</span>, <span class='fl'>12.3</span>, <span class='fl'>9.8</span>, <span class='fl'>11.2</span>, <span class='fl'>14.7</span>),
+    <span class='kw'>Texture</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Coarse"</span>, <span class='st'>"Coarse"</span>, <span class='st'>"Medium fine"</span>, <span class='st'>"Medium"</span>, <span class='st'>"Medium"</span>, <span class='st'>"Medium"</span>),
+    <span class='kw'>f_om</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.118</span>, <span class='fl'>0.086</span>, <span class='fl'>0.048</span>, <span class='fl'>0.023</span>, <span class='fl'>0.018</span>, <span class='fl'>0.011</span>),
+    <span class='kw'>theta_fc</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.244</span>, <span class='fl'>0.244</span>, <span class='fl'>0.385</span>, <span class='fl'>0.347</span>, <span class='fl'>0.347</span>, <span class='fl'>0.347</span>),
+    <span class='kw'>rho</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.95</span>, <span class='fl'>1.05</span>, <span class='fl'>1.22</span>, <span class='fl'>1.39</span>, <span class='fl'>1.43</span>, <span class='fl'>1.51</span>),
+    <span class='kw'>f_sce</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1.5</span>, <span class='fl'>1.5</span>),
+    <span class='kw'>f_mod</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>4</span>, <span class='fl'>4</span>),
+    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+    <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"CTN"</span>, <span class='st'>"CTC"</span>, <span class='st'>"CTS"</span>, <span class='st'>"CLN"</span>, <span class='st'>"CLC"</span>, <span class='st'>"CLS"</span>)
+  )
+  <span class='fu'>save</span>(<span class='no'>soil_scenario_data_EFSA_2015</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>'../data/soil_scenario_data_EFSA_2015.RData'</span>)
+<span class='co'># }</span><div class='input'>
 <span class='co'># And this is the resulting dataframe</span>
 <span class='no'>soil_scenario_data_EFSA_2015</span></div><div class='output co'>#&gt;        Zone        Country T_arit T_arr     Texture  f_om theta_fc  rho f_sce
 #&gt; CTN   North        Estonia    4.7   7.0      Coarse 0.118    0.244 0.95   3.0
@@ -149,7 +163,7 @@ doi:10.2903/j.efsa.2015.4093</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

@@ -18,12 +18,22 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  
+  
+<meta property="og:title" content="Calculate the geometric mean — geomean" />
 
+<meta property="og:description" content="Based on some posts in a thread on Stackoverflow
+http://stackoverflow.com/questions/2602583/geometric-mean-is-there-a-built-in
+This function checks for negative values, removes NA values per default and
+returns 0 if at least one element of the vector is 0." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,6 +61,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
@@ -73,7 +89,7 @@
 
     
     <p>Based on some posts in a thread on Stackoverflow
-<a href = 'http://stackoverflow.com/questions/2602583/geometric-mean-is-there-a-built-in'>http://stackoverflow.com/questions/2602583/geometric-mean-is-there-a-built-in</a>
+<a href='http://stackoverflow.com/questions/2602583/geometric-mean-is-there-a-built-in'>http://stackoverflow.com/questions/2602583/geometric-mean-is-there-a-built-in</a>
 This function checks for negative values, removes NA values per default and
 returns 0 if at least one element of the vector is 0.</p>
     
@@ -99,7 +115,9 @@ returns 0 if at least one element of the vector is 0.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>geomean</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>9</span>))</div><div class='output co'>#&gt; [1] 3</div><div class='input'><span class='fu'>geomean</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>NA</span>, <span class='fl'>9</span>))</div><div class='output co'>#&gt; [1] 3</div><div class='input'><span class='co'>## Not run: geomean(c(1, -3, 9)) # returns an error</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>geomean</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>9</span>))</div><div class='output co'>#&gt; [1] 3</div><div class='input'><span class='fu'>geomean</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>NA</span>, <span class='fl'>9</span>))</div><div class='output co'>#&gt; [1] 3</div><span class='co'># NOT RUN {</span>
+<span class='fu'>geomean</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, -<span class='fl'>3</span>, <span class='fl'>9</span>)) <span class='co'># returns an error</span>
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -124,7 +142,7 @@ Johannes Ranke
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

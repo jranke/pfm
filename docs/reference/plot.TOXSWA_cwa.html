@@ -18,12 +18,20 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  
+  
+<meta property="og:title" content="Plot TOXSWA surface water concentrations — plot.TOXSWA_cwa" />
 
+<meta property="og:description" content="Plot TOXSWA hourly concentrations of a chemical substance in a specific
+segment of a TOXSWA surface water body." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,6 +59,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
@@ -133,11 +147,11 @@ to suspended matter?</p></td>
     <pre class="examples"><div class='input'><span class='no'>H_sw_D4_pond</span>  <span class='kw'>&lt;-</span> <span class='fu'><a href='read.TOXSWA_cwa.html'>read.TOXSWA_cwa</a></span>(<span class='st'>"00001p_pa.cwa"</span>,
   <span class='kw'>basedir</span> <span class='kw'>=</span> <span class='st'>"SwashProjects/project_H_sw/TOXSWA"</span>,
   <span class='kw'>zipfile</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"testdata/SwashProjects.zip"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"pfm"</span>))
-<span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>)</div><img src='plot.TOXSWA_cwa-2.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>)</div><img src='plot.TOXSWA_cwa-4.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_firstjan"</span>)</div><img src='plot.TOXSWA_cwa-6.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_rel_to_max"</span>)</div><img src='plot.TOXSWA_cwa-8.png' alt='' width='540' height='400' /><div class='input'>
+<span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_firstjan"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_rel_to_max"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-4.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 <span class='no'>H_sw_R1_stream</span>  <span class='kw'>&lt;-</span> <span class='fu'><a href='read.TOXSWA_cwa.html'>read.TOXSWA_cwa</a></span>(<span class='st'>"00003s_pa.cwa"</span>,
   <span class='kw'>basedir</span> <span class='kw'>=</span> <span class='st'>"SwashProjects/project_H_sw/TOXSWA"</span>,
   <span class='kw'>zipfile</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"testdata/SwashProjects.zip"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"pfm"</span>))
-<span class='fu'>plot</span>(<span class='no'>H_sw_R1_stream</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_rel_to_max"</span>)</div><img src='plot.TOXSWA_cwa-10.png' alt='' width='540' height='400' /></pre>
+<span class='fu'>plot</span>(<span class='no'>H_sw_R1_stream</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_rel_to_max"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-5.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -160,7 +174,7 @@ Johannes Ranke
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

@@ -18,12 +18,20 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  
+  
+<meta property="og:title" content="Step 1/2 scenario data as distributed with the FOCUS Step 1/2 calculator — FOCUS_Step_12_scenarios" />
 
+<meta property="og:description" content="The data were extracted from the scenario.txt file using the R code shown below.
+The text file is not included in the package as its licence is not clear." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,6 +59,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
@@ -87,26 +101,25 @@ The text file is not included in the package as its licence is not clear.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>not_run</span>({
-    <span class='co'># This is the code that was used to extract the data</span>
-    <span class='no'>scenario_path</span> <span class='kw'>&lt;-</span> <span class='st'>"inst/extdata/FOCUS_Step_12_scenarios.txt"</span>
-    <span class='no'>scenarios</span> <span class='kw'>&lt;-</span> <span class='fu'>readLines</span>(<span class='no'>scenario_path</span>)[<span class='fl'>9</span>:<span class='fl'>38</span>]
-    <span class='no'>FOCUS_Step_12_scenarios</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>()
-    <span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='fu'>read.table</span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='no'>scenarios</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"\t"</span>, <span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>check.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-      <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-    <span class='no'>FOCUS_Step_12_scenarios</span>$<span class='no'>names</span> <span class='kw'>=</span> <span class='no'>sce</span>$<span class='no'>Crop</span>
-    <span class='fu'>rownames</span>(<span class='no'>sce</span>) <span class='kw'>&lt;-</span> <span class='no'>sce</span>$<span class='no'>Crop</span>
-    <span class='no'>FOCUS_Step_12_scenarios</span>$<span class='no'>drift</span> <span class='kw'>=</span> <span class='no'>sce</span>[, <span class='fl'>3</span>:<span class='fl'>11</span>]
-    <span class='no'>FOCUS_Step_12_scenarios</span>$<span class='no'>interception</span> <span class='kw'>=</span> <span class='no'>sce</span>[, <span class='fl'>12</span>:<span class='fl'>15</span>]
-    <span class='no'>sce_2</span> <span class='kw'>&lt;-</span> <span class='fu'>readLines</span>(<span class='no'>scenario_path</span>)[<span class='fl'>41</span>:<span class='fl'>46</span>]
-    <span class='no'>rd</span> <span class='kw'>&lt;-</span> <span class='fu'>read.table</span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='no'>sce_2</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"\t"</span>)[<span class='fl'>1</span>:<span class='fl'>2</span>]
-    <span class='no'>rd_mat</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(<span class='no'>rd</span>$<span class='no'>V2</span>, <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-    <span class='fu'>dimnames</span>(<span class='no'>rd_mat</span>) <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>Time</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Oct-Feb"</span>, <span class='st'>"Mar-May"</span>, <span class='st'>"Jun-Sep"</span>),
-                            <span class='kw'>Region</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"North"</span>, <span class='st'>"South"</span>))
-    <span class='no'>FOCUS_Step_12_scenarios</span>$<span class='no'>rd</span> <span class='kw'>=</span> <span class='no'>rd_mat</span>
-    <span class='fu'>save</span>(<span class='no'>FOCUS_Step_12_scenarios</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"data/FOCUS_Step_12_scenarios.RData"</span>)
-})
-
+</div><span class='co'># NOT RUN {</span>
+  <span class='co'># This is the code that was used to extract the data</span>
+  <span class='no'>scenario_path</span> <span class='kw'>&lt;-</span> <span class='st'>"inst/extdata/FOCUS_Step_12_scenarios.txt"</span>
+  <span class='no'>scenarios</span> <span class='kw'>&lt;-</span> <span class='fu'>readLines</span>(<span class='no'>scenario_path</span>)[<span class='fl'>9</span>:<span class='fl'>38</span>]
+  <span class='no'>FOCUS_Step_12_scenarios</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>()
+  <span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='fu'>read.table</span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='no'>scenarios</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"\t"</span>, <span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>check.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='no'>FOCUS_Step_12_scenarios</span>$<span class='no'>names</span> <span class='kw'>=</span> <span class='no'>sce</span>$<span class='no'>Crop</span>
+  <span class='fu'>rownames</span>(<span class='no'>sce</span>) <span class='kw'>&lt;-</span> <span class='no'>sce</span>$<span class='no'>Crop</span>
+  <span class='no'>FOCUS_Step_12_scenarios</span>$<span class='no'>drift</span> <span class='kw'>=</span> <span class='no'>sce</span>[, <span class='fl'>3</span>:<span class='fl'>11</span>]
+  <span class='no'>FOCUS_Step_12_scenarios</span>$<span class='no'>interception</span> <span class='kw'>=</span> <span class='no'>sce</span>[, <span class='fl'>12</span>:<span class='fl'>15</span>]
+  <span class='no'>sce_2</span> <span class='kw'>&lt;-</span> <span class='fu'>readLines</span>(<span class='no'>scenario_path</span>)[<span class='fl'>41</span>:<span class='fl'>46</span>]
+  <span class='no'>rd</span> <span class='kw'>&lt;-</span> <span class='fu'>read.table</span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='no'>sce_2</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"\t"</span>)[<span class='fl'>1</span>:<span class='fl'>2</span>]
+  <span class='no'>rd_mat</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(<span class='no'>rd</span>$<span class='no'>V2</span>, <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='fu'>dimnames</span>(<span class='no'>rd_mat</span>) <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>Time</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Oct-Feb"</span>, <span class='st'>"Mar-May"</span>, <span class='st'>"Jun-Sep"</span>),
+                          <span class='kw'>Region</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"North"</span>, <span class='st'>"South"</span>))
+  <span class='no'>FOCUS_Step_12_scenarios</span>$<span class='no'>rd</span> <span class='kw'>=</span> <span class='no'>rd_mat</span>
+  <span class='fu'>save</span>(<span class='no'>FOCUS_Step_12_scenarios</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"data/FOCUS_Step_12_scenarios.RData"</span>)
+<span class='co'># }</span><div class='input'>
 <span class='co'># And this is the resulting data</span>
 <span class='no'>FOCUS_Step_12_scenarios</span></div><div class='output co'>#&gt; $names
 #&gt;  [1] "cereals, spring"                  "cereals, winter"                 
@@ -275,7 +288,7 @@ The text file is not included in the package as its licence is not clear.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

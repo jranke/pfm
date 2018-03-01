@@ -64,11 +64,14 @@ runs_1 <- list(
        pot = c("Cha", "Ham", "Jok", "Kre", "Oke", "Pia", "Por", "Sev", "Thi")))
 time_1 <- system.time(
   PECgw_1 <- PELMO_runs(runs_1, psm_dir = system.file("testdata", package = "pfm"),
-    cores = 6, overwrite = TRUE)
+    cores = 15, overwrite = TRUE)
 )
 print(PECgw_1)
 # We get exactly the same PECgw values (on Linux, calling PELMO using Wine).
 print(time_1)
+if(!inherits(try(cpuinfo <- readLines("/proc/cpuinfo")), "try-error")) {
+  cat(gsub("model name\\t: ", "CPU model: ", cpuinfo[grep("model name", cpuinfo)[1]]))
+}
 
 # Demonstrate some results with metabolites.
 runs_2 <- list(list(psm = 'Pesticide_D_1_May_every_other_year_mets',
