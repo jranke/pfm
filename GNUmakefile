@@ -8,14 +8,15 @@ DATE    := $(shell date +%Y-%m-%d)
 .PHONEY: usage check clean
 
 pkgfiles = DESCRIPTION \
-		 .Rbuildignore \
-		 data/* \
-	   docs/* \
-		 docs/reference/* \
-	   inst/testdata/* \
-	   R/* \
-     tests/testthat.R \
-     tests/testthat/*
+	.Rbuildignore \
+	data/* \
+	docs/* \
+	docs/reference/* \
+	inst/testdata/* \
+	README.html \
+	R/* \
+	tests/testthat.R \
+	tests/testthat/*
 
 clean:
 	@echo "Cleaning up..."
@@ -26,6 +27,9 @@ roxygen:
 	@echo "Roxygenizing package..."
 	"$(R_HOME)/bin/Rscript" -e 'devtools::document()'
 	@echo "DONE."
+
+README.html: README.md
+	"$(R_HOME)/bin/Rscript" -e "rmarkdown::render('README.md', output_format = 'html_document', output_options = list(mathjax = NULL))"
 
 pd: roxygen
 	@echo "Building static documentation..."

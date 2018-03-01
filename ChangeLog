@@ -1,3 +1,12 @@
+commit 6d8de73e68f2c0349e618af35ce4a8f095ca0ed5
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-03-01 10:10:08 +0100
+
+    Rebuild static docs using current pkdown
+    
+    Process PELMO runs in example using 15 (hyperthreading) cores and show
+    processor info.
+
 commit ffeec05d913f2e987da362c05df2afc2a8a23965
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2018-01-29 10:11:27 +0100
