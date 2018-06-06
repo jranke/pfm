@@ -21,17 +21,23 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Calculate initial predicted environmental concentrations in surface water due to drainage using the UK method — PEC_sw_drainage_UK" />
 
 <meta property="og:description" content="This implements the method specified in the UK data requirements handbook and was checked against the spreadsheet
 published on the CRC website" />
 <meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -54,8 +60,12 @@ published on the CRC website" />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">pfm</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">pfm</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.5</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -70,8 +80,14 @@ published on the CRC website" />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/jranke/pfm">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -79,21 +95,25 @@ published on the CRC website" />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Calculate initial predicted environmental concentrations in surface water due to drainage using the UK method</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jranke/pfm/blob/master/R/PEC_sw_drainage_UK.R'><code>R/PEC_sw_drainage_UK.R</code></a></small>
+    <div class="hidden name"><code>PEC_sw_drainage_UK.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This implements the method specified in the UK data requirements handbook and was checked against the spreadsheet
 published on the CRC website</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>PEC_sw_drainage_UK</span>(<span class='no'>rate</span>, <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='no'>Koc</span>, <span class='kw'>latest_application</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>soil_DT50</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>model_parms</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -164,5 +184,8 @@ Johannes Ranke
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

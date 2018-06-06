@@ -21,18 +21,24 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Create decline time series for multiple applications — sawtooth" />
 
 <meta property="og:description" content="If the number of application cycles n is greater than 1, the
 application pattern specified in applications is repeated n
 times, with an interval i." />
 <meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -55,8 +61,12 @@ times, with an interval i." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">pfm</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">pfm</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.5</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -71,8 +81,14 @@ times, with an interval i." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/jranke/pfm">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -80,22 +96,26 @@ times, with an interval i." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create decline time series for multiple applications</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jranke/pfm/blob/master/R/twa.R'><code>R/twa.R</code></a></small>
+    <div class="hidden name"><code>sawtooth.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>If the number of application cycles <code>n</code> is greater than 1, the
 application pattern specified in <code>applications</code> is repeated <code>n</code>
 times, with an interval <code>i</code>.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>sawtooth</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>365</span>, <span class='kw'>applications</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>time</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, (<span class='no'>n</span> -
   <span class='fl'>1</span>) * <span class='no'>i</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='no'>n</span>), <span class='kw'>amount</span> <span class='kw'>=</span> <span class='fl'>1</span>))</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -122,11 +142,11 @@ the corresponding amounts applied in the second column.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>applications</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>time</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>14</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>7</span>), <span class='kw'>amount</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>))
 <span class='no'>pred</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='one_box.html'>one_box</a></span>(<span class='fl'>10</span>)
-<span class='fu'>plot</span>(<span class='fu'>sawtooth</span>(<span class='no'>pred</span>, <span class='kw'>applications</span> <span class='kw'>=</span> <span class='no'>applications</span>))</div><div class='img'><img src='sawtooth-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>plot</span>(<span class='fu'>sawtooth</span>(<span class='no'>pred</span>, <span class='kw'>applications</span> <span class='kw'>=</span> <span class='no'>applications</span>))</div><div class='img'><img src='sawtooth-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>m_2</span> <span class='kw'>&lt;-</span> <span class='fu'>mkinmod</span>(<span class='kw'>parent</span> <span class='kw'>=</span> <span class='fu'>mkinsub</span>(<span class='st'>"SFO"</span>, <span class='st'>"m1"</span>), <span class='kw'>m1</span> <span class='kw'>=</span> <span class='fu'>mkinsub</span>(<span class='st'>"SFO"</span>))</div><div class='output co'>#&gt; <span class='message'>Successfully compiled differential equation model from auto-generated C code.</span></div><div class='input'><span class='no'>fit_2</span> <span class='kw'>&lt;-</span> <span class='fu'>mkinfit</span>(<span class='no'>m_2</span>, <span class='no'>FOCUS_2006_D</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='no'>pred_2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='one_box.html'>one_box</a></span>(<span class='no'>fit_2</span>, <span class='kw'>ini</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 <span class='no'>pred_2_saw</span> <span class='kw'>&lt;-</span> <span class='fu'>sawtooth</span>(<span class='no'>pred_2</span>, <span class='fl'>2</span>, <span class='fl'>7</span>)
-<span class='fu'>plot</span>(<span class='no'>pred_2_saw</span>, <span class='kw'>max_twa</span> <span class='kw'>=</span> <span class='fl'>21</span>, <span class='kw'>max_twa_var</span> <span class='kw'>=</span> <span class='st'>"m1"</span>)</div><div class='img'><img src='sawtooth-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>plot</span>(<span class='no'>pred_2_saw</span>, <span class='kw'>max_twa</span> <span class='kw'>=</span> <span class='fl'>21</span>, <span class='kw'>max_twa_var</span> <span class='kw'>=</span> <span class='st'>"m1"</span>)</div><div class='img'><img src='sawtooth-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='max_twa.html'>max_twa</a></span>(<span class='no'>pred_2_saw</span>)</div><div class='output co'>#&gt; $max
 #&gt;    parent        m1 
 #&gt; 0.7834480 0.8617048 
@@ -163,5 +183,8 @@ the corresponding amounts applied in the second column.</p></td>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

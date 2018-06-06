@@ -22,18 +22,24 @@ published by the JKI — drift_data_JKI • pfm</title>
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Deposition from spray drift expressed as percent of the applied dose as
 published by the JKI — drift_data_JKI" />
 
 <meta property="og:description" content="Deposition from spray drift expressed as percent of the applied dose as
 published by the German Julius-Kühn Institute (JKI)." />
 <meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -56,8 +62,12 @@ published by the German Julius-Kühn Institute (JKI)." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">pfm</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">pfm</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.5</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -72,8 +82,14 @@ published by the German Julius-Kühn Institute (JKI)." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/jranke/pfm">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -81,17 +97,21 @@ published by the German Julius-Kühn Institute (JKI)." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Deposition from spray drift expressed as percent of the applied dose as
 published by the JKI</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jranke/pfm/blob/master/R/drift_data_JKI.R'><code>R/drift_data_JKI.R</code></a></small>
+    <div class="hidden name"><code>drift_data_JKI.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Deposition from spray drift expressed as percent of the applied dose as
 published by the German Julius-Kühn Institute (JKI).</p>
     
+    </div>
 
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -125,7 +145,7 @@ as its licence is not clear.</p>
   <span class='no'>drift_data_JKI</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>()
 
   <span class='kw'>for</span> (<span class='no'>n</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>8</span>) {
-    <span class='no'>drift_data_raw</span> <span class='kw'>&lt;-</span> <span class='fu'>read_excel</span>(<span class='no'>abdrift_path</span>, <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='no'>n</span> + <span class='fl'>1</span>, <span class='kw'>skip</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+    <span class='no'>drift_data_raw</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/readxl/topics/read_excel'>read_excel</a></span>(<span class='no'>abdrift_path</span>, <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='no'>n</span> + <span class='fl'>1</span>, <span class='kw'>skip</span> <span class='kw'>=</span> <span class='fl'>2</span>)
     <span class='no'>drift_data</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='no'>drift_data_raw</span>[<span class='fl'>1</span>:<span class='fl'>9</span>, <span class='fl'>2</span>:<span class='fl'>4</span>])
     <span class='fu'>dimnames</span>(<span class='no'>drift_data</span>) <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='kw'>distance</span> <span class='kw'>=</span> <span class='fu'>as.integer</span>(<span class='no'>drift_data_raw</span>[<span class='fl'>1</span>:<span class='fl'>9</span>, <span class='fl'>1</span>]),
                                             <span class='kw'>crop</span> <span class='kw'>=</span> <span class='no'>JKI_crops</span>)
@@ -267,5 +287,8 @@ as its licence is not clear.</p>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

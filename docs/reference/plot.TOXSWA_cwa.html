@@ -21,17 +21,23 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Plot TOXSWA surface water concentrations — plot.TOXSWA_cwa" />
 
 <meta property="og:description" content="Plot TOXSWA hourly concentrations of a chemical substance in a specific
 segment of a TOXSWA surface water body." />
 <meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -54,8 +60,12 @@ segment of a TOXSWA surface water body." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">pfm</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">pfm</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.5</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -70,8 +80,14 @@ segment of a TOXSWA surface water body." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/jranke/pfm">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -79,16 +95,20 @@ segment of a TOXSWA surface water body." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot TOXSWA surface water concentrations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jranke/pfm/blob/master/R/TOXSWA_cwa.R'><code>R/TOXSWA_cwa.R</code></a></small>
+    <div class="hidden name"><code>plot.TOXSWA_cwa.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Plot TOXSWA hourly concentrations of a chemical substance in a specific
 segment of a TOXSWA surface water body.</p>
     
+    </div>
 
     <pre class="usage"><span class='co'># S3 method for TOXSWA_cwa</span>
 <span class='fu'>plot</span>(<span class='no'>x</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"datetime"</span>, <span class='st'>"t"</span>, <span class='st'>"t_firstjan"</span>,
@@ -96,7 +116,7 @@ segment of a TOXSWA surface water body.</p>
   <span class='kw'>threshold_factor</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>thin_low</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>total</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>LC_TIME</span> <span class='kw'>=</span> <span class='st'>"C"</span>,
   <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -147,11 +167,11 @@ to suspended matter?</p></td>
     <pre class="examples"><div class='input'><span class='no'>H_sw_D4_pond</span>  <span class='kw'>&lt;-</span> <span class='fu'><a href='read.TOXSWA_cwa.html'>read.TOXSWA_cwa</a></span>(<span class='st'>"00001p_pa.cwa"</span>,
   <span class='kw'>basedir</span> <span class='kw'>=</span> <span class='st'>"SwashProjects/project_H_sw/TOXSWA"</span>,
   <span class='kw'>zipfile</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"testdata/SwashProjects.zip"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"pfm"</span>))
-<span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_firstjan"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_rel_to_max"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-4.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_firstjan"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>H_sw_D4_pond</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_rel_to_max"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>H_sw_R1_stream</span>  <span class='kw'>&lt;-</span> <span class='fu'><a href='read.TOXSWA_cwa.html'>read.TOXSWA_cwa</a></span>(<span class='st'>"00003s_pa.cwa"</span>,
   <span class='kw'>basedir</span> <span class='kw'>=</span> <span class='st'>"SwashProjects/project_H_sw/TOXSWA"</span>,
   <span class='kw'>zipfile</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"testdata/SwashProjects.zip"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"pfm"</span>))
-<span class='fu'>plot</span>(<span class='no'>H_sw_R1_stream</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_rel_to_max"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-5.png' alt='' width='700' height='432.632880098887' /></div></pre>
+<span class='fu'>plot</span>(<span class='no'>H_sw_R1_stream</span>, <span class='kw'>time_column</span> <span class='kw'>=</span> <span class='st'>"t_rel_to_max"</span>)</div><div class='img'><img src='plot.TOXSWA_cwa-5.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -180,5 +200,8 @@ Johannes Ranke
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

@@ -21,18 +21,24 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Calculate predicted environmental concentrations in surface water due to drift — PEC_sw_drift" />
 
 <meta property="og:description" content="This is a basic, vectorised form of a simple calculation of a contaminant
 concentration in surface water based on complete, instantaneous mixing
 with input via spray drift." />
 <meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -55,8 +61,12 @@ with input via spray drift." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">pfm</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">pfm</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.5</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -71,8 +81,14 @@ with input via spray drift." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/jranke/pfm">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -80,23 +96,27 @@ with input via spray drift." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Calculate predicted environmental concentrations in surface water due to drift</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jranke/pfm/blob/master/R/PEC_sw_drift.R'><code>R/PEC_sw_drift.R</code></a></small>
+    <div class="hidden name"><code>PEC_sw_drift.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This is a basic, vectorised form of a simple calculation of a contaminant
 concentration in surface water based on complete, instantaneous mixing
 with input via spray drift.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>PEC_sw_drift</span>(<span class='no'>rate</span>, <span class='kw'>applications</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>water_depth</span> <span class='kw'>=</span> <span class='fl'>30</span>,
   <span class='kw'>drift_percentages</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drift_data</span> <span class='kw'>=</span> <span class='st'>"JKI"</span>, <span class='kw'>crop</span> <span class='kw'>=</span> <span class='st'>"Ackerbau"</span>,
   <span class='kw'>distances</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>5</span>, <span class='fl'>10</span>, <span class='fl'>20</span>), <span class='kw'>rate_units</span> <span class='kw'>=</span> <span class='st'>"g/ha"</span>, <span class='kw'>PEC_units</span> <span class='kw'>=</span> <span class='st'>"µg/L"</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -176,5 +196,8 @@ Johannes Ranke
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

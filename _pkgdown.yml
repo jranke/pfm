@@ -13,19 +13,33 @@ reference:
       - sawtooth
       - twa
       - max_twa
+      - pfm_degradation
+      - SFO_actual_twa
   - title: Predicted environmental concentrations in soil
     contents:
       - PEC_soil
       - soil_scenario_data_EFSA_2015
   - title: Predicted environmental concentrations in groundwater
     contents:
+      - FOCUS_GW_scenarios_2012
+      - create_run_list
       - PELMO_runs
+      - PELMO_path
+      - FOCUS_PELMO_crop_sze_names
+      - FOCUS_PELMO_crops
+      - FOCUS_PELMO_location_codes
+      - focus_80th
   - title: Predicted environmental concentrations in surface water
     contents:
       - PEC_sw_drift
       - drift_data_JKI
       - PEC_sw_drainage_UK
+      - PEC_sw_sed
+      - chent_focus_sw
       - PEC_sw_focus
+      - FOCUS_Step_12_scenarios
+      - perc_runoff_exposit
+      - perc_runoff_reduction_exposit
       - PEC_sw_exposit_runoff
       - TOXSWA_cwa
       - read.TOXSWA_cwa
@@ -35,3 +49,4 @@ reference:
     contents:
       - SSLRC_mobility_classification
       - GUS
+

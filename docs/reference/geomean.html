@@ -21,12 +21,15 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Calculate the geometric mean — geomean" />
 
 <meta property="og:description" content="Based on some posts in a thread on Stackoverflow
@@ -34,6 +37,9 @@ http://stackoverflow.com/questions/2602583/geometric-mean-is-there-a-built-in
 This function checks for negative values, removes NA values per default and
 returns 0 if at least one element of the vector is 0." />
 <meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -56,8 +62,12 @@ returns 0 if at least one element of the vector is 0." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">pfm</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">pfm</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.5</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -72,8 +82,14 @@ returns 0 if at least one element of the vector is 0." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/jranke/pfm">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -81,22 +97,26 @@ returns 0 if at least one element of the vector is 0." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Calculate the geometric mean</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jranke/pfm/blob/master/R/geomean.R'><code>R/geomean.R</code></a></small>
+    <div class="hidden name"><code>geomean.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Based on some posts in a thread on Stackoverflow
 <a href='http://stackoverflow.com/questions/2602583/geometric-mean-is-there-a-built-in'>http://stackoverflow.com/questions/2602583/geometric-mean-is-there-a-built-in</a>
 This function checks for negative values, removes NA values per default and
 returns 0 if at least one element of the vector is 0.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>geomean</span>(<span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -148,5 +168,8 @@ Johannes Ranke
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

@@ -21,13 +21,19 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
 <meta property="og:title" content="Function reference" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -50,8 +56,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">pfm</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">pfm</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.5</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -66,8 +76,14 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/jranke/pfm">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -75,181 +91,262 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.4-5</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-general-utility-functions" class="hasAnchor"><a href="#section-general-utility-functions" class="anchor"></a>General utility functions</h2>
-            <p class="section-desc"><p>Functions that are independent of specific fate modelling areas</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="geomean.html">geomean</a></code> </p>
-          </td>
-          <td><p>Calculate the geometric mean</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="one_box.html">one_box</a></code> </p>
-          </td>
-          <td><p>Create a time series of decline data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot.one_box.html">plot</a></code> </p>
-          </td>
-          <td><p>Plot time series of decline data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="sawtooth.html">sawtooth</a></code> </p>
-          </td>
-          <td><p>Create decline time series for multiple applications</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="twa.html">twa</a></code> </p>
-          </td>
-          <td><p>Calculate a time weighted average concentration</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="max_twa.html">max_twa</a></code> </p>
-          </td>
-          <td><p>The maximum time weighted average concentration for a moving window</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-predicted-environmental-concentrations-in-soil" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-soil" class="anchor"></a>Predicted environmental concentrations in soil</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="PEC_soil.html">PEC_soil</a></code> </p>
-          </td>
-          <td><p>Calculate predicted environmental concentrations in soil</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="soil_scenario_data_EFSA_2015.html">soil_scenario_data_EFSA_2015</a></code> </p>
-          </td>
-          <td><p>Properties of the predefined scenarios from the EFSA guidance from 2015</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-predicted-environmental-concentrations-in-groundwater" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-groundwater" class="anchor"></a>Predicted environmental concentrations in groundwater</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="PELMO_runs.html">PELMO_runs</a></code> <code><a href="PELMO_runs.html">run_PELMO</a></code> <code><a href="PELMO_runs.html">evaluate_PELMO</a></code> </p>
-          </td>
-          <td><p>Set up runs for FOCUS PELMO</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-predicted-environmental-concentrations-in-surface-water" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-surface-water" class="anchor"></a>Predicted environmental concentrations in surface water</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="PEC_sw_drift.html">PEC_sw_drift</a></code> </p>
-          </td>
-          <td><p>Calculate predicted environmental concentrations in surface water due to drift</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="drift_data_JKI.html">drift_data_JKI</a></code> </p>
-          </td>
-          <td><p>Deposition from spray drift expressed as percent of the applied dose as
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-general-utility-functions" class="hasAnchor"><a href="#section-general-utility-functions" class="anchor"></a>General utility functions</h2>
+          <p class="section-desc"><p>Functions that are independent of specific fate modelling areas</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="geomean.html">geomean()</a></code> </p>
+        </td>
+        <td><p>Calculate the geometric mean</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="one_box.html">one_box()</a></code> </p>
+        </td>
+        <td><p>Create a time series of decline data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot.one_box.html">plot(<i>&lt;one_box&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot time series of decline data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sawtooth.html">sawtooth()</a></code> </p>
+        </td>
+        <td><p>Create decline time series for multiple applications</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="twa.html">twa()</a></code> </p>
+        </td>
+        <td><p>Calculate a time weighted average concentration</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="max_twa.html">max_twa()</a></code> </p>
+        </td>
+        <td><p>The maximum time weighted average concentration for a moving window</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pfm_degradation.html">pfm_degradation()</a></code> </p>
+        </td>
+        <td><p>Calculate a time course of relative concentrations based on an mkinmod model</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SFO_actual_twa.html">SFO_actual_twa()</a></code> </p>
+        </td>
+        <td><p>Actual and maximum moving window time average concentrations for SFO kinetics</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-predicted-environmental-concentrations-in-soil" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-soil" class="anchor"></a>Predicted environmental concentrations in soil</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="PEC_soil.html">PEC_soil()</a></code> </p>
+        </td>
+        <td><p>Calculate predicted environmental concentrations in soil</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="soil_scenario_data_EFSA_2015.html">soil_scenario_data_EFSA_2015</a></code> </p>
+        </td>
+        <td><p>Properties of the predefined scenarios from the EFSA guidance from 2015</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-predicted-environmental-concentrations-in-groundwater" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-groundwater" class="anchor"></a>Predicted environmental concentrations in groundwater</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="FOCUS_GW_scenarios_2012.html">FOCUS_GW_scenarios_2012</a></code> </p>
+        </td>
+        <td><p>A very small subset of the FOCUS Groundwater scenario definitions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="create_run_list.html">create_run_list()</a></code> </p>
+        </td>
+        <td><p>Create a list of runs that we can traverse</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PELMO_runs.html">PELMO_runs()</a></code> <code><a href="PELMO_runs.html">run_PELMO()</a></code> <code><a href="PELMO_runs.html">evaluate_PELMO()</a></code> </p>
+        </td>
+        <td><p>Set up runs for FOCUS PELMO</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PELMO_path.html">PELMO_path()</a></code> </p>
+        </td>
+        <td><p>Create a path of run directories as the PELMO GUI does</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="FOCUS_PELMO_crop_sze_names.html">FOCUS_PELMO_crop_sze_names</a></code> </p>
+        </td>
+        <td><p>FOCUS PELMO crop acronyms used for naming sceneario files</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="FOCUS_PELMO_crops.html">FOCUS_PELMO_crops</a></code> </p>
+        </td>
+        <td><p>FOCUS PELMO crop names</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="FOCUS_PELMO_location_codes.html">FOCUS_PELMO_location_codes</a></code> </p>
+        </td>
+        <td><p>Location codes in FOCUS PELMO</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="focus_80th.html">focus_80th()</a></code> </p>
+        </td>
+        <td><p>Calculate the 80th percentile according to FOCUS guidance</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-predicted-environmental-concentrations-in-surface-water" class="hasAnchor"><a href="#section-predicted-environmental-concentrations-in-surface-water" class="anchor"></a>Predicted environmental concentrations in surface water</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="PEC_sw_drift.html">PEC_sw_drift()</a></code> </p>
+        </td>
+        <td><p>Calculate predicted environmental concentrations in surface water due to drift</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="drift_data_JKI.html">drift_data_JKI</a></code> </p>
+        </td>
+        <td><p>Deposition from spray drift expressed as percent of the applied dose as
 published by the JKI</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="PEC_sw_drainage_UK.html">PEC_sw_drainage_UK</a></code> </p>
-          </td>
-          <td><p>Calculate initial predicted environmental concentrations in surface water due to drainage using the UK method</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="PEC_sw_focus.html">PEC_sw_focus</a></code> </p>
-          </td>
-          <td><p>Calculate PEC surface water at FOCUS Step 1</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="PEC_sw_exposit_runoff.html">PEC_sw_exposit_runoff</a></code> </p>
-          </td>
-          <td><p>Calculate PEC surface water due to runoff and erosion as in Exposit 3</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="TOXSWA_cwa.html">TOXSWA_cwa</a></code> </p>
-          </td>
-          <td><p>R6 class for holding TOXSWA cwa concentration data and associated statistics</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="read.TOXSWA_cwa.html">read.TOXSWA_cwa</a></code> </p>
-          </td>
-          <td><p>Read TOXSWA surface water concentrations</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot.TOXSWA_cwa.html">plot</a></code> </p>
-          </td>
-          <td><p>Plot TOXSWA surface water concentrations</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-classifications-and-indicators" class="hasAnchor"><a href="#section-classifications-and-indicators" class="anchor"></a>Classifications and indicators</h2>
-            <p class="section-desc"><p>Evaluating environmental fate properties</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="SSLRC_mobility_classification.html">SSLRC_mobility_classification</a></code> </p>
-          </td>
-          <td><p>Determine the SSLRC mobility classification for a chemical substance from its Koc</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="GUS.html">GUS</a></code> <code><a href="GUS.html">print</a></code> </p>
-          </td>
-          <td><p>Groundwater ubiquity score based on Gustafson (1989)</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PEC_sw_drainage_UK.html">PEC_sw_drainage_UK()</a></code> </p>
+        </td>
+        <td><p>Calculate initial predicted environmental concentrations in surface water due to drainage using the UK method</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PEC_sw_sed.html">PEC_sw_sed()</a></code> </p>
+        </td>
+        <td><p>Calculate predicted environmental concentrations in sediment from surface
+water concentrations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="chent_focus_sw.html">chent_focus_sw()</a></code> </p>
+        </td>
+        <td><p>Create a chemical compound object for FOCUS Step 1 calculations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PEC_sw_focus.html">PEC_sw_focus()</a></code> </p>
+        </td>
+        <td><p>Calculate PEC surface water at FOCUS Step 1</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="FOCUS_Step_12_scenarios.html">FOCUS_Step_12_scenarios</a></code> </p>
+        </td>
+        <td><p>Step 1/2 scenario data as distributed with the FOCUS Step 1/2 calculator</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="perc_runoff_exposit.html">perc_runoff_exposit</a></code> </p>
+        </td>
+        <td><p>Runoff loss percentages as used in Exposit 3</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="perc_runoff_reduction_exposit.html">perc_runoff_reduction_exposit</a></code> </p>
+        </td>
+        <td><p>Runoff reduction percentages as used in Exposit</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PEC_sw_exposit_runoff.html">PEC_sw_exposit_runoff()</a></code> </p>
+        </td>
+        <td><p>Calculate PEC surface water due to runoff and erosion as in Exposit 3</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="TOXSWA_cwa.html">TOXSWA_cwa</a></code> </p>
+        </td>
+        <td><p>R6 class for holding TOXSWA cwa concentration data and associated statistics</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read.TOXSWA_cwa.html">read.TOXSWA_cwa()</a></code> </p>
+        </td>
+        <td><p>Read TOXSWA surface water concentrations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot.TOXSWA_cwa.html">plot(<i>&lt;TOXSWA_cwa&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot TOXSWA surface water concentrations</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-classifications-and-indicators" class="hasAnchor"><a href="#section-classifications-and-indicators" class="anchor"></a>Classifications and indicators</h2>
+          <p class="section-desc"><p>Evaluating environmental fate properties</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="SSLRC_mobility_classification.html">SSLRC_mobility_classification()</a></code> </p>
+        </td>
+        <td><p>Determine the SSLRC mobility classification for a chemical substance from its Koc</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="GUS.html">GUS()</a></code> <code><a href="GUS.html">print(<i>&lt;GUS_result&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Groundwater ubiquity score based on Gustafson (1989)</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -276,5 +373,8 @@ published by the JKI</p></td>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
