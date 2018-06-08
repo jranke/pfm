@@ -5,7 +5,7 @@
 \title{Actual and maximum moving window time average concentrations for SFO kinetics}
 \source{
 FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
-  Kinetics from Environmental Fate Studies on Pesticides in EU Registratin, Version 1.1, 
+  Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1, 
   18 December 2014, p. 251
 }
 \usage{

@@ -1,4 +1,4 @@
-# Copyright (C) 2015,2018  Johannes Ranke
+# Copyright (C) 2018  Johannes Ranke
 # Contact: jranke@uni-bremen.de
 # This file is part of the R package pfm
 
@@ -15,22 +15,22 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http://www.gnu.org/licenses/>
 
-#' Actual and maximum moving window time average concentrations for SFO kinetics
+#' Actual and maximum moving window time average concentrations for FOMC kinetics
 #'
-#' @param DT50 The half-life.
+#' @param alpha Parameter of the FOMC model
+#' @param beta Parameter of the FOMC model
 #' @param times The output times, and window sizes for time weighted average concentrations
 #' @export
 #' @author Johannes Ranke
 #' @source FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
-#'   Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1, 
+#'   Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1,
 #'   18 December 2014, p. 251
 #' @examples
-#' SFO_actual_twa(10)
-SFO_actual_twa <- function(DT50 = 1000, times = c(0, 1, 2, 4, 7, 14, 21, 28, 42, 50, 100))
+#' FOMC_actual_twa(alpha = 1.0001, beta = 10)
+FOMC_actual_twa <- function(alpha = 1.0001, beta = 10, times = c(0, 1, 2, 4, 7, 14, 21, 28, 42, 50, 100))
 {
-  k = log(2)/DT50
-  result <- data.frame(actual = 1 * exp(-k * times),
-                       twa = (1 - exp(-k * times))/(k * times),
+  result <- data.frame(actual = 1 / (times/beta + 1)^alpha,
+                       twa = (beta / (times * (1 - alpha))) * (((times / beta) + 1)^(1 - alpha) - 1),
                        row.names = times)
   return(result)
 }

@@ -1,3 +1,27 @@
+commit 7dc0ba4228fa490631b543c193ad7f113d703f00
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-06-08 14:54:40 +0200
+
+    Add actual/twa calcs for FOMC, typo
+
+commit edc3462fb4fa9f0eb604fc18ec62bb48997b5627
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-06-08 14:53:58 +0200
+
+    Pending stuff from the doc update
+
+commit 197606de234a936751ac3c1db2e4feb3fa117a92
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-06-06 02:48:44 +0200
+
+    Rebuild docs with pkgdown 1.1.0
+
+commit 282820693c62b958e12104f4bb6229c04803f098
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-03-01 10:32:08 +0100
+
+    Add a README.html for cgit.jrwb.de
+
 commit 6d8de73e68f2c0349e618af35ce4a8f095ca0ed5
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2018-03-01 10:10:08 +0100
