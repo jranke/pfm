@@ -119,7 +119,7 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
   PEC_units = match.arg(PEC_units)
   scenarios = match.arg(scenarios)
   sce <- switch(scenarios, 
-    default = data.frame(rho = 1.5, T_arr = NA, theta_fc = 0.2, f_oc = 0.02, 
+    default = data.frame(rho = 1.5, T_arr = NA, theta_fc = 0.2, f_om = 1.724 * 0.02,
                          f_sce = 1, f_mod = 1, row.names = "default"),
     EFSA_2015 = if (porewater) soil_scenario_data_EFSA_2015[4:6, ] 
                 else soil_scenario_data_EFSA_2015[1:3, ]
