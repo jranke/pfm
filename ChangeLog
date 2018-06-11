@@ -1,3 +1,12 @@
+commit bd15236d5dedb4067bd29e58e655c5352aca1db4
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-06-08 16:20:40 +0200
+
+    Enable PEC porewater for the default scenario
+    
+    The default scenario uses soil parameters from the REACH guidance R.16,
+    Table R.16-9.
+
 commit ec2052d68950745380c2724757b3ba8b116605fc
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2018-06-08 14:54:40 +0200

@@ -259,8 +259,16 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
           stop("Could not read ", filename)
         }
       } else {
-        # out file from FOCUS TOXSWA 4 (TOXSWA 4.4.2 or similar)
+        # out file from FOCUS TOXSWA 4 or higher
         outfile <- try(readLines(file_connection))
+
+        focus_toxswa_version <- gsub(".*: ", "", outfile[4])
+
+        if (substr(focus_toxswa_version, 1, 1) == "3") {
+          cwastring = "ConLiqWatLayCur"
+        } else {
+          cwastring = "ConLiqWatLay"
+        }
 
         close(file_connection) # only needed for files
 
@@ -268,8 +276,8 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
           stop("Could not read ", filename)
         } else {
           # Get the substance name(s)
-          sub_lines <- grep(".*0.000.*ConLiqWatLayCur_", outfile[1:50], value = TRUE)
-          substances <- gsub(".*ConLiqWatLayCur_(.*?) +[0-9].*", "\\1", sub_lines)
+          sub_lines <- grep(paste0(".*0.000.*", cwastring, "_"), outfile[1:50], value = TRUE)
+          substances <- gsub(paste0(".*", cwastring, "_(.*?) +[0-9].*"), "\\1", sub_lines)
           if (!substance %in% c("parent", substances)) {
             stop("No data for substance ", substance, " present in the .out file.")
           }
@@ -277,9 +285,9 @@ TOXSWA_cwa <- R6Class("TOXSWA_cwa",
           # Generate field name for the concentrations at end of hour for the
           # substance of interest
           if (substance == "parent") {
-            cwa_string = paste0("ConLiqWatLayCur_", substances[1])
+            cwa_string = paste0(cwastring, "_", substances[1])
           } else {
-            cwa_string = paste0("ConLiqWatLayCur_", substance)
+            cwa_string = paste0(cwastring, "_", substance)
           }
 
           cwa_lines <- grep(cwa_string, outfile, value = TRUE)
