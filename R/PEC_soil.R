@@ -1,4 +1,4 @@
-# Copyright (C) 2015  Johannes Ranke
+# Copyright (C) 2015,2016,2018  Johannes Ranke
 # Contact: jranke@uni-bremen.de
 # This file is part of the R package pfm
 
@@ -44,7 +44,7 @@ if(getRversion() >= '2.15.1') utils::globalVariables(c("destination", "study_typ
 #' @param interception The fraction of the application rate that does not reach the soil
 #' @param mixing_depth Mixing depth in cm
 #' @param interval Period of the deeper mixing, defaults to 365, which is a year if
-#'   rate units are in days
+#'   degradation rate units are in days
 #' @param n_periods Number of periods to be considered for long term PEC calculations
 #' @param PEC_units Requested units for the calculated PEC. Only mg/kg currently supported
 #' @param PEC_pw_units Only mg/L currently supported

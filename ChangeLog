@@ -1,3 +1,21 @@
+commit 6ca8bdb8636141fac592688a6794ae092f0bc85a
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-06-20 14:58:44 +0200
+
+    Advertise drat repo
+
+commit 6acfd0dfb2670e3eeab6144c90586f28105583a8
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-06-20 14:53:02 +0200
+
+    Update static docs
+
+commit cac29c8c1cc0f6004ef0cd63229cfb993a24496c
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-06-11 16:27:22 +0200
+
+    Adapt to TOXSWA 5.5.3
+
 commit bd15236d5dedb4067bd29e58e655c5352aca1db4
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2018-06-08 16:20:40 +0200

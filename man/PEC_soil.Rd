@@ -24,7 +24,7 @@ PEC_soil(rate, rate_units = "g/ha", interception = 0, mixing_depth = 5,
 \item{PEC_pw_units}{Only mg/L currently supported}
 
 \item{interval}{Period of the deeper mixing, defaults to 365, which is a year if
-rate units are in days}
+degradation rate units are in days}
 
 \item{n_periods}{Number of periods to be considered for long term PEC calculations}
 
