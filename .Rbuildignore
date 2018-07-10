@@ -4,6 +4,7 @@
 ^README.html$
 ^build.log$
 ^test.log$
+^test.R$
 ^inst/extdata/Tabelle\ der\ Abdrifteckwerte.xls$
 ^inst/extdata/FOCUS_Step_12_scenarios.txt$
 ^_pkgdown.yml$

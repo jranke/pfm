@@ -10,7 +10,7 @@ read.TOXSWA_cwa(filename, basedir = ".", zipfile = NULL, segment = "last",
 }
 \arguments{
 \item{filename}{The filename of the cwa file (TOXSWA 2.x.y  or similar) or the
-out file (FOCUS TOXSWA 4, i.e. TOXSWA 4.4.2 or similar).}
+out file when using FOCUS TOXSWA 4 (i.e. TOXSWA 4.4.2) or higher.}
 
 \item{basedir}{The path to the directory where the cwa file resides.}
 
@@ -19,7 +19,7 @@ out file (FOCUS TOXSWA 4, i.e. TOXSWA 4.4.2 or similar).}
 \item{segment}{The segment for which the data should be read. Either "last", or
 the segment number.}
 
-\item{substance}{For TOXSWA 4 .out files, the default value "parent" leads
+\item{substance}{For .out files, the default value "parent" leads
 to reading concentrations of the parent compound. Alternatively, the substance
 of interested can be selected by its code name.}
 
@@ -42,7 +42,8 @@ Read TOXSWA hourly concentrations of a chemical substance in a specific
 segment of a TOXSWA surface water body. Per default, the data for the last
 segment are imported. As TOXSWA 4 reports the values at the end of the hour
 (ConLiqWatLayCur) in its summary file, we use this value as well instead
-of the hourly averages (ConLiqWatLay).
+of the hourly averages (ConLiqWatLay). In TOXSWA 5.5.3 this variable was
+renamed to ConLiqWatLay in the out file.
 }
 \examples{
 H_sw_D4_pond  <- read.TOXSWA_cwa("00001p_pa.cwa",

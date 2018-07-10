@@ -20,10 +20,18 @@ This means:
 
 ## Installation
 
-You can install the package from [github](http://github.com/jranke/pfm), e.g.
+The easiest way to install the package is probably to use 
+[drat](https://cran.r-project.org/package=drat):
+
+```r
+install.packages("drat")
+drat::addRepo("jranke")
+install.packages("pfm")
+```
+
+Alternatively you can install the package 
 using the `devtools` package.  Using `quick = TRUE` skips docs,
-multiple-architecture builds, demos, and vignettes, to make installation as
-fast and painless as possible.
+multiple-architecture builds, demos, and vignettes.
 
 
 ```r

@@ -36,7 +36,8 @@
 segment of a TOXSWA surface water body. Per default, the data for the last
 segment are imported. As TOXSWA 4 reports the values at the end of the hour
 (ConLiqWatLayCur) in its summary file, we use this value as well instead
-of the hourly averages (ConLiqWatLay)." />
+of the hourly averages (ConLiqWatLay). In TOXSWA 5.5.3 this variable was
+renamed to ConLiqWatLay in the out file." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -65,7 +66,7 @@ of the hourly averages (ConLiqWatLay)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pfm</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.5</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -112,7 +113,8 @@ of the hourly averages (ConLiqWatLay)." />
 segment of a TOXSWA surface water body. Per default, the data for the last
 segment are imported. As TOXSWA 4 reports the values at the end of the hour
 (ConLiqWatLayCur) in its summary file, we use this value as well instead
-of the hourly averages (ConLiqWatLay).</p>
+of the hourly averages (ConLiqWatLay). In TOXSWA 5.5.3 this variable was
+renamed to ConLiqWatLay in the out file.</p>
     
     </div>
 
@@ -126,7 +128,7 @@ of the hourly averages (ConLiqWatLay).</p>
     <tr>
       <th>filename</th>
       <td><p>The filename of the cwa file (TOXSWA 2.x.y  or similar) or the
-out file (FOCUS TOXSWA 4, i.e. TOXSWA 4.4.2 or similar).</p></td>
+out file when using FOCUS TOXSWA 4 (i.e. TOXSWA 4.4.2) or higher.</p></td>
     </tr>
     <tr>
       <th>basedir</th>
@@ -143,7 +145,7 @@ the segment number.</p></td>
     </tr>
     <tr>
       <th>substance</th>
-      <td><p>For TOXSWA 4 .out files, the default value "parent" leads
+      <td><p>For .out files, the default value "parent" leads
 to reading concentrations of the parent compound. Alternatively, the substance
 of interested can be selected by its code name.</p></td>
     </tr>

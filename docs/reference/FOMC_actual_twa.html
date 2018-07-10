@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate predicted environmental concentrations in sediment from surface
-water concentrations — PEC_sw_sed • pfm</title>
+<title>Actual and maximum moving window time average concentrations for FOMC kinetics — FOMC_actual_twa • pfm</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,11 +30,9 @@ water concentrations — PEC_sw_sed • pfm</title>
 
 
 
-<meta property="og:title" content="Calculate predicted environmental concentrations in sediment from surface
-water concentrations — PEC_sw_sed" />
+<meta property="og:title" content="Actual and maximum moving window time average concentrations for FOMC kinetics — FOMC_actual_twa" />
 
-<meta property="og:description" content="The method 'percentage' is equivalent to what is used in the CRD spreadsheet
-PEC calculator" />
+<meta property="og:description" content="Actual and maximum moving window time average concentrations for FOMC kinetics" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,73 +97,64 @@ PEC calculator" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate predicted environmental concentrations in sediment from surface
-water concentrations</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jranke/pfm/blob/master/R/PEC_sw_sed.R'><code>R/PEC_sw_sed.R</code></a></small>
-    <div class="hidden name"><code>PEC_sw_sed.Rd</code></div>
+    <h1>Actual and maximum moving window time average concentrations for FOMC kinetics</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jranke/pfm/blob/master/R/FOMC_actual_twa.R'><code>R/FOMC_actual_twa.R</code></a></small>
+    <div class="hidden name"><code>FOMC_actual_twa.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The method 'percentage' is equivalent to what is used in the CRD spreadsheet
-PEC calculator</p>
+    <p>Actual and maximum moving window time average concentrations for FOMC kinetics</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>PEC_sw_sed</span>(<span class='no'>PEC_sw</span>, <span class='kw'>percentage</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"percentage"</span>,
-  <span class='kw'>sediment_depth</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>water_depth</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>sediment_density</span> <span class='kw'>=</span> <span class='fl'>1.3</span>,
-  <span class='kw'>PEC_sed_units</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"µg/kg"</span>, <span class='st'>"mg/kg"</span>))</pre>
+    <pre class="usage"><span class='fu'>FOMC_actual_twa</span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>1.0001</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>7</span>, <span class='fl'>14</span>,
+  <span class='fl'>21</span>, <span class='fl'>28</span>, <span class='fl'>42</span>, <span class='fl'>50</span>, <span class='fl'>100</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>PEC_sw</th>
-      <td><p>Numeric vector or matrix of surface water concentrations in µg/L for
-which the corresponding sediment concentration is to be estimated</p></td>
+      <th>alpha</th>
+      <td><p>Parameter of the FOMC model</p></td>
     </tr>
     <tr>
-      <th>percentage</th>
-      <td><p>The percentage in sediment, used for the percentage method</p></td>
+      <th>beta</th>
+      <td><p>Parameter of the FOMC model</p></td>
     </tr>
     <tr>
-      <th>method</th>
-      <td><p>The method used for the calculation</p></td>
-    </tr>
-    <tr>
-      <th>sediment_depth</th>
-      <td><p>Depth of the sediment layer</p></td>
-    </tr>
-    <tr>
-      <th>water_depth</th>
-      <td><p>Depth of the water body in cm</p></td>
-    </tr>
-    <tr>
-      <th>sediment_density</th>
-      <td><p>The density of the sediment in L/kg (equivalent to
-g/cm3)</p></td>
-    </tr>
-    <tr>
-      <th>PEC_sed_units</th>
-      <td><p>The units of the estimated sediment PEC value</p></td>
+      <th>times</th>
+      <td><p>The output times, and window sizes for time weighted average concentrations</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>The predicted concentration in sediment</p>
+    <p>FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
+  Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1,
+  18 December 2014, p. 251</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>PEC_sw_sed</span>(<span class='fu'><a href='PEC_sw_drift.html'>PEC_sw_drift</a></span>(<span class='fl'>100</span>, <span class='kw'>distances</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='kw'>percentage</span> <span class='kw'>=</span> <span class='fl'>50</span>)</div><div class='output co'>#&gt;      1 m 
-#&gt; 2.130769 </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>FOMC_actual_twa</span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>1.0001</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt;         actual       twa
+#&gt; 0   1.00000000       NaN
+#&gt; 1   0.90908224 0.9530973
+#&gt; 2   0.83331814 0.9115995
+#&gt; 4   0.71426168 0.8411664
+#&gt; 7   0.58820408 0.7580202
+#&gt; 14  0.41663019 0.6253074
+#&gt; 21  0.32254415 0.5387324
+#&gt; 28  0.26312277 0.4767543
+#&gt; 42  0.19227599 0.3925054
+#&gt; 50  0.16663681 0.3583198
+#&gt; 100 0.09088729 0.2397608</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#source">Source</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

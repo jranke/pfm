@@ -45,6 +45,7 @@ test_that("PELMO runs are correctly set up", {
   }
 
   # Prepare runs in analogy to the test archive
+  skip_on_cran()
   PELMO_runs(runs, psm_dir = PELMO_base, execute = FALSE, evaluate = FALSE, overwrite = TRUE)
 
   # Check that input files are correctly generated in the right location
@@ -70,6 +71,7 @@ test_that("PELMO runs can be run and give the expected result files", {
     skip("A wine installation is needed for this test")
   }
 
+  skip_on_cran()
   run_PELMO(runs, cores = 7)
 
   plm_files <- c("CHEM.PLM", "ECHO.PLM",
@@ -89,8 +91,12 @@ test_that("PELMO runs can be run and give the expected result files", {
             new <- readLines(file.path(PELMO_base, "FOCUS", pp, plm))
             test <- readLines(file.path(test_dir, pp, plm))
 
+            # Don't check for differences in the PESTICIDE BALANCE ERROR
+            pest_balance_error <- suppressWarnings(grep("PESTICIDE BALANCE ERROR", new))
+            # Suppress warnings about invalid strings in this locale caused by the files
+
             # Check if the ouput files are correctly reproduced
-            expect_identical(new, test)
+            expect_identical(new[!pest_balance_error], test[!pest_balance_error])
           }
         }
       }
@@ -105,6 +111,7 @@ test_that("PELMO runs are correctly evaluated", {
     skip("A wine installation is needed for this test")
   }
 
+  skip_on_cran()
   # Check that if output is the same as in the test archive
   for (run in runs) {
     psm <- run$psm
@@ -164,6 +171,7 @@ test_that("PECgw from FOCUS summary files can be reproduced", {
   if (!wine_installed) {
     skip("A wine installation is needed for this test")
   }
+  skip_on_cran()
   focus_summary <- list()
 
   for (run in runs) {
