@@ -6,9 +6,11 @@
 \usage{
 PEC_soil(rate, rate_units = "g/ha", interception = 0, mixing_depth = 5,
   PEC_units = "mg/kg", PEC_pw_units = "mg/L", interval = NA,
-  n_periods = Inf, tillage_depth = 20, chent = NA, DT50 = NA,
+  n_periods = Inf, tillage_depth = 20, leaching_depth = tillage_depth,
+  crop = "annual", cultivation = FALSE, chent = NA, DT50 = NA,
   Koc = NA, Kom = Koc/1.724, t_avg = 0, scenarios = c("default",
-  "EFSA_2015"), porewater = FALSE)
+  "EFSA_2017", "EFSA_2015"), leaching = scenarios == "EFSA_2017",
+  porewater = FALSE)
 }
 \arguments{
 \item{rate}{Application rate in units specified below}
@@ -30,7 +32,20 @@ degradation rate units are in days}
 
 \item{tillage_depth}{Periodic (see interval) deeper mixing in cm}
 
-\item{chent}{An optional chent object holding substance specific information. Can 
+\item{leaching_depth}{EFSA (2017) uses the mixing depth (ecotoxicological
+evaluation depth) to calculate leaching for annual crops where tillage
+takes place. By default, losses from the layer down to the tillage 
+depth are taken into account in this implementation.}
+
+\item{crop}{Ignored for scenarios other than EFSA_2017. Only annual crops
+are supported when these scenarios are used. Only crops with a single cropping
+cycle per year are currently supported.}
+
+\item{cultivation}{Does mechanical cultivation in the sense of EFSA (2017)
+take place, i.e. twice a year to a depth of 5 cm? Ignored for scenarios
+other than EFSA_2017}
+
+\item{chent}{An optional chent object holding substance specific information. Can
 also be a name for the substance as a character string}
 
 \item{DT50}{If specified, overrides soil DT50 endpoints from a chent object
@@ -52,6 +67,9 @@ the DT50 is taken to be a modelling half-life at 20°C and pF2 (for when
 and corrected using an Arrhenius activation energy of 65.4 kJ/mol. Also
 model and scenario adjustment factors from the EFSA guidance are used.}
 
+\item{leaching}{Should leaching be taken into account? The default is FALSE,
+except when the EFSA_2017 scenarios are used.}
+
 \item{porewater}{Should equilibrium porewater concentrations be estimated
 based on Kom and the organic carbon fraction of the soil instead of total
 soil concentrations?  Based on equation (7) given in the PPR panel opinion
@@ -63,20 +81,33 @@ The predicted concentration in soil
 }
 \description{
 This is a basic calculation of a contaminant concentration in bulk soil
-based on complete, instantaneous mixing. If an interval is given, an 
+based on complete, instantaneous mixing. If an interval is given, an
 attempt is made at calculating a long term maximum concentration using
-the concepts layed out for example in the PPR panel opinion (EFSA 2012).
+the concepts layed out in the PPR panel opinion (EFSA PPR panel 2012
+and in the EFSA guidance on PEC soil calculations (EFSA, 2015, 2017).
 }
 \details{
 This assumes that the complete load to soil during the time specified by
 'interval' (typically 365 days) is dosed at once. As in the PPR panel
-opinion cited below (PPR panel 2012), only temperature correction using the
+opinion cited below (EFSA PPR panel 2012), only temperature correction using the
 Arrhenius equation is performed.
 
 Total soil and porewater PEC values for the scenarios as defined in the EFSA
-guidance (2015, p. 13) can easily be calculated.
+guidance (2017, p. 14/15) can easily be calculated.
 }
 \note{
+While time weighted average (TWA) concentrations given in the examples
+from the EFSA guidance from 2015 (p. 80) are be reproduced, this is not
+true for the TWA concentrations given for the same example in the EFSA guidance
+from 2017 (p. 92).
+
+According to the EFSA guidance (EFSA, 2017, p. 43), leaching should be
+  taken into account for the EFSA 2017 scenarios, using the evaluation depth
+  (here mixing depth) as the depth of the layer from which leaching takes
+  place.  However, as the amount leaching below the evaluation depth
+  (often 5 cm) will partly be mixed back during tillage, the default in this function 
+  is to use the tillage depth for the calculation of the leaching rate.
+
 If temperature information is available in the selected scenarios, as
   e.g. in the EFSA scenarios, the DT50 for groundwater modelling
   (destination 'PECgw') is taken from the chent object, otherwise the DT50
@@ -84,6 +115,14 @@ If temperature information is available in the selected scenarios, as
 }
 \examples{
 PEC_soil(100, interception = 0.25)
+
+# This is example 1 starting at p. 92 of the EFSA guidance (2017)
+# Note that TWA concentrations differ from the ones given in the guidance
+# for an unknown reason (the values from EFSA (2015) can be reproduced).
+PEC_soil(1000, interval = 365, DT50 = 250, t_avg = c(0, 21),
+               Kom = 1000, scenarios = "EFSA_2017")
+PEC_soil(1000, interval = 365, DT50 = 250, t_av = c(0, 21),
+               Kom = 1000, scenarios = "EFSA_2017", porewater = TRUE)
 
 # This is example 1 starting at p. 79 of the EFSA guidance (2015)
 PEC_soil(1000, interval = 365, DT50 = 250, t_avg = c(0, 21),
@@ -106,6 +145,12 @@ EFSA Panel on Plant Protection Products and their Residues (2012)
   selection and scenario parameterisation for predicting environmental
   concentrations of plant protection products in soil. \emph{EFSA Journal}
   \bold{10}(2) 2562, doi:10.2903/j.efsa.2012.2562
+
+  EFSA (European Food Safety Authority) 2017) EFSA guidance document for
+  predicting environmental concentrations of active substances of plant
+  protection products and transformation products of these active substances
+  in soil. \emph{EFSA Journal} \bold{15}(10) 4982
+  doi:10.2903/j.efsa.2017.4982
 
   EFSA (European Food Safety Authority) (2015) EFSA guidance document for
   predicting environmental concentrations of active substances of plant

@@ -21,7 +21,7 @@ This means:
 ## Installation
 
 The easiest way to install the package is probably to use 
-[drat](http://cran.r-project.org/package=drat):
+[drat](https://cran.r-project.org/package=drat):
 
 ```r
 install.packages("drat")

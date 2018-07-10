@@ -6,6 +6,7 @@
 \format{A data frame with percentage values for the dissolved fraction and the fraction
   bound to eroding particles, with Koc classes used as row names
   \describe{
+    \item{Koc_lower_bound}{The lower bound of the Koc class}
     \item{dissolved}{The percentage of the applied substance transferred to an
       adjacent water body in the dissolved phase}
     \item{bound}{The percentage of the applied substance transferred to an

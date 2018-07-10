@@ -10,10 +10,10 @@
 #'   e.g. CTN for the Northern scenario for the total concentration in soil. Columns are 
 #'   mostly self-explanatory. \code{rho} is the dry bulk density of the top soil.
 #' @source EFSA (European Food Safety Authority) (2015)
-#' EFSA guidance document for predicting environmental concentrations
-#' of active substances of plant protection products and transformation products of these
-#' active substances in soil. \emph{EFSA Journal} \bold{13}(4) 4093
-#' doi:10.2903/j.efsa.2015.4093
+#'   EFSA guidance document for predicting environmental concentrations
+#'   of active substances of plant protection products and transformation products of these
+#'   active substances in soil. \emph{EFSA Journal} \bold{13}(4) 4093
+#'   doi:10.2903/j.efsa.2015.4093
 #' @keywords datasets
 #' @examples
 #' \dontrun{
