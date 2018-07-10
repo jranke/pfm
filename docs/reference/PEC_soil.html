@@ -33,9 +33,10 @@
 <meta property="og:title" content="Calculate predicted environmental concentrations in soil — PEC_soil" />
 
 <meta property="og:description" content="This is a basic calculation of a contaminant concentration in bulk soil
-based on complete, instantaneous mixing. If an interval is given, an 
+based on complete, instantaneous mixing. If an interval is given, an
 attempt is made at calculating a long term maximum concentration using
-the concepts layed out for example in the PPR panel opinion (EFSA 2012)." />
+the concepts layed out in the PPR panel opinion (EFSA PPR panel 2012
+and in the EFSA guidance on PEC soil calculations (EFSA, 2015, 2017)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -64,7 +65,7 @@ the concepts layed out for example in the PPR panel opinion (EFSA 2012)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pfm</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.6</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
       </span>
     </div>
 
@@ -108,17 +109,20 @@ the concepts layed out for example in the PPR panel opinion (EFSA 2012)." />
     <div class="ref-description">
     
     <p>This is a basic calculation of a contaminant concentration in bulk soil
-based on complete, instantaneous mixing. If an interval is given, an 
+based on complete, instantaneous mixing. If an interval is given, an
 attempt is made at calculating a long term maximum concentration using
-the concepts layed out for example in the PPR panel opinion (EFSA 2012).</p>
+the concepts layed out in the PPR panel opinion (EFSA PPR panel 2012
+and in the EFSA guidance on PEC soil calculations (EFSA, 2015, 2017).</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>PEC_soil</span>(<span class='no'>rate</span>, <span class='kw'>rate_units</span> <span class='kw'>=</span> <span class='st'>"g/ha"</span>, <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>mixing_depth</span> <span class='kw'>=</span> <span class='fl'>5</span>,
   <span class='kw'>PEC_units</span> <span class='kw'>=</span> <span class='st'>"mg/kg"</span>, <span class='kw'>PEC_pw_units</span> <span class='kw'>=</span> <span class='st'>"mg/L"</span>, <span class='kw'>interval</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>n_periods</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>tillage_depth</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>chent</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>n_periods</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>tillage_depth</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>leaching_depth</span> <span class='kw'>=</span> <span class='no'>tillage_depth</span>,
+  <span class='kw'>crop</span> <span class='kw'>=</span> <span class='st'>"annual"</span>, <span class='kw'>cultivation</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>chent</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>Kom</span> <span class='kw'>=</span> <span class='no'>Koc</span>/<span class='fl'>1.724</span>, <span class='kw'>t_avg</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scenarios</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"default"</span>,
-  <span class='st'>"EFSA_2015"</span>), <span class='kw'>porewater</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='st'>"EFSA_2017"</span>, <span class='st'>"EFSA_2015"</span>), <span class='kw'>leaching</span> <span class='kw'>=</span> <span class='no'>scenarios</span> <span class='kw'>==</span> <span class='st'>"EFSA_2017"</span>,
+  <span class='kw'>porewater</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,8 +165,27 @@ degradation rate units are in days</p></td>
       <td><p>Periodic (see interval) deeper mixing in cm</p></td>
     </tr>
     <tr>
+      <th>leaching_depth</th>
+      <td><p>EFSA (2017) uses the mixing depth (ecotoxicological
+evaluation depth) to calculate leaching for annual crops where tillage
+takes place. By default, losses from the layer down to the tillage 
+depth are taken into account in this implementation.</p></td>
+    </tr>
+    <tr>
+      <th>crop</th>
+      <td><p>Ignored for scenarios other than EFSA_2017. Only annual crops
+are supported when these scenarios are used. Only crops with a single cropping
+cycle per year are currently supported.</p></td>
+    </tr>
+    <tr>
+      <th>cultivation</th>
+      <td><p>Does mechanical cultivation in the sense of EFSA (2017)
+take place, i.e. twice a year to a depth of 5 cm? Ignored for scenarios
+other than EFSA_2017</p></td>
+    </tr>
+    <tr>
       <th>chent</th>
-      <td><p>An optional chent object holding substance specific information. Can 
+      <td><p>An optional chent object holding substance specific information. Can
 also be a name for the substance as a character string</p></td>
     </tr>
     <tr>
@@ -195,6 +218,11 @@ and corrected using an Arrhenius activation energy of 65.4 kJ/mol. Also
 model and scenario adjustment factors from the EFSA guidance are used.</p></td>
     </tr>
     <tr>
+      <th>leaching</th>
+      <td><p>Should leaching be taken into account? The default is FALSE,
+except when the EFSA_2017 scenarios are used.</p></td>
+    </tr>
+    <tr>
       <th>porewater</th>
       <td><p>Should equilibrium porewater concentrations be estimated
 based on Kom and the organic carbon fraction of the soil instead of total
@@ -212,14 +240,24 @@ p. 13).</p></td>
 
     <p>This assumes that the complete load to soil during the time specified by
 'interval' (typically 365 days) is dosed at once. As in the PPR panel
-opinion cited below (PPR panel 2012), only temperature correction using the
+opinion cited below (EFSA PPR panel 2012), only temperature correction using the
 Arrhenius equation is performed.</p>
 <p>Total soil and porewater PEC values for the scenarios as defined in the EFSA
-guidance (2015, p. 13) can easily be calculated.</p>
+guidance (2017, p. 14/15) can easily be calculated.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>If temperature information is available in the selected scenarios, as
+    <p>While time weighted average (TWA) concentrations given in the examples
+from the EFSA guidance from 2015 (p. 80) are be reproduced, this is not
+true for the TWA concentrations given for the same example in the EFSA guidance
+from 2017 (p. 92).</p>
+<p>According to the EFSA guidance (EFSA, 2017, p. 43), leaching should be
+  taken into account for the EFSA 2017 scenarios, using the evaluation depth
+  (here mixing depth) as the depth of the layer from which leaching takes
+  place.  However, as the amount leaching below the evaluation depth
+  (often 5 cm) will partly be mixed back during tillage, the default in this function 
+  is to use the tillage depth for the calculation of the leaching rate.</p>
+<p>If temperature information is available in the selected scenarios, as
   e.g. in the EFSA scenarios, the DT50 for groundwater modelling
   (destination 'PECgw') is taken from the chent object, otherwise the DT50
   with destination 'PECsoil'.</p>
@@ -231,6 +269,11 @@ guidance (2015, p. 13) can easily be calculated.</p>
   selection and scenario parameterisation for predicting environmental
   concentrations of plant protection products in soil. <em>EFSA Journal</em>
   <b>10</b>(2) 2562, doi:10.2903/j.efsa.2012.2562</p>
+<p>EFSA (European Food Safety Authority) 2017) EFSA guidance document for
+  predicting environmental concentrations of active substances of plant
+  protection products and transformation products of these active substances
+  in soil. <em>EFSA Journal</em> <b>15</b>(10) 4982
+  doi:10.2903/j.efsa.2017.4982</p>
 <p>EFSA (European Food Safety Authority) (2015) EFSA guidance document for
   predicting environmental concentrations of active substances of plant
   protection products and transformation products of these active substances
@@ -242,6 +285,18 @@ guidance (2015, p. 13) can easily be calculated.</p>
     <pre class="examples"><div class='input'><span class='fu'>PEC_soil</span>(<span class='fl'>100</span>, <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0.25</span>)</div><div class='output co'>#&gt;      scenario
 #&gt; t_avg default
 #&gt;     0     0.1</div><div class='input'>
+<span class='co'># This is example 1 starting at p. 92 of the EFSA guidance (2017)</span>
+<span class='co'># Note that TWA concentrations differ from the ones given in the guidance</span>
+<span class='co'># for an unknown reason (the values from EFSA (2015) can be reproduced).</span>
+<span class='fu'>PEC_soil</span>(<span class='fl'>1000</span>, <span class='kw'>interval</span> <span class='kw'>=</span> <span class='fl'>365</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>250</span>, <span class='kw'>t_avg</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>21</span>),
+               <span class='kw'>Kom</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>scenarios</span> <span class='kw'>=</span> <span class='st'>"EFSA_2017"</span>)</div><div class='output co'>#&gt;      scenario
+#&gt; t_avg      CTN     CTC      CTS
+#&gt;    0  19.76834 13.8619 10.53795
+#&gt;    21 19.59345 13.7169 10.39882</div><div class='input'><span class='fu'>PEC_soil</span>(<span class='fl'>1000</span>, <span class='kw'>interval</span> <span class='kw'>=</span> <span class='fl'>365</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>250</span>, <span class='kw'>t_av</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>21</span>),
+               <span class='kw'>Kom</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>scenarios</span> <span class='kw'>=</span> <span class='st'>"EFSA_2017"</span>, <span class='kw'>porewater</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;      scenario
+#&gt; t_avg       CLN       CLC       CLS
+#&gt;    0  0.5541984 0.6779249 0.9816693
+#&gt;    21 0.5484576 0.6693125 0.9609119</div><div class='input'>
 <span class='co'># This is example 1 starting at p. 79 of the EFSA guidance (2015)</span>
 <span class='fu'>PEC_soil</span>(<span class='fl'>1000</span>, <span class='kw'>interval</span> <span class='kw'>=</span> <span class='fl'>365</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>250</span>, <span class='kw'>t_avg</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>21</span>),
                <span class='kw'>scenarios</span> <span class='kw'>=</span> <span class='st'>"EFSA_2015"</span>)</div><div class='output co'>#&gt;      scenario

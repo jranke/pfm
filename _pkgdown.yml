@@ -15,10 +15,12 @@ reference:
       - max_twa
       - pfm_degradation
       - SFO_actual_twa
+      - FOMC_actual_twa
   - title: Predicted environmental concentrations in soil
     contents:
       - PEC_soil
       - soil_scenario_data_EFSA_2015
+      - soil_scenario_data_EFSA_2017
   - title: Predicted environmental concentrations in groundwater
     contents:
       - FOCUS_GW_scenarios_2012
