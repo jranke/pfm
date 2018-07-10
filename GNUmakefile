@@ -79,7 +79,7 @@ drat: build
 	"$(R_HOME)/bin/Rscript" -e "drat::insertPackage('$(TGZ)', commit = TRUE)"
 
 dratwin: winbin
-	"$(R_HOME)/bin/Rscript" -e "drat::insertPackage('$(WINBIN)', 'e:/git/drat/', commit = TRUE)"
+	"$(R_HOME)/bin/Rscript" -e "drat::insertPackage('$(WINBIN)', '~/git/drat/', commit = TRUE)"
 
 winbuilder: build
 	date
