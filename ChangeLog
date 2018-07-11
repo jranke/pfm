@@ -1,8 +1,29 @@
+commit 22b36c824fe5e1561868a649216fe079c6fbfb85
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-07-10 18:06:29 +0200
+
+    Update static docs
+
+commit cb3695dd434b3a3273217fb22c5ffb86065ae96d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-07-10 17:57:33 +0200
+
+    EFSA PEC soil guidance from 2017
+    
+    - Implement the new guidance as well as possible
+    - Maintenance work addressing CRAN checks
+
 commit c4c3ca282c6aadca82e392692ae4100fec1dd834
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2018-07-10 16:46:47 +0200
 
     .out file from TOXSWA 5.5.3 for testing
+
+commit a736ecc357889107b6e93f14cdf0c1ea4587817f
+Author: Johannes Ranke <johannes.ranke@jrwb.de>
+Date:   2018-07-10 16:08:52 +0200
+
+    Adapt path to package on windows
 
 commit 8989a484b9b2d23463c95e0a3927e307ec0a5e64
 Author: Johannes Ranke <jranke@uni-bremen.de>

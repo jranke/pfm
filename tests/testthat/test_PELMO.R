@@ -21,11 +21,12 @@ runs <- list(
 
 # Check if we have wine on the path
 wine_installed <- system('wine --version', ignore.stdout = TRUE) == 0
+skip_if_no_wine <- function() {
+  if (!wine_installed) skip("wine is not available")
+}
 
 test_that("PELMO paths are correctly created", {
-  if (!wine_installed) {
-    skip("A wine installation is needed for this test")
-  }
+  skip_if_no_wine()
   psm_paths = c(
      PELMO_path(runs[[1]]$psm, "fbe", "Por"),
      PELMO_path(runs[[2]]$psm, "pot", "Ham"),
@@ -40,9 +41,7 @@ test_that("PELMO paths are correctly created", {
 })
 
 test_that("PELMO runs are correctly set up", {
-  if (!wine_installed) {
-    skip("A wine installation is needed for this test")
-  }
+  skip_if_no_wine()
 
   # Prepare runs in analogy to the test archive
   skip_on_cran()
@@ -67,11 +66,9 @@ test_that("PELMO runs are correctly set up", {
 })
 
 test_that("PELMO runs can be run and give the expected result files", {
-  if (!wine_installed) {
-    skip("A wine installation is needed for this test")
-  }
-
+  skip_if_no_wine()
   skip_on_cran()
+
   run_PELMO(runs, cores = 7)
 
   plm_files <- c("CHEM.PLM", "ECHO.PLM",
@@ -104,14 +101,12 @@ test_that("PELMO runs can be run and give the expected result files", {
   }
 })
 
-pfm_PECgw <- evaluate_PELMO(runs)
-
 test_that("PELMO runs are correctly evaluated", {
-  if (!wine_installed) {
-    skip("A wine installation is needed for this test")
-  }
-
+  skip_if_no_wine()
   skip_on_cran()
+
+  pfm_PECgw <- evaluate_PELMO(runs)
+
   # Check that if output is the same as in the test archive
   for (run in runs) {
     psm <- run$psm
@@ -168,10 +163,11 @@ test_that("PELMO runs are correctly evaluated", {
 })
 
 test_that("PECgw from FOCUS summary files can be reproduced", {
-  if (!wine_installed) {
-    skip("A wine installation is needed for this test")
-  }
+  skip_if_no_wine()
   skip_on_cran()
+
+  pfm_PECgw <- evaluate_PELMO(runs)
+  
   focus_summary <- list()
 
   for (run in runs) {
