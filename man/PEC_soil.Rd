@@ -8,9 +8,9 @@ PEC_soil(rate, rate_units = "g/ha", interception = 0, mixing_depth = 5,
   PEC_units = "mg/kg", PEC_pw_units = "mg/L", interval = NA,
   n_periods = Inf, tillage_depth = 20, leaching_depth = tillage_depth,
   crop = "annual", cultivation = FALSE, chent = NA, DT50 = NA,
-  Koc = NA, Kom = Koc/1.724, t_avg = 0, scenarios = c("default",
-  "EFSA_2017", "EFSA_2015"), leaching = scenarios == "EFSA_2017",
-  porewater = FALSE)
+  FOMC = NA, Koc = NA, Kom = Koc/1.724, t_avg = 0,
+  scenarios = c("default", "EFSA_2017", "EFSA_2015"), leaching = scenarios
+  == "EFSA_2017", porewater = FALSE)
 }
 \arguments{
 \item{rate}{Application rate in units specified below}
@@ -25,8 +25,9 @@ PEC_soil(rate, rate_units = "g/ha", interception = 0, mixing_depth = 5,
 
 \item{PEC_pw_units}{Only mg/L currently supported}
 
-\item{interval}{Period of the deeper mixing, defaults to 365, which is a year if
-degradation rate units are in days}
+\item{interval}{Period of the deeper mixing. The default is NA, i.e. no
+deeper mixing.  For annual deeper mixing, set this to 365 when degradation
+units are in days}
 
 \item{n_periods}{Number of periods to be considered for long term PEC calculations}
 
@@ -51,6 +52,11 @@ also be a name for the substance as a character string}
 \item{DT50}{If specified, overrides soil DT50 endpoints from a chent object
 If DT50 is not specified here and not available from the chent object, zero
 degradation is assumed}
+
+\item{FOMC}{If specified, it should be a named numeric vector containing 
+the FOMC parameters alpha and beta. This overrides any other degradation
+endpoints, and the degradation during the interval and after the maximum PEC
+is calculated using these parameters without temperature correction}
 
 \item{Koc}{If specified, overrides Koc endpoints from a chent object}
 

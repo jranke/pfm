@@ -1,3 +1,9 @@
+commit 03c3035ca01c66b6a1352f7e509753fe2d057af2
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-07-11 03:41:43 +0200
+
+    Improve PELMO tests
+
 commit 22b36c824fe5e1561868a649216fe079c6fbfb85
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2018-07-10 18:06:29 +0200

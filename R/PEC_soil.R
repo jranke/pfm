@@ -43,7 +43,7 @@ if(getRversion() >= '2.15.1') utils::globalVariables(c("destination", "study_typ
 #'   taken into account for the EFSA 2017 scenarios, using the evaluation depth
 #'   (here mixing depth) as the depth of the layer from which leaching takes
 #'   place.  However, as the amount leaching below the evaluation depth
-#'   (often 5 cm) will partly be mixed back during tillage, the default in this function 
+#'   (often 5 cm) will partly be mixed back during tillage, the default in this function
 #'   is to use the tillage depth for the calculation of the leaching rate.
 #' @note If temperature information is available in the selected scenarios, as
 #'   e.g. in the EFSA scenarios, the DT50 for groundwater modelling
@@ -54,15 +54,16 @@ if(getRversion() >= '2.15.1') utils::globalVariables(c("destination", "study_typ
 #' @param rate_units Defaults to g/ha
 #' @param interception The fraction of the application rate that does not reach the soil
 #' @param mixing_depth Mixing depth in cm
-#' @param interval Period of the deeper mixing, defaults to 365, which is a year if
-#'   degradation rate units are in days
+#' @param interval Period of the deeper mixing. The default is NA, i.e. no
+#'   deeper mixing.  For annual deeper mixing, set this to 365 when degradation
+#'   units are in days
 #' @param n_periods Number of periods to be considered for long term PEC calculations
 #' @param PEC_units Requested units for the calculated PEC. Only mg/kg currently supported
 #' @param PEC_pw_units Only mg/L currently supported
 #' @param tillage_depth Periodic (see interval) deeper mixing in cm
 #' @param leaching_depth EFSA (2017) uses the mixing depth (ecotoxicological
 #'   evaluation depth) to calculate leaching for annual crops where tillage
-#'   takes place. By default, losses from the layer down to the tillage 
+#'   takes place. By default, losses from the layer down to the tillage
 #'   depth are taken into account in this implementation.
 #' @param cultivation Does mechanical cultivation in the sense of EFSA (2017)
 #'   take place, i.e. twice a year to a depth of 5 cm? Ignored for scenarios
@@ -75,6 +76,10 @@ if(getRversion() >= '2.15.1') utils::globalVariables(c("destination", "study_typ
 #' @param DT50 If specified, overrides soil DT50 endpoints from a chent object
 #'   If DT50 is not specified here and not available from the chent object, zero
 #'   degradation is assumed
+#' @param FOMC If specified, it should be a named numeric vector containing
+#'  the FOMC parameters alpha and beta. This overrides any other degradation
+#'  endpoints, and the degradation during the interval and after the maximum PEC
+#'  is calculated using these parameters without temperature correction
 #' @param Koc If specified, overrides Koc endpoints from a chent object
 #' @param Kom Calculated from Koc by default, but can explicitly be specified
 #'   as Kom here
@@ -116,7 +121,7 @@ if(getRversion() >= '2.15.1') utils::globalVariables(c("destination", "study_typ
 #' @export
 #' @examples
 #' PEC_soil(100, interception = 0.25)
-#' 
+#'
 #' # This is example 1 starting at p. 92 of the EFSA guidance (2017)
 #' # Note that TWA concentrations differ from the ones given in the guidance
 #' # for an unknown reason (the values from EFSA (2015) can be reproduced).
@@ -150,6 +155,7 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
                      cultivation = FALSE,
                      chent = NA,
                      DT50 = NA,
+                     FOMC = NA,
                      Koc = NA, Kom = Koc / 1.724,
                      t_avg = 0,
                      scenarios = c("default", "EFSA_2017", "EFSA_2015"),
@@ -212,7 +218,7 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
       } else {
         stop("Depths other than 5 and 20 cm are not supported when using EFSA 2017 scenarios for permanent crops")
       }
-    } 
+    }
 
     # For the loss via leaching, the equilibrium and therefore the f_om at the
     # bottom of the layer is probably most relevant. Unfortunately this is not
@@ -225,7 +231,7 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
         f_f_om <- subset(f_f_om_depth, bottom == bottom_depth)$f_f_om_no_cultivation
       }
       return(f_f_om)
-    } 
+    }
   } else {
     f_f_om_average <- f_f_om_bottom <- function(depth, cultivation) 1
   }
@@ -292,10 +298,22 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
   f_accu = 0
   if (!is.na(interval)) {
     if (n_periods == Inf) {
-      f_accu = X/(1 - X) # part of (A2)
+      if (!is.na(FOMC[1])) {
+        f_accu = get_vertex(x = 8:10, y = PEC_FOMC_accu_rel(n = 10, interval, FOMC)[8:10])$yv
+        warning("The long term calculation is based on a pseudo-plateau constructed\n  ",
+                "by fitting a parabola through the residues after 8, 9 and 10 years.\n  ",
+                "This is the method used by the ESCAPE software tool.\n  ",
+                "Please check the validity by specifying e.g. n_periods = 20 or 50.")
+      } else {
+        f_accu = X/(1 - X) # part of (A2)
+      }
     } else {
       for (i in 1:n_periods) {
-        f_accu = f_accu + X^i
+        if (!is.na(FOMC[1])) {
+          f_accu = f_accu + 1 / (((i * interval)/FOMC[["beta"]]) + 1)^FOMC[["alpha"]]
+        } else {
+          f_accu = f_accu + X^i
+        }
       }
     }
   }
@@ -328,9 +346,45 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
     k_avg <- f_T * k_ref # Leaching not taken into account, EFSA 2017 p. 43
     if (t_av_i > 0) {
       # Equation 10 from p. 24 (EFSA 2015)
-      result[i, ] <- PEC_soil_sce_mod/(t_av_i * k_avg) * (1 - exp(- k_avg * t_av_i)) # (A8)
+      if (!is.na(FOMC[1])) {
+        result[i, ] <- PEC_soil_sce_mod * (FOMC[["beta"]])/(t_av_i * (1 - FOMC[["alpha"]])) *
+          ((t_av_i/FOMC[["beta"]] + 1)^(1 - FOMC[["alpha"]]) - 1)
+      } else {
+        result[i, ] <- PEC_soil_sce_mod/(t_av_i * k_avg) * (1 - exp(- k_avg * t_av_i)) # (A8)
+      }
     }
   }
 
   return(result)
+}
+
+#' Get the relative accumulation of an FOMC model over multiples of an interval
+#' @param n number of applications
+#' @param interval Time between applications
+#' @param FOMC Named numeric vector containing the FOMC parameters alpha and beta
+#' @return A numeric vector containing all n accumulation factors for the n applications
+#' @export
+PEC_FOMC_accu_rel <- function(n, interval, FOMC) {
+  PEC_accu_rel <- 0
+  for (i in 1:(n - 1)) {
+    PEC_accu_rel[i + 1] <- PEC_accu_rel[i] + mkin::FOMC.solution(i * interval, 1, 
+                                                         FOMC[["alpha"]], FOMC[["beta"]])
+  }
+  return(PEC_accu_rel)
+}
+
+#' Fit a parabola through three points
+#'
+#' This was inspired by an answer on stackoverflow
+#' https://stackoverflow.com/a/717791 
+get_vertex <- function(x, y) {
+  m <- cbind(x^2, x, 1)
+  m_inv <- solve(m)
+  res <- m_inv %*% y
+  A <- res[1]
+  B <- res[2]
+  C <- res[3]
+  xv = -B / (2*A)
+  yv = C - B**2 / (4*A)
+  return(list(xv = xv, yv = yv, A = A, B = B, C = C))
 }
