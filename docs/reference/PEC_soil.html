@@ -65,7 +65,7 @@ and in the EFSA guidance on PEC soil calculations (EFSA, 2015, 2017)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pfm</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.2</span>
       </span>
     </div>
 
@@ -120,9 +120,9 @@ and in the EFSA guidance on PEC soil calculations (EFSA, 2015, 2017).</p>
   <span class='kw'>PEC_units</span> <span class='kw'>=</span> <span class='st'>"mg/kg"</span>, <span class='kw'>PEC_pw_units</span> <span class='kw'>=</span> <span class='st'>"mg/L"</span>, <span class='kw'>interval</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='kw'>n_periods</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>tillage_depth</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>leaching_depth</span> <span class='kw'>=</span> <span class='no'>tillage_depth</span>,
   <span class='kw'>crop</span> <span class='kw'>=</span> <span class='st'>"annual"</span>, <span class='kw'>cultivation</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>chent</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>Kom</span> <span class='kw'>=</span> <span class='no'>Koc</span>/<span class='fl'>1.724</span>, <span class='kw'>t_avg</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>scenarios</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"default"</span>,
-  <span class='st'>"EFSA_2017"</span>, <span class='st'>"EFSA_2015"</span>), <span class='kw'>leaching</span> <span class='kw'>=</span> <span class='no'>scenarios</span> <span class='kw'>==</span> <span class='st'>"EFSA_2017"</span>,
-  <span class='kw'>porewater</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>FOMC</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>Kom</span> <span class='kw'>=</span> <span class='no'>Koc</span>/<span class='fl'>1.724</span>, <span class='kw'>t_avg</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>scenarios</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"default"</span>, <span class='st'>"EFSA_2017"</span>, <span class='st'>"EFSA_2015"</span>), <span class='kw'>leaching</span> <span class='kw'>=</span> <span class='no'>scenarios</span>
+  <span class='kw'>==</span> <span class='st'>"EFSA_2017"</span>, <span class='kw'>porewater</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,8 +153,9 @@ and in the EFSA guidance on PEC soil calculations (EFSA, 2015, 2017).</p>
     </tr>
     <tr>
       <th>interval</th>
-      <td><p>Period of the deeper mixing, defaults to 365, which is a year if
-degradation rate units are in days</p></td>
+      <td><p>Period of the deeper mixing. The default is NA, i.e. no
+deeper mixing.  For annual deeper mixing, set this to 365 when degradation
+units are in days</p></td>
     </tr>
     <tr>
       <th>n_periods</th>
@@ -168,7 +169,7 @@ degradation rate units are in days</p></td>
       <th>leaching_depth</th>
       <td><p>EFSA (2017) uses the mixing depth (ecotoxicological
 evaluation depth) to calculate leaching for annual crops where tillage
-takes place. By default, losses from the layer down to the tillage 
+takes place. By default, losses from the layer down to the tillage
 depth are taken into account in this implementation.</p></td>
     </tr>
     <tr>
@@ -193,6 +194,13 @@ also be a name for the substance as a character string</p></td>
       <td><p>If specified, overrides soil DT50 endpoints from a chent object
 If DT50 is not specified here and not available from the chent object, zero
 degradation is assumed</p></td>
+    </tr>
+    <tr>
+      <th>FOMC</th>
+      <td><p>If specified, it should be a named numeric vector containing
+the FOMC parameters alpha and beta. This overrides any other degradation
+endpoints, and the degradation during the interval and after the maximum PEC
+is calculated using these parameters without temperature correction</p></td>
     </tr>
     <tr>
       <th>Koc</th>
@@ -255,7 +263,7 @@ from 2017 (p. 92).</p>
   taken into account for the EFSA 2017 scenarios, using the evaluation depth
   (here mixing depth) as the depth of the layer from which leaching takes
   place.  However, as the amount leaching below the evaluation depth
-  (often 5 cm) will partly be mixed back during tillage, the default in this function 
+  (often 5 cm) will partly be mixed back during tillage, the default in this function
   is to use the tillage depth for the calculation of the leaching rate.</p>
 <p>If temperature information is available in the selected scenarios, as
   e.g. in the EFSA scenarios, the DT50 for groundwater modelling

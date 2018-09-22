@@ -1,3 +1,9 @@
+commit ff7e67a4d3415419dd3f712ef1af7467ebf65508
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-09-21 19:39:44 +0200
+
+    Support FOMC in PEC_soil
+
 commit 03c3035ca01c66b6a1352f7e509753fe2d057af2
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2018-07-11 03:41:43 +0200

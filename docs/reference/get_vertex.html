@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Actual and maximum moving window time average concentrations for FOMC kinetics — FOMC_actual_twa • pfm</title>
+<title>Fit a parabola through three points — get_vertex • pfm</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Actual and maximum moving window time average concentrations for FOMC kinetics — FOMC_actual_twa" />
+<meta property="og:title" content="Fit a parabola through three points — get_vertex" />
 
-<meta property="og:description" content="Actual and maximum moving window time average concentrations for FOMC kinetics" />
+<meta property="og:description" content="This was inspired by an answer on stackoverflow
+https://stackoverflow.com/a/717791" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,71 +98,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Actual and maximum moving window time average concentrations for FOMC kinetics</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jranke/pfm/blob/master/R/FOMC_actual_twa.R'><code>R/FOMC_actual_twa.R</code></a></small>
-    <div class="hidden name"><code>FOMC_actual_twa.Rd</code></div>
+    <h1>Fit a parabola through three points</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jranke/pfm/blob/master/R/PEC_soil.R'><code>R/PEC_soil.R</code></a></small>
+    <div class="hidden name"><code>get_vertex.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Actual and maximum moving window time average concentrations for FOMC kinetics</p>
+    <p>This was inspired by an answer on stackoverflow
+https://stackoverflow.com/a/717791</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>FOMC_actual_twa</span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>1.0001</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='fl'>7</span>, <span class='fl'>14</span>,
-  <span class='fl'>21</span>, <span class='fl'>28</span>, <span class='fl'>42</span>, <span class='fl'>50</span>, <span class='fl'>100</span>))</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>alpha</th>
-      <td><p>Parameter of the FOMC model</p></td>
-    </tr>
-    <tr>
-      <th>beta</th>
-      <td><p>Parameter of the FOMC model</p></td>
-    </tr>
-    <tr>
-      <th>times</th>
-      <td><p>The output times, and window sizes for time weighted average concentrations</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+    <pre class="usage"><span class='fu'>get_vertex</span>(<span class='no'>x</span>, <span class='no'>y</span>)</pre>
+        
 
-    <p>FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
-  Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1,
-  18 December 2014, p. 251</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>FOMC_actual_twa</span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>1.0001</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt;         actual       twa
-#&gt; 0   1.00000000       NaN
-#&gt; 1   0.90908224 0.9530973
-#&gt; 2   0.83331814 0.9115995
-#&gt; 4   0.71426168 0.8411664
-#&gt; 7   0.58820408 0.7580202
-#&gt; 14  0.41663019 0.6253074
-#&gt; 21  0.32254415 0.5387324
-#&gt; 28  0.26312277 0.4767543
-#&gt; 42  0.19227599 0.3925054
-#&gt; 50  0.16663681 0.3583198
-#&gt; 100 0.09088729 0.2397608</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#source">Source</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    
-Johannes Ranke
+                </ul>
 
   </div>
 </div>

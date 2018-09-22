@@ -127,3 +127,23 @@ test_that("Tier 1 PEC soil example for Pesticide F in EFSA guidance from 2015 ca
   expect_equivalent(round(results_pfm, 2), results_guidance)
   expect_equivalent(round(results_pfm_pw, 2), results_guidance_pw)
 })
+
+test_that("Long term FOMC PEC soil from ESCAPE can be reproduced", {
+  # Application of 100 g/ha with 25% interception and FOMC degradation type a
+  fomc_50_a <- PEC_soil(100, interception = 0.25, FOMC = c(alpha = 1, beta = 10),
+    interval = 365, tillage_depth = 20, n_periods = 50)
+  fomc_long_a <- PEC_soil(100, interception = 0.25, FOMC = c(alpha = 1, beta = 10),
+    interval = 365, tillage_depth = 20)
+
+  # Application of 100 g/ha with 25% interception and FOMC degradation type b
+  # The long term PEC is much lower than when adding FOMC curves for 50 years
+  fomc_50_b <- PEC_soil(100, interception = 0.25, FOMC = c(alpha = 0.5, beta = 20),
+    interval = 365, tillage_depth = 20, n_periods = 50)
+  fomc_long_b <- PEC_soil(100, interception = 0.25, FOMC = c(alpha = 0.5, beta = 20),
+    interval = 365, tillage_depth = 20)
+
+  expect_true(fomc_50_b  > fomc_long_b)
+
+  # The benchmark results were obtained with ESCAPE
+  expect_equivalent(round(fomc_long_b, 4), 0.1424)
+})

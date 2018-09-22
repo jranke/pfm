@@ -302,7 +302,7 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
         f_accu = get_vertex(x = 8:10, y = PEC_FOMC_accu_rel(n = 10, interval, FOMC)[8:10])$yv
         warning("The long term calculation is based on a pseudo-plateau constructed\n  ",
                 "by fitting a parabola through the residues after 8, 9 and 10 years.\n  ",
-                "This is the method used by the ESCAPE software tool.\n  ",
+                "This is the method used by the ESCAPE software tool for separate consideration of residues.\n  ",
                 "Please check the validity by specifying e.g. n_periods = 20 or 50.")
       } else {
         f_accu = X/(1 - X) # part of (A2)
@@ -367,7 +367,7 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
 PEC_FOMC_accu_rel <- function(n, interval, FOMC) {
   PEC_accu_rel <- 0
   for (i in 1:(n - 1)) {
-    PEC_accu_rel[i + 1] <- PEC_accu_rel[i] + mkin::FOMC.solution(i * interval, 1, 
+    PEC_accu_rel[i + 1] <- PEC_accu_rel[i] + mkin::FOMC.solution(i * interval, 1,
                                                          FOMC[["alpha"]], FOMC[["beta"]])
   }
   return(PEC_accu_rel)
@@ -376,7 +376,7 @@ PEC_FOMC_accu_rel <- function(n, interval, FOMC) {
 #' Fit a parabola through three points
 #'
 #' This was inspired by an answer on stackoverflow
-#' https://stackoverflow.com/a/717791 
+#' https://stackoverflow.com/a/717791
 get_vertex <- function(x, y) {
   m <- cbind(x^2, x, 1)
   m_inv <- solve(m)

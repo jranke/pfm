@@ -35,7 +35,7 @@ units are in days}
 
 \item{leaching_depth}{EFSA (2017) uses the mixing depth (ecotoxicological
 evaluation depth) to calculate leaching for annual crops where tillage
-takes place. By default, losses from the layer down to the tillage 
+takes place. By default, losses from the layer down to the tillage
 depth are taken into account in this implementation.}
 
 \item{crop}{Ignored for scenarios other than EFSA_2017. Only annual crops
@@ -53,7 +53,7 @@ also be a name for the substance as a character string}
 If DT50 is not specified here and not available from the chent object, zero
 degradation is assumed}
 
-\item{FOMC}{If specified, it should be a named numeric vector containing 
+\item{FOMC}{If specified, it should be a named numeric vector containing
 the FOMC parameters alpha and beta. This overrides any other degradation
 endpoints, and the degradation during the interval and after the maximum PEC
 is calculated using these parameters without temperature correction}
@@ -111,7 +111,7 @@ According to the EFSA guidance (EFSA, 2017, p. 43), leaching should be
   taken into account for the EFSA 2017 scenarios, using the evaluation depth
   (here mixing depth) as the depth of the layer from which leaching takes
   place.  However, as the amount leaching below the evaluation depth
-  (often 5 cm) will partly be mixed back during tillage, the default in this function 
+  (often 5 cm) will partly be mixed back during tillage, the default in this function
   is to use the tillage depth for the calculation of the leaching rate.
 
 If temperature information is available in the selected scenarios, as
