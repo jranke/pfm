@@ -1,3 +1,9 @@
+commit 8452daa2015aa645dcc1eca3ec2bba5726603e4e
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2018-09-22 09:54:59 +0200
+
+    Add test and update docs
+
 commit ff7e67a4d3415419dd3f712ef1af7467ebf65508
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2018-09-21 19:39:44 +0200

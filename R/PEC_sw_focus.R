@@ -128,6 +128,10 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
   }
   on.exit(close(txt))
 
+  scenario = match.arg(scenario)
+  region = match.arg(region)
+  season = match.arg(season)
+  interception = match.arg(interception)
 
   if (is.null(met)) {
     compound = parent$name
