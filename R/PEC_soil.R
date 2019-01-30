@@ -1,4 +1,4 @@
-# Copyright (C) 2015,2016,2018  Johannes Ranke
+# Copyright (C) 2015,2016,2018,2019  Johannes Ranke
 # Contact: jranke@uni-bremen.de
 # This file is part of the R package pfm
 
@@ -84,6 +84,7 @@ if(getRversion() >= '2.15.1') utils::globalVariables(c("destination", "study_typ
 #' @param Kom Calculated from Koc by default, but can explicitly be specified
 #'   as Kom here
 #' @param t_avg Averaging times for time weighted average concentrations
+#' @param t_act Time series for actual concentrations
 #' @param scenarios If this is 'default', the DT50 will be used without correction
 #'   and soil properties as specified in the REACH guidance (R.16, Table
 #'   R.16-9) are used for porewater PEC calculations.  If this is "EFSA_2015",
@@ -158,6 +159,7 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
                      FOMC = NA,
                      Koc = NA, Kom = Koc / 1.724,
                      t_avg = 0,
+                     t_act = NULL,
                      scenarios = c("default", "EFSA_2017", "EFSA_2015"),
                      leaching = scenarios == "EFSA_2017",
                      porewater = FALSE)
@@ -336,23 +338,46 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
   # Model adjustment factors
   PEC_soil_sce_mod = PEC_soil_sce * sce$f_mod
 
-  result <- matrix(NA, ncol = n_sce, nrow = length(t_avg),
-                   dimnames = list(t_avg = t_avg, scenario = rownames(sce)))
+  if (is.null(t_act)) {
+    result <- matrix(NA, ncol = n_sce, nrow = length(t_avg),
+                     dimnames = list(t_avg = t_avg, scenario = rownames(sce)))
 
-  result[1, ] <- PEC_soil_sce_mod
+    result[1, ] <- PEC_soil_sce_mod
 
-  for (i in seq_along(t_avg)) {
-    t_av_i <- t_avg[i]
-    k_avg <- f_T * k_ref # Leaching not taken into account, EFSA 2017 p. 43
-    if (t_av_i > 0) {
-      # Equation 10 from p. 24 (EFSA 2015)
-      if (!is.na(FOMC[1])) {
-        result[i, ] <- PEC_soil_sce_mod * (FOMC[["beta"]])/(t_av_i * (1 - FOMC[["alpha"]])) *
-          ((t_av_i/FOMC[["beta"]] + 1)^(1 - FOMC[["alpha"]]) - 1)
-      } else {
-        result[i, ] <- PEC_soil_sce_mod/(t_av_i * k_avg) * (1 - exp(- k_avg * t_av_i)) # (A8)
+    for (i in seq_along(t_avg)) {
+      t_av_i <- t_avg[i]
+      k_avg <- f_T * k_ref # Leaching not taken into account, EFSA 2017 p. 43
+      if (t_av_i > 0) {
+        # Equation 10 from p. 24 (EFSA 2015)
+        if (!is.na(FOMC[1])) {
+          result[i, ] <- PEC_soil_sce_mod * (FOMC[["beta"]])/(t_av_i * (1 - FOMC[["alpha"]])) *
+            ((t_av_i/FOMC[["beta"]] + 1)^(1 - FOMC[["alpha"]]) - 1)
+        } else {
+          result[i, ] <- PEC_soil_sce_mod/(t_av_i * k_avg) * (1 - exp(- k_avg * t_av_i)) # (A8)
+        }
       }
     }
+  } else {
+    if (!identical(t_avg, 0)) stop("Either t_act or t_avg can be specified")
+    result <- matrix(NA, ncol = n_sce, nrow = length(t_act),
+                     dimnames = list(t_act = t_act, scenario = rownames(sce)))
+
+    result[1, ] <- PEC_soil_sce_mod
+
+    for (i in seq_along(t_act)) {
+      t_ac_i <- t_act[i]
+      k_act <- f_T * k_ref # Leaching not taken into account
+      if (t_ac_i > 0) {
+        # Equation 10 from p. 24 (EFSA 2015)
+        if (!is.na(FOMC[1])) {
+          result[i, ] <-
+            PEC_soil_sce_mod / ((t_ac_i/FOMC[["beta"]] + 1)^(FOMC[["alpha"]]))
+        } else {
+          result[i, ] <- PEC_soil_sce_mod * exp(- k_act * t_ac_i)
+        }
+      }
+    }
+
   }
 
   return(result)
@@ -377,6 +402,8 @@ PEC_FOMC_accu_rel <- function(n, interval, FOMC) {
 #'
 #' This was inspired by an answer on stackoverflow
 #' https://stackoverflow.com/a/717791
+#' @param x Three x coordinates
+#' @param y Three y coordinates
 get_vertex <- function(x, y) {
   m <- cbind(x^2, x, 1)
   m_inv <- solve(m)
@@ -387,4 +414,42 @@ get_vertex <- function(x, y) {
   xv = -B / (2*A)
   yv = C - B**2 / (4*A)
   return(list(xv = xv, yv = yv, A = A, B = B, C = C))
+}
+
+#' Calculate initial and accumulation PEC soil for a set of metabolites
+#'
+#' @param rate Application rate in units specified below
+#' @param mw_parent The molecular weight of the parent compound
+#' @param mets A dataframe with metabolite identifiers as rownames
+#'   and columns "mw", "occ" and "DT50" holding their molecular weight,
+#'   maximum occurrence in soil and their soil DT50
+#' @param interval The interval for accumulation calculations
+#' @param ... Further arguments are passed to PEC_soil
+#' @export
+PEC_soil_mets <- function(rate, mw_parent, mets, interval = 365, ...)
+{
+  result <- matrix(NA, nrow = nrow(mets), ncol = 3,
+                  dimnames = list(mets = rownames(mets),
+                                  PECs = c("Initial",
+                                           "Plateau",
+                                           "Accumulation")))
+  result[, "Initial"] <- sapply(rownames(mets),
+    function(x) {
+      PEC_soil(mets[x, "occ"] * (mets[x, "mw"] / mw_parent) * rate,
+        interval = NA, ...)
+    }
+  )
+
+  result[, "Accumulation"] <- sapply(rownames(mets),
+    function(x) {
+      PEC_soil(mets[x, "occ"] * (mets[x, "mw"] / mw_parent) * rate,
+        DT50 = mets[x, "DT50"],
+        interval = interval, ...)
+    }
+  )
+
+  result[, "Plateau"] <- result[, "Accumulation"] -
+    result[, "Initial"]
+
+  return(result)
 }
