@@ -4,13 +4,14 @@
 \alias{PEC_soil}
 \title{Calculate predicted environmental concentrations in soil}
 \usage{
-PEC_soil(rate, rate_units = "g/ha", interception = 0, mixing_depth = 5,
-  PEC_units = "mg/kg", PEC_pw_units = "mg/L", interval = NA,
-  n_periods = Inf, tillage_depth = 20, leaching_depth = tillage_depth,
-  crop = "annual", cultivation = FALSE, chent = NA, DT50 = NA,
-  FOMC = NA, Koc = NA, Kom = Koc/1.724, t_avg = 0,
-  scenarios = c("default", "EFSA_2017", "EFSA_2015"), leaching = scenarios
-  == "EFSA_2017", porewater = FALSE)
+PEC_soil(rate, rate_units = "g/ha", interception = 0,
+  mixing_depth = 5, PEC_units = "mg/kg", PEC_pw_units = "mg/L",
+  interval = NA, n_periods = Inf, tillage_depth = 20,
+  leaching_depth = tillage_depth, crop = "annual",
+  cultivation = FALSE, chent = NA, DT50 = NA, FOMC = NA,
+  Koc = NA, Kom = Koc/1.724, t_avg = 0, t_act = NULL,
+  scenarios = c("default", "EFSA_2017", "EFSA_2015"),
+  leaching = scenarios == "EFSA_2017", porewater = FALSE)
 }
 \arguments{
 \item{rate}{Application rate in units specified below}
@@ -64,6 +65,8 @@ is calculated using these parameters without temperature correction}
 as Kom here}
 
 \item{t_avg}{Averaging times for time weighted average concentrations}
+
+\item{t_act}{Time series for actual concentrations}
 
 \item{scenarios}{If this is 'default', the DT50 will be used without correction
 and soil properties as specified in the REACH guidance (R.16, Table

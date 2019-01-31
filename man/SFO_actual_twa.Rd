@@ -9,8 +9,8 @@ FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
   18 December 2014, p. 251
 }
 \usage{
-SFO_actual_twa(DT50 = 1000, times = c(0, 1, 2, 4, 7, 14, 21, 28, 42, 50,
-  100))
+SFO_actual_twa(DT50 = 1000, times = c(0, 1, 2, 4, 7, 14, 21, 28, 42,
+  50, 100))
 }
 \arguments{
 \item{DT50}{The half-life.}

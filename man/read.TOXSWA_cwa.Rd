@@ -4,9 +4,9 @@
 \alias{read.TOXSWA_cwa}
 \title{Read TOXSWA surface water concentrations}
 \usage{
-read.TOXSWA_cwa(filename, basedir = ".", zipfile = NULL, segment = "last",
-  substance = "parent", total = FALSE, windows = NULL,
-  thresholds = NULL)
+read.TOXSWA_cwa(filename, basedir = ".", zipfile = NULL,
+  segment = "last", substance = "parent", total = FALSE,
+  windows = NULL, thresholds = NULL)
 }
 \arguments{
 \item{filename}{The filename of the cwa file (TOXSWA 2.x.y  or similar) or the

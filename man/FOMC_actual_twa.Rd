@@ -9,8 +9,8 @@ FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
   18 December 2014, p. 251
 }
 \usage{
-FOMC_actual_twa(alpha = 1.0001, beta = 10, times = c(0, 1, 2, 4, 7, 14,
-  21, 28, 42, 50, 100))
+FOMC_actual_twa(alpha = 1.0001, beta = 10, times = c(0, 1, 2, 4, 7,
+  14, 21, 28, 42, 50, 100))
 }
 \arguments{
 \item{alpha}{Parameter of the FOMC model}

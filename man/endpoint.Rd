@@ -10,8 +10,8 @@
 \usage{
 endpoint(chent, medium = "soil", type = c("degradation", "sorption"),
   lab_field = c(NA, "laboratory", "field"), redox = c(NA, "aerobic",
-  "anaerobic"), value = c("DT50ref", "Kfoc", "N"), aggregator = geomean,
-  raw = FALSE, signif = 3)
+  "anaerobic"), value = c("DT50ref", "Kfoc", "N"),
+  aggregator = geomean, raw = FALSE, signif = 3)
 
 soil_DT50(chent, aggregator = geomean, signif = 3,
   lab_field = "laboratory", value = "DT50ref", redox = "aerobic",

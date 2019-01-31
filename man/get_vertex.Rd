@@ -6,6 +6,11 @@
 \usage{
 get_vertex(x, y)
 }
+\arguments{
+\item{x}{Three x coordinates}
+
+\item{y}{Three y coordinates}
+}
 \description{
 This was inspired by an answer on stackoverflow
 https://stackoverflow.com/a/717791

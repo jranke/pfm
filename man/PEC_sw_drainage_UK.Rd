@@ -4,8 +4,9 @@
 \alias{PEC_sw_drainage_UK}
 \title{Calculate initial predicted environmental concentrations in surface water due to drainage using the UK method}
 \usage{
-PEC_sw_drainage_UK(rate, interception = 0, Koc, latest_application = NULL,
-  soil_DT50 = NULL, model = NULL, model_parms = NULL)
+PEC_sw_drainage_UK(rate, interception = 0, Koc,
+  latest_application = NULL, soil_DT50 = NULL, model = NULL,
+  model_parms = NULL)
 }
 \arguments{
 \item{rate}{Application rate in g/ha}

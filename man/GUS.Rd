@@ -12,8 +12,9 @@ GUS(...)
 \method{GUS}{numeric}(DT50, Koc, ...)
 
 \method{GUS}{chent}(chent, degradation_value = "DT50ref",
-  lab_field = "laboratory", redox = "aerobic", sorption_value = "Kfoc",
-  degradation_aggregator = geomean, sorption_aggregator = geomean, ...)
+  lab_field = "laboratory", redox = "aerobic",
+  sorption_value = "Kfoc", degradation_aggregator = geomean,
+  sorption_aggregator = geomean, ...)
 
 \method{print}{GUS_result}(x, ..., digits = 1)
 }
