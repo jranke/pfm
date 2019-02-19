@@ -19,6 +19,7 @@ Imports:
 Suggests:
     testthat,
     chents,
+    grImport,
     magrittr,
     PELMO.installeR,
     rPELMO
