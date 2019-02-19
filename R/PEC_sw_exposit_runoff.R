@@ -12,8 +12,8 @@
 #'     \item{bound}{The percentage of the applied substance transferred to an
 #'       adjacent water body bound to eroding particles}
 #'   }
-#' @source Excel 3.01 spreadsheet available from
-#'   \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
+#' @source Excel 3.02 spreadsheet available from
+#'   \url{https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html}
 #' @export perc_runoff_exposit
 #' @examples
 #' print(perc_runoff_exposit)
@@ -39,13 +39,13 @@ rownames(perc_runoff_exposit) <- Koc_classes
 #'     \item{dissolved}{The reduction percentage for the dissolved phase}
 #'     \item{bound}{The reduction percentage for the particulate phase}
 #'   }
-#' @source Excel 3.01 spreadsheet available from
-#'   \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
+#' @source Excel 3.02 spreadsheet available from
+#'   \url{https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html}
 #' @export
 #' @examples
 #' print(perc_runoff_reduction_exposit)
 perc_runoff_reduction_exposit <- list(
-   "3.01" = data.frame(
+   "3.02" = data.frame(
     dissolved = c(0, 40, 60, 80),
     bound = c(0, 40, 85, 95),
     row.names = c("No buffer", paste(c(5, 10, 20), "m"))),
@@ -57,16 +57,18 @@ perc_runoff_reduction_exposit <- list(
 
 #' Calculate PEC surface water due to runoff and erosion as in Exposit 3
 #'
-#' This is a reimplementation of the calculation described in the Exposit 3.01 spreadsheet file,
-#' in the worksheet "Konzept Runoff". Calculation of sediment PEC values is not implemented.
+#' This is a reimplementation of the calculation described in the Exposit 3.02 spreadsheet file,
+#' in the worksheet "Konzept Runoff".
 #'
 #' @param rate The application rate in g/ha
+#' @param interception The fraction intercepted by the crop
 #' @param Koc The sorption coefficient to soil organic carbon
 #' @param DT50 The soil half-life in days
 #' @param t_runoff The time between application and the runoff event, where degradation occurs, in days
 #' @param exposit_reduction_version The version of the reduction factors to be used
 #' @param V_ditch The volume of the ditch is assumed to be 1 m * 100 m * 30 cm = 30 m3
 #' @param V_event The unreduced runoff volume, equivalent to 10 mm precipitation on 1 ha
+#' @param dilution The dilution factor
 #' @return A list containing the following components
 #'   \describe{
 #'     \item{perc_runoff}{The runoff percentages for dissolved and bound substance}
@@ -75,17 +77,17 @@ perc_runoff_reduction_exposit <- list(
 #'       for the different distances. If the rate was given in g/ha, the PECsw are in microg/L.}
 #'   }
 #' @export
-#' @source Excel 3.01 spreadsheet available from
+#' @source Excel 3.02 spreadsheet available from
 #'   \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
 #' @seealso \code{\link{perc_runoff_exposit}} for runoff loss percentages and \code{\link{perc_runoff_reduction_exposit}} for runoff reduction percentages used
 #' @examples
-#'   PEC_sw_exposit_runoff(500, 150)
-PEC_sw_exposit_runoff <- function(rate, Koc, DT50 = Inf, t_runoff = 3,
-  exposit_reduction_version = c("3.01", "2.0"),
-  V_ditch = 30, V_event = 100)
+#'   PEC_sw_exposit_runoff(500, Koc = 150)
+PEC_sw_exposit_runoff <- function(rate, interception = 0, Koc, DT50 = Inf, t_runoff = 3,
+  exposit_reduction_version = c("3.02", "2.0"),
+  V_ditch = 30, V_event = 100, dilution = 2)
 {
   k_deg <- log(2)/DT50
-  input <- rate * 1 * exp(-k_deg * t_runoff) # assumes 1 ha treated area
+  input <- rate * (1 - interception) * 1 * exp(-k_deg * t_runoff) # assumes 1 ha treated area
 
   if (length(Koc) > 1) stop("Only one compound at a time supported")
 
@@ -96,8 +98,8 @@ PEC_sw_exposit_runoff <- function(rate, Koc, DT50 = Inf, t_runoff = 3,
   transfer_runoff <- 1 - reduction_runoff
 
   V_runoff <- V_event * (1 - reduction_runoff[["dissolved"]]) # m3
-  V_ditch_runoff <- V_ditch + V_runoff
-  V_flowing_ditch_runoff <- 2 * V_ditch_runoff
+  V_flowing_ditch_runoff <- dilution * (V_ditch + V_runoff)
+
   f_runoff_exposit <- function(Koc) {
     Koc_breaks <- c(perc_runoff_exposit$Koc_lower_bound, Inf)
     Koc_classes <- as.character(cut(Koc, Koc_breaks, labels = rownames(perc_runoff_exposit)))
@@ -116,5 +118,78 @@ PEC_sw_exposit_runoff <- function(rate, Koc, DT50 = Inf, t_runoff = 3,
     perc_runoff = 100 * f_runoff,
     runoff = runoff_input,
     PEC_sw_runoff = PEC_sw_runoff)
+  return(result)
+}
+
+#' Calculate PEC surface water due to drainage as in Exposit 3
+#'
+#' This is a reimplementation of the calculation described in the Exposit 3.02 spreadsheet file,
+#' in the worksheet "Konzept Drainage". Although there are four groups of
+#' compounds ("Gefährdungsgruppen"), only one distinction is made in the
+#' calculations, between compounds with low mobility (group 1) and compounds
+#' with modest to high mobility (groups 2, 3 and 4). In this implementation,
+#' the group is derived only from the Koc, if not given explicitly. For
+#' details, see the discussion of the function arguments below.
+#'
+#' @param rate The application rate in g/ha
+#' @param interception The fraction intercepted by the crop
+#' @param Koc The sorption coefficient to soil organic carbon used to determine the mobility. A trigger
+#'   value of 550 L/kg is used in order to decide if Koc >> 500.
+#' @param mobility Overrides what is determined from the Koc.
+#' @param DT50 The soil half-life in days
+#' @param t_drainage The time between application and the drainage event, where degradation occurs, in days
+#' @param V_ditch The volume of the ditch is assumed to be 1 m * 100 m * 30 cm = 30 m3
+#' @param V_drainage The drainage volume, equivalent to 1 mm precipitation on 1 ha for spring/summer or 10 mm for
+#'   autumn/winter/early spring.
+#' @param dilution The dilution factor
+#' @return A list containing the following components
+#'   \describe{
+#'     \item{perc_runoff}{The runoff percentages for dissolved and bound substance}
+#'     \item{runoff}{A matrix containing dissolved and bound input for the different distances}
+#'     \item{PEC_sw_runoff}{A matrix containing PEC values for dissolved and bound substance
+#'       for the different distances. If the rate was given in g/ha, the PECsw are in microg/L.}
+#'   }
+#' @export
+#' @source Excel 3.02 spreadsheet available from
+#'   \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
+#' @seealso \code{\link{perc_runoff_exposit}} for runoff loss percentages and \code{\link{perc_runoff_reduction_exposit}} for runoff reduction percentages used
+#' @examples
+#'   PEC_sw_exposit_drainage(500, Koc = 150)
+PEC_sw_exposit_drainage <- function(rate, interception = 0, Koc = NA, mobility = c(NA, "low", "high"), DT50 = Inf, t_drainage = 3,
+  V_ditch = 30, V_drainage = c(spring = 10, autumn = 100), dilution = 2)
+{
+  # Rückstand zum Zeitpunkt des Niederschlagsereignisses (residue at the time of the drainage event)
+  k_deg <- log(2)/DT50
+  residue <- rate * (1 - interception) * 1 * exp(-k_deg * t_drainage) # assumes 1 ha treated area
+
+  mobility <- match.arg(mobility)
+  if (is.na(mobility)) {
+    if (is.na(Koc)) stop("Koc is needed if the mobility is not specified")
+    else {
+      if (Koc > 550) mobility = "low"
+      else mobility = "high"
+    }
+  }
+
+  V_ditch_drainage <- V_ditch + V_drainage
+  V_flowing_ditch_drainage <- dilution * V_ditch_drainage
+
+  # Gesamtaustrag (total fraction of the residue drained)
+  if (mobility == "low") {
+    f_drainage_total <- c(spring = 0.01 * 1e-2,
+                          autumn = 0.05 * 1e-2)
+  } else {
+    f_drainage_total <- c(spring = 0.2 * 1e-2,
+                          autumn = 1.0 * 1e-2)
+  }
+
+  f_peak = c(spring = 0.125, autumn = 0.25) # Stoßbelastung (fraction drained at event)
+
+  PEC_sw_drainage <- 1000 * residue * f_drainage_total * f_peak / V_flowing_ditch_drainage
+
+  result <- list(
+    perc_drainage_total = 100 * f_drainage_total,
+    perc_peak = 100 * f_peak,
+    PEC_sw_drainage = PEC_sw_drainage)
   return(result)
 }

@@ -13,8 +13,8 @@ from which the values were taken.
     \item{bound}{The reduction percentage for the particulate phase}
   }}
 \source{
-Excel 3.01 spreadsheet available from
-  \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
+Excel 3.02 spreadsheet available from
+  \url{https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html}
 }
 \usage{
 perc_runoff_reduction_exposit

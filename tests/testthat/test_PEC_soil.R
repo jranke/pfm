@@ -132,15 +132,21 @@ test_that("Long term FOMC PEC soil from ESCAPE can be reproduced", {
   # Application of 100 g/ha with 25% interception and FOMC degradation type a
   fomc_50_a <- PEC_soil(100, interception = 0.25, FOMC = c(alpha = 1, beta = 10),
     interval = 365, tillage_depth = 20, n_periods = 50)
-  fomc_long_a <- PEC_soil(100, interception = 0.25, FOMC = c(alpha = 1, beta = 10),
-    interval = 365, tillage_depth = 20)
+  expect_warning(
+    fomc_long_a <- PEC_soil(100, interception = 0.25, FOMC = c(alpha = 1, beta = 10),
+      interval = 365, tillage_depth = 20),
+    "pseudo-plateau"
+  )
 
   # Application of 100 g/ha with 25% interception and FOMC degradation type b
   # The long term PEC is much lower than when adding FOMC curves for 50 years
   fomc_50_b <- PEC_soil(100, interception = 0.25, FOMC = c(alpha = 0.5, beta = 20),
     interval = 365, tillage_depth = 20, n_periods = 50)
-  fomc_long_b <- PEC_soil(100, interception = 0.25, FOMC = c(alpha = 0.5, beta = 20),
-    interval = 365, tillage_depth = 20)
+  expect_warning(
+    fomc_long_b <- PEC_soil(100, interception = 0.25, FOMC = c(alpha = 0.5, beta = 20),
+      interval = 365, tillage_depth = 20),
+    "pseudo-plateau"
+  )
 
   expect_true(fomc_50_b  > fomc_long_b)
 

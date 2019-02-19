@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate PEC surface water due to runoff and erosion as in Exposit 3 — PEC_sw_exposit_runoff • pfm</title>
+<title>Calculate PEC surface water due to drainage as in Exposit 3 — PEC_sw_exposit_drainage • pfm</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,15 @@
 
 
 
-<meta property="og:title" content="Calculate PEC surface water due to runoff and erosion as in Exposit 3 — PEC_sw_exposit_runoff" />
+<meta property="og:title" content="Calculate PEC surface water due to drainage as in Exposit 3 — PEC_sw_exposit_drainage" />
 
 <meta property="og:description" content="This is a reimplementation of the calculation described in the Exposit 3.02 spreadsheet file,
-in the worksheet &quot;Konzept Runoff&quot;." />
+in the worksheet &quot;Konzept Drainage&quot;. Although there are four groups of
+compounds (&quot;Gefährdungsgruppen&quot;), only one distinction is made in the
+calculations, between compounds with low mobility (group 1) and compounds
+with modest to high mobility (groups 2, 3 and 4). In this implementation,
+the group is derived only from the Koc, if not given explicitly. For
+details, see the discussion of the function arguments below." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,21 +105,27 @@ in the worksheet &quot;Konzept Runoff&quot;." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate PEC surface water due to runoff and erosion as in Exposit 3</h1>
+    <h1>Calculate PEC surface water due to drainage as in Exposit 3</h1>
     <small class="dont-index">Source: <a href='https://github.com/jranke/pfm/blob/master/R/PEC_sw_exposit_runoff.R'><code>R/PEC_sw_exposit_runoff.R</code></a></small>
-    <div class="hidden name"><code>PEC_sw_exposit_runoff.Rd</code></div>
+    <div class="hidden name"><code>PEC_sw_exposit_drainage.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
     <p>This is a reimplementation of the calculation described in the Exposit 3.02 spreadsheet file,
-in the worksheet "Konzept Runoff".</p>
+in the worksheet "Konzept Drainage". Although there are four groups of
+compounds ("Gefährdungsgruppen"), only one distinction is made in the
+calculations, between compounds with low mobility (group 1) and compounds
+with modest to high mobility (groups 2, 3 and 4). In this implementation,
+the group is derived only from the Koc, if not given explicitly. For
+details, see the discussion of the function arguments below.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>PEC_sw_exposit_runoff</span>(<span class='no'>rate</span>, <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='no'>Koc</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
-  <span class='kw'>t_runoff</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>exposit_reduction_version</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"3.02"</span>, <span class='st'>"2.0"</span>),
-  <span class='kw'>V_ditch</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>V_event</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>dilution</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
+    <pre class="usage"><span class='fu'>PEC_sw_exposit_drainage</span>(<span class='no'>rate</span>, <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>mobility</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, <span class='st'>"low"</span>, <span class='st'>"high"</span>), <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>t_drainage</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>V_ditch</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>V_drainage</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>spring</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>autumn</span> <span class='kw'>=</span> <span class='fl'>100</span>),
+  <span class='kw'>dilution</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -129,27 +140,29 @@ in the worksheet "Konzept Runoff".</p>
     </tr>
     <tr>
       <th>Koc</th>
-      <td><p>The sorption coefficient to soil organic carbon</p></td>
+      <td><p>The sorption coefficient to soil organic carbon used to determine the mobility. A trigger
+value of 550 L/kg is used in order to decide if Koc &gt;&gt; 500.</p></td>
+    </tr>
+    <tr>
+      <th>mobility</th>
+      <td><p>Overrides what is determined from the Koc.</p></td>
     </tr>
     <tr>
       <th>DT50</th>
       <td><p>The soil half-life in days</p></td>
     </tr>
     <tr>
-      <th>t_runoff</th>
-      <td><p>The time between application and the runoff event, where degradation occurs, in days</p></td>
-    </tr>
-    <tr>
-      <th>exposit_reduction_version</th>
-      <td><p>The version of the reduction factors to be used</p></td>
+      <th>t_drainage</th>
+      <td><p>The time between application and the drainage event, where degradation occurs, in days</p></td>
     </tr>
     <tr>
       <th>V_ditch</th>
       <td><p>The volume of the ditch is assumed to be 1 m * 100 m * 30 cm = 30 m3</p></td>
     </tr>
     <tr>
-      <th>V_event</th>
-      <td><p>The unreduced runoff volume, equivalent to 10 mm precipitation on 1 ha</p></td>
+      <th>V_drainage</th>
+      <td><p>The drainage volume, equivalent to 1 mm precipitation on 1 ha for spring/summer or 10 mm for
+autumn/winter/early spring.</p></td>
     </tr>
     <tr>
       <th>dilution</th>
@@ -178,23 +191,17 @@ in the worksheet "Konzept Runoff".</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>PEC_sw_exposit_runoff</span>(<span class='fl'>500</span>, <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>150</span>)</div><div class='output co'>#&gt; $perc_runoff
-#&gt; dissolved     bound 
-#&gt;     0.248     0.001 
+    <pre class="examples"><div class='input'>  <span class='fu'>PEC_sw_exposit_drainage</span>(<span class='fl'>500</span>, <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>150</span>)</div><div class='output co'>#&gt; $perc_drainage_total
+#&gt; spring autumn 
+#&gt;    0.2    1.0 
 #&gt; 
-#&gt; $runoff
-#&gt;           dissolved   bound   total
-#&gt; No buffer     1.240 0.00500 1.24500
-#&gt; 5 m           0.744 0.00300 0.74700
-#&gt; 10 m          0.496 0.00075 0.49675
-#&gt; 20 m          0.248 0.00025 0.24825
+#&gt; $perc_peak
+#&gt; spring autumn 
+#&gt;   12.5   25.0 
 #&gt; 
-#&gt; $PEC_sw_runoff
-#&gt;           dissolved       bound    total
-#&gt; No buffer  4.769231 0.019230769 4.788462
-#&gt; 5 m        4.133333 0.016666667 4.150000
-#&gt; 10 m       3.542857 0.005357143 3.548214
-#&gt; 20 m       2.480000 0.002500000 2.482500
+#&gt; $PEC_sw_drainage
+#&gt;   spring   autumn 
+#&gt; 1.562500 4.807692 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

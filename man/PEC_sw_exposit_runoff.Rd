@@ -4,16 +4,18 @@
 \alias{PEC_sw_exposit_runoff}
 \title{Calculate PEC surface water due to runoff and erosion as in Exposit 3}
 \source{
-Excel 3.01 spreadsheet available from
+Excel 3.02 spreadsheet available from
   \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
 }
 \usage{
-PEC_sw_exposit_runoff(rate, Koc, DT50 = Inf, t_runoff = 3,
-  exposit_reduction_version = c("3.01", "2.0"), V_ditch = 30,
-  V_event = 100)
+PEC_sw_exposit_runoff(rate, interception = 0, Koc, DT50 = Inf,
+  t_runoff = 3, exposit_reduction_version = c("3.02", "2.0"),
+  V_ditch = 30, V_event = 100, dilution = 2)
 }
 \arguments{
 \item{rate}{The application rate in g/ha}
+
+\item{interception}{The fraction intercepted by the crop}
 
 \item{Koc}{The sorption coefficient to soil organic carbon}
 
@@ -26,6 +28,8 @@ PEC_sw_exposit_runoff(rate, Koc, DT50 = Inf, t_runoff = 3,
 \item{V_ditch}{The volume of the ditch is assumed to be 1 m * 100 m * 30 cm = 30 m3}
 
 \item{V_event}{The unreduced runoff volume, equivalent to 10 mm precipitation on 1 ha}
+
+\item{dilution}{The dilution factor}
 }
 \value{
 A list containing the following components
@@ -37,11 +41,11 @@ A list containing the following components
   }
 }
 \description{
-This is a reimplementation of the calculation described in the Exposit 3.01 spreadsheet file,
-in the worksheet "Konzept Runoff". Calculation of sediment PEC values is not implemented.
+This is a reimplementation of the calculation described in the Exposit 3.02 spreadsheet file,
+in the worksheet "Konzept Runoff".
 }
 \examples{
-  PEC_sw_exposit_runoff(500, 150)
+  PEC_sw_exposit_runoff(500, Koc = 150)
 }
 \seealso{
 \code{\link{perc_runoff_exposit}} for runoff loss percentages and \code{\link{perc_runoff_reduction_exposit}} for runoff reduction percentages used
