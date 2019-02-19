@@ -1,5 +1,7 @@
 # pfm
 
+[![Build Status](https://travis-ci.com/jranke/pfm.svg?branch=master)](https://travis-ci.com/jranke/pfm)
+
 The R package **pfm** provides some utilities for fate modelling, including
 dealing with FOCUS pesticide fate modelling tools, (currently only TOXSWA cwa
 and out files), made available under the GNU public license.
