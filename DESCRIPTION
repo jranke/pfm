@@ -22,6 +22,9 @@ Suggests:
     magrittr,
     PELMO.installeR,
     rPELMO
+Remotes: jranke/chents,
+  jranke/PELMO.installeR,
+  jranke/rPELMO
 License: GPL
 LazyLoad: yes
 LazyData: yes
