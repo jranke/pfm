@@ -60,7 +60,7 @@
 #' @examples
 #' # Parent only
 #' dummy_1 <- chent_focus_sw("Dummy 1", cwsat = 6000, DT50_ws = 6, Koc = 344.8)
-#' PEC_sw_focus(dummy_1, 3000, f_drift = 0)
+#' PEC_sw_focus(dummy_1, 3000, f_drift = 0, overwrite = TRUE, append = FALSE)
 #'
 #' # Metabolite
 #' new_dummy <- chent_focus_sw("New Dummy", mw = 250, Koc = 100)
