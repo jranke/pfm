@@ -1,3 +1,23 @@
+commit b81b532583a9eaf989d09b6276be48b480fa2af6
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-02-19 14:27:03 +0100
+
+    Add another test for Exposit drainage
+    
+    to test overriding the mobility group derived from Koc
+
+commit 138638976f792684483520fe7837ded0a27938e4
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-02-19 12:35:19 +0100
+
+    Stop endless appending to pesticide.txt example
+
+commit 72c56f4246966c1bea627f601cf3cc457734f023
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-02-19 12:27:00 +0100
+
+    Add German drainage calculations using Exposit 3.02
+
 commit e5a077e28153f6494c99d6945b8b1bd239464609
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2019-02-08 15:25:19 +0100

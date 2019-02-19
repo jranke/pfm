@@ -3,7 +3,7 @@ Loading required package: R6
 Loading required package: mkin
 Testing pfm
 ✔ | OK F W S | Context
-⠏ |  0       | Exposit calculations⠋ |  1       | Exposit calculations⠙ |  2       | Exposit calculations⠹ |  3       | Exposit calculations⠸ |  4       | Exposit calculations⠼ |  5       | Exposit calculations⠴ |  6       | Exposit calculations✔ |  6       | Exposit calculations
+⠏ |  0       | Exposit calculations⠋ |  1       | Exposit calculations⠙ |  2       | Exposit calculations⠹ |  3       | Exposit calculations⠸ |  4       | Exposit calculations⠼ |  5       | Exposit calculations⠴ |  6       | Exposit calculations⠦ |  7       | Exposit calculations✔ |  7       | Exposit calculations
 ⠏ |  0       | Geometric mean calculation⠋ |  1       | Geometric mean calculation⠙ |  2       | Geometric mean calculation⠹ |  3       | Geometric mean calculation⠸ |  4       | Geometric mean calculation⠼ |  5       | Geometric mean calculation⠴ |  6       | Geometric mean calculation✔ |  6       | Geometric mean calculation
 ⠏ |  0       | Check max_twa for parent mkinfit models against analytical solutions⠋ |  1       | Check max_twa for parent mkinfit models against analytical solutions✔ |  1       | Check max_twa for parent mkinfit models against analytical solutions [1.0 s]
 ⠏ |  0       | Simple PEC sediment calculations⠋ |  1       | Simple PEC sediment calculations✔ |  1       | Simple PEC sediment calculations
@@ -18,7 +18,7 @@ Testing pfm
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════
 Duration: 7.0 s
 
-OK:       70
+OK:       71
 Failed:   0
 Warnings: 0
 Skipped:  0

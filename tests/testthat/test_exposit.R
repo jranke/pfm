@@ -72,4 +72,12 @@ test_that("Drainage PECsw are as in Exposit 3.02", {
   res_3 <- PEC_sw_exposit_drainage(200, Koc = 30, DT50 = 100)
   res_pfm_3 <- round(res_3$PEC_sw_drainage, 2)
   expect_equivalent(res_exposit_3, res_pfm_3)
+
+  # 1000 g/ha, Koc = 545 L/kg, group = 1, DT50 = 20 days, 25% interception
+  res_exposit_4 <- c(spring = 0.11, autumn = 0.32)
+
+  res_4 <- PEC_sw_exposit_drainage(1000, interception = 0.25, Koc = 545, DT50 =
+                                   20, mobility = "low")
+  res_pfm_4 <- round(res_4$PEC_sw_drainage, 2)
+  expect_equivalent(res_exposit_4, res_pfm_4)
 })
