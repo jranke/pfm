@@ -1,4 +1,31 @@
-commit b81b532583a9eaf989d09b6276be48b480fa2af6
+commit e21ec96873bf60072414369bc96e4c076a450235
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-02-19 17:13:55 +0100
+
+    Add grImport to Suggests:
+    
+    Because chent which in turn suggests grImport is loaded from github
+    which obviously does not pull grImport
+
+commit 4e99ae029638a3720eba97b28bd7de3129a727ce
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-02-19 15:22:26 +0100
+
+    Update README.html
+
+commit 31eca93dadf58d47b3f3dd7aa485f89023090440
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-02-19 14:54:26 +0100
+
+    Add Remotes: field for travis
+
+commit 70b85fd2a11da1e20cd4978c717540021af34be8
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-02-19 14:35:15 +0100
+
+    Test on Travis
+
+commit 17755babc3a517f4c7cec1c04e3e1f32b7ffb5d9
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2019-02-19 14:27:03 +0100
 
