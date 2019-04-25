@@ -1,3 +1,23 @@
+commit 3bb842b93107dd6207610de1fe5b44be66779e4d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-04-25 10:25:56 +0200
+
+    Remove leftover docs from earlier version
+    
+    Docs now live in docs/
+
+commit 77f63efa62b6530fbe2accdacc866e34626fe4e3
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-02-21 16:01:38 +0100
+
+    Update docs
+
+commit 5086e2b87eaec90a02b4744d1321c6949d0b8982
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-02-21 15:59:22 +0100
+
+    Use codecov
+
 commit e21ec96873bf60072414369bc96e4c076a450235
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2019-02-19 17:13:55 +0100

@@ -66,7 +66,7 @@ published by the German Julius-Kühn Institute (JKI)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pfm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.4</span>
       </span>
     </div>
 
@@ -158,107 +158,283 @@ as its licence is not clear.</p>
 <span class='co'># And this is the resulting data</span>
 <span class='no'>drift_data_JKI</span></div><div class='output co'>#&gt; [[1]]
 #&gt;         crop
-#&gt; distance Ackerbau Obstbau frueh Obstbau spaet
-#&gt;       1      2.77            NA            NA
-#&gt;       3        NA         29.20         15.73
-#&gt;       5      0.57         19.89          8.41
-#&gt;       10     0.29         11.81          3.60
-#&gt;       15     0.20          5.55          1.81
-#&gt;       20     0.15          2.77          1.09
-#&gt;       30     0.10          1.04          0.54
-#&gt;       40     0.07          0.52          0.32
-#&gt;       50     0.06          0.30          0.22
+#&gt; distance Ackerbau Obstbau frueh Obstbau spaet Weinbau Hopfenbau
+#&gt;       1      2.77            NA            NA      NA        NA
+#&gt;       3      0.95         29.20         15.73    8.02     19.33
+#&gt;       5      0.57         19.89          8.41    3.62     11.57
+#&gt;       10     0.29         11.81          3.60    1.23      5.77
+#&gt;       15     0.20          5.55          1.81    0.65      3.84
+#&gt;       20     0.15          2.77          1.09    0.42      1.79
+#&gt;       30     0.10          1.04          0.54    0.22      0.56
+#&gt;       40     0.07          0.52          0.32    0.14      0.25
+#&gt;       50     0.06          0.30          0.22    0.10      0.13
+#&gt;         crop
+#&gt; distance Flaechenkulturen &gt; 900 l/ha Tragbar &lt; 50 cm
+#&gt;       1                        4.440            2.77
+#&gt;       3                           NA              NA
+#&gt;       5                        0.180            0.57
+#&gt;       10                       0.050            0.29
+#&gt;       15                       0.020            0.20
+#&gt;       20                       0.012            0.15
+#&gt;       30                       0.005            0.10
+#&gt;       40                       0.003            0.07
+#&gt;       50                       0.002            0.06
+#&gt;         crop
+#&gt; distance Tragbar &lt; 50 cm mit Spritzschirm Tragbar &gt; 50 cm Gleisanlagen
+#&gt;       1                             0.039              NA           NA
+#&gt;       3                                NA            8.02  0.018721696
+#&gt;       5                             0.005            3.62  0.014363896
+#&gt;       10                               NA            1.23  0.010026007
+#&gt;       15                               NA            0.65  0.008124366
+#&gt;       20                               NA            0.42  0.006998158
+#&gt;       30                               NA            0.22  0.005670811
+#&gt;       40                               NA            0.14           NA
+#&gt;       50                               NA            0.10  0.004350831
 #&gt; 
 #&gt; [[2]]
 #&gt;         crop
-#&gt; distance Ackerbau Obstbau frueh Obstbau spaet
-#&gt;       1      2.38            NA            NA
-#&gt;       3        NA         25.53         12.13
-#&gt;       5      0.47         16.87          6.81
-#&gt;       10     0.24          9.61          3.11
-#&gt;       15     0.16          5.61          1.58
-#&gt;       20     0.12          2.59          0.90
-#&gt;       30     0.08          0.87          0.40
-#&gt;       40     0.06          0.40          0.23
-#&gt;       50     0.05          0.22          0.15
+#&gt; distance Ackerbau Obstbau frueh Obstbau spaet Weinbau Hopfenbau
+#&gt;       1      2.38            NA            NA      NA        NA
+#&gt;       3      0.79         25.53         12.13    7.23     17.73
+#&gt;       5      0.47         16.87          6.81    3.22      9.60
+#&gt;       10     0.24          9.61          3.11    1.07      4.18
+#&gt;       15     0.16          5.61          1.58    0.56      2.57
+#&gt;       20     0.12          2.59          0.90    0.36      1.21
+#&gt;       30     0.08          0.87          0.40    0.19      0.38
+#&gt;       40     0.06          0.40          0.23    0.12      0.17
+#&gt;       50     0.05          0.22          0.15    0.08      0.09
+#&gt;         crop
+#&gt; distance Flaechenkulturen &gt; 900 l/ha Tragbar &lt; 50 cm
+#&gt;       1                        3.780            2.38
+#&gt;       3                           NA              NA
+#&gt;       5                        0.160            0.47
+#&gt;       10                       0.040            0.24
+#&gt;       15                       0.020            0.16
+#&gt;       20                       0.011            0.12
+#&gt;       30                       0.005            0.08
+#&gt;       40                       0.003            0.06
+#&gt;       50                       0.002            0.05
+#&gt;         crop
+#&gt; distance Tragbar &lt; 50 cm mit Spritzschirm Tragbar &gt; 50 cm Gleisanlagen
+#&gt;       1                                NA          0.1900           NA
+#&gt;       3                              7.23              NA        2.120
+#&gt;       5                              3.22          0.0100        0.470
+#&gt;       10                             1.07          0.0030        0.060
+#&gt;       15                             0.56          0.0010        0.020
+#&gt;       20                             0.36          0.0008        0.008
+#&gt;       30                             0.19              NA           NA
+#&gt;       40                             0.12              NA           NA
+#&gt;       50                             0.08              NA           NA
 #&gt; 
 #&gt; [[3]]
 #&gt;         crop
-#&gt; distance Ackerbau Obstbau frueh Obstbau spaet
-#&gt;       1      2.01            NA            NA
-#&gt;       3        NA         23.96         11.01
-#&gt;       5      0.41         15.79          6.04
-#&gt;       10     0.20          8.96          2.67
-#&gt;       15     0.14          4.24          1.39
-#&gt;       20     0.10          2.01          0.80
-#&gt;       30     0.07          0.70          0.36
-#&gt;       40     0.05          0.33          0.21
-#&gt;       50     0.04          0.19          0.13
+#&gt; distance Ackerbau Obstbau frueh Obstbau spaet Weinbau Hopfenbau
+#&gt;       1      2.01            NA            NA      NA        NA
+#&gt;       3      0.68         23.96         11.01    6.90     15.93
+#&gt;       5      0.41         15.79          6.04    3.07      8.57
+#&gt;       10     0.20          8.96          2.67    1.02      3.70
+#&gt;       15     0.14          4.24          1.39    0.54      2.26
+#&gt;       20     0.10          2.01          0.80    0.34      1.05
+#&gt;       30     0.07          0.70          0.36    0.18      0.34
+#&gt;       40     0.05          0.33          0.21    0.11      0.15
+#&gt;       50     0.04          0.19          0.13    0.08      0.08
+#&gt;         crop
+#&gt; distance Flaechenkulturen &gt; 900 l/ha Tragbar &lt; 50 cm
+#&gt;       1                        3.420            2.01
+#&gt;       3                           NA              NA
+#&gt;       5                        0.150            0.41
+#&gt;       10                       0.040            0.20
+#&gt;       15                       0.020            0.14
+#&gt;       20                       0.010            0.10
+#&gt;       30                       0.004            0.07
+#&gt;       40                       0.003            0.05
+#&gt;       50                       0.002            0.04
+#&gt;         crop
+#&gt; distance Tragbar &lt; 50 cm mit Spritzschirm Tragbar &gt; 50 cm Gleisanlagen
+#&gt;       1                                NA          0.1400           NA
+#&gt;       3                              6.90              NA        1.590
+#&gt;       5                              3.07          0.0100        0.360
+#&gt;       10                             1.02          0.0020        0.050
+#&gt;       15                             0.54          0.0010        0.010
+#&gt;       20                             0.34          0.0006        0.006
+#&gt;       30                             0.18              NA           NA
+#&gt;       40                             0.11              NA           NA
+#&gt;       50                             0.08              NA           NA
 #&gt; 
 #&gt; [[4]]
 #&gt;         crop
-#&gt; distance Ackerbau Obstbau frueh Obstbau spaet
-#&gt;       1      1.85            NA            NA
-#&gt;       3        NA         23.61         10.12
-#&gt;       5      0.38         15.42          5.60
-#&gt;       10     0.19          8.66          2.50
-#&gt;       15     0.13          4.01          1.28
-#&gt;       20     0.10          1.89          0.75
-#&gt;       30     0.06          0.66          0.35
-#&gt;       40     0.05          0.31          0.20
-#&gt;       50     0.04          0.17          0.13
+#&gt; distance Ackerbau Obstbau frueh Obstbau spaet Weinbau Hopfenbau
+#&gt;       1      1.85            NA            NA      NA        NA
+#&gt;       3      0.62         23.61         10.12    6.71     15.38
+#&gt;       5      0.38         15.42          5.60    2.99      8.26
+#&gt;       10     0.19          8.66          2.50    0.99      3.55
+#&gt;       15     0.13          4.01          1.28    0.52      2.17
+#&gt;       20     0.10          1.89          0.75    0.33      0.93
+#&gt;       30     0.06          0.66          0.35    0.17      0.31
+#&gt;       40     0.05          0.31          0.20    0.11      0.14
+#&gt;       50     0.04          0.17          0.13    0.08      0.08
+#&gt;         crop
+#&gt; distance Flaechenkulturen &gt; 900 l/ha Tragbar &lt; 50 cm
+#&gt;       1                        2.290            1.85
+#&gt;       3                           NA              NA
+#&gt;       5                        0.120            0.38
+#&gt;       10                       0.030            0.19
+#&gt;       15                       0.020            0.13
+#&gt;       20                       0.009            0.10
+#&gt;       30                       0.004            0.06
+#&gt;       40                       0.002            0.05
+#&gt;       50                       0.002            0.04
+#&gt;         crop
+#&gt; distance Tragbar &lt; 50 cm mit Spritzschirm Tragbar &gt; 50 cm Gleisanlagen
+#&gt;       1                                NA          0.1300           NA
+#&gt;       3                              6.71              NA        1.360
+#&gt;       5                              2.99          0.0100        0.310
+#&gt;       10                             0.99          0.0020        0.040
+#&gt;       15                             0.52          0.0010        0.010
+#&gt;       20                             0.33          0.0005        0.005
+#&gt;       30                             0.17              NA           NA
+#&gt;       40                             0.11              NA           NA
+#&gt;       50                             0.08              NA           NA
 #&gt; 
 #&gt; [[5]]
 #&gt;         crop
-#&gt; distance Ackerbau Obstbau frueh Obstbau spaet
-#&gt;       1      1.75            NA            NA
-#&gt;       3        NA         23.12          9.74
-#&gt;       5      0.36         15.06          5.41
-#&gt;       10     0.18          8.42          2.43
-#&gt;       15     0.12          3.83          1.24
-#&gt;       20     0.09          1.81          0.72
-#&gt;       30     0.06          0.63          0.34
-#&gt;       40     0.05          0.30          0.20
-#&gt;       50     0.04          0.17          0.13
+#&gt; distance Ackerbau Obstbau frueh Obstbau spaet Weinbau Hopfenbau
+#&gt;       1      1.75            NA            NA      NA        NA
+#&gt;       3      0.59         23.12          9.74    6.59     15.12
+#&gt;       5      0.36         15.06          5.41    2.93      7.99
+#&gt;       10     0.18          8.42          2.43    0.98      3.36
+#&gt;       15     0.12          3.83          1.24    0.51      2.03
+#&gt;       20     0.09          1.81          0.72    0.33      0.88
+#&gt;       30     0.06          0.63          0.34    0.17      0.29
+#&gt;       40     0.05          0.30          0.20    0.11      0.14
+#&gt;       50     0.04          0.17          0.13    0.08      0.07
+#&gt;         crop
+#&gt; distance Flaechenkulturen &gt; 900 l/ha Tragbar &lt; 50 cm
+#&gt;       1                        2.120            1.75
+#&gt;       3                           NA              NA
+#&gt;       5                        0.110            0.36
+#&gt;       10                       0.030            0.18
+#&gt;       15                       0.010            0.12
+#&gt;       20                       0.008            0.09
+#&gt;       30                       0.004            0.06
+#&gt;       40                       0.002            0.05
+#&gt;       50                       0.002            0.04
+#&gt;         crop
+#&gt; distance Tragbar &lt; 50 cm mit Spritzschirm Tragbar &gt; 50 cm Gleisanlagen
+#&gt;       1                                NA          0.1200           NA
+#&gt;       3                              6.59              NA        1.190
+#&gt;       5                              2.93          0.0100        0.270
+#&gt;       10                             0.98          0.0020        0.040
+#&gt;       15                             0.51          0.0010        0.010
+#&gt;       20                             0.33          0.0005        0.005
+#&gt;       30                             0.17              NA           NA
+#&gt;       40                             0.11              NA           NA
+#&gt;       50                             0.08              NA           NA
 #&gt; 
 #&gt; [[6]]
 #&gt;         crop
-#&gt; distance Ackerbau Obstbau frueh Obstbau spaet
-#&gt;       1      1.64            NA            NA
-#&gt;       3        NA         22.76          9.21
-#&gt;       5      0.34         14.64          5.18
-#&gt;       10     0.17          8.04          2.38
-#&gt;       15     0.11          3.71          1.20
-#&gt;       20     0.09          1.75          0.68
-#&gt;       30     0.06          0.61          0.31
-#&gt;       40     0.04          0.29          0.17
-#&gt;       50     0.03          0.16          0.11
+#&gt; distance Ackerbau Obstbau frueh Obstbau spaet Weinbau Hopfenbau
+#&gt;       1      1.64            NA            NA      NA        NA
+#&gt;       3      0.56         22.76          9.21    6.41     14.90
+#&gt;       5      0.34         14.64          5.18    2.85      7.79
+#&gt;       10     0.17          8.04          2.38    0.95      3.23
+#&gt;       15     0.11          3.71          1.20    0.50      1.93
+#&gt;       20     0.09          1.75          0.68    0.32      0.83
+#&gt;       30     0.06          0.61          0.31    0.17      0.28
+#&gt;       40     0.04          0.29          0.17    0.11      0.13
+#&gt;       50     0.03          0.16          0.11    0.07      0.07
+#&gt;         crop
+#&gt; distance Flaechenkulturen &gt; 900 l/ha Tragbar &lt; 50 cm
+#&gt;       1                        1.980            1.64
+#&gt;       3                           NA              NA
+#&gt;       5                        0.100            0.34
+#&gt;       10                       0.030            0.17
+#&gt;       15                       0.010            0.11
+#&gt;       20                       0.008            0.09
+#&gt;       30                       0.004            0.06
+#&gt;       40                       0.002            0.04
+#&gt;       50                       0.001            0.03
+#&gt;         crop
+#&gt; distance Tragbar &lt; 50 cm mit Spritzschirm Tragbar &gt; 50 cm Gleisanlagen
+#&gt;       1                                NA          0.1100           NA
+#&gt;       3                              6.41              NA        1.070
+#&gt;       5                              2.85          0.0100        0.250
+#&gt;       10                             0.95          0.0020        0.030
+#&gt;       15                             0.50          0.0010        0.010
+#&gt;       20                             0.32          0.0004        0.005
+#&gt;       30                             0.17              NA           NA
+#&gt;       40                             0.11              NA           NA
+#&gt;       50                             0.07              NA           NA
 #&gt; 
 #&gt; [[7]]
 #&gt;         crop
-#&gt; distance Ackerbau Obstbau frueh Obstbau spaet
-#&gt;       1      1.61            NA            NA
-#&gt;       3        NA         22.69          9.10
-#&gt;       5      0.33         14.45          5.11
-#&gt;       10     0.17          7.83          2.33
-#&gt;       15     0.11          3.62          1.20
-#&gt;       20     0.08          1.71          0.67
-#&gt;       30     0.06          0.60          0.30
-#&gt;       40     0.04          0.28          0.17
-#&gt;       50     0.03          0.16          0.11
+#&gt; distance Ackerbau Obstbau frueh Obstbau spaet Weinbau Hopfenbau
+#&gt;       1      1.61            NA            NA      NA        NA
+#&gt;       3      0.55         22.69          9.10    6.33     14.63
+#&gt;       5      0.33         14.45          5.11    2.81      7.60
+#&gt;       10     0.17          7.83          2.33    0.94      3.13
+#&gt;       15     0.11          3.62          1.20    0.49      1.86
+#&gt;       20     0.08          1.71          0.67    0.31      0.81
+#&gt;       30     0.06          0.60          0.30    0.16      0.26
+#&gt;       40     0.04          0.28          0.17    0.10      0.12
+#&gt;       50     0.03          0.16          0.11    0.07      0.06
+#&gt;         crop
+#&gt; distance Flaechenkulturen &gt; 900 l/ha Tragbar &lt; 50 cm
+#&gt;       1                        1.930            1.61
+#&gt;       3                           NA              NA
+#&gt;       5                        0.100            0.33
+#&gt;       10                       0.030            0.17
+#&gt;       15                       0.010            0.11
+#&gt;       20                       0.008            0.08
+#&gt;       30                       0.004            0.06
+#&gt;       40                       0.002            0.04
+#&gt;       50                       0.001            0.03
+#&gt;         crop
+#&gt; distance Tragbar &lt; 50 cm mit Spritzschirm Tragbar &gt; 50 cm Gleisanlagen
+#&gt;       1                                NA          0.1100           NA
+#&gt;       3                              6.33              NA        0.960
+#&gt;       5                              2.81          0.0100        0.230
+#&gt;       10                             0.94          0.0020        0.030
+#&gt;       15                             0.49          0.0010        0.010
+#&gt;       20                             0.31          0.0004        0.004
+#&gt;       30                             0.16              NA           NA
+#&gt;       40                             0.10              NA           NA
+#&gt;       50                             0.07              NA           NA
 #&gt; 
 #&gt; [[8]]
 #&gt;         crop
-#&gt; distance Ackerbau Obstbau frueh Obstbau spaet
-#&gt;       1      1.52            NA            NA
-#&gt;       3        NA         22.24          8.66
-#&gt;       5      0.31         14.09          4.92
-#&gt;       10     0.16          7.58          2.29
-#&gt;       15     0.11          3.48          1.14
-#&gt;       20     0.08          1.65          0.65
-#&gt;       30     0.05          0.57          0.29
-#&gt;       40     0.04          0.27          0.16
-#&gt;       50     0.03          0.15          0.11
+#&gt; distance Ackerbau Obstbau frueh Obstbau spaet Weinbau Hopfenbau
+#&gt;       1      1.52            NA            NA      NA        NA
+#&gt;       3      0.52         22.24          8.66    6.26     13.53
+#&gt;       5      0.31         14.09          4.92    2.78      7.15
+#&gt;       10     0.16          7.58          2.29    0.93      3.01
+#&gt;       15     0.11          3.48          1.14    0.49      1.82
+#&gt;       20     0.08          1.65          0.65    0.31      0.78
+#&gt;       30     0.05          0.57          0.29    0.16      0.25
+#&gt;       40     0.04          0.27          0.16    0.10      0.12
+#&gt;       50     0.03          0.15          0.11    0.07      0.06
+#&gt;         crop
+#&gt; distance Flaechenkulturen &gt; 900 l/ha Tragbar &lt; 50 cm
+#&gt;       1                        1.640            1.52
+#&gt;       3                           NA              NA
+#&gt;       5                        0.090            0.31
+#&gt;       10                       0.020            0.16
+#&gt;       15                       0.010            0.11
+#&gt;       20                       0.007            0.08
+#&gt;       30                       0.003            0.05
+#&gt;       40                       0.002            0.04
+#&gt;       50                       0.001            0.03
+#&gt;         crop
+#&gt; distance Tragbar &lt; 50 cm mit Spritzschirm Tragbar &gt; 50 cm Gleisanlagen
+#&gt;       1                                NA           1e-01           NA
+#&gt;       3                              6.26              NA        0.890
+#&gt;       5                              2.78           1e-02        0.210
+#&gt;       10                             0.93           1e-03        0.030
+#&gt;       15                             0.49           1e-03        0.010
+#&gt;       20                             0.31           4e-04        0.004
+#&gt;       30                             0.16              NA           NA
+#&gt;       40                             0.10              NA           NA
+#&gt;       50                             0.07              NA           NA
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -283,7 +459,7 @@ as its licence is not clear.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
       </footer>
    </div>
