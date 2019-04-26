@@ -1,3 +1,11 @@
+commit 451b332c8888bac8279340b086abb3b714ac3ae1
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-04-25 11:50:35 +0200
+
+    Add more drift data, especially 3 m field crop data
+    
+    To support Agroscope in doing lots of PEC calculations for Switzerland
+
 commit 3bb842b93107dd6207610de1fe5b44be66779e4d
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2019-04-25 10:25:56 +0200
