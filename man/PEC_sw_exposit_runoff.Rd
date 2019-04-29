@@ -9,7 +9,7 @@ Excel 3.02 spreadsheet available from
 }
 \usage{
 PEC_sw_exposit_runoff(rate, interception = 0, Koc, DT50 = Inf,
-  t_runoff = 3, exposit_reduction_version = c("3.02", "2.0"),
+  t_runoff = 3, exposit_reduction_version = c("3.02", "3.01a", "2.0"),
   V_ditch = 30, V_event = 100, dilution = 2)
 }
 \arguments{
@@ -23,7 +23,9 @@ PEC_sw_exposit_runoff(rate, interception = 0, Koc, DT50 = Inf,
 
 \item{t_runoff}{The time between application and the runoff event, where degradation occurs, in days}
 
-\item{exposit_reduction_version}{The version of the reduction factors to be used}
+\item{exposit_reduction_version}{The version of the reduction factors to be used. "3.02" is the current
+version used in Germany, "3.01a" is the version with additional percentages for 3 m and 6 m buffer
+zones used in Switzerland.}
 
 \item{V_ditch}{The volume of the ditch is assumed to be 1 m * 100 m * 30 cm = 30 m3}
 

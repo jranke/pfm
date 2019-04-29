@@ -2,7 +2,7 @@ Package: pfm
 Type: Package
 Title: Utilities for Pesticide Fate Modelling
 Version: 0.5.5
-Date: 2019-04-26
+Date: 2019-04-27
 Authors@R: person("Johannes Ranke", email = "jranke@uni-bremen.de",
                   role = c("aut", "cre", "cph"),
                   comment = c(ORCID = "0000-0003-4371-6538"))
