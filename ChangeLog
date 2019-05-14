@@ -1,3 +1,12 @@
+commit 41f3c867008c24b69a9bb0e5c7c084969d46bebd
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-05-14 12:33:21 +0200
+
+    Add Exposit version 3.01a2 for runoff calculations
+    
+    At the request of Muris Korkaric (Agroscope). This is for 3 m buffer
+    only and provides consistency with earlier calculations
+
 commit 7b11b5d0da29447df026002af3ae5283510fdae9
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2019-04-29 13:03:00 +0200
