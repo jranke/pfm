@@ -125,7 +125,9 @@ from which the values were taken.</p><dl class='dl-horizontal'>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>Excel 3.02 spreadsheet available from
-  <a href='https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html'>https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html</a></p>
+  <a href='https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html'>https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html</a></p>  
+<p>Agroscope version 3.01a with additional runoff factors for 3 m and 6 m buffer zones received from Muris Korkaric (not published).
+  The variant 3.01a2 was introduced for consistency with previous calculations performed by Agroscope for a 3 m buffer zone.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -135,6 +137,20 @@ from which the values were taken.</p><dl class='dl-horizontal'>
 #&gt; 5 m              40    40
 #&gt; 10 m             60    85
 #&gt; 20 m             80    95
+#&gt; 
+#&gt; $`3.01a`
+#&gt;           dissolved bound
+#&gt; No buffer         0     0
+#&gt; 3 m              25    30
+#&gt; 5 m              40    40
+#&gt; 6 m              45    55
+#&gt; 10 m             60    85
+#&gt; 20 m             80    95
+#&gt; 
+#&gt; $`3.01a2`
+#&gt;           dissolved bound
+#&gt; No buffer         0     0
+#&gt; 3 m              25    25
 #&gt; 
 #&gt; $`2.0`
 #&gt;           dissolved bound

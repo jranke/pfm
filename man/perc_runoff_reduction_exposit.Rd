@@ -16,7 +16,8 @@ from which the values were taken.
 Excel 3.02 spreadsheet available from
   \url{https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html}
   
-  Agroscope version 3.01a with additional runoff factors for 3 m and 6 m buffer zones received from Muris Korkaric (not published)
+  Agroscope version 3.01a with additional runoff factors for 3 m and 6 m buffer zones received from Muris Korkaric (not published).
+  The variant 3.01a2 was introduced for consistency with previous calculations performed by Agroscope for a 3 m buffer zone.
 }
 \usage{
 perc_runoff_reduction_exposit

@@ -42,7 +42,8 @@ rownames(perc_runoff_exposit) <- Koc_classes
 #' @source Excel 3.02 spreadsheet available from
 #'   \url{https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html}
 #'   
-#'   Agroscope version 3.01a with additional runoff factors for 3 m and 6 m buffer zones received from Muris Korkaric (not published)
+#'   Agroscope version 3.01a with additional runoff factors for 3 m and 6 m buffer zones received from Muris Korkaric (not published).
+#'   The variant 3.01a2 was introduced for consistency with previous calculations performed by Agroscope for a 3 m buffer zone.
 #' @export
 #' @examples
 #' print(perc_runoff_reduction_exposit)
@@ -53,9 +54,12 @@ perc_runoff_reduction_exposit <- list(
     row.names = c("No buffer", paste(c(5, 10, 20), "m"))),
    "3.01a" = data.frame(
     dissolved = c(0, 25, 40, 45, 60, 80),
-    bound = c(0, 7.1, 13.3, 15.9, 25.7, 48),
-    #bound = c(0, 30, 40, 55, 85, 95),
+    bound = c(0, 30, 40, 55, 85, 95),
     row.names = c("No buffer", paste(c(3, 5, 6, 10, 20), "m"))),
+   "3.01a2" = data.frame(
+    dissolved = c(0, 25),
+    bound = c(0, 25),
+    row.names = c("No buffer", paste(c(3), "m"))),
   "2.0" = data.frame(
     dissolved = c(0, 97.5),
     bound = c(0, 97.5),
@@ -74,7 +78,9 @@ perc_runoff_reduction_exposit <- list(
 #' @param t_runoff The time between application and the runoff event, where degradation occurs, in days
 #' @param exposit_reduction_version The version of the reduction factors to be used. "3.02" is the current
 #'   version used in Germany, "3.01a" is the version with additional percentages for 3 m and 6 m buffer
-#'   zones used in Switzerland.
+#'   zones used in Switzerland. "3.01a2" is a version introduced for consistency with previous calculations
+#'   performed for a 3 m buffer zone in Switzerland, with the same reduction being applied to the dissolved
+#'   and the bound fraction.
 #' @param V_ditch The volume of the ditch is assumed to be 1 m * 100 m * 30 cm = 30 m3
 #' @param V_event The unreduced runoff volume, equivalent to 10 mm precipitation on 1 ha
 #' @param dilution The dilution factor
@@ -93,7 +99,7 @@ perc_runoff_reduction_exposit <- list(
 #'   PEC_sw_exposit_runoff(500, Koc = 150)
 #'   PEC_sw_exposit_runoff(600, Koc = 10000, DT50 = 195, exposit = "3.01a")
 PEC_sw_exposit_runoff <- function(rate, interception = 0, Koc, DT50 = Inf, t_runoff = 3,
-  exposit_reduction_version = c("3.02", "3.01a", "2.0"),
+  exposit_reduction_version = c("3.02", "3.01a", "3.01a2", "2.0"),
   V_ditch = 30, V_event = 100, dilution = 2)
 {
   k_deg <- log(2)/DT50

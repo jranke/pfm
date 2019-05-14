@@ -113,8 +113,8 @@ in the worksheet "Konzept Runoff".</p>
     </div>
 
     <pre class="usage"><span class='fu'>PEC_sw_exposit_runoff</span>(<span class='no'>rate</span>, <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='no'>Koc</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
-  <span class='kw'>t_runoff</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>exposit_reduction_version</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"3.02"</span>, <span class='st'>"2.0"</span>),
-  <span class='kw'>V_ditch</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>V_event</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>dilution</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
+  <span class='kw'>t_runoff</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>exposit_reduction_version</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"3.02"</span>, <span class='st'>"3.01a"</span>,
+  <span class='st'>"3.01a2"</span>, <span class='st'>"2.0"</span>), <span class='kw'>V_ditch</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>V_event</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>dilution</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,7 +141,11 @@ in the worksheet "Konzept Runoff".</p>
     </tr>
     <tr>
       <th>exposit_reduction_version</th>
-      <td><p>The version of the reduction factors to be used</p></td>
+      <td><p>The version of the reduction factors to be used. "3.02" is the current
+version used in Germany, "3.01a" is the version with additional percentages for 3 m and 6 m buffer
+zones used in Switzerland. "3.01a2" is a version introduced for consistency with previous calculations
+performed for a 3 m buffer zone in Switzerland, with the same reduction being applied to the dissolved
+and the bound fraction.</p></td>
     </tr>
     <tr>
       <th>V_ditch</th>
@@ -195,6 +199,27 @@ in the worksheet "Konzept Runoff".</p>
 #&gt; 5 m        4.133333 0.016666667 4.150000
 #&gt; 10 m       3.542857 0.005357143 3.548214
 #&gt; 20 m       2.480000 0.002500000 2.482500
+#&gt; </div><div class='input'>  <span class='fu'>PEC_sw_exposit_runoff</span>(<span class='fl'>600</span>, <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>10000</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>195</span>, <span class='kw'>exposit</span> <span class='kw'>=</span> <span class='st'>"3.01a"</span>)</div><div class='output co'>#&gt; $perc_runoff
+#&gt; dissolved     bound 
+#&gt;     0.037     0.159 
+#&gt; 
+#&gt; $runoff
+#&gt;            dissolved      bound      total
+#&gt; No buffer 0.21964521 0.94388078 1.16352600
+#&gt; 3 m       0.16473391 0.66071655 0.82545046
+#&gt; 5 m       0.13178713 0.56632847 0.69811560
+#&gt; 6 m       0.12080487 0.42474635 0.54555122
+#&gt; 10 m      0.08785809 0.14158212 0.22944020
+#&gt; 20 m      0.04392904 0.04719404 0.09112308
+#&gt; 
+#&gt; $PEC_sw_runoff
+#&gt;           dissolved     bound     total
+#&gt; No buffer 0.8447893 3.6303107 4.4751000
+#&gt; 3 m       0.7844472 3.1462693 3.9307165
+#&gt; 5 m       0.7321507 3.1462693 3.8784200
+#&gt; 6 m       0.7106169 2.4985080 3.2091248
+#&gt; 10 m      0.6275578 1.0113008 1.6388586
+#&gt; 20 m      0.4392904 0.4719404 0.9112308
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

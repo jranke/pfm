@@ -9,8 +9,8 @@ Excel 3.02 spreadsheet available from
 }
 \usage{
 PEC_sw_exposit_runoff(rate, interception = 0, Koc, DT50 = Inf,
-  t_runoff = 3, exposit_reduction_version = c("3.02", "3.01a", "2.0"),
-  V_ditch = 30, V_event = 100, dilution = 2)
+  t_runoff = 3, exposit_reduction_version = c("3.02", "3.01a",
+  "3.01a2", "2.0"), V_ditch = 30, V_event = 100, dilution = 2)
 }
 \arguments{
 \item{rate}{The application rate in g/ha}
@@ -25,7 +25,9 @@ PEC_sw_exposit_runoff(rate, interception = 0, Koc, DT50 = Inf,
 
 \item{exposit_reduction_version}{The version of the reduction factors to be used. "3.02" is the current
 version used in Germany, "3.01a" is the version with additional percentages for 3 m and 6 m buffer
-zones used in Switzerland.}
+zones used in Switzerland. "3.01a2" is a version introduced for consistency with previous calculations
+performed for a 3 m buffer zone in Switzerland, with the same reduction being applied to the dissolved
+and the bound fraction.}
 
 \item{V_ditch}{The volume of the ditch is assumed to be 1 m * 100 m * 30 cm = 30 m3}
 
@@ -48,6 +50,7 @@ in the worksheet "Konzept Runoff".
 }
 \examples{
   PEC_sw_exposit_runoff(500, Koc = 150)
+  PEC_sw_exposit_runoff(600, Koc = 10000, DT50 = 195, exposit = "3.01a")
 }
 \seealso{
 \code{\link{perc_runoff_exposit}} for runoff loss percentages and \code{\link{perc_runoff_reduction_exposit}} for runoff reduction percentages used
