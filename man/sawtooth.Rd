@@ -19,9 +19,8 @@ is ignored}
 the corresponding amounts applied in the second column.}
 }
 \description{
-If the number of application cycles \code{n} is greater than 1, the
-application pattern specified in \code{applications} is repeated \code{n}
-times, with an interval \code{i}.
+If the application pattern is specified in \code{applications}, 
+\code{n} and \code{i} are disregarded.
 }
 \examples{
 applications = data.frame(time = seq(0, 14, by = 7), amount = c(1, 2, 3))
