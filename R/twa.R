@@ -172,9 +172,8 @@ plot.one_box <- function(x,
 
 #' Create decline time series for multiple applications
 #'
-#' If the number of application cycles \code{n} is greater than 1, the
-#' application pattern specified in \code{applications} is repeated \code{n}
-#' times, with an interval \code{i}.
+#' If the application pattern is specified in \code{applications}, 
+#' \code{n} and \code{i} are disregarded.
 #' @param x A \code{\link{one_box}} object
 #' @param n The number of applications. If \code{applications} is specified, \code{n} is ignored
 #' @param i The interval between applications. If \code{applications} is specified, \code{i}
