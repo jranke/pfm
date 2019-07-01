@@ -20,7 +20,7 @@
 #'
 #' @param x When numeric, this is the half-life to be used for an exponential
 #'   decline. When a character string specifying a parent decline model is given
-#'   e.g. \code{FOMC}, \code{parms} must contain the corresponding paramters.
+#'   e.g. \code{FOMC}, \code{parms} must contain the corresponding parameters.
 #'   If x is an \code{\link{mkinfit}} object, the decline is calculated from this
 #'   object.  
 #' @param ini The initial amount. If x is an \code{\link{mkinfit}} object, and
