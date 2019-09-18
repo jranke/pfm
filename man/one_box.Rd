@@ -20,7 +20,7 @@ one_box(x, ini, ..., t_end = 100, res = 0.01)
 \arguments{
 \item{x}{When numeric, this is the half-life to be used for an exponential
 decline. When a character string specifying a parent decline model is given
-e.g. \code{FOMC}, \code{parms} must contain the corresponding paramters.
+e.g. \code{FOMC}, \code{parms} must contain the corresponding parameters.
 If x is an \code{\link{mkinfit}} object, the decline is calculated from this
 object.}
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate a time weighted average concentration — twa • pfm</title>
+<title>Page not found (404) • pfm</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -27,17 +27,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script>
+<link href="https://pkgdown.jrwb.de/pfm/pkgdown.css" rel="stylesheet">
+<script src="https://pkgdown.jrwb.de/pfm/pkgdown.js"></script>
 
 
 
-<meta property="og:title" content="Calculate a time weighted average concentration — twa" />
-
-<meta property="og:description" content="The moving average is built only using the values in the past, so
-the earliest possible time for the maximum in the time series returned
-is after one window has passed." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Page not found (404)" />
 
 
 
@@ -55,7 +50,7 @@ is after one window has passed." />
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -67,7 +62,7 @@ is after one window has passed." />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">pfm</a>
+        <a class="navbar-link" href="https://pkgdown.jrwb.de/pfm/index.html">pfm</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.6</span>
       </span>
     </div>
@@ -75,13 +70,13 @@ is after one window has passed." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
       </ul>
       
@@ -98,72 +93,17 @@ is after one window has passed." />
       </header>
 
 <div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-9">
     <div class="page-header">
-    <h1>Calculate a time weighted average concentration</h1>
-    
-    <div class="hidden name"><code>twa.Rd</code></div>
+      <h1>Page not found (404)</h1>
     </div>
 
-    <div class="ref-description">
-    
-    <p>The moving average is built only using the values in the past, so
-the earliest possible time for the maximum in the time series returned
-is after one window has passed.</p>
-    
-    </div>
-
-    <pre class="usage"><span class='fu'>twa</span>(<span class='no'>x</span>, <span class='kw'>window</span> <span class='kw'>=</span> <span class='fl'>21</span>)
-
-<span class='co'># S3 method for one_box</span>
-<span class='fu'>twa</span>(<span class='no'>x</span>, <span class='kw'>window</span> <span class='kw'>=</span> <span class='fl'>21</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>An object of type <code><a href='one_box.html'>one_box</a></code></p></td>
-    </tr>
-    <tr>
-      <th>window</th>
-      <td><p>The size of the moving window</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='max_twa.html'>max_twa</a></code></p></div>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>pred</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sawtooth.html'>sawtooth</a></span>(<span class='fu'><a href='one_box.html'>one_box</a></span>(<span class='fl'>10</span>),
-  <span class='kw'>applications</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>time</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>7</span>), <span class='kw'>amount</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>)))
-<span class='fu'><a href='max_twa.html'>max_twa</a></span>(<span class='no'>pred</span>)</div><div class='output co'>#&gt; $max
-#&gt;    parent 
-#&gt; 0.9537545 
-#&gt; 
-#&gt; $window_start
-#&gt; parent 
-#&gt;      0 
-#&gt; 
-#&gt; $window_end
-#&gt; parent 
-#&gt;     21 
-#&gt; </div></pre>
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+Content not found. Please use links in the navbar.
 
   </div>
+
 </div>
+
 
 
       <footer>
