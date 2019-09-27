@@ -29,6 +29,14 @@
 #'   "DFOP", "HS", or "IORE", or an mkinmod object
 #' @param model_parms A named numeric vector containing the model parameters
 #' @return The predicted concentration in surface water in µg/L
+#' @references HSE's Chemicals Regulation Division (CRD) Active substance
+#'   PECsw calculations (for UK specific authorisation requests)
+#'   \url{https://www.hse.gov.uk/pesticides/topics/pesticide-approvals/pesticides-registration/data-requirements-handbook/fate/active-substance-uk.htm}
+#'   accessed 2019-09-27
+#'
+#'   Drainage PECs Version 1.0 (2015) Spreadsheet published at
+#'   \url{https://www.hse.gov.uk/pesticides/topics/pesticide-approvals/pesticides-registration/data-requirements-handbook/fate/pec-tools-2015/PEC\%20sw-sed\%20(drainage).xlsx}
+#'   accessed 2019-09-27
 #' @export
 #' @author Johannes Ranke
 #' @examples

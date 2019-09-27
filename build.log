@@ -7,5 +7,7 @@ Removed empty directory ‘pfm/inst/testdata/SwashProjects/Project_1/MACRO’
 Removed empty directory ‘pfm/inst/testdata/SwashProjects/Project_1’
 Removed empty directory ‘pfm/inst/testdata/SwashProjects’
 * looking to see if a ‘data/datalist’ file should be added
-* building ‘pfm_0.5.6.tar.gz’
+  NB: this package now depends on R (>= 3.5.0)
+  WARNING: Added dependency on R >= 3.5.0 because serialized objects in  serialize/load version 3 cannot be read in older versions of R.  File(s) containing such objects:  'pfm/data/EFSA_GW_interception_2014.RData'  WARNING: Added dependency on R >= 3.5.0 because serialized objects in  serialize/load version 3 cannot be read in older versions of R.  File(s) containing such objects: 'pfm/data/EFSA_washoff_2017.RData'
+* building 'pfm_0.5.7.tar.gz'
 

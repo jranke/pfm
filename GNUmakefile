@@ -34,7 +34,7 @@ README.html: README.md
 pd: roxygen
 	@echo "Building static documentation..."
 	# suppressWarnings to get rid of mbcsToSbcs warnings when plotting the 'µ' character
-	"$(R_HOME)/bin/Rscript" -e 'suppressWarnings(pkgdown::build_site())'
+	"$(R_HOME)/bin/Rscript" -e 'suppressWarnings(pkgdown::build_site(lazy=TRUE))'
 	@echo "DONE."
 
 $(TGZ): $(pkgfiles)

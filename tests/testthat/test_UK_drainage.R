@@ -2,7 +2,10 @@ library(pfm)
 context("UK drainage PEC calculations")
 
 test_that("The mobility classification and the drained percentage are correct", {
-  # Expected results are from the CRD drainage calculator, retrieved 2015-06-11
+  # Expected results are from the CRD drainage calculator, retrieved 2019-09-27
+  # The last test result was 0.01 when this test was written 2015-06-11.
+  # I assume that the value of 0.008 was displayed as 0.01 by the spreadsheet
+  # available at that time
   
   expect_equivalent(SSLRC_mobility_classification(1), list("Very mobile", 1.9))
   expect_equivalent(SSLRC_mobility_classification(15), list("Mobile", 1.9))
@@ -12,7 +15,7 @@ test_that("The mobility classification and the drained percentage are correct", 
   expect_equivalent(SSLRC_mobility_classification(100), list("Moderately mobile", 0.7))
   expect_equivalent(SSLRC_mobility_classification(800), list("Slightly mobile", 0.5))
   expect_equivalent(SSLRC_mobility_classification(2000), list("Slightly mobile", 0.02))
-  expect_equivalent(SSLRC_mobility_classification(5000), list("Non mobile", 0.01))
+  expect_equivalent(SSLRC_mobility_classification(5000), list("Non mobile", 0.008))
 })
 
 test_that("UK drainflow PECs are correct", {
