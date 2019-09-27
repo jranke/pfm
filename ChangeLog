@@ -1,19 +1,19 @@
-commit d28c33cfea96654a883ca869020671346c23568e
+commit 435e07a6f7fd2599d783fd306ee6d9e08acc0c6b
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2019-09-27 10:00:15 +0200
 
-    Fix for UK drainage, add some EFSA interception and washoff
+    Fix for UK drainage, some EFSA interception and washoff
     
     - PEC_sw_drainage_UK() gave results that were a little bit too high
     for the substances with the highest Koc (>4000), as I used 0.01% instead
     of 0.008% for them. This must have come from an old vesion of the UK
     data requirements handbook, at least I do not have another explanation
     
-    - Added EFSA interception (from 2014 DegT50 guidance) and tier 1
+    - Add EFSA interception (from 2014 DegT50 guidance) and tier 1
     crop wash-off factors (from 2017 PEC soil guidance) for some major
     arable crops
     
-    - Updated docs
+    - Update docs
 
 commit 803fe13e505960fddccdbd4dcb524715f5eb068d
 Author: Johannes Ranke <jranke@uni-bremen.de>
