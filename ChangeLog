@@ -1,3 +1,9 @@
+commit 9f848a9518aabf162723271bafba244221ee83ed
+Author: Johannes Ranke <johannes.ranke@jrwb.de>
+Date:   2019-09-27 12:55:03 +0200
+
+    Built windows binary for drat
+
 commit 435e07a6f7fd2599d783fd306ee6d9e08acc0c6b
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2019-09-27 10:00:15 +0200
