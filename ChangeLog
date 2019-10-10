@@ -1,3 +1,15 @@
+commit a5503d3e26408f7308a7bf4da617205b93d17422
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-10-10 09:21:46 +0200
+
+    Fix documentation for set_nd
+
+commit a5e458ecb33ae87e46b2237174a194f6252a97cf
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-10-10 08:53:30 +0200
+
+    Finish documentation of set_nd and test it
+
 commit 63df3871a442de4bf47e4d9de1449e7f6ed65b2f
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2019-10-09 19:17:07 +0200

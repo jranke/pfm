@@ -17,10 +17,10 @@
 #' @param loq Limit of quantification(numeric). Must be specified if the FOCUS rule to
 #' stop after the first non-detection is to be applied
 #' @param time_zero Is the first value in the series a time zero value?
-#' @param time_zero_nd_value Which value should we use for non-detects at time zero?
+#' @param time_zero_nd_value Which value should we use for non-detects or zero values at time zero?
 #' @param stop_after_first_nondetect Should we really stop after the first non-detection?
 #' @references FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
-#'   Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1, 
+#'   Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1,
 #'   18 December 2014, p. 251
 #' @describeIn set_nd Set non-detects in residues series
 #' @export
@@ -56,7 +56,7 @@ set_nd <- function(r, lod, loq = NA,
 
   #  Handle nd values
   if (time_zero) {
-    if (r[1] == "nd") {
+    if (r[1] %in% c("nd", 0)) {
       residues_present = FALSE
       result[1] <- time_zero_nd_value
     } else {
@@ -94,12 +94,12 @@ set_nd <- function(r, lod, loq = NA,
             return(as.numeric(result))
           }
         }
-
       }
       if (!residues_in_next) residues_present <- FALSE
       else residues_present <- TRUE
+    } else {
+      residues_present <- TRUE
     }
-
   }
   return(as.numeric(result))
 }

@@ -17,6 +17,8 @@ test_that("Simple residue series processed as intended", {
   expect_equal(set_nd(metabolite, 0.02, loq = 0.05),
     c(NA, NA, .01, .03, .06, .1, .11, .1, .09, .05, .03, .01, NA))
 
+  expect_equal(set_nd(c("nd", 1, 0.2, "nd"), 0.1), c(NA, 1, 0.2, 0.05))
+
 })
 
 test_that("Simple residue series are processed as in the FOCUS guidance", {
