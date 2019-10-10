@@ -6,16 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set non-detects in residue series without replicates
-Sets non-detects directly before or directly after detects to NA. Values between
-lod and loq are set to their mean value if an loq is specified.
-If 'time_zero' is set to TRUE, the residue series is assumed to start with time
-zero, and non-detects at time zero are set to 'time_zero_nd_value'. For the
-set_nd_focus variant, this is zero, otherwise this argument has NA as default
-value.
-If stopping after the first non-detection is requested, as in in the FOCUS
-variant of the function, an loq has to be specified in order to decide
-if any later detections are above the loq. — set_nd • pfm</title>
+<title>Set non-detects in residue series without replicates — set_nd • pfm</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -41,19 +32,9 @@ if any later detections are above the loq. — set_nd • pfm</title>
 
 
 
-<meta property="og:title" content="Set non-detects in residue series without replicates
-Sets non-detects directly before or directly after detects to NA. Values between
-lod and loq are set to their mean value if an loq is specified.
-If 'time_zero' is set to TRUE, the residue series is assumed to start with time
-zero, and non-detects at time zero are set to 'time_zero_nd_value'. For the
-set_nd_focus variant, this is zero, otherwise this argument has NA as default
-value.
-If stopping after the first non-detection is requested, as in in the FOCUS
-variant of the function, an loq has to be specified in order to decide
-if any later detections are above the loq. — set_nd" />
+<meta property="og:title" content="Set non-detects in residue series without replicates — set_nd" />
 
-<meta property="og:description" content="Set non-detects in residue series without replicates
-Sets non-detects directly before or directly after detects to NA. Values between
+<meta property="og:description" content="Sets non-detects directly before or directly after detects to NA. Values between
 lod and loq are set to their mean value if an loq is specified.
 If 'time_zero' is set to TRUE, the residue series is assumed to start with time
 zero, and non-detects at time zero are set to 'time_zero_nd_value'. For the
@@ -125,24 +106,14 @@ if any later detections are above the loq." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set non-detects in residue series without replicates
-Sets non-detects directly before or directly after detects to NA. Values between
-lod and loq are set to their mean value if an loq is specified.
-If 'time_zero' is set to TRUE, the residue series is assumed to start with time
-zero, and non-detects at time zero are set to 'time_zero_nd_value'. For the
-set_nd_focus variant, this is zero, otherwise this argument has NA as default
-value.
-If stopping after the first non-detection is requested, as in in the FOCUS
-variant of the function, an loq has to be specified in order to decide
-if any later detections are above the loq.</h1>
+    <h1>Set non-detects in residue series without replicates</h1>
     
     <div class="hidden name"><code>set_nd.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Set non-detects in residue series without replicates
-Sets non-detects directly before or directly after detects to NA. Values between
+    <p>Sets non-detects directly before or directly after detects to NA. Values between
 lod and loq are set to their mean value if an loq is specified.
 If 'time_zero' is set to TRUE, the residue series is assumed to start with time
 zero, and non-detects at time zero are set to 'time_zero_nd_value'. For the
@@ -195,16 +166,20 @@ stop after the first non-detection is to be applied</p></td>
 
     
 <ul>
+<li><p><code>set_nd</code>: Set non-detects in residues series</p></li>
 <li><p><code>set_nd_focus</code>: Set non-detects in residues series according to FOCUS rules</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>FOCUS (2014) p. 75, 76, 131, 132</p>
+    <p>FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
+  Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1, 
+  18 December 2014, p. 251</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>parent_1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.12</span>, <span class='fl'>.09</span>, <span class='fl'>.05</span>, <span class='fl'>.03</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>)
+    <pre class="examples"><div class='input'><span class='co'># FOCUS (2014) p. 75/76 and 131/132</span>
+<span class='no'>parent_1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.12</span>, <span class='fl'>.09</span>, <span class='fl'>.05</span>, <span class='fl'>.03</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>)
 <span class='fu'>set_nd</span>(<span class='no'>parent_1</span>, <span class='fl'>0.02</span>)</div><div class='output co'>#&gt;  [1] 0.12 0.09 0.05 0.03 0.01   NA   NA   NA   NA   NA</div><div class='input'><span class='no'>parent_2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.12</span>, <span class='fl'>.09</span>, <span class='fl'>.05</span>, <span class='fl'>.03</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='fl'>.03</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>)
 <span class='fu'>set_nd</span>(<span class='no'>parent_2</span>, <span class='fl'>0.02</span>)</div><div class='output co'>#&gt;  [1] 0.12 0.09 0.05 0.03 0.01 0.01 0.03 0.01   NA   NA</div><div class='input'><span class='fu'>set_nd_focus</span>(<span class='no'>parent_2</span>, <span class='fl'>0.02</span>, <span class='kw'>loq</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)</div><div class='output co'>#&gt;  [1] 0.12 0.09 0.05 0.03 0.01   NA   NA   NA   NA   NA</div><div class='input'><span class='no'>parent_3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.12</span>, <span class='fl'>.09</span>, <span class='fl'>.05</span>, <span class='fl'>.03</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='fl'>.06</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>)
 <span class='fu'>set_nd</span>(<span class='no'>parent_3</span>, <span class='fl'>0.02</span>)</div><div class='output co'>#&gt;  [1] 0.12 0.09 0.05 0.03 0.01 0.01 0.06 0.01   NA   NA</div><div class='input'><span class='fu'>set_nd_focus</span>(<span class='no'>parent_3</span>, <span class='fl'>0.02</span>, <span class='kw'>loq</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)</div><div class='output co'>#&gt;  [1] 0.12 0.09 0.05 0.03 0.01 0.01 0.06 0.01   NA   NA</div><div class='input'><span class='no'>metabolite</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>, <span class='fl'>0.03</span>, <span class='fl'>0.06</span>, <span class='fl'>0.10</span>, <span class='fl'>0.11</span>, <span class='fl'>0.10</span>, <span class='fl'>0.09</span>, <span class='fl'>0.05</span>, <span class='fl'>0.03</span>, <span class='st'>"nd"</span>, <span class='st'>"nd"</span>)

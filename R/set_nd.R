@@ -1,5 +1,5 @@
 #' Set non-detects in residue series without replicates
-
+#'
 #' Sets non-detects directly before or directly after detects to NA. Values between
 #' lod and loq are set to their mean value if an loq is specified.
 #' If 'time_zero' is set to TRUE, the residue series is assumed to start with time
@@ -9,7 +9,7 @@
 #' If stopping after the first non-detection is requested, as in in the FOCUS
 #' variant of the function, an loq has to be specified in order to decide
 #' if any later detections are above the loq.
-
+#'
 #' @param r A character vector of sequential residues without replicates, with
 #' non-detects specified as 'nd' and unquantified values above the limit of
 #' detection specified as 'nq', otherwise coercible to numeric
@@ -19,9 +19,13 @@
 #' @param time_zero Is the first value in the series a time zero value?
 #' @param time_zero_nd_value Which value should we use for non-detects at time zero?
 #' @param stop_after_first_nondetect Should we really stop after the first non-detection?
-#' @references FOCUS (2014) p. 75, 76, 131, 132
+#' @references FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
+#'   Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1, 
+#'   18 December 2014, p. 251
+#' @describeIn set_nd Set non-detects in residues series
 #' @export
 #' @examples
+#' # FOCUS (2014) p. 75/76 and 131/132
 #' parent_1 <- c(.12, .09, .05, .03, "nd", "nd", "nd", "nd", "nd", "nd")
 #' set_nd(parent_1, 0.02)
 #' parent_2 <- c(.12, .09, .05, .03, "nd", "nd", .03, "nd", "nd", "nd")
