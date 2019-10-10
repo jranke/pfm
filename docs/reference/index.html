@@ -167,6 +167,21 @@
           <p><code><a href="FOMC_actual_twa.html">FOMC_actual_twa()</a></code> </p>
         </td>
         <td><p>Actual and maximum moving window time average concentrations for FOMC kinetics</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="set_nd.html">set_nd()</a></code> <code><a href="set_nd.html">set_nd_focus()</a></code> </p>
+        </td>
+        <td><p>Set non-detects in residue series without replicates
+Sets non-detects directly before or directly after detects to NA. Values between
+lod and loq are set to their mean value if an loq is specified.
+If 'time_zero' is set to TRUE, the residue series is assumed to start with time
+zero, and non-detects at time zero are set to 'time_zero_nd_value'. For the
+set_nd_focus variant, this is zero, otherwise this argument has NA as default
+value.
+If stopping after the first non-detection is requested, as in in the FOCUS
+variant of the function, an loq has to be specified in order to decide
+if any later detections are above the loq.</p></td>
       </tr>
     </tbody><tbody>
       <tr>

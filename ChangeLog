@@ -1,3 +1,9 @@
+commit 63df3871a442de4bf47e4d9de1449e7f6ed65b2f
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-10-09 19:17:07 +0200
+
+    Function to set non-detects in residue series
+
 commit 9f848a9518aabf162723271bafba244221ee83ed
 Author: Johannes Ranke <johannes.ranke@jrwb.de>
 Date:   2019-09-27 12:55:03 +0200

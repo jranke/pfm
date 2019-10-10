@@ -16,6 +16,8 @@
 #' @param lod Limit of detection (numeric)
 #' @param loq Limit of quantification(numeric). Must be specified if the FOCUS rule to
 #' stop after the first non-detection is to be applied
+#' @param time_zero Is the first value in the series a time zero value?
+#' @param time_zero_nd_value Which value should we use for non-detects at time zero?
 #' @param stop_after_first_nondetect Should we really stop after the first non-detection?
 #' @references FOCUS (2014) p. 75, 76, 131, 132
 #' @export
@@ -100,8 +102,8 @@ set_nd <- function(r, lod, loq = NA,
 
 #' @describeIn set_nd Set non-detects in residues series according to FOCUS rules
 #' @export
-set_nd_focus <- function(res, lod, loq = NA, time_zero = TRUE) {
-  result <- set_nd(res, lod, loq = loq, time_zero = time_zero,
+set_nd_focus <- function(r, lod, loq = NA, time_zero = TRUE) {
+  result <- set_nd(r, lod, loq = loq, time_zero = time_zero,
     time_zero_nd_value = 0, stop_after_first_nondetect = TRUE)
   return(result)
 }
