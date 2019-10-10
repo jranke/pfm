@@ -22,7 +22,7 @@ stop after the first non-detection is to be applied}
 
 \item{time_zero}{Is the first value in the series a time zero value?}
 
-\item{time_zero_nd_value}{Which value should we use for non-detects or zero values at time zero?}
+\item{time_zero_nd_value}{Which value should we use for non-detects at time zero?}
 
 \item{stop_after_first_nondetect}{Should we really stop after the first non-detection?}
 }

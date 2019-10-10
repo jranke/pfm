@@ -1,3 +1,9 @@
+commit a071d46f698397a6c8247e19eceb0fcd5f139056
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-10-10 12:25:42 +0200
+
+    Fix set_nd for metabolites, handle zero at time zero
+
 commit a5503d3e26408f7308a7bf4da617205b93d17422
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2019-10-10 09:21:46 +0200

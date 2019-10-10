@@ -17,7 +17,7 @@
 #' @param loq Limit of quantification(numeric). Must be specified if the FOCUS rule to
 #' stop after the first non-detection is to be applied
 #' @param time_zero Is the first value in the series a time zero value?
-#' @param time_zero_nd_value Which value should we use for non-detects or zero values at time zero?
+#' @param time_zero_nd_value Which value should we use for non-detects at time zero?
 #' @param stop_after_first_nondetect Should we really stop after the first non-detection?
 #' @references FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
 #'   Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1,
@@ -51,12 +51,12 @@ set_nd <- function(r, lod, loq = NA,
     nq = 0.5 * (lod + loq)
     result[r == "nq"] <- nq
   } else {
-    if (any(r == "nq")) stop("You need to specify lod and loq")
+    if (any(r == "nq", na.rm = TRUE)) stop("You need to specify lod and loq")
   }
 
   #  Handle nd values
   if (time_zero) {
-    if (r[1] %in% c("nd", 0)) {
+    if (r[1] %in% c("nd")) {
       residues_present = FALSE
       result[1] <- time_zero_nd_value
     } else {
@@ -73,32 +73,37 @@ set_nd <- function(r, lod, loq = NA,
     # residues_in_next
     if (i < length(r)) {
       next_value <- r[i + 1]
-      if (next_value == "nd") residues_in_next = FALSE
+      if (is.na(next_value) || next_value == "nd") residues_in_next = FALSE
       else residues_in_next = TRUE
     } else {
       residues_in_next = FALSE
     }
 
-    if (r[i] == "nd") {
-      if (residues_present | residues_in_next) {
-        result[i] <- 0.5 * lod
-      } else {
-        result[i] <- NA
-      }
+    if (is.na(r[i])) {
+      residues_present <- FALSE
+      result[i] <- NA
+    } else {
+      if (r[i] == "nd") {
+        if (residues_present | residues_in_next) {
+          result[i] <- 0.5 * lod
+        } else {
+          result[i] <- NA
+        }
 
-      if (stop_after_first_nondetect) {
-        if (residues_present & !residues_in_next) {
-          remaining <- (i + 1):length(r)
-          if (!any(suppressWarnings(as.numeric(r[remaining])) > loq, na.rm = TRUE)) {
-            result[remaining] <- NA
-            return(as.numeric(result))
+        if (stop_after_first_nondetect) {
+          if (residues_present & !residues_in_next) {
+            remaining <- (i + 1):length(r)
+            if (!any(suppressWarnings(as.numeric(r[remaining])) > loq, na.rm = TRUE)) {
+              result[remaining] <- NA
+              return(as.numeric(result))
+            }
           }
         }
+        if (!residues_in_next) residues_present <- FALSE
+        else residues_present <- TRUE
+      } else {
+        residues_present <- TRUE
       }
-      if (!residues_in_next) residues_present <- FALSE
-      else residues_present <- TRUE
-    } else {
-      residues_present <- TRUE
     }
   }
   return(as.numeric(result))
