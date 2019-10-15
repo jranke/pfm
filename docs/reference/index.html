@@ -170,9 +170,14 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="set_nd.html">set_nd()</a></code> <code><a href="set_nd.html">set_nd_focus()</a></code> </p>
+          <p><code><a href="set_nd_nq.html">set_nd_nq()</a></code> <code><a href="set_nd_nq.html">set_nd_nq_focus()</a></code> </p>
         </td>
-        <td><p>Set non-detects in residue series without replicates</p></td>
+        <td><p>Set non-detects and unquantified values in residue series without replicates
+This function automates replacing unquantified values in residue time and
+depth series. For time series, the function performs part of the residue
+processing proposed in the FOCUS kinetics guidance for parent compounds
+and metabolites. For two-dimensional residue series over time and depth,
+it automates the proposal of Boesten et al (2015).</p></td>
       </tr>
     </tbody><tbody>
       <tr>

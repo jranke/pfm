@@ -1,3 +1,9 @@
+commit a2ca8be6f5593f0afd833ea73b62149055ee84f9
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-10-10 14:56:35 +0200
+
+    Do not mess with zero values at time zero
+
 commit a071d46f698397a6c8247e19eceb0fcd5f139056
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2019-10-10 12:25:42 +0200
