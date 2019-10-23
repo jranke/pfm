@@ -1,11 +1,11 @@
 #' Set non-detects and unquantified values in residue series without replicates
-
+#'
 #' This function automates replacing unquantified values in residue time and
 #' depth series. For time series, the function performs part of the residue
 #' processing proposed in the FOCUS kinetics guidance for parent compounds
 #' and metabolites. For two-dimensional residue series over time and depth,
 #' it automates the proposal of Boesten et al (2015).
-
+#'
 #' @param res_raw Character vector of a residue time series, or matrix of
 #' residue values with rows representing depth profiles for a specific sampling
 #' time, and columns representing time series of residues at the same depth.

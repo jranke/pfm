@@ -3,12 +3,7 @@
 \name{set_nd_nq}
 \alias{set_nd_nq}
 \alias{set_nd_nq_focus}
-\title{Set non-detects and unquantified values in residue series without replicates
-This function automates replacing unquantified values in residue time and
-depth series. For time series, the function performs part of the residue
-processing proposed in the FOCUS kinetics guidance for parent compounds
-and metabolites. For two-dimensional residue series over time and depth,
-it automates the proposal of Boesten et al (2015).}
+\title{Set non-detects and unquantified values in residue series without replicates}
 \usage{
 set_nd_nq(res_raw, lod, loq = NA, time_zero_presence = FALSE)
 
@@ -45,7 +40,6 @@ non-detection that occurs after the quantified values?}
 A numeric vector, if a vector was supplied, or a numeric matrix otherwise
 }
 \description{
-Set non-detects and unquantified values in residue series without replicates
 This function automates replacing unquantified values in residue time and
 depth series. For time series, the function performs part of the residue
 processing proposed in the FOCUS kinetics guidance for parent compounds
