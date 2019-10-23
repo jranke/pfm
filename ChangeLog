@@ -1,3 +1,9 @@
+commit 020bce41dd821b5949f824eaa3a2998584a14585
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2019-10-15 11:27:59 +0200
+
+    Residue processing for depth profiles over time
+
 commit a2ca8be6f5593f0afd833ea73b62149055ee84f9
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2019-10-10 14:56:35 +0200
