@@ -8,11 +8,13 @@
 
 <title>Calculate PEC surface water due to drainage as in Exposit 3 — PEC_sw_exposit_drainage • pfm</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -32,8 +34,8 @@
 
 
 
-<meta property="og:title" content="Calculate PEC surface water due to drainage as in Exposit 3 — PEC_sw_exposit_drainage" />
 
+<meta property="og:title" content="Calculate PEC surface water due to drainage as in Exposit 3 — PEC_sw_exposit_drainage" />
 <meta property="og:description" content="This is a reimplementation of the calculation described in the Exposit 3.02 spreadsheet file,
 in the worksheet &quot;Konzept Drainage&quot;. Although there are four groups of
 compounds (&quot;Gefährdungsgruppen&quot;), only one distinction is made in the
@@ -42,6 +44,7 @@ with modest to high mobility (groups 2, 3 and 4). In this implementation,
 the group is derived only from the Koc, if not given explicitly. For
 details, see the discussion of the function arguments below." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -88,7 +91,6 @@ details, see the discussion of the function arguments below." />
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -110,7 +112,6 @@ details, see the discussion of the function arguments below." />
     </div>
 
     <div class="ref-description">
-    
     <p>This is a reimplementation of the calculation described in the Exposit 3.02 spreadsheet file,
 in the worksheet "Konzept Drainage". Although there are four groups of
 compounds ("Gefährdungsgruppen"), only one distinction is made in the
@@ -118,14 +119,20 @@ calculations, between compounds with low mobility (group 1) and compounds
 with modest to high mobility (groups 2, 3 and 4). In this implementation,
 the group is derived only from the Koc, if not given explicitly. For
 details, see the discussion of the function arguments below.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>PEC_sw_exposit_drainage</span>(<span class='no'>rate</span>, <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>mobility</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='st'>"low"</span>, <span class='st'>"high"</span>), <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>t_drainage</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>V_ditch</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>V_drainage</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>spring</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>autumn</span> <span class='kw'>=</span> <span class='fl'>100</span>),
-  <span class='kw'>dilution</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>PEC_sw_exposit_drainage</span>(
+  <span class='no'>rate</span>,
+  <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>mobility</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='st'>"low"</span>, <span class='st'>"high"</span>),
+  <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
+  <span class='kw'>t_drainage</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>V_ditch</span> <span class='kw'>=</span> <span class='fl'>30</span>,
+  <span class='kw'>V_drainage</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>spring</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>autumn</span> <span class='kw'>=</span> <span class='fl'>100</span>),
+  <span class='kw'>dilution</span> <span class='kw'>=</span> <span class='fl'>2</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -168,12 +175,11 @@ autumn/winter/early spring.</p></td>
       <td><p>The dilution factor</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>Excel 3.02 spreadsheet available from
   <a href='https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3'>https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3</a></p>
-    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list containing the following components</p><dl class='dl-horizontal'>
@@ -184,11 +190,9 @@ autumn/winter/early spring.</p></td>
   
 </dl>
 
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='perc_runoff_exposit.html'>perc_runoff_exposit</a></code> for runoff loss percentages and <code><a href='perc_runoff_reduction_exposit.html'>perc_runoff_reduction_exposit</a></code> for runoff reduction percentages used</p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>  <span class='fu'>PEC_sw_exposit_drainage</span>(<span class='fl'>500</span>, <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>150</span>)</div><div class='output co'>#&gt; $perc_drainage_total
@@ -208,13 +212,9 @@ autumn/winter/early spring.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#source">Source</a></li>
-
       <li><a href="#value">Value</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

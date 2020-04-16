@@ -1,4 +1,4 @@
-# Copyright (C) 2015  Johannes Ranke
+# Copyright (C) 2015,2020  Johannes Ranke
 # Contact: jranke@uni-bremen.de
 # This file is part of the R package pfm
 
@@ -19,8 +19,9 @@
 #'
 #' Based on some posts in a thread on Stackoverflow
 #' \url{http://stackoverflow.com/questions/2602583/geometric-mean-is-there-a-built-in}
-#' This function checks for negative values, removes NA values per default and
-#' returns 0 if at least one element of the vector is 0.
+#' This function returns NA if NA values are present and na.rm = FALSE
+#' (default). If negative values are present, it gives an error message.
+#' If at least one element of the vector is 0, it returns 0.
 #'
 #' @param x Vector of numbers
 #' @param na.rm Should NA values be omitted?
@@ -31,8 +32,8 @@
 #' geomean(c(1, 3, 9))
 #' geomean(c(1, 3, NA, 9))
 #' \dontrun{geomean(c(1, -3, 9)) # returns an error}
-geomean = function(x, na.rm = TRUE){
-  if (any(is.na(x)) & na.rm == FALSE) stop("Removal of NA values was not requested")
+geomean = function(x, na.rm = FALSE) {
+  if (any(is.na(x)) & na.rm == FALSE) return(NA)
   if (any(x < 0, na.rm = na.rm)) stop("Only defined for positive numbers")
   exp(mean(log(x), na.rm = na.rm))
 }

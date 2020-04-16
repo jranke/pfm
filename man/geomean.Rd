@@ -4,7 +4,7 @@
 \alias{geomean}
 \title{Calculate the geometric mean}
 \usage{
-geomean(x, na.rm = TRUE)
+geomean(x, na.rm = FALSE)
 }
 \arguments{
 \item{x}{Vector of numbers}
@@ -17,8 +17,9 @@ The geometric mean
 \description{
 Based on some posts in a thread on Stackoverflow
 \url{http://stackoverflow.com/questions/2602583/geometric-mean-is-there-a-built-in}
-This function checks for negative values, removes NA values per default and
-returns 0 if at least one element of the vector is 0.
+This function returns NA if NA values are present and na.rm = FALSE
+(default). If negative values are present, it gives an error message.
+If at least one element of the vector is 0, it returns 0.
 }
 \examples{
 geomean(c(1, 3, 9))

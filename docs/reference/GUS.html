@@ -8,11 +8,13 @@
 
 <title>Groundwater ubiquity score based on Gustafson (1989) — GUS • pfm</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -32,12 +34,13 @@
 
 
 
-<meta property="og:title" content="Groundwater ubiquity score based on Gustafson (1989) — GUS" />
 
+<meta property="og:title" content="Groundwater ubiquity score based on Gustafson (1989) — GUS" />
 <meta property="og:description" content="The groundwater ubiquity score GUS is calculated according to
 the following equation
 $$GUS = \log_{10} DT50_{soil} (4 - \log_{10} K_{oc})$$" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -84,7 +87,6 @@ $$GUS = \log_{10} DT50_{soil} (4 - \log_{10} K_{oc})$$" />
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -106,11 +108,9 @@ $$GUS = \log_{10} DT50_{soil} (4 - \log_{10} K_{oc})$$" />
     </div>
 
     <div class="ref-description">
-    
     <p>The groundwater ubiquity score GUS is calculated according to
 the following equation
 $$GUS = \log_{10} DT50_{soil} (4 - \log_{10} K_{oc})$$</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>GUS</span>(<span class='no'>...</span>)
@@ -119,14 +119,20 @@ $$GUS = \log_{10} DT50_{soil} (4 - \log_{10} K_{oc})$$</p>
 <span class='fu'>GUS</span>(<span class='no'>DT50</span>, <span class='no'>Koc</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for chent</span>
-<span class='fu'>GUS</span>(<span class='no'>chent</span>, <span class='kw'>degradation_value</span> <span class='kw'>=</span> <span class='st'>"DT50ref"</span>,
-  <span class='kw'>lab_field</span> <span class='kw'>=</span> <span class='st'>"laboratory"</span>, <span class='kw'>redox</span> <span class='kw'>=</span> <span class='st'>"aerobic"</span>,
-  <span class='kw'>sorption_value</span> <span class='kw'>=</span> <span class='st'>"Kfoc"</span>, <span class='kw'>degradation_aggregator</span> <span class='kw'>=</span> <span class='no'>geomean</span>,
-  <span class='kw'>sorption_aggregator</span> <span class='kw'>=</span> <span class='no'>geomean</span>, <span class='no'>...</span>)
+<span class='fu'>GUS</span>(
+  <span class='no'>chent</span>,
+  <span class='kw'>degradation_value</span> <span class='kw'>=</span> <span class='st'>"DT50ref"</span>,
+  <span class='kw'>lab_field</span> <span class='kw'>=</span> <span class='st'>"laboratory"</span>,
+  <span class='kw'>redox</span> <span class='kw'>=</span> <span class='st'>"aerobic"</span>,
+  <span class='kw'>sorption_value</span> <span class='kw'>=</span> <span class='st'>"Kfoc"</span>,
+  <span class='kw'>degradation_aggregator</span> <span class='kw'>=</span> <span class='no'>geomean</span>,
+  <span class='kw'>sorption_aggregator</span> <span class='kw'>=</span> <span class='no'>geomean</span>,
+  <span class='no'>...</span>
+)
 
 <span class='co'># S3 method for GUS_result</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -198,29 +204,25 @@ be Koc values at a concentration of 1 mg/L in the water phase.</p></td>
       <td><p>The number of digits used in the print method</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list with the DT50 and Koc used as well as the resulting score
   of class GUS_result</p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Gustafson, David I. (1989) Groundwater ubiquity score: a simple
 method for assessing pesticide leachability. <em>Environmental
 toxicology and chemistry</em> <b>8</b>(4) 339–57.</p>
-    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#references">References</a></li>
-          </ul>
+    </ul>
 
     <h2>Author</h2>
     <p>Johannes Ranke</p>

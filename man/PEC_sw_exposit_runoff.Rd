@@ -8,9 +8,17 @@ Excel 3.02 spreadsheet available from
   \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
 }
 \usage{
-PEC_sw_exposit_runoff(rate, interception = 0, Koc, DT50 = Inf,
-  t_runoff = 3, exposit_reduction_version = c("3.02", "3.01a",
-  "3.01a2", "2.0"), V_ditch = 30, V_event = 100, dilution = 2)
+PEC_sw_exposit_runoff(
+  rate,
+  interception = 0,
+  Koc,
+  DT50 = Inf,
+  t_runoff = 3,
+  exposit_reduction_version = c("3.02", "3.01a", "3.01a2", "2.0"),
+  V_ditch = 30,
+  V_event = 100,
+  dilution = 2
+)
 }
 \arguments{
 \item{rate}{The application rate in g/ha}

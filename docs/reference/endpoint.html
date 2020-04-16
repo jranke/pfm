@@ -8,11 +8,13 @@
 
 <title>Retrieve endpoint information from the chyaml field of a chent object — endpoint • pfm</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -32,13 +34,14 @@
 
 
 
-<meta property="og:title" content="Retrieve endpoint information from the chyaml field of a chent object — endpoint" />
 
+<meta property="og:title" content="Retrieve endpoint information from the chyaml field of a chent object — endpoint" />
 <meta property="og:description" content="R6 class objects of class chent represent chemical entities
 and can hold a list of information loaded from a chemical yaml file in their
 chyaml field. Such information is extracted and optionally aggregated by
 this function." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -85,7 +88,6 @@ this function." />
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -107,32 +109,46 @@ this function." />
     </div>
 
     <div class="ref-description">
-    
     <p>R6 class objects of class chent represent chemical entities
 and can hold a list of information loaded from a chemical yaml file in their
 chyaml field. Such information is extracted and optionally aggregated by
 this function.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>endpoint</span>(<span class='no'>chent</span>, <span class='kw'>medium</span> <span class='kw'>=</span> <span class='st'>"soil"</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"degradation"</span>, <span class='st'>"sorption"</span>),
-  <span class='kw'>lab_field</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='st'>"laboratory"</span>, <span class='st'>"field"</span>), <span class='kw'>redox</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='st'>"aerobic"</span>,
-  <span class='st'>"anaerobic"</span>), <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"DT50ref"</span>, <span class='st'>"Kfoc"</span>, <span class='st'>"N"</span>),
-  <span class='kw'>aggregator</span> <span class='kw'>=</span> <span class='no'>geomean</span>, <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>signif</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+    <pre class="usage"><span class='fu'>endpoint</span>(
+  <span class='no'>chent</span>,
+  <span class='kw'>medium</span> <span class='kw'>=</span> <span class='st'>"soil"</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"degradation"</span>, <span class='st'>"sorption"</span>),
+  <span class='kw'>lab_field</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='st'>"laboratory"</span>, <span class='st'>"field"</span>),
+  <span class='kw'>redox</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='st'>"aerobic"</span>, <span class='st'>"anaerobic"</span>),
+  <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"DT50ref"</span>, <span class='st'>"Kfoc"</span>, <span class='st'>"N"</span>),
+  <span class='kw'>aggregator</span> <span class='kw'>=</span> <span class='no'>geomean</span>,
+  <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>signif</span> <span class='kw'>=</span> <span class='fl'>3</span>
+)
 
-<span class='fu'>soil_DT50</span>(<span class='no'>chent</span>, <span class='kw'>aggregator</span> <span class='kw'>=</span> <span class='no'>geomean</span>, <span class='kw'>signif</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>lab_field</span> <span class='kw'>=</span> <span class='st'>"laboratory"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"DT50ref"</span>, <span class='kw'>redox</span> <span class='kw'>=</span> <span class='st'>"aerobic"</span>,
-  <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>soil_DT50</span>(
+  <span class='no'>chent</span>,
+  <span class='kw'>aggregator</span> <span class='kw'>=</span> <span class='no'>geomean</span>,
+  <span class='kw'>signif</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>lab_field</span> <span class='kw'>=</span> <span class='st'>"laboratory"</span>,
+  <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"DT50ref"</span>,
+  <span class='kw'>redox</span> <span class='kw'>=</span> <span class='st'>"aerobic"</span>,
+  <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
 
-<span class='fu'>soil_Kfoc</span>(<span class='no'>chent</span>, <span class='kw'>aggregator</span> <span class='kw'>=</span> <span class='no'>geomean</span>, <span class='kw'>signif</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"Kfoc"</span>,
-  <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>soil_Kfoc</span>(<span class='no'>chent</span>, <span class='kw'>aggregator</span> <span class='kw'>=</span> <span class='no'>geomean</span>, <span class='kw'>signif</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='st'>"Kfoc"</span>, <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>soil_N</span>(<span class='no'>chent</span>, <span class='kw'>aggregator</span> <span class='kw'>=</span> <span class='no'>mean</span>, <span class='kw'>signif</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>soil_sorption</span>(<span class='no'>chent</span>, <span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Kfoc"</span>, <span class='st'>"N"</span>), <span class='kw'>aggregators</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Kfoc</span> <span class='kw'>=</span>
-  <span class='no'>geomean</span>, <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='no'>geomean</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='no'>mean</span>), <span class='kw'>signif</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Kfoc</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>3</span>),
-  <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
+<span class='fu'>soil_sorption</span>(
+  <span class='no'>chent</span>,
+  <span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Kfoc"</span>, <span class='st'>"N"</span>),
+  <span class='kw'>aggregators</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Kfoc</span> <span class='kw'>=</span> <span class='no'>geomean</span>, <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='no'>geomean</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='no'>mean</span>),
+  <span class='kw'>signif</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>Kfoc</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>N</span> <span class='kw'>=</span> <span class='fl'>3</span>),
+  <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -185,7 +201,7 @@ about precision?</p></td>
       <td><p>A named vector of aggregator functions to be used</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The result from applying the aggregator function to
@@ -193,25 +209,21 @@ about precision?</p></td>
   given number of significant digits, or, if raw = TRUE,
   the values as a character value, retaining any implicit
   information on precision that may be present.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The functions <code>soil_*</code> are functions to extract soil specific endpoints.
 For the Freundlich exponent, the capital letter <code>N</code> is used in order to
 facilitate dealing with such data in R. In pesticide fate modelling, this
 exponent is often called 1/n.</p>
-    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-          </ul>
+    </ul>
 
   </div>
 </div>

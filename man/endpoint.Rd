@@ -8,23 +8,39 @@
 \alias{soil_sorption}
 \title{Retrieve endpoint information from the chyaml field of a chent object}
 \usage{
-endpoint(chent, medium = "soil", type = c("degradation", "sorption"),
-  lab_field = c(NA, "laboratory", "field"), redox = c(NA, "aerobic",
-  "anaerobic"), value = c("DT50ref", "Kfoc", "N"),
-  aggregator = geomean, raw = FALSE, signif = 3)
+endpoint(
+  chent,
+  medium = "soil",
+  type = c("degradation", "sorption"),
+  lab_field = c(NA, "laboratory", "field"),
+  redox = c(NA, "aerobic", "anaerobic"),
+  value = c("DT50ref", "Kfoc", "N"),
+  aggregator = geomean,
+  raw = FALSE,
+  signif = 3
+)
 
-soil_DT50(chent, aggregator = geomean, signif = 3,
-  lab_field = "laboratory", value = "DT50ref", redox = "aerobic",
-  raw = FALSE)
+soil_DT50(
+  chent,
+  aggregator = geomean,
+  signif = 3,
+  lab_field = "laboratory",
+  value = "DT50ref",
+  redox = "aerobic",
+  raw = FALSE
+)
 
-soil_Kfoc(chent, aggregator = geomean, signif = 3, value = "Kfoc",
-  raw = FALSE)
+soil_Kfoc(chent, aggregator = geomean, signif = 3, value = "Kfoc", raw = FALSE)
 
 soil_N(chent, aggregator = mean, signif = 3, raw = FALSE)
 
-soil_sorption(chent, values = c("Kfoc", "N"), aggregators = c(Kfoc =
-  geomean, Koc = geomean, N = mean), signif = c(Kfoc = 3, N = 3),
-  raw = FALSE)
+soil_sorption(
+  chent,
+  values = c("Kfoc", "N"),
+  aggregators = c(Kfoc = geomean, Koc = geomean, N = mean),
+  signif = c(Kfoc = 3, N = 3),
+  raw = FALSE
+)
 }
 \arguments{
 \item{chent}{The chent object to get the information from}

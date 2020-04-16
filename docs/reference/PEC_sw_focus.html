@@ -8,11 +8,13 @@
 
 <title>Calculate PEC surface water at FOCUS Step 1 — PEC_sw_focus • pfm</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -32,8 +34,8 @@
 
 
 
-<meta property="og:title" content="Calculate PEC surface water at FOCUS Step 1 — PEC_sw_focus" />
 
+<meta property="og:title" content="Calculate PEC surface water at FOCUS Step 1 — PEC_sw_focus" />
 <meta property="og:description" content="This is a reimplementation of the FOCUS Step 1 and 2 calculator version 3.2,
 authored by Michael Klein, in R. Note that results for multiple
 applications should be compared to the corresponding results for a
@@ -42,6 +44,7 @@ this implementation. Only Step 1 PECs are calculated. However,
 input files are generated that are suitable as input also for Step 2
 to be used with the FOCUS calculator." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -88,7 +91,6 @@ to be used with the FOCUS calculator." />
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -110,7 +112,6 @@ to be used with the FOCUS calculator." />
     </div>
 
     <div class="ref-description">
-    
     <p>This is a reimplementation of the FOCUS Step 1 and 2 calculator version 3.2,
 authored by Michael Klein, in R. Note that results for multiple
 applications should be compared to the corresponding results for a
@@ -118,16 +119,28 @@ single application. At current, this is not done automatically in
 this implementation. Only Step 1 PECs are calculated. However,
 input files are generated that are suitable as input also for Step 2
 to be used with the FOCUS calculator.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>PEC_sw_focus</span>(<span class='no'>parent</span>, <span class='no'>rate</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>comment</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>met</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>f_drift</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>f_rd</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>scenario</span> <span class='kw'>=</span> <span class='no'>FOCUS_Step_12_scenarios</span>$<span class='no'>names</span>,
-  <span class='kw'>region</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"n"</span>, <span class='st'>"s"</span>), <span class='kw'>season</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='st'>"of"</span>, <span class='st'>"mm"</span>, <span class='st'>"js"</span>),
-  <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"no interception"</span>, <span class='st'>"minimal crop cover"</span>,
-  <span class='st'>"average crop cover"</span>, <span class='st'>"full canopy"</span>), <span class='kw'>met_form_water</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>txt_file</span> <span class='kw'>=</span> <span class='st'>"pesticide.txt"</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>append</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>PEC_sw_focus</span>(
+  <span class='no'>parent</span>,
+  <span class='no'>rate</span>,
+  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>i</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>comment</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>met</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>f_drift</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>f_rd</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
+  <span class='kw'>scenario</span> <span class='kw'>=</span> <span class='no'>FOCUS_Step_12_scenarios</span>$<span class='no'>names</span>,
+  <span class='kw'>region</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"n"</span>, <span class='st'>"s"</span>),
+  <span class='kw'>season</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='st'>"of"</span>, <span class='st'>"mm"</span>, <span class='st'>"js"</span>),
+  <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"no interception"</span>, <span class='st'>"minimal crop cover"</span>, <span class='st'>"average crop cover"</span>,
+    <span class='st'>"full canopy"</span>),
+  <span class='kw'>met_form_water</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>txt_file</span> <span class='kw'>=</span> <span class='st'>"pesticide.txt"</span>,
+  <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>append</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -214,7 +227,7 @@ should be written</p></td>
       <td><p>Should the input text file be appended?</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>The formulas for input to the waterbody via runoff/drainage of the
@@ -224,7 +237,6 @@ should be written</p></td>
   multiplying the application rate with the molar weight
   correction and the formation fraction in water/sediment systems.</p>
 <p>Step 2 is not implemented.</p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>FOCUS (2014) Generic guidance for Surface Water Scenarios (version 1.4).
@@ -233,7 +245,6 @@ should be written</p></td>
 <p>Website of the Steps 1 and 2 calculator at the Joint Research
   Center of the European Union:
   http://esdac.jrc.ec.europa.eu/projects/stepsonetwo</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Parent only</span>
@@ -337,11 +348,8 @@ should be written</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#note">Note</a></li>
-
       <li><a href="#references">References</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

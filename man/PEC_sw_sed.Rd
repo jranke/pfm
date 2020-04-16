@@ -5,9 +5,15 @@
 \title{Calculate predicted environmental concentrations in sediment from surface
 water concentrations}
 \usage{
-PEC_sw_sed(PEC_sw, percentage = 100, method = "percentage",
-  sediment_depth = 5, water_depth = 30, sediment_density = 1.3,
-  PEC_sed_units = c("µg/kg", "mg/kg"))
+PEC_sw_sed(
+  PEC_sw,
+  percentage = 100,
+  method = "percentage",
+  sediment_depth = 5,
+  water_depth = 30,
+  sediment_density = 1.3,
+  PEC_sed_units = c("µg/kg", "mg/kg")
+)
 }
 \arguments{
 \item{PEC_sw}{Numeric vector or matrix of surface water concentrations in µg/L for

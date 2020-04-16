@@ -4,9 +4,14 @@
 \alias{pfm_degradation}
 \title{Calculate a time course of relative concentrations based on an mkinmod model}
 \usage{
-pfm_degradation(model = "SFO", DT50 = 1000, parms = c(k_parent_sink =
-  log(2)/DT50), years = 1, step_days = 1, times = seq(0, years * 365,
-  by = step_days))
+pfm_degradation(
+  model = "SFO",
+  DT50 = 1000,
+  parms = c(k_parent_sink = log(2)/DT50),
+  years = 1,
+  step_days = 1,
+  times = seq(0, years * 365, by = step_days)
+)
 }
 \arguments{
 \item{model}{The degradation model to be used. Either a parent only model like

@@ -4,9 +4,18 @@
 \alias{chent_focus_sw}
 \title{Create a chemical compound object for FOCUS Step 1 calculations}
 \usage{
-chent_focus_sw(name, Koc, DT50_ws = NA, DT50_soil = NA,
-  DT50_water = NA, DT50_sediment = NA, cwsat = 1000, mw = NA,
-  max_soil = 1, max_ws = 1)
+chent_focus_sw(
+  name,
+  Koc,
+  DT50_ws = NA,
+  DT50_soil = NA,
+  DT50_water = NA,
+  DT50_sediment = NA,
+  cwsat = 1000,
+  mw = NA,
+  max_soil = 1,
+  max_ws = 1
+)
 }
 \arguments{
 \item{name}{Length one character vector containing the name}

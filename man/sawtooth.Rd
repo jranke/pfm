@@ -4,8 +4,12 @@
 \alias{sawtooth}
 \title{Create decline time series for multiple applications}
 \usage{
-sawtooth(x, n = 1, i = 365, applications = data.frame(time = seq(0,
-  (n - 1) * i, length.out = n), amount = 1))
+sawtooth(
+  x,
+  n = 1,
+  i = 365,
+  applications = data.frame(time = seq(0, (n - 1) * i, length.out = n), amount = 1)
+)
 }
 \arguments{
 \item{x}{A \code{\link{one_box}} object}

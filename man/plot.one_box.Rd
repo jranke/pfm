@@ -4,9 +4,16 @@
 \alias{plot.one_box}
 \title{Plot time series of decline data}
 \usage{
-\method{plot}{one_box}(x, xlim = range(time(x)), ylim = c(0, max(x)),
-  xlab = "Time", ylab = "Residue", max_twa = NULL,
-  max_twa_var = dimnames(x)[[2]][1], ...)
+\method{plot}{one_box}(
+  x,
+  xlim = range(time(x)),
+  ylim = c(0, max(x)),
+  xlab = "Time",
+  ylab = "Residue",
+  max_twa = NULL,
+  max_twa_var = dimnames(x)[[2]][1],
+  ...
+)
 }
 \arguments{
 \item{x}{The object of type \code{\link{one_box}} to be plotted}

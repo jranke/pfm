@@ -8,11 +8,13 @@
 
 <title>Calculate predicted environmental concentrations in soil — PEC_soil • pfm</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -32,14 +34,15 @@
 
 
 
-<meta property="og:title" content="Calculate predicted environmental concentrations in soil — PEC_soil" />
 
+<meta property="og:title" content="Calculate predicted environmental concentrations in soil — PEC_soil" />
 <meta property="og:description" content="This is a basic calculation of a contaminant concentration in bulk soil
 based on complete, instantaneous mixing. If an interval is given, an
 attempt is made at calculating a long term maximum concentration using
 the concepts layed out in the PPR panel opinion (EFSA PPR panel 2012
 and in the EFSA guidance on PEC soil calculations (EFSA, 2015, 2017)." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -86,7 +89,6 @@ and in the EFSA guidance on PEC soil calculations (EFSA, 2015, 2017)." />
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -108,24 +110,38 @@ and in the EFSA guidance on PEC soil calculations (EFSA, 2015, 2017)." />
     </div>
 
     <div class="ref-description">
-    
     <p>This is a basic calculation of a contaminant concentration in bulk soil
 based on complete, instantaneous mixing. If an interval is given, an
 attempt is made at calculating a long term maximum concentration using
 the concepts layed out in the PPR panel opinion (EFSA PPR panel 2012
 and in the EFSA guidance on PEC soil calculations (EFSA, 2015, 2017).</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>PEC_soil</span>(<span class='no'>rate</span>, <span class='kw'>rate_units</span> <span class='kw'>=</span> <span class='st'>"g/ha"</span>, <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>mixing_depth</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>PEC_units</span> <span class='kw'>=</span> <span class='st'>"mg/kg"</span>, <span class='kw'>PEC_pw_units</span> <span class='kw'>=</span> <span class='st'>"mg/L"</span>,
-  <span class='kw'>interval</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>n_periods</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>tillage_depth</span> <span class='kw'>=</span> <span class='fl'>20</span>,
-  <span class='kw'>leaching_depth</span> <span class='kw'>=</span> <span class='no'>tillage_depth</span>, <span class='kw'>crop</span> <span class='kw'>=</span> <span class='st'>"annual"</span>,
-  <span class='kw'>cultivation</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>chent</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>FOMC</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>Kom</span> <span class='kw'>=</span> <span class='no'>Koc</span>/<span class='fl'>1.724</span>, <span class='kw'>t_avg</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>t_act</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>PEC_soil</span>(
+  <span class='no'>rate</span>,
+  <span class='kw'>rate_units</span> <span class='kw'>=</span> <span class='st'>"g/ha"</span>,
+  <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>mixing_depth</span> <span class='kw'>=</span> <span class='fl'>5</span>,
+  <span class='kw'>PEC_units</span> <span class='kw'>=</span> <span class='st'>"mg/kg"</span>,
+  <span class='kw'>PEC_pw_units</span> <span class='kw'>=</span> <span class='st'>"mg/L"</span>,
+  <span class='kw'>interval</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>n_periods</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
+  <span class='kw'>tillage_depth</span> <span class='kw'>=</span> <span class='fl'>20</span>,
+  <span class='kw'>leaching_depth</span> <span class='kw'>=</span> <span class='no'>tillage_depth</span>,
+  <span class='kw'>crop</span> <span class='kw'>=</span> <span class='st'>"annual"</span>,
+  <span class='kw'>cultivation</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>chent</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>DT50</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>FOMC</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>Koc</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>Kom</span> <span class='kw'>=</span> <span class='no'>Koc</span>/<span class='fl'>1.724</span>,
+  <span class='kw'>t_avg</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>t_act</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>scenarios</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"default"</span>, <span class='st'>"EFSA_2017"</span>, <span class='st'>"EFSA_2015"</span>),
-  <span class='kw'>leaching</span> <span class='kw'>=</span> <span class='no'>scenarios</span> <span class='kw'>==</span> <span class='st'>"EFSA_2017"</span>, <span class='kw'>porewater</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
+  <span class='kw'>leaching</span> <span class='kw'>=</span> <span class='no'>scenarios</span> <span class='kw'>==</span> <span class='st'>"EFSA_2017"</span>,
+  <span class='kw'>porewater</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -245,11 +261,10 @@ soil concentrations?  Based on equation (7) given in the PPR panel opinion
 p. 13).</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The predicted concentration in soil</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This assumes that the complete load to soil during the time specified by
@@ -258,7 +273,6 @@ opinion cited below (EFSA PPR panel 2012), only temperature correction using the
 Arrhenius equation is performed.</p>
 <p>Total soil and porewater PEC values for the scenarios as defined in the EFSA
 guidance (2017, p. 14/15) can easily be calculated.</p>
-    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>While time weighted average (TWA) concentrations given in the examples
@@ -275,7 +289,6 @@ from 2017 (p. 92).</p>
   e.g. in the EFSA scenarios, the DT50 for groundwater modelling
   (destination 'PECgw') is taken from the chent object, otherwise the DT50
   with destination 'PECsoil'.</p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>EFSA Panel on Plant Protection Products and their Residues (2012)
@@ -293,7 +306,6 @@ from 2017 (p. 92).</p>
   protection products and transformation products of these active substances
   in soil. <em>EFSA Journal</em> <b>13</b>(4) 4093
   doi:10.2903/j.efsa.2015.4093</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>PEC_soil</span>(<span class='fl'>100</span>, <span class='kw'>interception</span> <span class='kw'>=</span> <span class='fl'>0.25</span>)</div><div class='output co'>#&gt;      scenario
@@ -334,15 +346,10 @@ from 2017 (p. 92).</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#note">Note</a></li>
-
       <li><a href="#references">References</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

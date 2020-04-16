@@ -7,8 +7,14 @@
 \usage{
 set_nd_nq(res_raw, lod, loq = NA, time_zero_presence = FALSE)
 
-set_nd_nq_focus(res_raw, lod, loq = NA, set_first_sample_nd = TRUE,
-  first_sample_nd_value = 0, ignore_below_loq_after_first_nd = TRUE)
+set_nd_nq_focus(
+  res_raw,
+  lod,
+  loq = NA,
+  set_first_sample_nd = TRUE,
+  first_sample_nd_value = 0,
+  ignore_below_loq_after_first_nd = TRUE
+)
 }
 \arguments{
 \item{res_raw}{Character vector of a residue time series, or matrix of

@@ -4,12 +4,25 @@
 \alias{PEC_sw_focus}
 \title{Calculate PEC surface water at FOCUS Step 1}
 \usage{
-PEC_sw_focus(parent, rate, n = 1, i = NA, comment = "", met = NULL,
-  f_drift = NA, f_rd = 0.1, scenario = FOCUS_Step_12_scenarios$names,
-  region = c("n", "s"), season = c(NA, "of", "mm", "js"),
-  interception = c("no interception", "minimal crop cover",
-  "average crop cover", "full canopy"), met_form_water = TRUE,
-  txt_file = "pesticide.txt", overwrite = FALSE, append = TRUE)
+PEC_sw_focus(
+  parent,
+  rate,
+  n = 1,
+  i = NA,
+  comment = "",
+  met = NULL,
+  f_drift = NA,
+  f_rd = 0.1,
+  scenario = FOCUS_Step_12_scenarios$names,
+  region = c("n", "s"),
+  season = c(NA, "of", "mm", "js"),
+  interception = c("no interception", "minimal crop cover", "average crop cover",
+    "full canopy"),
+  met_form_water = TRUE,
+  txt_file = "pesticide.txt",
+  overwrite = FALSE,
+  append = TRUE
+)
 }
 \arguments{
 \item{parent}{A list containing substance specific parameters, e.g.

@@ -8,11 +8,13 @@
 
 <title>Plot time series of decline data — plot.one_box • pfm</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -32,10 +34,11 @@
 
 
 
-<meta property="og:title" content="Plot time series of decline data — plot.one_box" />
 
+<meta property="og:title" content="Plot time series of decline data — plot.one_box" />
 <meta property="og:description" content="Plot time series of decline data" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -82,7 +85,6 @@
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -104,16 +106,21 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Plot time series of decline data</p>
-    
     </div>
 
     <pre class="usage"><span class='co'># S3 method for one_box</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>x</span>, <span class='kw'>xlim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/time.html'>time</a></span>(<span class='no'>x</span>)), <span class='kw'>ylim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>x</span>)),
-  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Time"</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Residue"</span>, <span class='kw'>max_twa</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>max_twa_var</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='fl'>2</span>]][<span class='fl'>1</span>], <span class='no'>...</span>)</pre>
-    
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(
+  <span class='no'>x</span>,
+  <span class='kw'>xlim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/time.html'>time</a></span>(<span class='no'>x</span>)),
+  <span class='kw'>ylim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='no'>x</span>)),
+  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Time"</span>,
+  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Residue"</span>,
+  <span class='kw'>max_twa</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>max_twa_var</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>x</span>)<span class='kw'>[[</span><span class='fl'>2</span>]][<span class='fl'>1</span>],
+  <span class='no'>...</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -152,11 +159,10 @@ be shown if max_twa is not NULL.</p></td>
       <td><p>Further arguments passed to methods</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='sawtooth.html'>sawtooth</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>dfop_pred</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='one_box.html'>one_box</a></span>(<span class='st'>"DFOP"</span>, <span class='kw'>parms</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>k1</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>k2</span> <span class='kw'>=</span> <span class='fl'>0.02</span>, <span class='kw'>g</span> <span class='kw'>=</span> <span class='fl'>0.7</span>))
@@ -170,9 +176,7 @@ be shown if max_twa is not NULL.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

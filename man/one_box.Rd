@@ -11,11 +11,9 @@ one_box(x, ini, ..., t_end = 100, res = 0.01)
 
 \method{one_box}{numeric}(x, ini = 1, ..., t_end = 100, res = 0.01)
 
-\method{one_box}{character}(x, ini = 1, parms, ..., t_end = 100,
-  res = 0.01)
+\method{one_box}{character}(x, ini = 1, parms, ..., t_end = 100, res = 0.01)
 
-\method{one_box}{mkinfit}(x, ini = "model", ..., t_end = 100,
-  res = 0.01)
+\method{one_box}{mkinfit}(x, ini = "model", ..., t_end = 100, res = 0.01)
 }
 \arguments{
 \item{x}{When numeric, this is the half-life to be used for an exponential

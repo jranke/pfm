@@ -8,10 +8,17 @@ Excel 3.02 spreadsheet available from
   \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
 }
 \usage{
-PEC_sw_exposit_drainage(rate, interception = 0, Koc = NA,
-  mobility = c(NA, "low", "high"), DT50 = Inf, t_drainage = 3,
-  V_ditch = 30, V_drainage = c(spring = 10, autumn = 100),
-  dilution = 2)
+PEC_sw_exposit_drainage(
+  rate,
+  interception = 0,
+  Koc = NA,
+  mobility = c(NA, "low", "high"),
+  DT50 = Inf,
+  t_drainage = 3,
+  V_ditch = 30,
+  V_drainage = c(spring = 10, autumn = 100),
+  dilution = 2
+)
 }
 \arguments{
 \item{rate}{The application rate in g/ha}

@@ -19,14 +19,14 @@ The text file is not included in the package as its licence is not clear.
   scenario_path <- "inst/extdata/FOCUS_Step_12_scenarios.txt"
   scenarios <- readLines(scenario_path)[9:38]
   FOCUS_Step_12_scenarios <- list()
-  sce <- read.table(text = scenarios, sep = "\\t", header = TRUE, check.names = FALSE,
+  sce <- read.table(text = scenarios, sep = "\t", header = TRUE, check.names = FALSE,
     stringsAsFactors = FALSE)
   FOCUS_Step_12_scenarios$names = sce$Crop
   rownames(sce) <- sce$Crop
   FOCUS_Step_12_scenarios$drift = sce[, 3:11]
   FOCUS_Step_12_scenarios$interception = sce[, 12:15]
   sce_2 <- readLines(scenario_path)[41:46]
-  rd <- read.table(text = sce_2, sep = "\\t")[1:2]
+  rd <- read.table(text = sce_2, sep = "\t")[1:2]
   rd_mat <- matrix(rd$V2, nrow = 3, byrow = FALSE)
   dimnames(rd_mat) = list(Time = c("Oct-Feb", "Mar-May", "Jun-Sep"),
                           Region = c("North", "South"))
