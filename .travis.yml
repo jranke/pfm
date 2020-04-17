@@ -2,7 +2,6 @@ language: r
 cache: packages
 r:
   - release
-  - devel
 github_packages:
   - r-lib/covr
 after_success:
