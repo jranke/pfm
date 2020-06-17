@@ -4,14 +4,16 @@
 \name{perc_runoff_reduction_exposit}
 \alias{perc_runoff_reduction_exposit}
 \title{Runoff reduction percentages as used in Exposit}
-\format{A named list of data frames with reduction percentage values for the
+\format{
+A named list of data frames with reduction percentage values for the
 dissolved fraction and the fraction bound to eroding particles, with
 vegetated buffer widths as row names. The names of the list items are the Exposit versions
 from which the values were taken.
   \describe{
     \item{dissolved}{The reduction percentage for the dissolved phase}
     \item{bound}{The reduction percentage for the particulate phase}
-  }}
+  }
+}
 \source{
 Excel 3.02 spreadsheet available from
   \url{https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html}

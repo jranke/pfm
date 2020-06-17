@@ -5,9 +5,11 @@
 \alias{drift_data_JKI}
 \title{Deposition from spray drift expressed as percent of the applied dose as
 published by the JKI}
-\format{A list currently containing matrices with spray drift percentage
+\format{
+A list currently containing matrices with spray drift percentage
 data for field crops (Ackerbau), and Pome/stone fruit, early and late
-(Obstbau frueh, spaet).}
+(Obstbau frueh, spaet).
+}
 \source{
 JKI (2010) Spreadsheet 'Tabelle der Abdrifteckwerte.xls', retrieved
 from

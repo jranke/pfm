@@ -4,7 +4,9 @@
 \name{EFSA_washoff_2017}
 \alias{EFSA_washoff_2017}
 \title{Subset of EFSA crop washoff default values}
-\format{A matrix containing wash-off factors, currently only for some selected crops}
+\format{
+A matrix containing wash-off factors, currently only for some selected crops
+}
 \source{
 European Food Safety Authority (2017) EFSA guidance document for
   predicting environmental concentrations of active substances of plant

@@ -4,9 +4,11 @@
 \name{soil_scenario_data_EFSA_2015}
 \alias{soil_scenario_data_EFSA_2015}
 \title{Properties of the predefined scenarios from the EFSA guidance from 2015}
-\format{A data frame with one row for each scenario. Row names are the scenario codes, 
+\format{
+A data frame with one row for each scenario. Row names are the scenario codes, 
   e.g. CTN for the Northern scenario for the total concentration in soil. Columns are 
-  mostly self-explanatory. \code{rho} is the dry bulk density of the top soil.}
+  mostly self-explanatory. \code{rho} is the dry bulk density of the top soil.
+}
 \source{
 EFSA (European Food Safety Authority) (2015)
   EFSA guidance document for predicting environmental concentrations

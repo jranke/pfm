@@ -4,10 +4,12 @@
 \name{FOCUS_Step_12_scenarios}
 \alias{FOCUS_Step_12_scenarios}
 \title{Step 1/2 scenario data as distributed with the FOCUS Step 1/2 calculator}
-\format{A list containing the scenario names in a character vector called 'names',
+\format{
+A list containing the scenario names in a character vector called 'names',
   the drift percentiles in a matrix called 'drift', interception percentages in
   a matrix called 'interception' and the runoff/drainage percentages for Step 2
-  calculations in a matrix called 'rd'.}
+  calculations in a matrix called 'rd'.
+}
 \description{
 The data were extracted from the scenario.txt file using the R code shown below.
 The text file is not included in the package as its licence is not clear.

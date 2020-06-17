@@ -3,23 +3,30 @@ Loading required package: R6
 Loading required package: mkin
 Testing pfm
 ✔ |  OK F W S | Context
+⠏ |   0       | Simple PEC sediment calculations✔ |   1       | Simple PEC sediment calculations
+⠏ |   0       | Simple PEC soil calculations⠙ |   2       | Simple PEC soil calculations✔ |  17       | Simple PEC soil calculations [0.3 s]
+⠏ |   0       | Simple PEC surface water calculations with drift entry✔ |   2       | Simple PEC surface water calculations with drift entry
+⠏ |   0       | Actual and time weighted average concentrations for SFO kinetics✔ |   1       | Actual and time weighted average concentrations for SFO kinetics
+⠏ |   0       | Read and analyse TOXSWA cwa files⠋ |   1       | Read and analyse TOXSWA cwa files⠸ |   4       | Read and analyse TOXSWA cwa files⠼ |   5       | Read and analyse TOXSWA cwa files⠴ |   6       | Read and analyse TOXSWA cwa files✖ |   6 1     | Read and analyse TOXSWA cwa files [6.4 s]
+────────────────────────────────────────────────────────────────────────────────────────────────────
+test_TOXSWA.R:68: failure: Getting events and moving window analysis works
+H_sw_R1_stream$windows has changed from known value recorded in 'H_sw_R1_stream_windows.rds'.
+Component "window": Modes: character, numeric
+Component "window": Attributes: < target is NULL, current is list >
+Component "window": target is character, current is factor
+────────────────────────────────────────────────────────────────────────────────────────────────────
+⠏ |   0       | UK drainage PEC calculations✔ |  12       | UK drainage PEC calculations
 ⠏ |   0       | Exposit calculations✔ |   7       | Exposit calculations
 ⠏ |   0       | Geometric mean calculation✔ |   6       | Geometric mean calculation
-⠏ |   0       | Check max_twa for parent mkinfit models against analytical solutions⠋ |   1       | Check max_twa for parent mkinfit models against analytical solutions✔ |   1       | Check max_twa for parent mkinfit models against analytical solutions [1.9 s]
-⠏ |   0       | Simple PEC sediment calculations✔ |   1       | Simple PEC sediment calculations
-⠏ |   0       | Simple PEC soil calculations⠙ |   2       | Simple PEC soil calculations✔ |  17       | Simple PEC soil calculations [0.2 s]
-⠏ |   0       | Simple PEC surface water calculations with drift entry✔ |   2       | Simple PEC surface water calculations with drift entry
+⠏ |   0       | Check max_twa for parent mkinfit models against analytical solutions⠋ |   1       | Check max_twa for parent mkinfit models against analytical solutions✔ |   1       | Check max_twa for parent mkinfit models against analytical solutions [2.1 s]
 ⠏ |   0       | Processing of residue series✔ |  11       | Processing of residue series
-⠏ |   0       | Actual and time weighted average concentrations for SFO kinetics✔ |   1       | Actual and time weighted average concentrations for SFO kinetics
 ⠏ |   0       | FOCUS Step 1 calculations⠹ |   3       | FOCUS Step 1 calculations✔ |   9       | FOCUS Step 1 calculations [0.1 s]
 ⠏ |   0       | FOCUS Steps 12 input files✔ |   8       | FOCUS Steps 12 input files
-⠏ |   0       | Read and analyse TOXSWA cwa files⠋ |   1       | Read and analyse TOXSWA cwa files⠸ |   4       | Read and analyse TOXSWA cwa files⠼ |   5       | Read and analyse TOXSWA cwa files⠴ |   6       | Read and analyse TOXSWA cwa files✔ |   7       | Read and analyse TOXSWA cwa files [5.5 s]
-⠏ |   0       | UK drainage PEC calculations✔ |  12       | UK drainage PEC calculations
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════
-Duration: 7.9 s
+Duration: 9.3 s
 
-OK:       82
-Failed:   0
+OK:       81
+Failed:   1
 Warnings: 0
 Skipped:  0

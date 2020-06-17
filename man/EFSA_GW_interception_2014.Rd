@@ -4,7 +4,9 @@
 \name{EFSA_GW_interception_2014}
 \alias{EFSA_GW_interception_2014}
 \title{Subset of EFSA crop interception default values for groundwater modelling}
-\format{A matrix containing interception values, currently only for some selected crops}
+\format{
+A matrix containing interception values, currently only for some selected crops
+}
 \source{
 European Food Safety Authority (2014) EFSA Guidance Document for
 evaluating laboratory and field dissipation studies to obtain DegT50 values

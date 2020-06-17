@@ -1,3 +1,12 @@
+commit d81550d0cccae824cc748de48e7fd50ea8d8033a
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2020-04-16 18:02:18 +0200
+
+    Make na.rm = FALSE the default for geomean()
+    
+    This makes more sense and is in line with mean() from base R. Adapt
+    tests and update docs.
+
 commit 4bc95b3e4aae22e4052e0a4c905a9227c909e2cd
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2020-02-19 07:49:08 +0100
