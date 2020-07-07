@@ -1,3 +1,35 @@
+commit 58c6214f459b28b899794f32a60836aef97ac01b
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2020-07-07 11:27:44 +0200
+
+    Adapt pfm_degradation to current mkin
+    
+    use_of_ff = "max" is now the default
+
+commit e3bc264df69f892e9ad990be22d3ec1b22041daa
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2020-06-17 13:37:59 +0200
+
+    TSCF estimation equations, update docs
+    
+    Briggs et al. (1982) and Dettenmaier et al. (2009)
+
+commit e505ecc4aba0f6719fd772faa2655dd824a6930d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2020-04-17 09:51:33 +0200
+
+    Skip testing on R-devel
+    
+    it currently fails with
+    
+    ✖ |   6 1     | Read and analyse TOXSWA cwa files [6.4 s]
+    ────────────────────────────────────────────────────────────────────────────────────────────────────
+    test_TOXSWA.R:68: failure: Getting events and moving window analysis works
+    H_sw_R1_stream$windows has changed from known value recorded in 'H_sw_R1_stream_windows.rds'.
+    Component "window": Modes: character, numeric
+    Component "window": Attributes: < target is NULL, current is list >
+    Component "window": target is character, current is factor
+
 commit d81550d0cccae824cc748de48e7fd50ea8d8033a
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2020-04-16 18:02:18 +0200

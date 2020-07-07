@@ -23,7 +23,7 @@ is ignored}
 the corresponding amounts applied in the second column.}
 }
 \description{
-If the application pattern is specified in \code{applications}, 
+If the application pattern is specified in \code{applications},
 \code{n} and \code{i} are disregarded.
 }
 \examples{

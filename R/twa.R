@@ -1,28 +1,10 @@
-# Copyright (C) 2016,2017  Johannes Ranke
-
-# Contact: jranke@uni-bremen.de
-# This file is part of the R package pfm
-
-# This program is free software: you can redistribute it and/or modify it under
-# the terms of the GNU General Public License as published by the Free Software
-# Foundation, either version 3 of the License, or (at your option) any later
-# version.
-
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-# details.
-
-# You should have received a copy of the GNU General Public License along with
-# this program. If not, see <http://www.gnu.org/licenses/>
-
 #' Create a time series of decline data
 #'
 #' @param x When numeric, this is the half-life to be used for an exponential
 #'   decline. When a character string specifying a parent decline model is given
 #'   e.g. \code{FOMC}, \code{parms} must contain the corresponding parameters.
 #'   If x is an \code{\link{mkinfit}} object, the decline is calculated from this
-#'   object.  
+#'   object.
 #' @param ini The initial amount. If x is an \code{\link{mkinfit}} object, and
 #'   ini is 'model', the fitted initial concentrations are used. Otherwise, ini
 #'   must be numeric. If it has length one, it is used for the parent and
@@ -93,7 +75,7 @@ one_box.character <- function(x, ini = 1, parms, ...,
 
   t_out <- seq(0, t_end, by = res)
   pred <- mkinpredict(m, odeparms = parms, odeini = c(parent = ini),
-                      outtimes = t_out, solution_type = "analytical")[-1]
+    outtimes = t_out, solution_type = "analytical")[, -1, drop = FALSE]
   result <- ts(pred, 0, t_end, frequency = 1/res)
   class(result) <- c("one_box", "ts")
   return(result)
@@ -118,7 +100,7 @@ one_box.mkinfit <- function(x, ini = "model", ..., t_end = 100, res = 0.01) {
   else solution_type = "deSolve"
 
   tmp <- mkinpredict(fit$mkinmod, odeparms = fit$bparms.ode, odeini = odeini,
-    outtimes = t_out, solution_type = solution_type)[-1]
+    outtimes = t_out, solution_type = solution_type)[, -1, drop = FALSE]
   result <- ts(tmp, 0, t_end, frequency = 1/res)
   class(result) <- c("one_box", "ts")
   return(result)
@@ -172,7 +154,7 @@ plot.one_box <- function(x,
 
 #' Create decline time series for multiple applications
 #'
-#' If the application pattern is specified in \code{applications}, 
+#' If the application pattern is specified in \code{applications},
 #' \code{n} and \code{i} are disregarded.
 #' @param x A \code{\link{one_box}} object
 #' @param n The number of applications. If \code{applications} is specified, \code{n} is ignored
@@ -260,7 +242,7 @@ twa.one_box <- function(x, window = 21)
 #' for finding the maximum. It is therefore recommended to check this using
 #' \code{\link{plot.one_box}} using the window size for the argument
 #' \code{max_twa}.
-#' 
+#'
 #' The method working directly on fitted \code{\link{mkinfit}} objects uses the
 #' equations given in the PEC soil section of the FOCUS guidance and is restricted
 #' SFO, FOMC and DFOP models and to the parent compound

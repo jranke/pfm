@@ -7,7 +7,7 @@
 pfm_degradation(
   model = "SFO",
   DT50 = 1000,
-  parms = c(k_parent_sink = log(2)/DT50),
+  parms = c(k_parent = log(2)/DT50),
   years = 1,
   step_days = 1,
   times = seq(0, years * 365, by = step_days)

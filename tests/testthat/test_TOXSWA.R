@@ -1,4 +1,3 @@
-library(pfm)
 context("Read and analyse TOXSWA cwa files")
 
 #   zipfile_test = tempfile()
@@ -61,9 +60,10 @@ test_that("A TOXSWA 5.5.3 out file is correctly read and printed", {
 test_that("Getting events and moving window analysis works", {
   # Event analysis with two different thresholds
   H_sw_R1_stream$get_events(c(2, 10))
-  expect_equal_to_reference(H_sw_R1_stream$events, file = "H_sw_R1_stream_events.rds")
+  expect_known_output(H_sw_R1_stream$events, file = "H_sw_R1_stream_events.txt")
 
   # Moving window analysis
   H_sw_R1_stream$moving_windows(c(7, 21))
-  expect_equal_to_reference(H_sw_R1_stream$windows, file = "H_sw_R1_stream_windows.rds")
+  H_sw_R1_stream$windows
+  expect_known_output(H_sw_R1_stream$windows, file = "H_sw_R1_stream_windows.txt")
 })
