@@ -2,7 +2,7 @@ Package: pfm
 Type: Package
 Title: Utilities for Pesticide Fate Modelling
 Version: 0.5.7
-Date: 2020-04-16
+Date: 2020-06-17
 Authors@R: person("Johannes Ranke", email = "jranke@uni-bremen.de",
                   role = c("aut", "cre", "cph"),
                   comment = c(ORCID = "0000-0003-4371-6538"))
@@ -11,7 +11,7 @@ Description: Utilities for simple calculations of predicted environmental
     pesticide fate modelling software packages.
 Depends:
     R6,
-    mkin
+    mkin (>= 0.9.50.2)
 Imports:
     graphics,
     readr,
