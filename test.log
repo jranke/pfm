@@ -3,21 +3,21 @@ Loading required package: R6
 Loading required package: mkin
 Testing pfm
 ✔ |  OK F W S | Context
-⠏ |   0       | Simple PEC sediment calculations✔ |   1       | Simple PEC sediment calculations
-⠏ |   0       | Simple PEC soil calculations⠙ |   2       | Simple PEC soil calculations✔ |  17       | Simple PEC soil calculations [0.3 s]
-⠏ |   0       | Simple PEC surface water calculations with drift entry✔ |   2       | Simple PEC surface water calculations with drift entry
-⠏ |   0       | Actual and time weighted average concentrations for SFO kinetics✔ |   1       | Actual and time weighted average concentrations for SFO kinetics
-⠏ |   0       | Read and analyse TOXSWA cwa files⠋ |   1       | Read and analyse TOXSWA cwa files⠸ |   4       | Read and analyse TOXSWA cwa files⠼ |   5       | Read and analyse TOXSWA cwa files⠴ |   6       | Read and analyse TOXSWA cwa files✔ |   7       | Read and analyse TOXSWA cwa files [5.8 s]
-⠏ |   0       | UK drainage PEC calculations✔ |  12       | UK drainage PEC calculations
-⠏ |   0       | Exposit calculations✔ |   7       | Exposit calculations
-⠏ |   0       | Geometric mean calculation✔ |   6       | Geometric mean calculation
-⠏ |   0       | Check max_twa for parent mkinfit models against analytical solutions⠋ |   1       | Check max_twa for parent mkinfit models against analytical solutions✔ |   1       | Check max_twa for parent mkinfit models against analytical solutions [0.9 s]
-⠏ |   0       | Processing of residue series✔ |  11       | Processing of residue series
-⠏ |   0       | FOCUS Step 1 calculations⠹ |   3       | FOCUS Step 1 calculations✔ |   9       | FOCUS Step 1 calculations [0.1 s]
-⠏ |   0       | FOCUS Steps 12 input files✔ |   8       | FOCUS Steps 12 input files
+✔ |   1       | Simple PEC sediment calculations
+✔ |  17       | Simple PEC soil calculations [0.2 s]
+✔ |   2       | Simple PEC surface water calculations with drift entry
+✔ |   1       | Actual and time weighted average concentrations for SFO kinetics
+✔ |   7       | Read and analyse TOXSWA cwa files [6.6 s]
+✔ |  12       | UK drainage PEC calculations
+✔ |   7       | Exposit calculations
+✔ |   6       | Geometric mean calculation
+✔ |   1       | Check max_twa for parent mkinfit models against analytical solutions [0.9 s]
+✔ |  11       | Processing of residue series
+✔ |   9       | FOCUS Step 1 calculations [0.1 s]
+✔ |   8       | FOCUS Steps 12 input files
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════
-Duration: 7.4 s
+Duration: 8.2 s
 
 OK:       82
 Failed:   0

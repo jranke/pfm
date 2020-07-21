@@ -1,3 +1,15 @@
+commit 512cd50874b060d50a14d28df88018ac144cf6d3
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2020-07-07 12:36:56 +0200
+
+    Remove copyright headers, update TOXSWA_cwa test
+    
+    - The window column of the windows component of a TOXSWA_cwa object is not
+    a factor any more, but a character vector.
+    - testthat::expect_equal_to_reference is replaced by
+    testthat::expect_known_output, so we can have git diff show what has
+    changed
+
 commit 58c6214f459b28b899794f32a60836aef97ac01b
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2020-07-07 11:27:44 +0200

@@ -58,6 +58,7 @@ winbin: $(WINBIN)
 test: build
 	@echo "Running testthat tests..."
 	NOT_CRAN=true "$(R_HOME)/bin/Rscript" -e 'devtools::test()' 2>&1 | tee test.log
+	sed -i -e "s/\r.*\r//" test.log
 	@echo "DONE."
 
 quickcheck: build
