@@ -55,7 +55,6 @@ endpoint <- function(chent,
   else return(signif(aggregator(as.numeric(values)), signif))
 }
 
-#' @inheritParams endpoint
 #' @rdname endpoint
 #' @export
 soil_DT50 <- function(chent, aggregator = geomean, signif = 3, 
@@ -68,7 +67,6 @@ soil_DT50 <- function(chent, aggregator = geomean, signif = 3,
   return(ep)
 }
 
-#' @inheritParams endpoint
 #' @rdname endpoint
 #' @export
 soil_Kfoc <- function(chent, aggregator = geomean, signif = 3, 
@@ -79,7 +77,6 @@ soil_Kfoc <- function(chent, aggregator = geomean, signif = 3,
   return(ep)
 }
 
-#' @inheritParams endpoint
 #' @rdname endpoint
 #' @export
 soil_N <- function(chent, aggregator = mean, signif = 3, raw = FALSE) {
@@ -89,7 +86,6 @@ soil_N <- function(chent, aggregator = mean, signif = 3, raw = FALSE) {
   return(ep)
 }
 
-#' @inheritParams endpoint
 #' @rdname endpoint
 #' @param values The values to be returned
 #' @param aggregators A named vector of aggregator functions to be used

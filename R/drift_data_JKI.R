@@ -30,7 +30,7 @@
 #' from
 #' http://www.jki.bund.de/no_cache/de/startseite/institute/anwendungstechnik/abdrift-eckwerte.html
 #' on 2015-06-11
-#' 
+#'
 #' Rautmann, D., Streloke, M and Winkler, R (2001) New basic drift values in
 #' the authorization procedure for plant protection products Mitt. Biol.
 #' Bundesanst. Land- Forstwirtsch. 383, 133-141
@@ -82,6 +82,6 @@
 #'   save(drift_data_JKI, file = "data/drift_data_JKI.RData")
 #' }
 #'
-#' # And this is the resulting data
+#' # And these are the resulting data
 #' drift_data_JKI
 NULL

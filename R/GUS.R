@@ -7,7 +7,6 @@
 #' @references Gustafson, David I. (1989) Groundwater ubiquity score: a simple
 #' method for assessing pesticide leachability. \emph{Environmental
 #' toxicology and chemistry} \bold{8}(4) 339–57.
-#' @inheritParams endpoint
 #' @param DT50 Half-life of the chemical in soil. Should be a field
 #'   half-life according to Gustafson (1989). However, leaching to the sub-soil
 #'   can not completely be excluded in field dissipation experiments and Gustafson

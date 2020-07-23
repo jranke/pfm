@@ -53,6 +53,9 @@ reference:
     contents:
       - SSLRC_mobility_classification
       - GUS
+  - title: Work with chent objects containing relevant information
+    contents:
+      - endpoint
   - title: Utilities
     contents:
       - get_vertex
