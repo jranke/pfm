@@ -1,3 +1,9 @@
+commit 90fa42c86596c85168931148bf8d5fa014fa7794
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2020-07-23 10:51:39 +0200
+
+    Update docs, use R6 support of roxygen
+
 commit df70d80d9ef13b69e58de6f47b9041b6a021025e
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2020-07-21 15:50:21 +0200

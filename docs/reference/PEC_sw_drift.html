@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -39,7 +43,6 @@
 <meta property="og:description" content="This is a basic, vectorised form of a simple calculation of a contaminant
 concentration in surface water based on complete, instantaneous mixing
 with input via spray drift." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -57,7 +60,7 @@ with input via spray drift." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -71,7 +74,7 @@ with input via spray drift." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pfm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.8</span>
       </span>
     </div>
 
@@ -118,7 +121,7 @@ with input via spray drift.</p>
   <span class='kw'>applications</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>water_depth</span> <span class='kw'>=</span> <span class='fl'>30</span>,
   <span class='kw'>drift_percentages</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>drift_data</span> <span class='kw'>=</span> <span class='st'>"JKI"</span>,
+  <span class='kw'>drift_data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"JKI"</span>, <span class='st'>"RF"</span>),
   <span class='kw'>crop</span> <span class='kw'>=</span> <span class='st'>"Ackerbau"</span>,
   <span class='kw'>distances</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>, <span class='fl'>10</span>, <span class='fl'>20</span>),
   <span class='kw'>rate_units</span> <span class='kw'>=</span> <span class='st'>"g/ha"</span>,
@@ -147,7 +150,9 @@ with input via spray drift.</p>
     </tr>
     <tr>
       <th>drift_data</th>
-      <td><p>Source of drift percentage data</p></td>
+      <td><p>Source of drift percentage data. If 'JKI', the [drift_data_JKI]
+included in the package is used. If 'RF', the Rautmann formula is used, if
+implemented for the crop type and number of applications</p></td>
     </tr>
     <tr>
       <th>crop</th>
@@ -173,18 +178,24 @@ with input via spray drift.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>PEC_sw_drift</span>(<span class='fl'>100</span>)</div><div class='output co'>#&gt;        1 m        5 m       10 m       20 m 
-#&gt; 0.92333333 0.19000000 0.09666667 0.05000000 </div></pre>
+#&gt; 0.92333333 0.19000000 0.09666667 0.05000000 </div><div class='input'><span class='co'># Alternatively, we can use the formula for a single application to "Ackerbau" from the paper</span>
+<span class='fu'>PEC_sw_drift</span>(<span class='fl'>100</span>, <span class='kw'>drift_data</span> <span class='kw'>=</span> <span class='st'>"RF"</span>)</div><div class='output co'>#&gt;        1 m        5 m       10 m       20 m 
+#&gt; 0.92350000 0.19114149 0.09699222 0.04921742 </div><div class='input'>
+<span class='co'># This makes it possible to also use different substances</span>
+<span class='fu'>PEC_sw_drift</span>(<span class='fl'>100</span>, <span class='kw'>distances</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>5</span>, <span class='fl'>6</span>, <span class='fl'>10</span>, <span class='fl'>20</span>, <span class='fl'>50</span>, <span class='fl'>100</span>), <span class='kw'>drift_data</span> <span class='kw'>=</span> <span class='st'>"RF"</span>)</div><div class='output co'>#&gt;        1 m        3 m        5 m        6 m       10 m       20 m       50 m 
+#&gt; 0.92350000 0.31512171 0.19114149 0.15990435 0.09699222 0.04921742 0.02007497 
+#&gt;      100 m 
+#&gt; 0.01018678 </div><div class='input'>
+<span class='co'># Using custom drift percentages is also supported</span>
+<span class='fu'>PEC_sw_drift</span>(<span class='fl'>100</span>, <span class='kw'>drift_percentages</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2.77</span>, <span class='fl'>0.95</span>, <span class='fl'>0.57</span>, <span class='fl'>0.48</span>, <span class='fl'>0.29</span>, <span class='fl'>0.15</span>, <span class='fl'>0.06</span>, <span class='fl'>0.03</span>))</div><div class='output co'>#&gt;     2.77 %     0.95 %     0.57 %     0.48 %     0.29 %     0.15 %     0.06 % 
+#&gt; 0.92333333 0.31666667 0.19000000 0.16000000 0.09666667 0.05000000 0.02000000 
+#&gt;     0.03 % 
+#&gt; 0.01000000 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Johannes Ranke</p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -195,7 +206,7 @@ with input via spray drift.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

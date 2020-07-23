@@ -9,7 +9,7 @@ PEC_sw_drift(
   applications = 1,
   water_depth = 30,
   drift_percentages = NULL,
-  drift_data = "JKI",
+  drift_data = c("JKI", "RF"),
   crop = "Ackerbau",
   distances = c(1, 5, 10, 20),
   rate_units = "g/ha",
@@ -26,7 +26,9 @@ PEC_sw_drift(
 \item{drift_percentages}{Percentage drift values for which to calculate PECsw.
 'drift_data' and 'distances' if not NULL.}
 
-\item{drift_data}{Source of drift percentage data}
+\item{drift_data}{Source of drift percentage data. If 'JKI', the [drift_data_JKI]
+included in the package is used. If 'RF', the Rautmann formula is used, if
+implemented for the crop type and number of applications}
 
 \item{crop}{Crop name (use German names for JKI data), defaults to "Ackerbau"}
 
@@ -46,6 +48,14 @@ with input via spray drift.
 }
 \examples{
 PEC_sw_drift(100)
+# Alternatively, we can use the formula for a single application to "Ackerbau" from the paper
+PEC_sw_drift(100, drift_data = "RF")
+
+# This makes it possible to also use different substances
+PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF")
+
+# Using custom drift percentages is also supported
+PEC_sw_drift(100, drift_percentages = c(2.77, 0.95, 0.57, 0.48, 0.29, 0.15, 0.06, 0.03))
 }
 \author{
 Johannes Ranke
