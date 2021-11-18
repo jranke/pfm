@@ -1,3 +1,24 @@
+commit 6e3917d814500d5af43702b4d4be1e44cefc00d4
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2021-11-18 11:22:44 +0100
+
+    Update README after changing default branch to main
+
+commit e0029129aec8b92d58aea8552006002c5fe409f5
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2021-02-10 09:29:33 +0100
+
+    Treat Kfoc = 0 like Exposit in runoff calcs
+
+commit c97a4f5a9fe30ffc3321681a97eea167cfc427b5
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2020-07-23 12:22:25 +0200
+
+    PEC_sw_drift: Rautmann formula (1 app, Ackerbau)
+    
+    This makes it possible to calculate drift PECsw for other distances than
+    present in the JKI data or the Rautmann paper.
+
 commit 90fa42c86596c85168931148bf8d5fa014fa7794
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2020-07-23 10:51:39 +0200
