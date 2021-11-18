@@ -1,7 +1,7 @@
 # pfm
 
-[![Build Status](https://travis-ci.com/jranke/pfm.svg?branch=master)](https://travis-ci.com/jranke/pfm)
-[![codecov](https://codecov.io/github/jranke/pfm/branch/master/graphs/badge.svg)](https://codecov.io/github/jranke/pfm) 
+[![Build Status](https://travis-ci.com/jranke/pfm.svg?branch=main)](https://travis-ci.com/jranke/pfm)
+[![codecov](https://codecov.io/github/jranke/pfm/branch/main/graphs/badge.svg)](https://codecov.io/github/jranke/pfm) 
 
 The R package **pfm** provides some utilities for fate modelling, including
 dealing with FOCUS pesticide fate modelling tools, (currently only TOXSWA cwa
