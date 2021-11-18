@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pfm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.8</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -112,7 +112,7 @@
     <p>A table of the runoff reduction percentages used in Exposit 3 for different vegetated buffer widths</p>
     </div>
 
-    <pre class="usage"><span class='no'>perc_runoff_reduction_exposit</span></pre>
+    <pre class="usage"><span class='va'>perc_runoff_reduction_exposit</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -120,7 +120,7 @@
     <p>A named list of data frames with reduction percentage values for the
 dissolved fraction and the fraction bound to eroding particles, with
 vegetated buffer widths as row names. The names of the list items are the Exposit versions
-from which the values were taken.</p><dl'>
+from which the values were taken.</p><dl>
     <dt>dissolved</dt><dd><p>The reduction percentage for the dissolved phase</p></dd>
     <dt>bound</dt><dd><p>The reduction percentage for the particulate phase</p></dd>
   
@@ -129,12 +129,13 @@ from which the values were taken.</p><dl'>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>Excel 3.02 spreadsheet available from
-  <a href='https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html'>https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html</a></p>  
+  <a href='https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html'>https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html</a></p>
 <p>Agroscope version 3.01a with additional runoff factors for 3 m and 6 m buffer zones received from Muris Korkaric (not published).
   The variant 3.01a2 was introduced for consistency with previous calculations performed by Agroscope for a 3 m buffer zone.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>perc_runoff_reduction_exposit</span>)</div><div class='output co'>#&gt; $`3.02`
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>perc_runoff_reduction_exposit</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $`3.02`
 #&gt;           dissolved bound
 #&gt; No buffer         0     0
 #&gt; 5 m              40    40
@@ -175,7 +176,7 @@ from which the values were taken.</p><dl'>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
