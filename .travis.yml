@@ -20,7 +20,7 @@ before_install:
   - ./run.sh bootstrap
 
 install:
-  - ./run.sh install_all
+  - ./run.sh install_deps
 
 script:
   - ./run.sh run_tests
