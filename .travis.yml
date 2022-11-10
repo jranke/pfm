@@ -18,6 +18,7 @@ before_install:
   - ./run.sh bootstrap
 
 install:
+  - ./run.sh install_binary curl # for remotes
   - ./run.sh install_deps
 
 script:
