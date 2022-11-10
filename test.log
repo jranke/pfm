@@ -1,23 +1,18 @@
-ℹ Loading pfm
-Loading required package: R6
-Loading required package: mkin
-Loading required package: parallel
 ℹ Testing pfm
 ✔ | F W S  OK | Context
 ✔ |         7 | Exposit calculations [0.1s]
 ✔ |         6 | Geometric mean calculation
-✔ |         1 | Check max_twa for parent mkinfit models against analytical solutions [0.8s]
+✔ |         1 | Check max_twa for parent mkinfit models against analytical solutions [0.9s]
 ✔ |         1 | Simple PEC sediment calculations
 ✔ |        17 | Simple PEC soil calculations [0.2s]
 ✔ |         6 | Simple PEC surface water calculations with drift entry
-✔ |        11 | Processing of residue series
 ✔ |         1 | Actual and time weighted average concentrations for SFO kinetics
-✔ |         9 | FOCUS Step 1 calculations [0.1s]
+✔ |         9 | FOCUS Step 1 calculations [0.2s]
 ✔ |         8 | FOCUS Steps 12 input files
-✔ |         7 | Read and analyse TOXSWA cwa files [5.8s]
+✔ |         7 | Read and analyse TOXSWA cwa files [6.1s]
 ✔ |        12 | UK drainage PEC calculations
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════
-Duration: 7.3 s
+Duration: 7.6 s
 
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 86 ]
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 75 ]

@@ -49,16 +49,16 @@ for the requested moving window sizes in days.}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{TOXSWA_cwa$new()}}
-\item \href{#method-moving_windows}{\code{TOXSWA_cwa$moving_windows()}}
-\item \href{#method-get_events}{\code{TOXSWA_cwa$get_events()}}
-\item \href{#method-print}{\code{TOXSWA_cwa$print()}}
-\item \href{#method-clone}{\code{TOXSWA_cwa$clone()}}
+\item \href{#method-TOXSWA_cwa-new}{\code{TOXSWA_cwa$new()}}
+\item \href{#method-TOXSWA_cwa-moving_windows}{\code{TOXSWA_cwa$moving_windows()}}
+\item \href{#method-TOXSWA_cwa-get_events}{\code{TOXSWA_cwa$get_events()}}
+\item \href{#method-TOXSWA_cwa-print}{\code{TOXSWA_cwa$print()}}
+\item \href{#method-TOXSWA_cwa-clone}{\code{TOXSWA_cwa$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-TOXSWA_cwa-new"></a>}}
+\if{latex}{\out{\hypertarget{method-TOXSWA_cwa-new}{}}}
 \subsection{Method \code{new()}}{
 Create a TOXSWA_cwa object from a file
 \subsection{Usage}{
@@ -91,8 +91,8 @@ Create a TOXSWA_cwa object from a file
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-moving_windows"></a>}}
-\if{latex}{\out{\hypertarget{method-moving_windows}{}}}
+\if{html}{\out{<a id="method-TOXSWA_cwa-moving_windows"></a>}}
+\if{latex}{\out{\hypertarget{method-TOXSWA_cwa-moving_windows}{}}}
 \subsection{Method \code{moving_windows()}}{
 Add to the `windows` field described above.
 \subsection{Usage}{
@@ -111,8 +111,8 @@ suspended matter will be used.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-get_events"></a>}}
-\if{latex}{\out{\hypertarget{method-get_events}{}}}
+\if{html}{\out{<a id="method-TOXSWA_cwa-get_events"></a>}}
+\if{latex}{\out{\hypertarget{method-TOXSWA_cwa-get_events}{}}}
 \subsection{Method \code{get_events()}}{
 Populate a datataframe with event information for the specified
 threshold value.  The resulting dataframe is stored in the `events`
@@ -133,8 +133,8 @@ suspended matter will be used.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-TOXSWA_cwa-print"></a>}}
+\if{latex}{\out{\hypertarget{method-TOXSWA_cwa-print}{}}}
 \subsection{Method \code{print()}}{
 Print a `TOXSWA_cwa` object
 \subsection{Usage}{
@@ -143,8 +143,8 @@ Print a `TOXSWA_cwa` object
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-TOXSWA_cwa-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-TOXSWA_cwa-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

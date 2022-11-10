@@ -1,3 +1,15 @@
+commit aa0c59c7a3ede267730fe85f9e27b1814f9e897a
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2021-11-19 00:18:41 +0100
+
+    Update static docs
+
+commit f4e35b0bf9c4de0b5c6235f5cf9e284faf40569f
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2021-11-19 00:17:33 +0100
+
+    Update docs and logs
+
 commit 6e3917d814500d5af43702b4d4be1e44cefc00d4
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2021-11-18 11:22:44 +0100
