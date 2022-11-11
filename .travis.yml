@@ -19,7 +19,7 @@ before_install:
 
 install:
   - ./run.sh install_all
-  - install_r drat
+  - ./run.sh install_r drat
   - Rscript -e 'drat::addRepo("jranke"); install.packages("mkin")'
 
 script:
