@@ -12,15 +12,14 @@ jobs:
 env:
   NOT_CRAN: "true"
   _R_CHECK_FORCE_SUGGESTS_: "false"
-  DRAT_REPOS: "jranke"
 
 before_install:
   - curl -OLs https://eddelbuettel.github.io/r-ci/run.sh && chmod 0755 run.sh
   - ./run.sh bootstrap
 
 install:
+  - Rscript -e 'drat::addRepo("jranke"); install.packages("mkin")'
   - ./run.sh install_all
-  - ./run.sh install_r mkin
 
 script:
   - ./run.sh run_tests
