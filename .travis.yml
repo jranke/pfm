@@ -1,5 +1,3 @@
-# Run CI for R using https://eddelbuettel.github.io/r-ci/
-
 language: c
 sudo: required
 dist: focal
@@ -10,7 +8,6 @@ jobs:
       os: linux
 
 env:
-  NOT_CRAN: "true"
   _R_CHECK_FORCE_SUGGESTS_: "false"
   DRAT_REPOS: "jranke"
 
@@ -30,8 +27,3 @@ after_failure:
 
 after_success:
   - travis_wait ./run.sh coverage
-
-notifications:
-  email:
-    on_success: change
-    on_failure: change
