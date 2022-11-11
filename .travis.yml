@@ -12,6 +12,7 @@ jobs:
 env:
   NOT_CRAN: "true"
   _R_CHECK_FORCE_SUGGESTS_: "false"
+  DRAT_REPOS: "jranke"
 
 before_install:
   - curl -OLs https://eddelbuettel.github.io/r-ci/run.sh && chmod 0755 run.sh
@@ -19,8 +20,7 @@ before_install:
 
 install:
   - ./run.sh install_all
-  - ./run.sh install_r drat
-  - Rscript -e 'bspm::disable(); drat::addRepo("jranke"); install.packages("mkin")'
+  - Rscript -e 'bspm::disable(); install.packages("mkin")'
 
 script:
   - ./run.sh run_tests
