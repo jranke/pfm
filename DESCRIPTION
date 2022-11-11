@@ -2,7 +2,7 @@ Package: pfm
 Type: Package
 Title: Utilities for Pesticide Fate Modelling
 Version: 0.5.9
-Date: 2022-09-29
+Date: 2022-11-11
 Authors@R: person("Johannes Ranke", email = "jranke@uni-bremen.de",
                   role = c("aut", "cre", "cph"),
                   comment = c(ORCID = "0000-0003-4371-6538"))
@@ -21,12 +21,8 @@ Suggests:
     chents,
     grImport,
     magrittr,
-    PELMO.installeR,
-    rPELMO,
     covr
-Remotes: jranke/chents,
-  jranke/PELMO.installeR,
-  jranke/rPELMO
+Remotes: jranke/chents
 License: GPL
 LazyLoad: yes
 LazyData: yes
