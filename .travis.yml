@@ -12,13 +12,14 @@ jobs:
 env:
   global:
     - NOT_CRAN="true"
+    - _R_CHECK_FORCE_SUGGESTS_: "false"
 
 before_install:
   - curl -OLs https://eddelbuettel.github.io/r-ci/run.sh && chmod 0755 run.sh
   - ./run.sh bootstrap
 
 install:
-  - ./run.sh install_deps
+  - ./run.sh install_all
 
 script:
   - ./run.sh run_tests
