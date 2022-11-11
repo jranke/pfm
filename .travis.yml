@@ -20,7 +20,7 @@ before_install:
 install:
   - ./run.sh install_all
   - ./run.sh install_r drat
-  - Rscript -e 'drat::addRepo("jranke"); install.packages("mkin")'
+  - Rscript -e 'bspm::disable(); drat::addRepo("jranke"); install.packages("mkin")'
 
 script:
   - ./run.sh run_tests
