@@ -1,3 +1,78 @@
+commit 3ef243d18b7972eb8cb4a561ac07d93b46df13a5
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 10:06:39 +0100
+
+    Fix call to download.file for debugging
+
+commit 9f977cb5d9657d0066598cda38908282dadae0c4
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 10:02:57 +0100
+
+    Try to debug the failure in remotes::install_deps
+
+commit 6681356b8abab27f0735341ed6d3a44e1374e2e5
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 09:00:41 +0100
+
+    Typo, remove PELMO related suggestions
+    
+    PELMO related functions are not used in pfm, so apart from advertising,
+    these suggestions did not do anything.
+
+commit 3e82035d2753d031401f80833de8939740491bd0
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-10 17:17:03 +0100
+
+    Revert standalone option for remotes on travis
+
+commit 9f28f36b00c156ff9c78790302c6fc74e0195651
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-10 16:48:27 +0100
+
+    Yet another attempt on remotes on travis
+
+commit 4f315619d56a191a80d2223913ee976d96ae5f97
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-10 16:43:39 +0100
+
+    Another attempt to make remotes work on travis
+
+commit 8d03f6ae52e6c45e3da93e41b15eb5f853ab6d17
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-10 16:35:33 +0100
+
+    Try to make remotes work
+
+commit e46ee27b218dde8ebb948e8b3b28e9cd8250bc70
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-10 16:27:12 +0100
+
+    Skip BSPM, it's the default
+
+commit f41d1759b890613895879f36e69e9928dd517f0e
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-10 15:49:36 +0100
+
+    Only install dependencies, as chents fails to install
+
+commit 7a54d9b65fc55e28411126b97c542fb4c180c0a7
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-10 15:43:43 +0100
+
+    Use Dirks run.sh on travis
+
+commit a0364c2561dda4c4b67e7e3b6830719b4ed60916
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-10 12:17:34 +0100
+
+    set_nd_nq is now in mkin, fix Steps12 bug
+    
+    If a scenario with a slash "/" was selected in PEC_sw_focus(),
+    the Step 2 file generated giving an error (path not found) in the
+    Steps12 calculator, because the scenario name is part of the "compound"
+    name in this implementation, in order to show it in the list that the
+    calculator presents.
+
 commit aa0c59c7a3ede267730fe85f9e27b1814f9e897a
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2021-11-19 00:18:41 +0100

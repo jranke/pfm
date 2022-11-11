@@ -88,7 +88,7 @@ as Kom here}
 and soil properties as specified in the REACH guidance (R.16, Table
 R.16-9) are used for porewater PEC calculations.  If this is "EFSA_2015",
 the DT50 is taken to be a modelling half-life at 20°C and pF2 (for when
-'chents' is specified, the DegT50 with destination 'PECgw' will be used),
+'chent' is specified, the DegT50 with destination 'PECgw' will be used),
 and corrected using an Arrhenius activation energy of 65.4 kJ/mol. Also
 model and scenario adjustment factors from the EFSA guidance are used.}
 

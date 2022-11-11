@@ -22,7 +22,6 @@ Suggests:
     grImport,
     magrittr,
     covr
-Remotes: jranke/chents
 License: GPL
 LazyLoad: yes
 LazyData: yes

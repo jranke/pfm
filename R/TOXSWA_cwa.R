@@ -27,6 +27,7 @@ if(getRversion() >= '2.15.1') utils::globalVariables(c("cwa"))
 #'   generating event statistics.
 #' @importFrom readr read_fwf fwf_empty
 #' @importFrom grDevices dev.cur
+#' @importFrom R6 R6Class
 #' @return An instance of an R6 object of class
 #' \code{\link{TOXSWA_cwa}}.
 #' @export
@@ -169,7 +170,7 @@ plot.TOXSWA_cwa <- function(x, time_column = c("datetime", "t", "t_firstjan", "t
 #' H_sw_R1_stream$moving_windows(c(7, 21))
 #' print(H_sw_R1_stream)
 #' @keywords data
-TOXSWA_cwa <- R6Class("TOXSWA_cwa",
+TOXSWA_cwa <- R6::R6Class("TOXSWA_cwa",
   public = list(
     filename = NULL,
     basedir = NULL,
