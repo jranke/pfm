@@ -11,7 +11,7 @@ Description: Utilities for simple calculations of predicted environmental
     pesticide fate modelling software packages.
 Depends:
     R6,
-    mkin (>= 1.1.2)
+    mkin (>= 1.2)
 Imports:
     graphics,
     readr,
