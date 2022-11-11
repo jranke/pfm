@@ -18,8 +18,9 @@ before_install:
   - ./run.sh bootstrap
 
 install:
-  - Rscript -e 'drat::addRepo("jranke"); install.packages("mkin")'
   - ./run.sh install_all
+  - install_r drat
+  - Rscript -e 'drat::addRepo("jranke"); install.packages("mkin")'
 
 script:
   - ./run.sh run_tests
