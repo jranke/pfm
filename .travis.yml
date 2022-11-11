@@ -18,7 +18,7 @@ before_install:
   - ./run.sh bootstrap
 
 install:
-  - Rscript -e "utils::download.file('https://api.github.com/repos/jranke/chents/contents/DESCRIPTION?ref=HEAD')"
+  - Rscript -e "utils::download.file('https://api.github.com/repos/jranke/chents/contents/DESCRIPTION?ref=HEAD', destfile = 'tmp.json')"
   - ./run.sh install_deps
 
 script:
