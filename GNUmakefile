@@ -42,7 +42,6 @@ $(TGZ): $(pkgfiles)
 	@echo "Roxygenizing package..."
 	"$(R_HOME)/bin/Rscript" -e 'devtools::document()'
 	@echo "Building package..."
-	git log --no-merges -M --date=iso > ChangeLog
 	"$(R_HOME)/bin/R" CMD build . > build.log 2>&1
 	@echo "DONE."
 
