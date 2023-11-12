@@ -7,8 +7,10 @@ DATE    := $(shell date +%Y-%m-%d)
 
 .PHONEY: usage check clean
 
-pkgfiles = DESCRIPTION \
+pkgfiles = \
 	.Rbuildignore \
+	ChangeLog \
+	DESCRIPTION \
 	data/* \
 	docs/* \
 	docs/reference/* \
@@ -23,7 +25,7 @@ clean:
 	rm -fR pfm.Rcheck
 	@echo "DONE."
 
-roxygen: 
+roxygen:
 	@echo "Roxygenizing package..."
 	"$(R_HOME)/bin/Rscript" -e 'devtools::document()'
 	@echo "DONE."

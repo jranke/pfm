@@ -1,3 +1,84 @@
+commit df4034c64aa3590c3911dca88b066332dc8e4df1
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 14:35:37 +0100
+
+    Simplify travis config
+
+commit f4e22fc28fa0b05b05c8a1277333777635802e86
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 13:46:24 +0100
+
+    Try to simplify drat configuration
+
+commit 6bc40dbd4e7c76179009a501ae168f0fa73f2be2
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 12:12:09 +0100
+
+    Disable bspm to make install from drat work
+
+commit 96b6f8954d4eb9ec5b8ee9209074d21fdd67f966
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 12:04:15 +0100
+
+    Fix last commit
+
+commit c9e9f1312e7b73c8596d2d01324fcb67c000f3e9
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 12:00:39 +0100
+
+    Install drat to use it...
+
+commit b0a7a94ac0a7070e8612e443b4aa485beb07b85d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 11:57:20 +0100
+
+    Another attempt to make drat work on travis
+
+commit 854cc695a1f64a9b37957fdcd81c1ce23a6a2d69
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 11:52:53 +0100
+
+    Try to make drat work
+
+commit c463f9fb197f70f97831b3648bc398be8ff9ae7d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 11:41:40 +0100
+
+    mkin was not pulled from the drat repo
+
+commit f3ba961b6be63d3995cccea2968d7b2fb907ca16
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 11:35:27 +0100
+
+    Use drat instead of install_github
+
+commit 510416bc07eb7b3197c20d687f6c51a032cfbfec
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 11:12:59 +0100
+
+    Forgot to commit .travis.yml ...
+
+commit f21a53421dc481604c681c2be8438c8a8b5db23d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 10:58:46 +0100
+
+    mkin and chents from github for check on travis
+
+commit e63dbdf1fdae0abc7246f721357504798309033d
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 10:52:07 +0100
+
+    Don't force suggested packages
+
+commit 60a217ecc9a035ab956bd4229da6ad4c654e7d6e
+Author: Johannes Ranke <jranke@uni-bremen.de>
+Date:   2022-11-11 10:37:13 +0100
+
+    Remove Remotes: field from DESCRIPTION
+    
+    It causes trouble with remotes::install_deps() on travis, see the
+    various previous build logs.
+
 commit 3ef243d18b7972eb8cb4a561ac07d93b46df13a5
 Author: Johannes Ranke <jranke@uni-bremen.de>
 Date:   2022-11-11 10:06:39 +0100

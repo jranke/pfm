@@ -4,3 +4,4 @@ pfm\.Rcheck
 test.R
 inst/extdata/Tabelle\ der\ Abdrifteckwerte.xls
 inst/extdata/FOCUS_Step_12_scenarios.txt
+.Rproj.user

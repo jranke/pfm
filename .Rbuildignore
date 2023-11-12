@@ -10,3 +10,5 @@
 ^_pkgdown.yml$
 ^\.travis\.yml$
 ^docs$
+^.*\.Rproj$
+^\.Rproj\.user$
