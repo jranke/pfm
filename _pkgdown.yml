@@ -3,6 +3,7 @@ url: https://pkgdown.jrwb.de/pfm
 title: pfm
 
 template:
+  bootstrap: 5
   bootswatch: spacelab
 
 reference:

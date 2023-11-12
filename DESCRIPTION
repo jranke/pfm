@@ -26,5 +26,5 @@ License: GPL
 LazyLoad: yes
 LazyData: yes
 Encoding: UTF-8
-URL: https://pkgdown.jrwb.de/pfm
+URL: https://pkgdown.jrwb.de/pfm, https://github.com/jranke/pfm
 RoxygenNote: 7.2.3
