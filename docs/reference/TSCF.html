@@ -83,7 +83,7 @@ or ionic.</p>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>FOCUS (2014) Generic Guidance for Tier 1 FOCUS Ground Water Assessments.
- Version 2.2, May 2014
+Version 2.2, May 2014
 Dettenmaier EM, Doucette WJ and Bugbee B (2009) Chemical hydrophobicity and uptake
 by plant roots. Environ. Sci. Technol 43, 324 - 329</p>
     </div>
@@ -91,13 +91,11 @@ by plant roots. Environ. Sci. Technol 43, 324 - 329</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">TSCF</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">5</span>, xlab <span class="op">=</span> <span class="st">"log Kow"</span>, ylab <span class="op">=</span> <span class="st">"TSCF"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1.1</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="TSCF-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="va">TSCF_2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">TSCF</span><span class="op">(</span><span class="va">x</span>, method <span class="op">=</span> <span class="st">"dettenmaier09"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html" class="external-link">curve</a></span><span class="op">(</span><span class="va">TSCF_2</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">5</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in curve(TSCF_2, -1, 5, add = TRUE, lty = 2):</span> could not find function "curve"</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, lty <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, bty <span class="op">=</span> <span class="st">"n"</span>,</span></span>
 <span class="r-in"><span>  legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Briggs et al. (1982)"</span>, <span class="st">"Dettenmaier et al. (2009)"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in legend("topright", lty = 1:2, bty = "n", legend = c("Briggs et al. (1982)",     "Dettenmaier et al. (2009)")):</span> could not find function "legend"</span>
+<span class="r-plt img"><img src="TSCF-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

@@ -5,20 +5,20 @@
 \alias{soil_scenario_data_EFSA_2017}
 \title{Properties of the predefined scenarios from the EFSA guidance from 2017}
 \format{
-A data frame with one row for each scenario. Row names are the scenario codes, 
-  e.g. CTN for the Northern scenario for the total concentration in soil. Columns are 
-  mostly self-explanatory. \code{rho} is the dry bulk density of the top soil.
+A data frame with one row for each scenario. Row names are the scenario codes,
+e.g. CTN for the Northern scenario for the total concentration in soil. Columns are
+mostly self-explanatory. \code{rho} is the dry bulk density of the top soil.
 }
 \source{
 EFSA (European Food Safety Authority) (2017)
-  EFSA guidance document for predicting environmental concentrations
-  of active substances of plant protection products and transformation products of these
-  active substances in soil. \emph{EFSA Journal} \bold{15}(10) 4982
-  doi:10.2903/j.efsa.2017.4982
+EFSA guidance document for predicting environmental concentrations
+of active substances of plant protection products and transformation products of these
+active substances in soil. \emph{EFSA Journal} \bold{15}(10) 4982
+doi:10.2903/j.efsa.2017.4982
 }
 \description{
-Properties of the predefined scenarios used at Tier 1, Tier 2A and Tier 3A for the 
-concentration in soil as given in the EFSA guidance (2017, p. 14/15). Also, the 
+Properties of the predefined scenarios used at Tier 1, Tier 2A and Tier 3A for the
+concentration in soil as given in the EFSA guidance (2017, p. 14/15). Also, the
 scenario and model adjustment factors from p. 16 and p. 18 are included.
 }
 \examples{

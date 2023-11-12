@@ -11,15 +11,15 @@ An object of class \code{list} of length 2.
 FOCUS_GW_scenarios_2012
 }
 \description{
-Currently, only scenario names with acronyms and a small subset of the soil definitions are provided. The 
+Currently, only scenario names with acronyms and a small subset of the soil definitions are provided. The
 soil definitions are from page 46ff. from FOCUS (2012).
 }
 \examples{
 FOCUS_GW_scenarios_2012
 }
 \references{
-FOCUS (2012) Generic guidance for Tier 1 FOCUS ground water assessments. Version 2.1. 
- FOrum for the Co-ordination of pesticde fate models and their USe. 
- http://focus.jrc.ec.europa.eu/gw/docs/Generic_guidance_FOCV2_1.pdf
+FOCUS (2012) Generic guidance for Tier 1 FOCUS ground water assessments. Version 2.1.
+FOrum for the Co-ordination of pesticde fate models and their USe.
+http://focus.jrc.ec.europa.eu/gw/docs/Generic_guidance_FOCV2_1.pdf
 }
 \keyword{datasets}

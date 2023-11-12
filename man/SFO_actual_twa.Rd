@@ -5,8 +5,8 @@
 \title{Actual and maximum moving window time average concentrations for SFO kinetics}
 \source{
 FOCUS (2014) Generic Guidance for Estimating Persistence and Degradation
-  Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1, 
-  18 December 2014, p. 251
+Kinetics from Environmental Fate Studies on Pesticides in EU Registration, Version 1.1,
+18 December 2014, p. 251
 }
 \usage{
 SFO_actual_twa(DT50 = 1000, times = c(0, 1, 2, 4, 7, 14, 21, 28, 42, 50, 100))

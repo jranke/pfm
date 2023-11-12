@@ -5,7 +5,7 @@
 \title{Calculate PEC surface water due to runoff and erosion as in Exposit 3}
 \source{
 Excel 3.02 spreadsheet available from
-  \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
+\url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
 }
 \usage{
 PEC_sw_exposit_runoff(
@@ -45,12 +45,12 @@ and the bound fraction.}
 }
 \value{
 A list containing the following components
-  \describe{
-    \item{perc_runoff}{The runoff percentages for dissolved and bound substance}
-    \item{runoff}{A matrix containing dissolved and bound input for the different distances}
-    \item{PEC_sw_runoff}{A matrix containing PEC values for dissolved and bound substance
-      for the different distances. If the rate was given in g/ha, the PECsw are in microg/L.}
-  }
+\describe{
+\item{perc_runoff}{The runoff percentages for dissolved and bound substance}
+\item{runoff}{A matrix containing dissolved and bound input for the different distances}
+\item{PEC_sw_runoff}{A matrix containing PEC values for dissolved and bound substance
+for the different distances. If the rate was given in g/ha, the PECsw are in microg/L.}
+}
 }
 \description{
 This is a reimplementation of the calculation described in the Exposit 3.02 spreadsheet file,
