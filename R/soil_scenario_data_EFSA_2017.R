@@ -13,8 +13,10 @@
 #'   EFSA guidance document for predicting environmental concentrations
 #'   of active substances of plant protection products and transformation products of these
 #'   active substances in soil. \emph{EFSA Journal} \bold{15}(10) 4982
-#'   doi:10.2903/j.efsa.2017.4982
+#'   \doi{10.2903/j.efsa.2017.4982}
 #' @keywords datasets
 #' @examples
 #' soil_scenario_data_EFSA_2017
-NULL
+#'
+#' waldo::compare(soil_scenario_data_EFSA_2017, soil_scenario_data_EFSA_2015)
+"soil_scenario_data_EFSA_2017"

@@ -1,3 +1,0 @@
-Active Substance	Compound	Comment	Mol mass a.i.	Mol mass met.	Water solubility	KOC assessed compound	KOC parent compound	DT50	Max. in Water	Max. in Soil asessed compound	App. Rate	Number of App.	Time between app.	App. Type	DT50 soil parent compound	DT50 soil	DT50 water	DT50 sediment	Region / Season	Interception class
-Dummy 1 cereals, spring n NA	Dummy 1 cereals, spring n NA		  -99.00	  -99.00	 6000.00	  344.80	0.00E+00	    6.00	0.00E+00	0.00E+00	 3000.00	    1.00	0.00E+00	0.00E+00	0.00E+00	  -99.00	  -99.00	  -99.00	0.00E+00	    1.00
-M1 cereals, winter n NA	M1 cereals, winter n NA		  250.00	  100.00	  100.00	   50.00	  100.00	  100.00	0.00E+00	   50.00	 1000.00	    1.00	0.00E+00	    1.00	  -99.00	  -99.00	  -99.00	  -99.00	0.00E+00	    1.00

@@ -5,7 +5,7 @@
 \title{Calculate PEC surface water due to drainage as in Exposit 3}
 \source{
 Excel 3.02 spreadsheet available from
-  \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
+  \url{https://www.bvl.bund.de/SharedDocs/Downloads/04_Pflanzenschutzmittel/zul_umwelt_exposit.html}
 }
 \usage{
 PEC_sw_exposit_drainage(

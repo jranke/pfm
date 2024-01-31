@@ -14,7 +14,10 @@ EFSA (European Food Safety Authority) (2017)
   EFSA guidance document for predicting environmental concentrations
   of active substances of plant protection products and transformation products of these
   active substances in soil. \emph{EFSA Journal} \bold{15}(10) 4982
-  doi:10.2903/j.efsa.2017.4982
+  \doi{10.2903/j.efsa.2017.4982}
+}
+\usage{
+soil_scenario_data_EFSA_2017
 }
 \description{
 Properties of the predefined scenarios used at Tier 1, Tier 2A and Tier 3A for the 
@@ -23,5 +26,7 @@ scenario and model adjustment factors from p. 16 and p. 18 are included.
 }
 \examples{
 soil_scenario_data_EFSA_2017
+
+waldo::compare(soil_scenario_data_EFSA_2017, soil_scenario_data_EFSA_2015)
 }
 \keyword{datasets}

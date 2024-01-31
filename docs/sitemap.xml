@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://pkgdown.jrwb.de/pfm/404.html</loc>
+  </url>
+  <url>
+    <loc>https://pkgdown.jrwb.de/pfm/authors.html</loc>
+  </url>
+  <url>
     <loc>https://pkgdown.jrwb.de/pfm/index.html</loc>
   </url>
   <url>
@@ -76,6 +82,9 @@
     <loc>https://pkgdown.jrwb.de/pfm/reference/get_vertex.html</loc>
   </url>
   <url>
+    <loc>https://pkgdown.jrwb.de/pfm/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://pkgdown.jrwb.de/pfm/reference/max_twa.html</loc>
   </url>
   <url>
@@ -98,6 +107,9 @@
   </url>
   <url>
     <loc>https://pkgdown.jrwb.de/pfm/reference/read.TOXSWA_cwa.html</loc>
+  </url>
+  <url>
+    <loc>https://pkgdown.jrwb.de/pfm/reference/reexports.html</loc>
   </url>
   <url>
     <loc>https://pkgdown.jrwb.de/pfm/reference/sawtooth.html</loc>

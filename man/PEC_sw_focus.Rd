@@ -21,7 +21,7 @@ PEC_sw_focus(
   met_form_water = TRUE,
   txt_file = "pesticide.txt",
   overwrite = FALSE,
-  append = TRUE
+  append = FALSE
 )
 }
 \arguments{
@@ -73,7 +73,7 @@ should be written}
 \item{overwrite}{Should an existing file a the location specified in
 \code{txt_file} be overwritten? Only takes effect if append is FALSE.}
 
-\item{append}{Should the input text file be appended?}
+\item{append}{Should the input text file be appended, if it exists?}
 }
 \description{
 This is a reimplementation of the FOCUS Step 1 and 2 calculator version 3.2,
@@ -81,8 +81,8 @@ authored by Michael Klein, in R. Note that results for multiple
 applications should be compared to the corresponding results for a
 single application. At current, this is not done automatically in
 this implementation. Only Step 1 PECs are calculated. However,
-input files are generated that are suitable as input also for Step 2
-to be used with the FOCUS calculator.
+input files can be generated that are suitable as input for 
+the FOCUS calculator.
 }
 \note{
 The formulas for input to the waterbody via runoff/drainage of the
@@ -97,7 +97,7 @@ Step 2 is not implemented.
 \examples{
 # Parent only
 dummy_1 <- chent_focus_sw("Dummy 1", cwsat = 6000, DT50_ws = 6, Koc = 344.8)
-PEC_sw_focus(dummy_1, 3000, f_drift = 0, overwrite = TRUE, append = FALSE)
+PEC_sw_focus(dummy_1, 3000, f_drift = 0)
 
 # Metabolite
 new_dummy <- chent_focus_sw("New Dummy", mw = 250, Koc = 100)

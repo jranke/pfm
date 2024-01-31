@@ -1,12 +1,12 @@
 ^pfm_.*.tar.gz
 ^pfm_.*.zip
+^pfm.Rcheck$
 ^GNUmakefile$
 ^README.html$
-^build.log$
-^test.log$
+^log
 ^test.R$
+^pesticide.txt$
 ^inst/extdata/Tabelle\ der\ Abdrifteckwerte.xls$
-^inst/extdata/FOCUS_Step_12_scenarios.txt$
 ^_pkgdown.yml$
 ^\.travis\.yml$
 ^docs$

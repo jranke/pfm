@@ -13,18 +13,11 @@
 #'       adjacent water body bound to eroding particles}
 #'   }
 #' @source Excel 3.02 spreadsheet available from
-#'   \url{https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html}
-#' @export perc_runoff_exposit
+#'   \url{https://www.bvl.bund.de/SharedDocs/Downloads/04_Pflanzenschutzmittel/zul_umwelt_exposit.html}
+#' @docType data
 #' @examples
 #' print(perc_runoff_exposit)
-{Koc_breaks <- c(0, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, Inf)
-tmp <- paste(Koc_breaks[1:11], Koc_breaks[2:12], sep = "-")
-Koc_classes <- c(tmp[1], paste0(">", tmp[2:11]), ">50000")}
-perc_runoff_exposit <- data.frame(
-  Koc_lower_bound = Koc_breaks[1:12],
-  dissolved = c(0.11, 0.151, 0.197, 0.248, 0.224, 0.184, 0.133, 0.084, 0.037, 0.031, 0.014, 0.001),
-  bound = c(0, 0, 0, 0.001, 0.004, 0.020, 0.042, 0.091, 0.159, 0.192, 0.291, 0.451))
-rownames(perc_runoff_exposit) <- Koc_classes
+"perc_runoff_exposit"
 
 #' Runoff reduction percentages as used in Exposit
 #'
@@ -40,31 +33,14 @@ rownames(perc_runoff_exposit) <- Koc_classes
 #'     \item{bound}{The reduction percentage for the particulate phase}
 #'   }
 #' @source Excel 3.02 spreadsheet available from
-#'   \url{https://www.bvl.bund.de/EN/04_PlantProtectionProducts/03_Applicants/04_AuthorisationProcedure/08_Environment/ppp_environment_node.html}
+#'   \url{https://www.bvl.bund.de/SharedDocs/Downloads/04_Pflanzenschutzmittel/zul_umwelt_exposit.html}
 #'
 #'   Agroscope version 3.01a with additional runoff factors for 3 m and 6 m buffer zones received from Muris Korkaric (not published).
 #'   The variant 3.01a2 was introduced for consistency with previous calculations performed by Agroscope for a 3 m buffer zone.
-#' @export
+#' @docType data
 #' @examples
 #' print(perc_runoff_reduction_exposit)
-perc_runoff_reduction_exposit <- list(
-   "3.02" = data.frame(
-    dissolved = c(0, 40, 60, 80),
-    bound = c(0, 40, 85, 95),
-    row.names = c("No buffer", paste(c(5, 10, 20), "m"))),
-   "3.01a" = data.frame(
-    dissolved = c(0, 25, 40, 45, 60, 80),
-    bound = c(0, 30, 40, 55, 85, 95),
-    row.names = c("No buffer", paste(c(3, 5, 6, 10, 20), "m"))),
-   "3.01a2" = data.frame(
-    dissolved = c(0, 25),
-    bound = c(0, 25),
-    row.names = c("No buffer", paste(c(3), "m"))),
-  "2.0" = data.frame(
-    dissolved = c(0, 97.5),
-    bound = c(0, 97.5),
-    row.names = c("No buffer", "20 m"))
-)
+"perc_runoff_reduction_exposit"
 
 #' Calculate PEC surface water due to runoff and erosion as in Exposit 3
 #'
@@ -93,7 +69,7 @@ perc_runoff_reduction_exposit <- list(
 #'   }
 #' @export
 #' @source Excel 3.02 spreadsheet available from
-#'   \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
+#'   \url{https://www.bvl.bund.de/SharedDocs/Downloads/04_Pflanzenschutzmittel/zul_umwelt_exposit.html}
 #' @seealso \code{\link{perc_runoff_exposit}} for runoff loss percentages and \code{\link{perc_runoff_reduction_exposit}} for runoff reduction percentages used
 #' @examples
 #'   PEC_sw_exposit_runoff(500, Koc = 150)
@@ -108,18 +84,18 @@ PEC_sw_exposit_runoff <- function(rate, interception = 0, Koc, DT50 = Inf, t_run
   if (length(Koc) > 1) stop("Only one compound at a time supported")
 
   exposit_reduction_version <- match.arg(exposit_reduction_version)
-  red_water <- perc_runoff_reduction_exposit[[exposit_reduction_version]]["dissolved"] / 100
-  red_bound <- perc_runoff_reduction_exposit[[exposit_reduction_version]]["bound"] / 100
-  reduction_runoff <- perc_runoff_reduction_exposit[[exposit_reduction_version]] / 100
+  red_water <- pfm::perc_runoff_reduction_exposit[[exposit_reduction_version]]["dissolved"] / 100
+  red_bound <- pfm::perc_runoff_reduction_exposit[[exposit_reduction_version]]["bound"] / 100
+  reduction_runoff <- pfm::perc_runoff_reduction_exposit[[exposit_reduction_version]] / 100
   transfer_runoff <- 1 - reduction_runoff
 
   V_runoff <- V_event * (1 - reduction_runoff[["dissolved"]]) # m3
   V_flowing_ditch_runoff <- dilution * (V_ditch + V_runoff)
 
   f_runoff_exposit <- function(Koc) {
-    Koc_breaks <- c(perc_runoff_exposit$Koc_lower_bound, Inf)
-    Koc_classes <- as.character(cut(Koc, Koc_breaks, labels = rownames(perc_runoff_exposit)))
-    perc_runoff <- perc_runoff_exposit[Koc_classes, c("dissolved", "bound")]
+    Koc_breaks <- c(pfm::perc_runoff_exposit$Koc_lower_bound, Inf)
+    Koc_classes <- as.character(cut(Koc, Koc_breaks, labels = rownames(pfm::perc_runoff_exposit)))
+    perc_runoff <- pfm::perc_runoff_exposit[Koc_classes, c("dissolved", "bound")]
     if (identical(Koc, 0)) perc_runoff <- c(dissolved = 0, bound = 0)
     return(unlist(perc_runoff) / 100)
   }
@@ -168,7 +144,7 @@ PEC_sw_exposit_runoff <- function(rate, interception = 0, Koc, DT50 = Inf, t_run
 #'   }
 #' @export
 #' @source Excel 3.02 spreadsheet available from
-#'   \url{https://www.bvl.bund.de/DE/04_Pflanzenschutzmittel/03_Antragsteller/04_Zulassungsverfahren/07_Naturhaushalt/psm_naturhaush_node.html#doc1400590bodyText3}
+#'   \url{https://www.bvl.bund.de/SharedDocs/Downloads/04_Pflanzenschutzmittel/zul_umwelt_exposit.html}
 #' @seealso \code{\link{perc_runoff_exposit}} for runoff loss percentages and \code{\link{perc_runoff_reduction_exposit}} for runoff reduction percentages used
 #' @examples
 #'   PEC_sw_exposit_drainage(500, Koc = 150)

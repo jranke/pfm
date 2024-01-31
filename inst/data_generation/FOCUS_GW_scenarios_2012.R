@@ -1,3 +1,5 @@
+library(here)
+
 # FOCUS 2012 p. 46 ff
 FOCUS_GW_scenarios_2012 = list()
 
@@ -56,4 +58,6 @@ FOCUS_GW_scenarios_2012$soils <- data.frame(
               1, 0.5, 0.3, 0,
               1, 1, 0.5, 0.3, 0, 0,
               1, 0.5, 0.5, 0.3, 0.3, 0))
-save(FOCUS_GW_scenarios_2012, file = "../../data/FOCUS_GW_scenarios_2012.RData")
+
+save(FOCUS_GW_scenarios_2012,
+  file = here("data/FOCUS_GW_scenarios_2012.RData"))

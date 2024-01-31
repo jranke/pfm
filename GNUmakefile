@@ -2,80 +2,51 @@ PKGNAME := $(shell sed -n "s/Package: *\([^ ]*\)/\1/p" DESCRIPTION)
 PKGVERS := $(shell sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION)
 TGZ     := $(PKGNAME)_$(PKGVERS).tar.gz
 WINBIN  := $(PKGNAME)_$(PKGVERS).zip
-R_HOME  ?= $(shell R RHOME)
-DATE    := $(shell date +%Y-%m-%d)
+RBIN ?= $(shell dirname "`which R`")
 
-.PHONEY: usage check clean
+.PHONEY: check
 
 pkgfiles = \
 	.Rbuildignore \
-	ChangeLog \
 	DESCRIPTION \
 	data/* \
-	docs/* \
-	docs/reference/* \
+	GNUmakefile \
+	inst/data_generation/* \
 	inst/testdata/* \
 	README.html \
 	R/* \
 	tests/testthat.R \
 	tests/testthat/*
 
-clean:
-	@echo "Cleaning up..."
-	rm -fR pfm.Rcheck
-	@echo "DONE."
+all: build
 
-roxygen:
-	@echo "Roxygenizing package..."
-	"$(R_HOME)/bin/Rscript" -e 'devtools::document()'
-	@echo "DONE."
+roxy:
+	Rscript -e "roxygen2::roxygenize(roclets = c('rd', 'collate', 'namespace'))"
 
 README.html: README.md
-	"$(R_HOME)/bin/Rscript" -e "rmarkdown::render('README.md', output_format = 'html_document', output_options = list(mathjax = NULL))"
-
-pd: roxygen
-	@echo "Building static documentation..."
-	# suppressWarnings to get rid of mbcsToSbcs warnings when plotting the 'µ' character
-	"$(R_HOME)/bin/Rscript" -e 'suppressWarnings(pkgdown::build_site(lazy=TRUE))'
-	@echo "DONE."
+	"$(RBIN)/Rscript" -e "rmarkdown::render('README.md', output_format = 'html_document', output_options = list(mathjax = NULL))"
 
 $(TGZ): $(pkgfiles)
-	sed -i -e "s/Date:.*/Date: $(DATE)/" DESCRIPTION
-	@echo "Roxygenizing package..."
-	"$(R_HOME)/bin/Rscript" -e 'devtools::document()'
-	@echo "Building package..."
-	"$(R_HOME)/bin/R" CMD build . > build.log 2>&1
-	@echo "DONE."
+	"$(RBIN)/R" CMD build . 2>&1 | tee log/build.log
 
-build: $(TGZ)
+build: roxy $(TGZ)
+
+install: build
+	"$(RBIN)/R" CMD INSTALL $(TGZ)
 
 $(WINBIN): build
 	@echo "Building windows binary package..."
-	"$(R_HOME)/bin/R" CMD INSTALL $(TGZ) --build
+	"$(RBIN)/R" CMD INSTALL $(TGZ) --build
 	@echo "DONE."
 
 winbin: $(WINBIN)
 
-test: build
-	@echo "Running testthat tests..."
-	NOT_CRAN=true "$(R_HOME)/bin/Rscript" -e 'options(cli.dynamic = TRUE); devtools::test()' 2>&1 | tee test.log
-	sed -i -e "s/\r.*\r//" test.log
-	@echo "DONE."
+check: roxy build
+	_R_CHECK_CRAN_INCOMING_REMOTE_=false "$(RBIN)/R" CMD check --as-cran --no-tests $(TGZ) 2>&1 | tee log/check.log
 
-quickcheck: build
-	@echo "Running check..."
-	"$(R_HOME)/bin/R" CMD check $(TGZ)
-	@echo "DONE."
-
-check: build
-	@echo "Running CRAN check..."
-	_R_CHECK_CRAN_INCOMING_REMOTE_=false "$(R_HOME)/bin/R" CMD check --as-cran $(TGZ)
-	@echo "DONE."
-
-install: build
-	@echo "Installing package..."
-	"$(R_HOME)/bin/R" CMD INSTALL --no-multiarch $(TGZ)
-	@echo "DONE."
+test: install
+	"$(RBIN)/Rscript" -e 'options(cli.dynamic = TRUE); devtools::test()' 2>&1 | tee log/test.log
+	sed -i -e "s/.*\r.*\r//" log/test.log
 
 drat: build
 	"$(R_HOME)/bin/Rscript" -e "drat::insertPackage('$(TGZ)', commit = TRUE)"
@@ -89,3 +60,11 @@ winbuilder: build
 	curl -T $(TGZ) ftp://anonymous@win-builder.r-project.org/R-release/
 	@echo "Uploading to R-devel on win-builder"
 	curl -T $(TGZ) ftp://anonymous@win-builder.r-project.org/R-devel/
+
+pd: roxy
+	# In earlier versions, we used suppressWarnings to get 
+	# rid of mbcsToSbcs warnings when plotting the 'µ' character
+	Rscript -e 'pkgdown::build_site(lazy = TRUE, run_dont_run = TRUE)'
+
+pd_all: roxy
+	Rscript -e 'pkgdown::build_site(lazy = FALSE, run_dont_run = TRUE)'
