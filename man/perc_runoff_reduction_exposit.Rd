@@ -9,17 +9,17 @@ A named list of data frames with reduction percentage values for the
 dissolved fraction and the fraction bound to eroding particles, with
 vegetated buffer widths as row names. The names of the list items are the Exposit versions
 from which the values were taken.
-  \describe{
-    \item{dissolved}{The reduction percentage for the dissolved phase}
-    \item{bound}{The reduction percentage for the particulate phase}
-  }
+\describe{
+\item{dissolved}{The reduction percentage for the dissolved phase}
+\item{bound}{The reduction percentage for the particulate phase}
+}
 }
 \source{
 Excel 3.02 spreadsheet available from
-  \url{https://www.bvl.bund.de/SharedDocs/Downloads/04_Pflanzenschutzmittel/zul_umwelt_exposit.html}
+\url{https://www.bvl.bund.de/SharedDocs/Downloads/04_Pflanzenschutzmittel/zul_umwelt_exposit.html}
 
-  Agroscope version 3.01a with additional runoff factors for 3 m and 6 m buffer zones received from Muris Korkaric (not published).
-  The variant 3.01a2 was introduced for consistency with previous calculations performed by Agroscope for a 3 m buffer zone.
+Agroscope version 3.01a with additional runoff factors for 3 m and 6 m buffer zones received from Muris Korkaric (not published).
+The variant 3.01a2 was introduced for consistency with previous calculations performed by Agroscope for a 3 m buffer zone.
 }
 \usage{
 perc_runoff_reduction_exposit

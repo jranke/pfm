@@ -36,14 +36,14 @@ be conducted under use conditions.}
 
 \item{Koc}{The sorption constant normalised to organic carbon. Gustafson
 does not mention the nonlinearity of the sorption constant commonly
-found and usually described by Freundlich sorption, therefore it is 
+found and usually described by Freundlich sorption, therefore it is
 unclear at which reference concentration the Koc should be observed
 (and if the reference concentration would be in soil or in porewater).}
 
 \item{chent}{If a chent is given with appropriate information present in its
 chyaml field, this information is used, with defaults specified below.}
 
-\item{degradation_value}{Which of the available degradation values should 
+\item{degradation_value}{Which of the available degradation values should
 be used?}
 
 \item{lab_field}{Should laboratory or field half-lives be used? This
@@ -70,7 +70,7 @@ be Koc values at a concentration of 1 mg/L in the water phase.}
 }
 \value{
 A list with the DT50 and Koc used as well as the resulting score
-  of class GUS_result
+of class GUS_result
 }
 \description{
 The groundwater ubiquity score GUS is calculated according to

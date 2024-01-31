@@ -9,10 +9,10 @@ A matrix containing wash-off factors, currently only for some selected crops
 }
 \source{
 European Food Safety Authority (2017) EFSA guidance document for
-  predicting environmental concentrations of active substances of plant
-  protection products and transformation products of these active substances
-  in soil. \emph{EFSA Journal} \bold{15}(10) 4982
-  doi:10.2903/j.efsa.2017.4982
+predicting environmental concentrations of active substances of plant
+protection products and transformation products of these active substances
+in soil. \emph{EFSA Journal} \bold{15}(10) 4982
+doi:10.2903/j.efsa.2017.4982
 }
 \usage{
 EFSA_washoff_2017

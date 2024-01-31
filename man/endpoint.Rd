@@ -53,10 +53,10 @@ soil_sorption(
 
 \item{redox}{If not NA, are we looking for aerobic or anaerobic data}
 
-\item{value}{The name of the value we want. The list given in the 
+\item{value}{The name of the value we want. The list given in the
 usage section is not exclusive}
 
-\item{aggregator}{The aggregator function. Can be mean, 
+\item{aggregator}{The aggregator function. Can be mean,
 \code{\link{geomean}}, or identity, for example.}
 
 \item{raw}{Should the number(s) be returned as stored in the chent
@@ -71,10 +71,10 @@ about precision?}
 }
 \value{
 The result from applying the aggregator function to
-  the values converted to a numeric vector, rounded to the
-  given number of significant digits, or, if raw = TRUE,
-  the values as a character value, retaining any implicit
-  information on precision that may be present.
+the values converted to a numeric vector, rounded to the
+given number of significant digits, or, if raw = TRUE,
+the values as a character value, retaining any implicit
+information on precision that may be present.
 }
 \description{
 R6 class objects of class chent represent chemical entities

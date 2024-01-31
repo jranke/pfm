@@ -11,7 +11,7 @@ SSLRC_mobility_classification(Koc)
 }
 \value{
 A list containing the classification and the percentage of the
-  compound transported per 10 mm drain water
+compound transported per 10 mm drain water
 }
 \description{
 This implements the method specified in the UK data requirements handbook and was
@@ -23,13 +23,13 @@ SSLRC_mobility_classification(10000)
 }
 \references{
 HSE's Chemicals Regulation Division (CRD) Active substance
-  PECsw calculations (for UK specific authorisation requests)
-  \url{https://www.hse.gov.uk/pesticides/topics/pesticide-approvals/pesticides-registration/data-requirements-handbook/fate/active-substance-uk.htm}
-  accessed 2019-09-27
+PECsw calculations (for UK specific authorisation requests)
+\url{https://www.hse.gov.uk/pesticides/topics/pesticide-approvals/pesticides-registration/data-requirements-handbook/fate/active-substance-uk.htm}
+accessed 2019-09-27
 
-  Drainage PECs Version 1.0 (2015) Spreadsheet published at
-  \url{https://www.hse.gov.uk/pesticides/topics/pesticide-approvals/pesticides-registration/data-requirements-handbook/fate/pec-tools-2015/PEC\%20sw-sed\%20(drainage).xlsx}
-  accessed 2019-09-27
+Drainage PECs Version 1.0 (2015) Spreadsheet published at
+\url{https://www.hse.gov.uk/pesticides/topics/pesticide-approvals/pesticides-registration/data-requirements-handbook/fate/pec-tools-2015/PEC\%20sw-sed\%20(drainage).xlsx}
+accessed 2019-09-27
 }
 \author{
 Johannes Ranke

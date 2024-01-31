@@ -94,7 +94,7 @@ Create a TOXSWA_cwa object from a file
 \if{html}{\out{<a id="method-TOXSWA_cwa-moving_windows"></a>}}
 \if{latex}{\out{\hypertarget{method-TOXSWA_cwa-moving_windows}{}}}
 \subsection{Method \code{moving_windows()}}{
-Add to the `windows` field described above.
+Add to the \code{windows} field described above.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TOXSWA_cwa$moving_windows(windows, total = FALSE)}\if{html}{\out{</div>}}
 }
@@ -115,7 +115,7 @@ suspended matter will be used.}
 \if{latex}{\out{\hypertarget{method-TOXSWA_cwa-get_events}{}}}
 \subsection{Method \code{get_events()}}{
 Populate a datataframe with event information for the specified
-threshold value.  The resulting dataframe is stored in the `events`
+threshold value.  The resulting dataframe is stored in the \code{events}
 field of the object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TOXSWA_cwa$get_events(thresholds, total = FALSE)}\if{html}{\out{</div>}}
@@ -136,7 +136,7 @@ suspended matter will be used.}
 \if{html}{\out{<a id="method-TOXSWA_cwa-print"></a>}}
 \if{latex}{\out{\hypertarget{method-TOXSWA_cwa-print}{}}}
 \subsection{Method \code{print()}}{
-Print a `TOXSWA_cwa` object
+Print a \code{TOXSWA_cwa} object
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{TOXSWA_cwa$print()}\if{html}{\out{</div>}}
 }

@@ -31,7 +31,7 @@ legend("topright", lty = 1:2, bty = "n",
 }
 \references{
 FOCUS (2014) Generic Guidance for Tier 1 FOCUS Ground Water Assessments.
- Version 2.2, May 2014
+Version 2.2, May 2014
 Dettenmaier EM, Doucette WJ and Bugbee B (2009) Chemical hydrophobicity and uptake
 by plant roots. Environ. Sci. Technol 43, 324 - 329
 }

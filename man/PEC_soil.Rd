@@ -127,16 +127,16 @@ true for the TWA concentrations given for the same example in the EFSA guidance
 from 2017 (p. 92).
 
 According to the EFSA guidance (EFSA, 2017, p. 43), leaching should be
-  taken into account for the EFSA 2017 scenarios, using the evaluation depth
-  (here mixing depth) as the depth of the layer from which leaching takes
-  place.  However, as the amount leaching below the evaluation depth
-  (often 5 cm) will partly be mixed back during tillage, the default in this function
-  is to use the tillage depth for the calculation of the leaching rate.
+taken into account for the EFSA 2017 scenarios, using the evaluation depth
+(here mixing depth) as the depth of the layer from which leaching takes
+place.  However, as the amount leaching below the evaluation depth
+(often 5 cm) will partly be mixed back during tillage, the default in this function
+is to use the tillage depth for the calculation of the leaching rate.
 
 If temperature information is available in the selected scenarios, as
-  e.g. in the EFSA scenarios, the DT50 for groundwater modelling
-  (destination 'PECgw') is taken from the chent object, otherwise the DT50
-  with destination 'PECsoil'.
+e.g. in the EFSA scenarios, the DT50 for groundwater modelling
+(destination 'PECgw') is taken from the chent object, otherwise the DT50
+with destination 'PECsoil'.
 }
 \examples{
 PEC_soil(100, interception = 0.25)
@@ -166,22 +166,22 @@ results_pfm_pw <- PEC_soil(100/300 * 0.7 * 1000, interval = 365, DT50 = 250, t_a
 }
 \references{
 EFSA Panel on Plant Protection Products and their Residues (2012)
-  Scientific Opinion on the science behind the guidance for scenario
-  selection and scenario parameterisation for predicting environmental
-  concentrations of plant protection products in soil. \emph{EFSA Journal}
-  \bold{10}(2) 2562, doi:10.2903/j.efsa.2012.2562
+Scientific Opinion on the science behind the guidance for scenario
+selection and scenario parameterisation for predicting environmental
+concentrations of plant protection products in soil. \emph{EFSA Journal}
+\bold{10}(2) 2562, doi:10.2903/j.efsa.2012.2562
 
-  EFSA (European Food Safety Authority) 2017) EFSA guidance document for
-  predicting environmental concentrations of active substances of plant
-  protection products and transformation products of these active substances
-  in soil. \emph{EFSA Journal} \bold{15}(10) 4982
-  doi:10.2903/j.efsa.2017.4982
+EFSA (European Food Safety Authority) 2017) EFSA guidance document for
+predicting environmental concentrations of active substances of plant
+protection products and transformation products of these active substances
+in soil. \emph{EFSA Journal} \bold{15}(10) 4982
+doi:10.2903/j.efsa.2017.4982
 
-  EFSA (European Food Safety Authority) (2015) EFSA guidance document for
-  predicting environmental concentrations of active substances of plant
-  protection products and transformation products of these active substances
-  in soil. \emph{EFSA Journal} \bold{13}(4) 4093
-  doi:10.2903/j.efsa.2015.4093
+EFSA (European Food Safety Authority) (2015) EFSA guidance document for
+predicting environmental concentrations of active substances of plant
+protection products and transformation products of these active substances
+in soil. \emph{EFSA Journal} \bold{13}(4) 4093
+doi:10.2903/j.efsa.2015.4093
 }
 \author{
 Johannes Ranke

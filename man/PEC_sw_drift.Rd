@@ -26,7 +26,7 @@ PEC_sw_drift(
 \item{drift_percentages}{Percentage drift values for which to calculate PECsw.
 'drift_data' and 'distances' if not NULL.}
 
-\item{drift_data}{Source of drift percentage data. If 'JKI', the [drift_data_JKI]
+\item{drift_data}{Source of drift percentage data. If 'JKI', the \link{drift_data_JKI}
 included in the package is used. If 'RF', the Rautmann formula is used, if
 implemented for the crop type and number of applications}
 

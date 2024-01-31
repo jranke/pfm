@@ -6,18 +6,18 @@
 \title{Runoff loss percentages as used in Exposit 3}
 \format{
 A data frame with percentage values for the dissolved fraction and the fraction
-  bound to eroding particles, with Koc classes used as row names
-  \describe{
-    \item{Koc_lower_bound}{The lower bound of the Koc class}
-    \item{dissolved}{The percentage of the applied substance transferred to an
-      adjacent water body in the dissolved phase}
-    \item{bound}{The percentage of the applied substance transferred to an
-      adjacent water body bound to eroding particles}
-  }
+bound to eroding particles, with Koc classes used as row names
+\describe{
+\item{Koc_lower_bound}{The lower bound of the Koc class}
+\item{dissolved}{The percentage of the applied substance transferred to an
+adjacent water body in the dissolved phase}
+\item{bound}{The percentage of the applied substance transferred to an
+adjacent water body bound to eroding particles}
+}
 }
 \source{
 Excel 3.02 spreadsheet available from
-  \url{https://www.bvl.bund.de/SharedDocs/Downloads/04_Pflanzenschutzmittel/zul_umwelt_exposit.html}
+\url{https://www.bvl.bund.de/SharedDocs/Downloads/04_Pflanzenschutzmittel/zul_umwelt_exposit.html}
 }
 \usage{
 perc_runoff_exposit
