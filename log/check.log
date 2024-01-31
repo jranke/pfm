@@ -14,7 +14,7 @@
 * checking CRAN incoming feasibility ... NOTE
 Maintainer: ‘Johannes Ranke <johannes.ranke@agroscope.admin.ch>’
 
-Size of tarball: 8487351 bytes
+Size of tarball: 8527364 bytes
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -25,7 +25,7 @@ Size of tarball: 8487351 bytes
 * checking for sufficient/correct file permissions ... OK
 * checking whether package ‘pfm’ can be installed ... OK
 * checking installed package size ... NOTE
-  installed size is 10.2Mb
+  installed size is 10.3Mb
   sub-directories of 1Mb or more:
     testdata   9.9Mb
 * checking package directory ... OK

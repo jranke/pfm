@@ -20,14 +20,18 @@ Rautmann, D., Streloke, M and Winkler, R (2001) New basic drift values in
 the authorization procedure for plant protection products Mitt. Biol.
 Bundesanst. Land- Forstwirtsch. 383, 133-141
 }
+\usage{
+drift_data_JKI
+}
 \description{
 Deposition from spray drift expressed as percent of the applied dose as
 published by the German Julius-Kühn Institute (JKI).
 }
 \details{
 The data were extracted from the spreadsheet cited below using the R code
-given in the example section. The spreadsheet is not included in the package
-as its licence is not clear.
+given in the file \code{data_generation/drift_data_JKI.R} installed with this
+package. The file itself is not included in the package, as its licence is
+not clear.
 
 Additional spray drift values were taken from the publication by Rautmann
 et al. (2001). Specifically, these are the values for early vines, and

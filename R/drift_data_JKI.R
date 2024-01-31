@@ -5,8 +5,9 @@
 #' published by the German Julius-Kühn Institute (JKI).
 #'
 #' The data were extracted from the spreadsheet cited below using the R code
-#' given in the example section. The spreadsheet is not included in the package
-#' as its licence is not clear.
+#' given in the file `data_generation/drift_data_JKI.R` installed with this
+#' package. The file itself is not included in the package, as its licence is
+#' not clear.
 #'
 #' Additional spray drift values were taken from the publication by Rautmann
 #' et al. (2001). Specifically, these are the values for early vines, and
@@ -37,4 +38,4 @@
 #' @keywords datasets
 #' @examples
 #' drift_data_JKI
-NULL
+"drift_data_JKI"

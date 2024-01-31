@@ -24,7 +24,8 @@ Suggests:
     magrittr,
     covr,
     here,
-    waldo
+    waldo,
+    docxtractr
 License: GPL
 LazyLoad: true
 LazyData: true
