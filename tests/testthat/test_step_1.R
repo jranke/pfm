@@ -71,7 +71,8 @@ test_that("Results of Steps 1/2 calculator for Dummy 2 are reproduced", { # {{{1
   res_dummy_2 <- PEC_sw_focus(dummy_2, 1000,
     comment = "Maize, Southern Europe, spring, 1 app/season",
     scenario = "maize",
-    region = "s", season = "mm")
+    region = "s", season = "mm",
+    append = TRUE)
 
   PEC_step_1_2 = PEC_template_1
 
@@ -87,7 +88,8 @@ test_that("Results of Steps 1/2 calculator for Dummy 4 are reproduced", { # {{{1
   res_dummy_4 <- PEC_sw_focus(dummy_4, 7.5, n = 3, i = 14,
     comment = "Apples, Southern  Europe, spring, 3 app./season, 14 d int, orchards",
     region = "s", season = "mm",
-    scenario = "pome / stone fruit, early")
+    scenario = "pome / stone fruit, early",
+    append = TRUE)
 
   PEC_step_1_4 = PEC_template_1
 
@@ -103,7 +105,8 @@ test_that("Results of Steps 1/2 calculator for Dummy 5 are reproduced", { # {{{1
   res_dummy_5 <- PEC_sw_focus(dummy_5, 75, n = 5, i = 14,
     comment = "Vines, Northern Europe, spring, 5 app/seaon 14 d int.",
     region = "n", season = "mm",
-    scenario = "vines, early")
+    scenario = "vines, early",
+    append = TRUE)
 
   PEC_step_1_5 = PEC_template_1
 
@@ -119,7 +122,8 @@ test_that("Results of Steps 1/2 calculator for Dummy 7 are reproduced", { # {{{1
   res_dummy_7 <- PEC_sw_focus(dummy_7, 750, n = 4, i = 14,
     comment = "Vines, Southern Europe, spring, 4 app/seaon 14 d int.",
     region = "s", season = "mm",
-    scenario = "vines, early")
+    scenario = "vines, early",
+    append = TRUE)
 
   PEC_step_1_7 = PEC_template_1
 
@@ -134,9 +138,10 @@ test_that("Results of Steps 1/2 calculator for Dummy 7 are reproduced", { # {{{1
 
 test_that("Results of Steps 1/2 calculator for New Dummy (M1-M2) are reproduced", { # {{{1
   res_M1 <- PEC_sw_focus(new_dummy, 1000, scenario = "cereals, winter",
-                         comment = "Soil Metabolite",
-                         region = "n", season = "of",
-                         met = M1)
+    comment = "Soil Metabolite",
+    region = "n", season = "of",
+    met = M1,
+    append = TRUE)
 
   PEC_step_1_M1 = PEC_template_1
 
@@ -148,9 +153,10 @@ test_that("Results of Steps 1/2 calculator for New Dummy (M1-M2) are reproduced"
   expect_equal(res_M1$PEC[1:4, ], PEC_step_1_M1[, ], tolerance = 0.01, scale = 1)
 
   res_M2 <- PEC_sw_focus(new_dummy, 1000, scenario = "cereals, winter",
-                         comment = "Water Metabolite",
-                         region = "n", season = "of",
-                         met = M2)
+    comment = "Water Metabolite",
+    region = "n", season = "of",
+    met = M2,
+    append = TRUE)
 
   PEC_step_1_M2 = PEC_template_1
 
