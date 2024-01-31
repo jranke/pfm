@@ -5,8 +5,8 @@
 #' applications should be compared to the corresponding results for a
 #' single application. At current, this is not done automatically in
 #' this implementation. Only Step 1 PECs are calculated. However,
-#' input files are generated that are suitable as input also for Step 2
-#' to be used with the FOCUS calculator.
+#' input files can be generated that are suitable as input for 
+#' the FOCUS calculator.
 #'
 #' @importFrom utils read.table
 #' @references FOCUS (2014) Generic guidance for Surface Water Scenarios (version 1.4).
@@ -56,11 +56,11 @@
 #'   should be written
 #' @param overwrite Should an existing file a the location specified in
 #'   \code{txt_file} be overwritten? Only takes effect if append is FALSE.
-#' @param append Should the input text file be appended?
+#' @param append Should the input text file be appended, if it exists?
 #' @examples
 #' # Parent only
 #' dummy_1 <- chent_focus_sw("Dummy 1", cwsat = 6000, DT50_ws = 6, Koc = 344.8)
-#' PEC_sw_focus(dummy_1, 3000, f_drift = 0, overwrite = TRUE, append = FALSE)
+#' PEC_sw_focus(dummy_1, 3000, f_drift = 0)
 #'
 #' # Metabolite
 #' new_dummy <- chent_focus_sw("New Dummy", mw = 250, Koc = 100)
@@ -77,7 +77,7 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
   interception = c("no interception", "minimal crop cover",
                    "average crop cover", "full canopy"),
   met_form_water = TRUE,
-  txt_file = "pesticide.txt", overwrite = FALSE, append = TRUE)
+  txt_file = "pesticide.txt", overwrite = FALSE, append = FALSE)
 {
   if (n > 1 & is.na(i)) stop("Please specify the interval i if n > 1")
 
@@ -95,39 +95,38 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
 
   interception = match.arg(interception)
 
-  # Write to txt file if requested
-  header <- c("Active Substance", "Compound", "Comment",
-              "Mol mass a.i.", "Mol mass met.",
-              "Water solubility",
-              "KOC assessed compound", "KOC parent compound",
-              "DT50",
-              "Max. in Water",
-              "Max. in Soil asessed compound", # we reproduce the typo...
-              "App. Rate", "Number of App.", "Time between app.", "App. Type",
-              "DT50 soil parent compound", "DT50 soil",
-              "DT50 water", "DT50 sediment",
-              "Region / Season",
-              "Interception class")
-  add_line <- function(x) {
-    cat(paste0(x, "\r\n"), file = txt, append = TRUE)
-  }
-  if (file.exists(txt_file)) {
-    if (append) {
-      txt <- file(txt_file, "a")
-    } else {
-      if (overwrite) {
-        txt <- file(txt_file, "w")
-        add_line(paste(header, collapse = "\t"))
-      } else {
-        stop("The file", txt_file, "already exists, and you did not request",
-             "appending or overwriting it")
-      }
+  if (append | overwrite) {
+    # Write to txt file if requested
+    header <- c("Active Substance", "Compound", "Comment",
+                "Mol mass a.i.", "Mol mass met.",
+                "Water solubility",
+                "KOC assessed compound", "KOC parent compound",
+                "DT50",
+                "Max. in Water",
+                "Max. in Soil asessed compound", # we reproduce the typo...
+                "App. Rate", "Number of App.", "Time between app.", "App. Type",
+                "DT50 soil parent compound", "DT50 soil",
+                "DT50 water", "DT50 sediment",
+                "Region / Season",
+                "Interception class")
+    add_line <- function(x) {
+      cat(paste0(x, "\r\n"), file = txt, append = TRUE)
     }
-  } else {
-    txt <- file(txt_file, "w")
-    add_line(paste(header, collapse = "\t"))
+    if (file.exists(txt_file)) {
+      if (append) {
+        txt <- file(txt_file, "a")
+      } else {
+        if (overwrite) {
+          txt <- file(txt_file, "w")
+          add_line(paste(header, collapse = "\t"))
+        }
+      }
+    } else {
+      txt <- file(txt_file, "w")
+      add_line(paste(header, collapse = "\t"))
+    }
+    on.exit(close(txt))
   }
-  on.exit(close(txt))
 
   region = match.arg(region)
   season = match.arg(season)
@@ -224,7 +223,9 @@ PEC_sw_focus <- function(parent, rate, n = 1, i = NA,
         sprintf("%8.2f", x)))
   }
   run_line <- paste(c(run_txt, print_numeric(run_numeric)), collapse = "\t")
-  add_line(run_line)
+  if (append | overwrite) {
+    add_line(run_line)
+  }
 
   # Rates for a single application (suffix _s)
   eq_rate_drift_s = mw_ratio * max_ws * rate
