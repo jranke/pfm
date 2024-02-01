@@ -1,7 +1,7 @@
 #' Determine the SSLRC mobility classification for a chemical substance from its Koc
 #'
 #' This implements the method specified in the UK data requirements handbook and was
-#' checked against the spreadsheet published on the CRC website
+#' checked against the spreadsheet published on the CRD website
 #'
 #' @param Koc The sorption coefficient normalised to organic carbon in L/kg
 #' @return A list containing the classification and the percentage of the
