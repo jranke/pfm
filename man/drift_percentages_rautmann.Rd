@@ -45,8 +45,7 @@ drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, late")
 drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, late", formula = "FOCUS")
 
 # We get a continuum if the waterbody covers the hinge distance (11.4 m for 1 early app to fruit)
-drift_percentages_rautmann(seq(10, 13, by = 0.2), crop_group = "fruit, early", formula = "FOCUS")
-x <- seq(1, 30, by = 0.1)
+x <- seq(3, 30, by = 0.1)
 d <- drift_percentages_rautmann(x, crop_group = "fruit, early", formula = "FOCUS")
 plot(x, d, type = "l",
   xlab = "Distance of near edge [m]", 
