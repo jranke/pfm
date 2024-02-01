@@ -12,7 +12,7 @@
 #'
 #' @name drift_parameters_focus
 #' @docType data
-#' @seealso [drift_percentages_rautmann_formula], [PEC_sw_drift]
+#' @seealso [drift_percentages_rautmann], [PEC_sw_drift]
 #' @format A [tibble::tibble].
 #' @references FOCUS (2014) Generic guidance for Surface Water Scenarios (version 1.4).
 #' FOrum for the Co-ordination of pesticde fate models and their USe.

@@ -15,7 +15,7 @@ compound transported per 10 mm drain water
 }
 \description{
 This implements the method specified in the UK data requirements handbook and was
-checked against the spreadsheet published on the CRC website
+checked against the spreadsheet published on the CRD website
 }
 \examples{
 SSLRC_mobility_classification(100)

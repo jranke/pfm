@@ -68,7 +68,7 @@ PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF",
 PEC_sw_drift(100, drift_percentages = c(2.77, 0.95, 0.57, 0.48, 0.29, 0.15, 0.06, 0.03))
 }
 \seealso{
-\link{drift_parameters_focus}, \link{drift_percentages_rautmann_formula}
+\link{drift_parameters_focus}, \link{drift_percentages_rautmann}
 }
 \author{
 Johannes Ranke

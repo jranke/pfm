@@ -4,8 +4,8 @@
 #' concentration in surface water based on complete, instantaneous mixing
 #' with input via spray drift.
 #'
-#' @inheritParams drift_percentages_rautmann_formula
-#' @seealso [drift_parameters_focus], [drift_percentages_rautmann_formula]
+#' @inheritParams drift_percentages_rautmann
+#' @seealso [drift_parameters_focus], [drift_percentages_rautmann]
 #' @param rate Application rate in units specified below
 #' @param drift_percentages Percentage drift values for which to calculate PECsw.
 #'   'drift_data' and 'distances' if not NULL.
@@ -60,7 +60,7 @@ PEC_sw_drift <- function(rate,
   if (is.null(drift_percentages)) {
     drift_percentages <- switch(drift_data,
       JKI = pfm::drift_data_JKI[[applications]][dist_index, crop_group_JKI],
-      RF =  drift_percentages_rautmann_formula(distances, applications, crop_group_focus)
+      RF =  drift_percentages_rautmann(distances, applications, crop_group_focus)
     )
     names(drift_percentages) <- paste(dist_index, "m")
   } else {
@@ -71,38 +71,81 @@ PEC_sw_drift <- function(rate,
   return(PEC_sw_drift)
 }
 
-#' Calculate the drift percentages according to the Rautmann formula
+#' Calculate drift percentages based on Rautmann data
 #'
+#' @param formula By default, the original Rautmann formula is used. If you
+#' specify "FOCUS", mean drift input over the width of the water body is
+#' calculated as described in Chapter 5.4.5 of the FOCUS surface water guidance
 #' @param distances The distances in m for which to get PEC values
+#' @param widths The widths of the water bodies (only used in the FOCUS formula)
 #' @param applications Number of applications for selection of drift percentile
 #' @param crop_group_focus One of the crop groups as used in [drift_parameters_focus]
 #' @seealso [drift_parameters_focus], [PEC_sw_drift]
+#' @references FOCUS (2014) Generic guidance for Surface Water Scenarios (version 1.4).
+#' FOrum for the Co-ordination of pesticde fate models and their USe.
+#' <http://esdac.jrc.ec.europa.eu/public_path/projects_data/focus/sw/docs/Generic%20FOCUS_SWS_vc1.4.pdf>
 #' @export
 #' @examples
 #' # Compare JKI data with Rautmann formula
 #' # One application on field crops, for 1 m, 3 m and 5 m distance
 #' drift_data_JKI[[1]][as.character(c(1, 3, 5)), "Ackerbau"]
-#' drift_percentages_rautmann_formula(c(1, 3, 5))
+#' drift_percentages_rautmann(c(1, 3, 5))
+#' drift_percentages_rautmann(c(1, 3, 5), formula = "FOCUS")
 #'
 #' # One application to early or late fruit crops
 #' drift_data_JKI[[1]][as.character(c(3, 5, 20, 50)), "Obstbau frueh"]
-#' drift_percentages_rautmann_formula(c(3, 5, 20, 50), crop_group = "fruit, early")
+#' drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, early")
+#' drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, early", formula = "FOCUS")
 #' drift_data_JKI[[1]][as.character(c(3, 5, 20, 50)), "Obstbau spaet"]
-#' drift_percentages_rautmann_formula(c(3, 5, 20, 50), crop_group = "fruit, late")
-drift_percentages_rautmann_formula <- function(distances, applications = 1, 
+#' drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, late")
+#' drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, late", formula = "FOCUS")
+#' 
+#' # We get a continuum if the waterbody covers the hinge distance (11.4 m for 1 early app to fruit)
+#' drift_percentages_rautmann(seq(10, 13, by = 0.2), crop_group = "fruit, early", formula = "FOCUS")
+#' x <- seq(1, 30, by = 0.1)
+#' d <- drift_percentages_rautmann(x, crop_group = "fruit, early", formula = "FOCUS")
+#' plot(x, d, type = "l",
+#'   xlab = "Distance of near edge [m]", 
+#'   ylab = "Mean drift percentage over waterbody width",
+#'   main = "One application to fruit, early")
+#' abline(v = 11.4, lty = 2)
+drift_percentages_rautmann <- function(distances, applications = 1, 
   crop_group_focus = c("arable", "hops", "vines, late", "vines, early", "fruit, late",
-    "fruit, early", "aerial"))
+    "fruit, early", "aerial"),
+  formula = c("Rautmann", "FOCUS"),
+  widths = 1
+)
 {
   cg <- match.arg(crop_group_focus)
   if (!applications %in% 1:8) stop("Only 1 to 8 applications are supported")
+  formula <- match.arg(formula)
+
   parms <- pfm::drift_parameters_focus[pfm::drift_parameters_focus$crop_group == cg &
     pfm::drift_parameters_focus$n_apps == applications, c("A", "B", "C", "D", "hinge")]
 
-  drift_percentages = with(as.list(parms), {
+  if (formula[1] == "Rautmann") {
+    drift_percentages = with(as.list(parms), {
       A <- ifelse(distances < hinge, A, C)
       B <- ifelse(distances < hinge, B, D)
       A * distances^B
-    }
-  )
+    })
+  } else {
+    drift_percentages = with(as.list(parms), {
+      z1 = distances
+      z2 = distances + widths
+      H = hinge
+      ifelse(z2 < hinge,
+        # farther edge closer than hinge distance
+        A/(widths * (B + 1)) * (z2^(B + 1) - z1^(B + 1)),
+        ifelse(z1 < hinge, 
+          # hinge distance in waterbody (between z1 and z2)
+          (A/(B + 1) * (H^(B + 1) - z1^(B + 1)) + C/(D + 1) * (z2^(D + 1) - H^(D + 1)))/widths,
+          # z1 >= hinge, i.e. near edge farther than hinge distance
+          C/(widths * (D + 1)) * (z2^(D + 1) - z1^(D + 1))
+        )
+      )
+    })
+  }
+
   return(drift_percentages)
 }

@@ -38,7 +38,7 @@ reference:
       - PEC_sw_drift
       - drift_data_JKI
       - drift_parameters_focus
-      - drift_percentages_rautmann_formula
+      - drift_percentages_rautmann
       - PEC_sw_drainage_UK
       - PEC_sw_sed
       - PEC_sw_focus
