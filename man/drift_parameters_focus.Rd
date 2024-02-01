@@ -40,4 +40,7 @@ Rautmann, D., Streloke, M and Winkler, R (2001) New basic drift values in
 the authorization procedure for plant protection products Mitt. Biol.
 Bundesanst. Land- Forstwirtsch. 383, 133-141
 }
+\seealso{
+\link{drift_percentages_rautmann_formula}, \link{PEC_sw_drift}
+}
 \keyword{datasets}

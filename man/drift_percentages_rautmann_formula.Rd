@@ -22,6 +22,8 @@ drift_percentages_rautmann_formula(
 Calculate the drift percentages according to the Rautmann formula
 }
 \examples{
+# Compare JKI data with Rautmann formula
+# One application on field crops, for 1 m, 3 m and 5 m distance
 drift_data_JKI[[1]][as.character(c(1, 3, 5)), "Ackerbau"]
 drift_percentages_rautmann_formula(c(1, 3, 5))
 
@@ -30,4 +32,7 @@ drift_data_JKI[[1]][as.character(c(3, 5, 20, 50)), "Obstbau frueh"]
 drift_percentages_rautmann_formula(c(3, 5, 20, 50), crop_group = "fruit, early")
 drift_data_JKI[[1]][as.character(c(3, 5, 20, 50)), "Obstbau spaet"]
 drift_percentages_rautmann_formula(c(3, 5, 20, 50), crop_group = "fruit, late")
+}
+\seealso{
+\link{drift_parameters_focus}, \link{PEC_sw_drift}
 }

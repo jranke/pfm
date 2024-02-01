@@ -5,6 +5,7 @@
 #' with input via spray drift.
 #'
 #' @inheritParams drift_percentages_rautmann_formula
+#' @seealso [drift_parameters_focus], [drift_percentages_rautmann_formula]
 #' @param rate Application rate in units specified below
 #' @param drift_percentages Percentage drift values for which to calculate PECsw.
 #'   'drift_data' and 'distances' if not NULL.
@@ -75,9 +76,11 @@ PEC_sw_drift <- function(rate,
 #' @param distances The distances in m for which to get PEC values
 #' @param applications Number of applications for selection of drift percentile
 #' @param crop_group_focus One of the crop groups as used in [drift_parameters_focus]
+#' @seealso [drift_parameters_focus], [PEC_sw_drift]
 #' @export
 #' @examples
-#  # One application on field crops, for 1 m, 3 m and 5 m distance
+#' # Compare JKI data with Rautmann formula
+#' # One application on field crops, for 1 m, 3 m and 5 m distance
 #' drift_data_JKI[[1]][as.character(c(1, 3, 5)), "Ackerbau"]
 #' drift_percentages_rautmann_formula(c(1, 3, 5))
 #'
