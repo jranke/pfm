@@ -16,8 +16,15 @@ using the R code given in the file \code{data_generation/drift_parameters_focus.
 installed with this package. The appendix itself is not included in the package,
 as its licence is not clear.
 }
+\details{
+For the hinge distance, \code{Inf} was substituted for the cases where no hinge
+distance is given in the data, in this way parameters C and D are never
+used for any distance if A and B are used for the case that the distance
+is smaller than the hinge distance.
+}
 \examples{
 drift_parameters_focus
+unique(drift_parameters_focus$crop_group)
 }
 \references{
 FOCUS (2014) Generic guidance for Surface Water Scenarios (version 1.4).

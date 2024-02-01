@@ -22,7 +22,8 @@ combined$crop_group = c(
 
 drift_parameters_focus <- combined |>
   mutate(across(2:3, as.integer)) |>
-  mutate(across(4:8, as.numeric))
+  mutate(across(4:8, as.numeric)) |>
+  mutate(hinge = if_else(is.na(hinge), Inf, hinge))
 
 save(drift_parameters_focus,
   file = here("data/drift_parameters_focus.RData"))

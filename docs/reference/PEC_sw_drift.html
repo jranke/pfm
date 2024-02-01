@@ -60,7 +60,10 @@ with input via spray drift.</p>
 <span>  water_depth <span class="op">=</span> <span class="fl">30</span>,</span>
 <span>  drift_percentages <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  drift_data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"JKI"</span>, <span class="st">"RF"</span><span class="op">)</span>,</span>
-<span>  crop <span class="op">=</span> <span class="st">"Ackerbau"</span>,</span>
+<span>  crop_group_JKI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ackerbau"</span>, <span class="st">"Obstbau frueh"</span>, <span class="st">"Obstbau spaet"</span>, <span class="st">"Weinbau frueh"</span>,</span>
+<span>    <span class="st">"Weinbau spaet"</span>, <span class="st">"Hopfenbau"</span>, <span class="st">"Flaechenkulturen &gt; 900 l/ha"</span>, <span class="st">"Gleisanlagen"</span><span class="op">)</span>,</span>
+<span>  crop_group_focus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"arable"</span>, <span class="st">"hops"</span>, <span class="st">"vines, late"</span>, <span class="st">"vines, early"</span>, <span class="st">"fruit, late"</span>,</span>
+<span>    <span class="st">"fruit, early"</span>, <span class="st">"aerial"</span><span class="op">)</span>,</span>
 <span>  distances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span>,</span>
 <span>  rate_units <span class="op">=</span> <span class="st">"g/ha"</span>,</span>
 <span>  PEC_units <span class="op">=</span> <span class="st">"µg/L"</span></span>
@@ -92,8 +95,13 @@ included in the package is used. If 'RF', the Rautmann formula is used, if
 implemented for the crop type and number of applications</p></dd>
 
 
-<dt>crop</dt>
-<dd><p>Crop name (use German names for JKI data), defaults to "Ackerbau"</p></dd>
+<dt>crop_group_JKI</dt>
+<dd><p>When using the 'JKI' drift data, one of the German names
+as used in <a href="drift_parameters_focus.html">drift_parameters_focus</a>.</p></dd>
+
+
+<dt>crop_group_focus</dt>
+<dd><p>One of the crop groups as used in <a href="drift_parameters_focus.html">drift_parameters_focus</a></p></dd>
 
 
 <dt>distances</dt>
@@ -127,14 +135,22 @@ implemented for the crop type and number of applications</p></dd>
 <span class="r-in"><span><span class="co"># Alternatively, we can use the formula for a single application to "Ackerbau" from the paper</span></span></span>
 <span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span><span class="fl">100</span>, drift_data <span class="op">=</span> <span class="st">"RF"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        1 m        5 m       10 m       20 m </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.92350000 0.19114149 0.09699222 0.04921742 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.91976667 0.19064473 0.09680051 0.04915079 </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># This makes it possible to also use different substances</span></span></span>
+<span class="r-in"><span><span class="co"># This makes it possible to also use different distances</span></span></span>
 <span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span><span class="fl">100</span>, distances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">100</span><span class="op">)</span>, drift_data <span class="op">=</span> <span class="st">"RF"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        1 m        3 m        5 m        6 m       10 m       20 m       50 m </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.92350000 0.31512171 0.19114149 0.15990435 0.09699222 0.04921742 0.02007497 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.91976667 0.31415827 0.19064473 0.15951494 0.09680051 0.04915079 0.02006434 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      100 m </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.01018678 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.01018774 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># or consider aerial application</span></span></span>
+<span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span><span class="fl">100</span>, distances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">100</span><span class="op">)</span>, drift_data <span class="op">=</span> <span class="st">"RF"</span>, </span></span>
+<span class="r-in"><span>  crop_group_focus <span class="op">=</span> <span class="st">"aerial"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1 m        3 m        5 m        6 m       10 m       20 m       50 m </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16.8233333 11.0585820  9.0986174  8.4866460  6.9825178  4.7004640  1.8820816 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      100 m </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.9417586 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Using custom drift percentages is also supported</span></span></span>
 <span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span><span class="fl">100</span>, drift_percentages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.77</span>, <span class="fl">0.95</span>, <span class="fl">0.57</span>, <span class="fl">0.48</span>, <span class="fl">0.29</span>, <span class="fl">0.15</span>, <span class="fl">0.06</span>, <span class="fl">0.03</span><span class="op">)</span><span class="op">)</span></span></span>

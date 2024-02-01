@@ -65,6 +65,13 @@ as its licence is not clear.</p>
     <p>A <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble</a>.</p>
     </div>
     <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>For the hinge distance, <code>Inf</code> was substituted for the cases where no hinge
+distance is given in the data, in this way parameters C and D are never
+used for any distance if A and B are used for the case that the distance
+is smaller than the hinge distance.</p>
+    </div>
+    <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>FOCUS (2014) Generic guidance for Surface Water Scenarios (version 1.4).
 FOrum for the Co-ordination of pesticde fate models and their USe.
@@ -84,17 +91,20 @@ Bundesanst. Land- Forstwirtsch. 383, 133-141</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 49 × 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    crop_group n_apps percentile     A      B     C     D hinge</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> arable          1         90  2.76 -<span style="color: #BB0000;">0.978</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> arable          2         82  2.44 -<span style="color: #BB0000;">1.01</span>    <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> arable          3         77  2.02 -<span style="color: #BB0000;">0.996</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> arable          4         74  1.86 -<span style="color: #BB0000;">0.986</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> arable          5         72  1.79 -<span style="color: #BB0000;">0.994</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> arable          6         70  1.63 -<span style="color: #BB0000;">0.986</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> arable          7         69  1.58 -<span style="color: #BB0000;">0.981</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> arable          8         67  1.51 -<span style="color: #BB0000;">0.983</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> arable          1         90  2.76 -<span style="color: #BB0000;">0.978</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">Inf</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> arable          2         82  2.44 -<span style="color: #BB0000;">1.01</span>    <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">Inf</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> arable          3         77  2.02 -<span style="color: #BB0000;">0.996</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">Inf</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> arable          4         74  1.86 -<span style="color: #BB0000;">0.986</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">Inf</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> arable          5         72  1.79 -<span style="color: #BB0000;">0.994</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">Inf</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> arable          6         70  1.63 -<span style="color: #BB0000;">0.986</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">Inf</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> arable          7         69  1.58 -<span style="color: #BB0000;">0.981</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">Inf</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> arable          8         67  1.51 -<span style="color: #BB0000;">0.983</span>   <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">Inf</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> hops            1         90 58.2  -<span style="color: #BB0000;">1.00</span>  <span style="text-decoration: underline;">8</span>655. -<span style="color: #BB0000;">2.84</span>  15.3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> hops            2         82 66.2  -<span style="color: #BB0000;">1.20</span>  <span style="text-decoration: underline;">5</span>555. -<span style="color: #BB0000;">2.82</span>  15.3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 39 more rows</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">drift_parameters_focus</span><span class="op">$</span><span class="va">crop_group</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "arable"       "hops"         "vines, late"  "vines, early" "fruit, late" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6] "fruit, early" "aerial"      </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

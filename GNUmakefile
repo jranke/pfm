@@ -62,8 +62,6 @@ winbuilder: build
 	curl -T $(TGZ) ftp://anonymous@win-builder.r-project.org/R-devel/
 
 pd: roxy
-	# In earlier versions, we used suppressWarnings to get 
-	# rid of mbcsToSbcs warnings when plotting the 'µ' character
 	Rscript -e 'pkgdown::build_site(lazy = TRUE, run_dont_run = TRUE)'
 
 pd_all: roxy

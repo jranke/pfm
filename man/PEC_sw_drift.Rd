@@ -10,7 +10,10 @@ PEC_sw_drift(
   water_depth = 30,
   drift_percentages = NULL,
   drift_data = c("JKI", "RF"),
-  crop = "Ackerbau",
+  crop_group_JKI = c("Ackerbau", "Obstbau frueh", "Obstbau spaet", "Weinbau frueh",
+    "Weinbau spaet", "Hopfenbau", "Flaechenkulturen > 900 l/ha", "Gleisanlagen"),
+  crop_group_focus = c("arable", "hops", "vines, late", "vines, early", "fruit, late",
+    "fruit, early", "aerial"),
   distances = c(1, 5, 10, 20),
   rate_units = "g/ha",
   PEC_units = "µg/L"
@@ -30,7 +33,10 @@ PEC_sw_drift(
 included in the package is used. If 'RF', the Rautmann formula is used, if
 implemented for the crop type and number of applications}
 
-\item{crop}{Crop name (use German names for JKI data), defaults to "Ackerbau"}
+\item{crop_group_JKI}{When using the 'JKI' drift data, one of the German names
+as used in \link{drift_parameters_focus}.}
+
+\item{crop_group_focus}{One of the crop groups as used in \link{drift_parameters_focus}}
 
 \item{distances}{The distances in m for which to get PEC values}
 
@@ -51,8 +57,12 @@ PEC_sw_drift(100)
 # Alternatively, we can use the formula for a single application to "Ackerbau" from the paper
 PEC_sw_drift(100, drift_data = "RF")
 
-# This makes it possible to also use different substances
+# This makes it possible to also use different distances
 PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF")
+
+# or consider aerial application
+PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF", 
+  crop_group_focus = "aerial")
 
 # Using custom drift percentages is also supported
 PEC_sw_drift(100, drift_percentages = c(2.77, 0.95, 0.57, 0.48, 0.29, 0.15, 0.06, 0.03))
