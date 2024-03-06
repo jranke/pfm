@@ -39,12 +39,15 @@ drift_percentages_rautmann(c(1, 3, 5), formula = "FOCUS")
 # One application to early or late fruit crops
 drift_data_JKI[[1]][as.character(c(3, 5, 20, 50)), "Obstbau frueh"]
 drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, early")
-drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, early", formula = "FOCUS")
+drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, early",
+  formula = "FOCUS")
 drift_data_JKI[[1]][as.character(c(3, 5, 20, 50)), "Obstbau spaet"]
 drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, late")
-drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, late", formula = "FOCUS")
+drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, late",
+  formula = "FOCUS")
 
-# We get a continuum if the waterbody covers the hinge distance (11.4 m for 1 early app to fruit)
+# We get a continuum if the waterbody covers the hinge distance
+# (11.4 m for 1 early app to fruit)
 x <- seq(3, 30, by = 0.1)
 d <- drift_percentages_rautmann(x, crop_group = "fruit, early", formula = "FOCUS")
 plot(x, d, type = "l",

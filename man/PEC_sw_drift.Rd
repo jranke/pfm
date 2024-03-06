@@ -54,7 +54,8 @@ with input via spray drift.
 }
 \examples{
 PEC_sw_drift(100)
-# Alternatively, we can use the formula for a single application to "Ackerbau" from the paper
+# Alternatively, we can use the formula for a single application to
+# "Ackerbau" from the paper
 PEC_sw_drift(100, drift_data = "RF")
 
 # This makes it possible to also use different distances
