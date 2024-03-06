@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">pfm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,17 +111,20 @@ FOrum for the Co-ordination of pesticde fate models and their USe.
 <span class="r-out co"><span class="r-pr">#&gt;</span> 29.20 19.89  2.77  0.30 </span>
 <span class="r-in"><span><span class="fu">drift_percentages_rautmann</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">20</span>, <span class="fl">50</span><span class="op">)</span>, crop_group <span class="op">=</span> <span class="st">"fruit, early"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 29.1973659 19.8844422  2.7618138  0.3012008</span>
-<span class="r-in"><span><span class="fu">drift_percentages_rautmann</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">20</span>, <span class="fl">50</span><span class="op">)</span>, crop_group <span class="op">=</span> <span class="st">"fruit, early"</span>, formula <span class="op">=</span> <span class="st">"FOCUS"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">drift_percentages_rautmann</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">20</span>, <span class="fl">50</span><span class="op">)</span>, crop_group <span class="op">=</span> <span class="st">"fruit, early"</span>,</span></span>
+<span class="r-in"><span>  formula <span class="op">=</span> <span class="st">"FOCUS"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 26.1193421 18.5428680  2.6038558  0.2940792</span>
 <span class="r-in"><span><span class="va">drift_data_JKI</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">20</span>, <span class="fl">50</span><span class="op">)</span><span class="op">)</span>, <span class="st">"Obstbau spaet"</span><span class="op">]</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     3     5    20    50 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15.73  8.41  1.09  0.22 </span>
 <span class="r-in"><span><span class="fu">drift_percentages_rautmann</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">20</span>, <span class="fl">50</span><span class="op">)</span>, crop_group <span class="op">=</span> <span class="st">"fruit, late"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 15.7246994  8.4108487  1.0813887  0.2155992</span>
-<span class="r-in"><span><span class="fu">drift_percentages_rautmann</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">20</span>, <span class="fl">50</span><span class="op">)</span>, crop_group <span class="op">=</span> <span class="st">"fruit, late"</span>, formula <span class="op">=</span> <span class="st">"FOCUS"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">drift_percentages_rautmann</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">20</span>, <span class="fl">50</span><span class="op">)</span>, crop_group <span class="op">=</span> <span class="st">"fruit, late"</span>,</span></span>
+<span class="r-in"><span>  formula <span class="op">=</span> <span class="st">"FOCUS"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13.1414350  7.5123244  1.0359007  0.2118734</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># We get a continuum if the waterbody covers the hinge distance (11.4 m for 1 early app to fruit)</span></span></span>
+<span class="r-in"><span><span class="co"># We get a continuum if the waterbody covers the hinge distance</span></span></span>
+<span class="r-in"><span><span class="co"># (11.4 m for 1 early app to fruit)</span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">30</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu">drift_percentages_rautmann</span><span class="op">(</span><span class="va">x</span>, crop_group <span class="op">=</span> <span class="st">"fruit, early"</span>, formula <span class="op">=</span> <span class="st">"FOCUS"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">d</span>, type <span class="op">=</span> <span class="st">"l"</span>,</span></span>

@@ -1,6 +1,5 @@
 # pfm
 
-[![Build Status](https://travis-ci.com/jranke/pfm.svg?branch=main)](https://app.travis-ci.com/github/jranke/pfm)
 [![pfm status badge](https://jranke.r-universe.dev/badges/pfm)](https://jranke.r-universe.dev/ui/#package:pfm)
 [![codecov](https://codecov.io/github/jranke/pfm/branch/main/graphs/badge.svg)](https://codecov.io/github/jranke/pfm) 
 
@@ -10,23 +9,19 @@ and out files), made available under the GNU public license.
 
 ## Installation
 
-The easiest way to install the package is probably to use 
-[drat](https://cran.r-project.org/package=drat):
+The easiest way to install the package is probably to use the 
+[r-universe repo](https://jranke.r-universe.dev/pfm):
 
 ```r
-install.packages("drat")
-drat::addRepo("jranke")
-install.packages("pfm")
+install.packages("pfm", repos = c("https://jranke.r-universe.dev", "https://cran.r-project.org"))
 ```
 
 Alternatively you can install the package 
-using the `devtools` package.  Using `quick = TRUE` skips docs,
+using the `remotes` package.  Using `quick = TRUE` skips docs,
 multiple-architecture builds, demos, and vignettes.
 
-
 ```r
-library(devtools)
-install_github("jranke/pfm", quick = TRUE)
+remotes::install_github("jranke/pfm", quick = TRUE)
 ```
 
 ## Use
