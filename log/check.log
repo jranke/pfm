@@ -1,20 +1,20 @@
 * using log directory ‘/home/agsad.admin.ch/f80868656/projects/pfm/pfm.Rcheck’
-* using R version 4.3.2 (2023-10-31)
+* using R version 4.3.3 (2024-02-29)
 * using platform: x86_64-pc-linux-gnu (64-bit)
 * R was compiled by
     gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
     GNU Fortran (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
-* running under: Ubuntu 22.04.3 LTS
+* running under: Ubuntu 22.04.4 LTS
 * using session charset: UTF-8
 * using options ‘--no-tests --as-cran’
 * checking for file ‘pfm/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘pfm’ version ‘0.6.1’
+* this is package ‘pfm’ version ‘0.6.2’
 * package encoding: UTF-8
-* checking CRAN incoming feasibility ... NOTE
+* checking CRAN incoming feasibility ... [2s/14s] NOTE
 Maintainer: ‘Johannes Ranke <johannes.ranke@agroscope.admin.ch>’
 
-Size of tarball: 8529065 bytes
+Size of tarball: 8530336 bytes
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK

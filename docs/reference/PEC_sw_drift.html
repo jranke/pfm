@@ -65,6 +65,9 @@ with input via spray drift.</p>
 <span>  crop_group_focus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"arable"</span>, <span class="st">"hops"</span>, <span class="st">"vines, late"</span>, <span class="st">"vines, early"</span>, <span class="st">"fruit, late"</span>,</span>
 <span>    <span class="st">"fruit, early"</span>, <span class="st">"aerial"</span><span class="op">)</span>,</span>
 <span>  distances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span>,</span>
+<span>  formula <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Rautmann"</span>, <span class="st">"FOCUS"</span><span class="op">)</span>,</span>
+<span>  water_width <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  side_angle <span class="op">=</span> <span class="fl">90</span>,</span>
 <span>  rate_units <span class="op">=</span> <span class="st">"g/ha"</span>,</span>
 <span>  PEC_units <span class="op">=</span> <span class="st">"µg/L"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -86,13 +89,14 @@ with input via spray drift.</p>
 
 <dt>drift_percentages</dt>
 <dd><p>Percentage drift values for which to calculate PECsw.
-'drift_data' and 'distances' if not NULL.</p></dd>
+Overrides 'drift_data' and 'distances' if not NULL.</p></dd>
 
 
 <dt>drift_data</dt>
 <dd><p>Source of drift percentage data. If 'JKI', the <a href="drift_data_JKI.html">drift_data_JKI</a>
-included in the package is used. If 'RF', the Rautmann formula is used, if
-implemented for the crop type and number of applications</p></dd>
+included in the package is used. If 'RF', the Rautmann drift data are calculated
+either in the original form or integrated over the width of the water body, depending
+on the 'formula' argument.</p></dd>
 
 
 <dt>crop_group_JKI</dt>
@@ -106,6 +110,21 @@ as used in <a href="drift_parameters_focus.html">drift_parameters_focus</a>.</p>
 
 <dt>distances</dt>
 <dd><p>The distances in m for which to get PEC values</p></dd>
+
+
+<dt>formula</dt>
+<dd><p>By default, the original Rautmann formula is used. If you
+specify "FOCUS", mean drift input over the width of the water body is
+calculated as described in Chapter 5.4.5 of the FOCUS surface water guidance</p></dd>
+
+
+<dt>water_width</dt>
+<dd><p>Width of the water body in cm</p></dd>
+
+
+<dt>side_angle</dt>
+<dd><p>The angle of the side of the water relative to the bottom which
+is assumed to be horizontal, in degrees. The SYNOPS model assumes 45 degrees here.</p></dd>
 
 
 <dt>rate_units</dt>
@@ -163,6 +182,24 @@ as used in <a href="drift_parameters_focus.html">drift_parameters_focus</a>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.92333333 0.31666667 0.19000000 0.16000000 0.09666667 0.05000000 0.02000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     0.03 % </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.01000000 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The influence of assuming a 45° angle of the sides of the waterbody and the width of the </span></span></span>
+<span class="r-in"><span><span class="co"># waterbody can be illustrated</span></span></span>
+<span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1 m        5 m       10 m       20 m </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.92333333 0.19000000 0.09666667 0.05000000 </span>
+<span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span><span class="fl">100</span>, drift_data <span class="op">=</span> <span class="st">"RF"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1 m        5 m       10 m       20 m </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.91976667 0.19064473 0.09680051 0.04915079 </span>
+<span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span><span class="fl">100</span>, drift_data <span class="op">=</span> <span class="st">"RF"</span>, formula <span class="op">=</span> <span class="st">"FOCUS"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1 m        5 m       10 m       20 m </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.64246407 0.17414541 0.09235842 0.04798749 </span>
+<span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span><span class="fl">100</span>, drift_data <span class="op">=</span> <span class="st">"RF"</span>, formula <span class="op">=</span> <span class="st">"FOCUS"</span>, side_angle <span class="op">=</span> <span class="fl">45</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1 m        5 m       10 m       20 m </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.91780582 0.24877916 0.13194060 0.06855356 </span>
+<span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span><span class="fl">100</span>, drift_data <span class="op">=</span> <span class="st">"RF"</span>, formula <span class="op">=</span> <span class="st">"FOCUS"</span>, side_angle <span class="op">=</span> <span class="fl">45</span>, water_width <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1 m        5 m       10 m       20 m </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.30085000 0.09468652 0.05201349 0.02758547 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

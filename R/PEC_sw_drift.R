@@ -8,15 +8,19 @@
 #' @seealso [drift_parameters_focus], [drift_percentages_rautmann]
 #' @param rate Application rate in units specified below
 #' @param drift_percentages Percentage drift values for which to calculate PECsw.
-#'   'drift_data' and 'distances' if not NULL.
+#'   Overrides 'drift_data' and 'distances' if not NULL.
 #' @param drift_data Source of drift percentage data. If 'JKI', the [drift_data_JKI]
-#'   included in the package is used. If 'RF', the Rautmann formula is used, if
-#'   implemented for the crop type and number of applications
+#'   included in the package is used. If 'RF', the Rautmann drift data are calculated
+#'   either in the original form or integrated over the width of the water body, depending
+#'   on the 'formula' argument.
 #' @param crop_group_JKI When using the 'JKI' drift data, one of the German names
 #'   as used in [drift_parameters_focus].
 #' @param water_depth Depth of the water body in cm
 #' @param rate_units Defaults to g/ha
 #' @param PEC_units Requested units for the calculated PEC. Only µg/L currently supported
+#' @param water_width Width of the water body in cm
+#' @param side_angle The angle of the side of the water relative to the bottom which
+#'   is assumed to be horizontal, in degrees. The SYNOPS model assumes 45 degrees here.
 #' @return The predicted concentration in surface water
 #' @export
 #' @author Johannes Ranke
@@ -35,6 +39,14 @@
 #'
 #' # Using custom drift percentages is also supported
 #' PEC_sw_drift(100, drift_percentages = c(2.77, 0.95, 0.57, 0.48, 0.29, 0.15, 0.06, 0.03))
+#'
+#' # The influence of assuming a 45° angle of the sides of the waterbody and the width of the 
+#' # waterbody can be illustrated
+#' PEC_sw_drift(100)
+#' PEC_sw_drift(100, drift_data = "RF")
+#' PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS")
+#' PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS", side_angle = 45)
+#' PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS", side_angle = 45, water_width = 200)
 PEC_sw_drift <- function(rate,
   applications = 1,
   water_depth = 30,
@@ -46,6 +58,9 @@ PEC_sw_drift <- function(rate,
   crop_group_focus = c("arable", "hops", "vines, late", "vines, early", 
     "fruit, late", "fruit, early", "aerial"),
   distances = c(1, 5, 10, 20),
+  formula = c("Rautmann", "FOCUS"),
+  water_width = 100,
+  side_angle = 90,
   rate_units = "g/ha",
   PEC_units = "\u00B5g/L")
 {
@@ -54,14 +69,20 @@ PEC_sw_drift <- function(rate,
   drift_data <- match.arg(drift_data)
   crop_group_JKI <- match.arg(crop_group_JKI)
   crop_group_focus <- match.arg(crop_group_focus)
-  water_volume <- 100 * 100 * (water_depth/100) * 1000   # in L (for 1 ha)
+  formula <- match.arg(formula)
+  if (side_angle < 0 | side_angle > 90) stop("The side anglemust be between 0 and 90 degrees")
+  mean_water_width <- if (side_angle == 90) water_width
+  else water_width - (water_depth / tanpi(side_angle/180))
+  water_volume <- 100 * mean_water_width * (water_depth/100) * 1000   # in L (for 1 ha)
   PEC_sw_overspray <- rate * 1e6 / water_volume          # in µg/L
   dist_index <- as.character(distances)
 
   if (is.null(drift_percentages)) {
     drift_percentages <- switch(drift_data,
       JKI = pfm::drift_data_JKI[[applications]][dist_index, crop_group_JKI],
-      RF =  drift_percentages_rautmann(distances, applications, crop_group_focus)
+      RF =  drift_percentages_rautmann(distances, applications, 
+        formula = formula,
+        crop_group_focus, widths = water_width/100)
     )
     names(drift_percentages) <- paste(dist_index, "m")
   } else {

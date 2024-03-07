@@ -15,6 +15,9 @@ PEC_sw_drift(
   crop_group_focus = c("arable", "hops", "vines, late", "vines, early", "fruit, late",
     "fruit, early", "aerial"),
   distances = c(1, 5, 10, 20),
+  formula = c("Rautmann", "FOCUS"),
+  water_width = 100,
+  side_angle = 90,
   rate_units = "g/ha",
   PEC_units = "µg/L"
 )
@@ -27,11 +30,12 @@ PEC_sw_drift(
 \item{water_depth}{Depth of the water body in cm}
 
 \item{drift_percentages}{Percentage drift values for which to calculate PECsw.
-'drift_data' and 'distances' if not NULL.}
+Overrides 'drift_data' and 'distances' if not NULL.}
 
 \item{drift_data}{Source of drift percentage data. If 'JKI', the \link{drift_data_JKI}
-included in the package is used. If 'RF', the Rautmann formula is used, if
-implemented for the crop type and number of applications}
+included in the package is used. If 'RF', the Rautmann drift data are calculated
+either in the original form or integrated over the width of the water body, depending
+on the 'formula' argument.}
 
 \item{crop_group_JKI}{When using the 'JKI' drift data, one of the German names
 as used in \link{drift_parameters_focus}.}
@@ -39,6 +43,15 @@ as used in \link{drift_parameters_focus}.}
 \item{crop_group_focus}{One of the crop groups as used in \link{drift_parameters_focus}}
 
 \item{distances}{The distances in m for which to get PEC values}
+
+\item{formula}{By default, the original Rautmann formula is used. If you
+specify "FOCUS", mean drift input over the width of the water body is
+calculated as described in Chapter 5.4.5 of the FOCUS surface water guidance}
+
+\item{water_width}{Width of the water body in cm}
+
+\item{side_angle}{The angle of the side of the water relative to the bottom which
+is assumed to be horizontal, in degrees. The SYNOPS model assumes 45 degrees here.}
 
 \item{rate_units}{Defaults to g/ha}
 
@@ -67,6 +80,14 @@ PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF",
 
 # Using custom drift percentages is also supported
 PEC_sw_drift(100, drift_percentages = c(2.77, 0.95, 0.57, 0.48, 0.29, 0.15, 0.06, 0.03))
+
+# The influence of assuming a 45° angle of the sides of the waterbody and the width of the 
+# waterbody can be illustrated
+PEC_sw_drift(100)
+PEC_sw_drift(100, drift_data = "RF")
+PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS")
+PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS", side_angle = 45)
+PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS", side_angle = 45, water_width = 200)
 }
 \seealso{
 \link{drift_parameters_focus}, \link{drift_percentages_rautmann}
