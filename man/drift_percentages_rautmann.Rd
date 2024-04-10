@@ -7,7 +7,7 @@
 drift_percentages_rautmann(
   distances,
   applications = 1,
-  crop_group_focus = c("arable", "hops", "vines, late", "vines, early", "fruit, late",
+  crop_group_RF = c("arable", "hops", "vines, late", "vines, early", "fruit, late",
     "fruit, early", "aerial"),
   formula = c("Rautmann", "FOCUS"),
   widths = 1
@@ -18,7 +18,7 @@ drift_percentages_rautmann(
 
 \item{applications}{Number of applications for selection of drift percentile}
 
-\item{crop_group_focus}{One of the crop groups as used in \link{drift_parameters_focus}}
+\item{crop_group_RF}{One of the crop groups as used in \link{drift_parameters_focus}}
 
 \item{formula}{By default, the original Rautmann formula is used. If you
 specify "FOCUS", mean drift input over the width of the water body is
@@ -30,7 +30,7 @@ calculated as described in Chapter 5.4.5 of the FOCUS surface water guidance}
 Calculate drift percentages based on Rautmann data
 }
 \examples{
-# Compare JKI data with Rautmann formula
+# Compare JKI data with Rautmann and FOCUS formulas for arable crops (default)
 # One application on field crops, for 1 m, 3 m and 5 m distance
 drift_data_JKI[[1]][as.character(c(1, 3, 5)), "Ackerbau"]
 drift_percentages_rautmann(c(1, 3, 5))
@@ -38,20 +38,20 @@ drift_percentages_rautmann(c(1, 3, 5), formula = "FOCUS")
 
 # One application to early or late fruit crops
 drift_data_JKI[[1]][as.character(c(3, 5, 20, 50)), "Obstbau frueh"]
-drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, early")
-drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, early",
+drift_percentages_rautmann(c(3, 5, 20, 50), crop_group_RF = "fruit, early")
+drift_percentages_rautmann(c(3, 5, 20, 50), crop_group_RF = "fruit, early",
   formula = "FOCUS")
 drift_data_JKI[[1]][as.character(c(3, 5, 20, 50)), "Obstbau spaet"]
-drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, late")
-drift_percentages_rautmann(c(3, 5, 20, 50), crop_group = "fruit, late",
+drift_percentages_rautmann(c(3, 5, 20, 50), crop_group_RF = "fruit, late")
+drift_percentages_rautmann(c(3, 5, 20, 50), crop_group_RF = "fruit, late",
   formula = "FOCUS")
 
 # We get a continuum if the waterbody covers the hinge distance
 # (11.4 m for 1 early app to fruit)
 x <- seq(3, 30, by = 0.1)
-d <- drift_percentages_rautmann(x, crop_group = "fruit, early", formula = "FOCUS")
+d <- drift_percentages_rautmann(x, crop_group_RF = "fruit, early", formula = "FOCUS")
 plot(x, d, type = "l",
-  xlab = "Distance of near edge [m]", 
+  xlab = "Distance of near edge [m]",
   ylab = "Mean drift percentage over waterbody width",
   main = "One application to fruit, early")
 abline(v = 11.4, lty = 2)

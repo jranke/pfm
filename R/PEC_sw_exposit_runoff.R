@@ -137,10 +137,10 @@ PEC_sw_exposit_runoff <- function(rate, interception = 0, Koc, DT50 = Inf, t_run
 #' @param dilution The dilution factor
 #' @return A list containing the following components
 #'   \describe{
-#'     \item{perc_runoff}{The runoff percentages for dissolved and bound substance}
-#'     \item{runoff}{A matrix containing dissolved and bound input for the different distances}
-#'     \item{PEC_sw_runoff}{A matrix containing PEC values for dissolved and bound substance
-#'       for the different distances. If the rate was given in g/ha, the PECsw are in microg/L.}
+#'     \item{perc_drainage_total}{Gesamtaustrag (total fraction of the residue drained)}
+#'     \item{perc_peak}{Stoßbelastung (fraction drained at event)}
+#'     \item{PEC_sw_drainage}{A matrix containing PEC values for the spring and autumn
+#'       scenarios. If the rate was given in g/ha, the PECsw are in microg/L.}
 #'   }
 #' @export
 #' @source Excel 3.02 spreadsheet available from

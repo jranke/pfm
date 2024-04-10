@@ -25,7 +25,7 @@ test_that("The Rautmann formula is correctly implemented", {
   expect_equal(pfm_jki, pfm_rf, tolerance = 0.01)
 
   expect_error(PEC_sw_drift(100, drift_data = "RF", applications = 10), "Only 1 to 8 applications")
-  expect_error(PEC_sw_drift(100, drift_data = "RF", applications = 1, crop_group_focus = "Obstbau spaet"),
+  expect_error(PEC_sw_drift(100, drift_data = "RF", applications = 1, crop_group_RF = "Obstbau spaet"),
     "should be one of")
-  expect_silent(PEC_sw_drift(100, drift_data = "RF", applications = 1, crop_group_focus = "fruit, late"))
+  expect_silent(PEC_sw_drift(100, drift_data = "RF", applications = 1, crop_group_RF = "fruit, late"))
 })

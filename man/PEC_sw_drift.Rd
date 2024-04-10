@@ -12,7 +12,7 @@ PEC_sw_drift(
   drift_data = c("JKI", "RF"),
   crop_group_JKI = c("Ackerbau", "Obstbau frueh", "Obstbau spaet", "Weinbau frueh",
     "Weinbau spaet", "Hopfenbau", "Flaechenkulturen > 900 l/ha", "Gleisanlagen"),
-  crop_group_focus = c("arable", "hops", "vines, late", "vines, early", "fruit, late",
+  crop_group_RF = c("arable", "hops", "vines, late", "vines, early", "fruit, late",
     "fruit, early", "aerial"),
   distances = c(1, 5, 10, 20),
   formula = c("Rautmann", "FOCUS"),
@@ -38,9 +38,9 @@ either in the original form or integrated over the width of the water body, depe
 on the 'formula' argument.}
 
 \item{crop_group_JKI}{When using the 'JKI' drift data, one of the German names
-as used in \link{drift_parameters_focus}.}
+as used in \link{drift_parameters_focus}. Will only be used if drift_data is 'JKI'.}
 
-\item{crop_group_focus}{One of the crop groups as used in \link{drift_parameters_focus}}
+\item{crop_group_RF}{One of the crop groups as used in \link{drift_parameters_focus}}
 
 \item{distances}{The distances in m for which to get PEC values}
 
@@ -75,13 +75,13 @@ PEC_sw_drift(100, drift_data = "RF")
 PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF")
 
 # or consider aerial application
-PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF", 
-  crop_group_focus = "aerial")
+PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF",
+  crop_group_RF = "aerial")
 
 # Using custom drift percentages is also supported
 PEC_sw_drift(100, drift_percentages = c(2.77, 0.95, 0.57, 0.48, 0.29, 0.15, 0.06, 0.03))
 
-# The influence of assuming a 45° angle of the sides of the waterbody and the width of the 
+# The influence of assuming a 45° angle of the sides of the waterbody and the width of the
 # waterbody can be illustrated
 PEC_sw_drift(100)
 PEC_sw_drift(100, drift_data = "RF")

@@ -44,10 +44,10 @@ autumn/winter/early spring.}
 \value{
 A list containing the following components
 \describe{
-\item{perc_runoff}{The runoff percentages for dissolved and bound substance}
-\item{runoff}{A matrix containing dissolved and bound input for the different distances}
-\item{PEC_sw_runoff}{A matrix containing PEC values for dissolved and bound substance
-for the different distances. If the rate was given in g/ha, the PECsw are in microg/L.}
+\item{perc_drainage_total}{Gesamtaustrag (total fraction of the residue drained)}
+\item{perc_peak}{Stoßbelastung (fraction drained at event)}
+\item{PEC_sw_drainage}{A matrix containing PEC values for the spring and autumn
+scenarios. If the rate was given in g/ha, the PECsw are in microg/L.}
 }
 }
 \description{
