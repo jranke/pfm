@@ -1,132 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/404.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/index.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/EFSA_GW_interception_2014.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/EFSA_washoff_2017.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/FOCUS_GW_scenarios_2012.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/FOCUS_Step_12_scenarios.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/FOMC_actual_twa.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/GUS.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/PEC_FOMC_accu_rel.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/PEC_soil.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/PEC_soil_mets.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_drainage_UK.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_drift.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_drainage.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_runoff.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_focus.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_sed.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/SFO_actual_twa.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/SSLRC_mobility_classification.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/TOXSWA_cwa.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/TSCF.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/chent_focus_sw.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/drift_data_JKI.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/drift_parameters_focus.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/drift_percentages_rautmann.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/endpoint.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/geomean.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/get_vertex.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/max_twa.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/one_box.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/perc_runoff_exposit.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/perc_runoff_reduction_exposit.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/pfm_degradation.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/plot.TOXSWA_cwa.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/plot.one_box.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/read.TOXSWA_cwa.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/sawtooth.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/soil_scenario_data_EFSA_2015.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/soil_scenario_data_EFSA_2017.html</loc>
-  </url>
-  <url>
-    <loc>https://pkgdown.jrwb.de/pfm/reference/twa.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://pkgdown.jrwb.de/pfm/404.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/authors.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/index.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/news/index.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/EFSA_GW_interception_2014.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/EFSA_washoff_2017.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/FOCUS_GW_scenarios_2012.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/FOCUS_Step_12_scenarios.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/FOMC_actual_twa.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/GUS.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/PEC_FOMC_accu_rel.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/PEC_soil.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/PEC_soil_mets.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_drainage_UK.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_drift.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_drainage.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_runoff.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_focus.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/PEC_sw_sed.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/SFO_actual_twa.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/SSLRC_mobility_classification.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/TOXSWA_cwa.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/TSCF.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/chent_focus_sw.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/drift_data_JKI.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/drift_parameters_focus.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/drift_percentages_rautmann.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/endpoint.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/geomean.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/get_vertex.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/index.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/max_twa.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/one_box.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/perc_runoff_exposit.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/perc_runoff_reduction_exposit.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/pfm_degradation.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/plot.TOXSWA_cwa.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/plot.one_box.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/read.TOXSWA_cwa.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/reexports.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/sawtooth.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/soil_scenario_data_EFSA_2015.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/soil_scenario_data_EFSA_2017.html</loc></url>
+<url><loc>https://pkgdown.jrwb.de/pfm/reference/twa.html</loc></url>
 </urlset>
+

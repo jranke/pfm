@@ -7,7 +7,7 @@
 PEC_sw_drift(
   rate,
   applications = 1,
-  water_depth = 30,
+  water_depth = as_units("30 cm"),
   drift_percentages = NULL,
   drift_data = c("JKI", "RF"),
   crop_group_JKI = c("Ackerbau", "Obstbau frueh", "Obstbau spaet", "Weinbau frueh",
@@ -16,14 +16,15 @@ PEC_sw_drift(
     "fruit, early", "aerial"),
   distances = c(1, 5, 10, 20),
   formula = c("Rautmann", "FOCUS"),
-  water_width = 100,
+  water_width = as_units("100 cm"),
   side_angle = 90,
   rate_units = "g/ha",
   PEC_units = "µg/L"
 )
 }
 \arguments{
-\item{rate}{Application rate in units specified below}
+\item{rate}{Application rate in units specified below, or with units defined via the
+\code{units} package.}
 
 \item{applications}{Number of applications for selection of drift percentile}
 
@@ -53,7 +54,8 @@ calculated as described in Chapter 5.4.5 of the FOCUS surface water guidance}
 \item{side_angle}{The angle of the side of the water relative to the bottom which
 is assumed to be horizontal, in degrees. The SYNOPS model assumes 45 degrees here.}
 
-\item{rate_units}{Defaults to g/ha}
+\item{rate_units}{Defaults to g/ha. For backwards compatibility, only used
+if the specified rate does not have \link[units:units]{units::units}].}
 
 \item{PEC_units}{Requested units for the calculated PEC. Only µg/L currently supported}
 }
@@ -64,6 +66,10 @@ The predicted concentration in surface water
 This is a basic, vectorised form of a simple calculation of a contaminant
 concentration in surface water based on complete, instantaneous mixing
 with input via spray drift.
+}
+\details{
+It is recommened to specify the arguments \code{rate}, \code{water_depth} and
+\code{water_width} using \link[units:units]{units::units} from the \code{units} package.
 }
 \examples{
 PEC_sw_drift(100)

@@ -1,4 +1,7 @@
 library(pfm)
+library(units)
+library(dplyr)
+
 context("Exposit calculations")
 # Expected results are from the Exposit 3.02, downloaded 2019-02-15
 
@@ -8,12 +11,14 @@ test_that("Runoff PECsw are as in Exposit 3.02", {
     runoff = c(183.62, 110.17, 73.45, 36.72),
     erosion = c(19.96, 11.98, 2.99, 1.00),
     PEC_dissolved = c(0.71, 0.61, 0.52, 0.37),
-    PEC_total = c(0.78, 0.68, 0.55, 0.38))
+    PEC_total = c(0.78, 0.68, 0.55, 0.38)) |> 
+    mutate(across(c(runoff, erosion), ~ set_units(., "mg"))) |> 
+    mutate(across(starts_with("PEC_"), ~ set_units(., "\u00B5g/L")))
 
   res_1 <- PEC_sw_exposit_runoff(100, Koc = 1000, DT50 = 1000)
   res_pfm_1 <- data.frame(
-    runoff = round(1000 * res_1$runoff["dissolved"], 2),
-    erosion = round(1000 * res_1$runoff["bound"], 2),
+    runoff = round(set_units(res_1$runoff[["dissolved"]], "mg"), 2),
+    erosion = round(set_units(res_1$runoff[["bound"]], "mg"), 2),
     PEC_dissolved = round(res_1$PEC_sw_runoff, 2)["dissolved"],
     PEC_total = round(res_1$PEC_sw_runoff["dissolved"] + res_1$PEC_sw_runoff["bound"], 2))
   expect_equivalent(res_exposit_1, res_pfm_1)
@@ -23,12 +28,14 @@ test_that("Runoff PECsw are as in Exposit 3.02", {
     runoff = c(0.08, 0.05, 0.03, 0.02),
     erosion = c(36.63, 21.98, 5.49, 1.83),
     PEC_dissolved = c(0, 0, 0, 0),
-    PEC_total = c(0.14, 0.12, 0.04, 0.02))
+    PEC_total = c(0.14, 0.12, 0.04, 0.02)) |> 
+    mutate(across(c(runoff, erosion), ~ set_units(., "mg"))) |> 
+    mutate(across(starts_with("PEC_"), ~ set_units(., "\u00B5g/L")))
 
   res_2 <- PEC_sw_exposit_runoff(10, Koc = 300000, DT50 = 10)
   res_pfm_2 <- data.frame(
-    runoff = round(1000 * res_2$runoff["dissolved"], 2),
-    erosion = round(1000 * res_2$runoff["bound"], 2),
+    runoff = round(set_units(res_2$runoff[["dissolved"]], "mg"), 2),
+    erosion = round(set_units(res_2$runoff[["bound"]], "mg"), 2),
     PEC_dissolved = round(res_2$PEC_sw_runoff, 2)["dissolved"],
     PEC_total = round(res_2$PEC_sw_runoff["dissolved"] + res_2$PEC_sw_runoff["bound"], 2))
 
@@ -39,12 +46,14 @@ test_that("Runoff PECsw are as in Exposit 3.02", {
     runoff = c(295.78, 177.47, 118.31, 59.16),
     erosion = rep(0.00, 4),
     PEC_dissolved = c(1.14, 0.99, 0.85, 0.59),
-    PEC_total = c(1.14, 0.99, 0.85, 0.59))
+    PEC_total = c(1.14, 0.99, 0.85, 0.59)) |> 
+    mutate(across(c(runoff, erosion), ~ set_units(., "mg"))) |> 
+    mutate(across(starts_with("PEC_"), ~ set_units(., "\u00B5g/L")))
 
   res_3 <- PEC_sw_exposit_runoff(200, Koc = 30, DT50 = 100)
   res_pfm_3 <- data.frame(
-    runoff = round(1000 * res_3$runoff["dissolved"], 2),
-    erosion = round(1000 * res_3$runoff["bound"], 2),
+    runoff = round(set_units(res_3$runoff[["dissolved"]], "mg"), 2),
+    erosion = round(set_units(res_3$runoff[["bound"]], "mg"), 2),
     PEC_dissolved = round(res_3$PEC_sw_runoff, 2)["dissolved"],
     PEC_total = round(res_3$PEC_sw_runoff["dissolved"] + res_3$PEC_sw_runoff["bound"], 2))
 
