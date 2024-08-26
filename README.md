@@ -1,6 +1,7 @@
 # pfm
 
 [![pfm status badge](https://jranke.r-universe.dev/badges/pfm)](https://jranke.r-universe.dev/ui/#package:pfm)
+[![Build Status](https://app.travis-ci.com/jranke/pfm.svg?token=Sq9VuYWyRz2FbBLxu6DK&branch=main)](https://app.travis-ci.com/jranke/pfm)
 [![codecov](https://codecov.io/github/jranke/pfm/branch/main/graphs/badge.svg)](https://codecov.io/github/jranke/pfm) 
 
 The R package **pfm** provides some utilities for fate modelling, including

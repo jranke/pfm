@@ -3,5 +3,9 @@
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
 * checking for empty or unneeded directories
+<<<<<<< HEAD
+=======
+* re-saving image files
+>>>>>>> main
 * building ‘pfm_0.6.3.tar.gz’
 

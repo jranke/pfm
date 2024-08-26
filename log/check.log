@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 * using log directory ‘/home/jranke/git/pfm/pfm.Rcheck’
 * using R version 4.3.3 (2024-02-29)
 * using platform: x86_64-pc-linux-gnu (64-bit)
+=======
+* using log directory ‘/home/agsad.admin.ch/f80868656/projects/pfm/pfm.Rcheck’
+* using R version 4.4.1 (2024-06-14)
+* using platform: x86_64-pc-linux-gnu
+>>>>>>> main
 * R was compiled by
     gcc (Debian 12.2.0-14) 12.2.0
     GNU Fortran (Debian 12.2.0-14) 12.2.0
@@ -11,10 +17,17 @@
 * checking extension type ... Package
 * this is package ‘pfm’ version ‘0.6.3’
 * package encoding: UTF-8
+<<<<<<< HEAD
 * checking CRAN incoming feasibility ... [1s/103s] NOTE
 Maintainer: ‘Johannes Ranke <johannes.ranke@agroscope.admin.ch>’
 
 Size of tarball: 8530180 bytes
+=======
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: ‘Johannes Ranke <johannes.ranke@agroscope.admin.ch>’
+
+Size of tarball: 8531409 bytes
+>>>>>>> main
 * checking package namespace information ... OK
 * checking package dependencies ...Warning: unable to access index for repository https://cran.rstudio.com/src/contrib:
   cannot open URL 'https://cran.rstudio.com/src/contrib/PACKAGES'
@@ -34,11 +47,12 @@ Size of tarball: 8530180 bytes
 * checking for future file timestamps ... NOTE
 unable to verify current time
 * checking DESCRIPTION meta-information ... OK
-* checking top-level files ... OK
+* checking top-level files ... NOTE
+Files ‘README.md’ or ‘NEWS.md’ cannot be checked without ‘pandoc’ being installed.
 * checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... OK
-* checking R files for non-ASCII characters ... OK
+* checking code files for non-ASCII characters ... OK
 * checking R files for syntax errors ... OK
 * checking whether the package can be loaded ... OK
 * checking whether the package can be loaded with stated dependencies ... OK
@@ -65,7 +79,7 @@ unable to verify current time
 * checking data for non-ASCII characters ... OK
 * checking LazyData ... OK
 * checking data for ASCII and uncompressed saves ... OK
-* checking examples ... OK
+* checking examples ... [21s/11s] OK
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ... SKIPPED
 * checking PDF version of manual ... OK
@@ -79,5 +93,4 @@ Status: 4 NOTEs
 See
   ‘/home/jranke/git/pfm/pfm.Rcheck/00check.log’
 for details.
-
 

@@ -47,6 +47,11 @@
 #' This is a reimplementation of the calculation described in the Exposit 3.02 spreadsheet file,
 #' in the worksheet "Konzept Runoff".
 #'
+#' It is recommened to specify the arguments `rate`, `Koc`, `DT50`, `t_runoff`, `V_ditch` and `V_event`
+#' using [units::units] from the `units` package.
+#'
+#' @importFrom units as_units set_units drop_units
+#' @importFrom dplyr across mutate
 #' @param rate The application rate in g/ha
 #' @param interception The fraction intercepted by the crop
 #' @param Koc The sorption coefficient to soil organic carbon
@@ -74,43 +79,60 @@
 #' @examples
 #'   PEC_sw_exposit_runoff(500, Koc = 150)
 #'   PEC_sw_exposit_runoff(600, Koc = 10000, DT50 = 195, exposit = "3.01a")
-PEC_sw_exposit_runoff <- function(rate, interception = 0, Koc, DT50 = Inf, t_runoff = 3,
+PEC_sw_exposit_runoff <- function(rate, interception = 0, Koc, DT50 = set_units(Inf, "d"), 
+  t_runoff = set_units(3, "days"),
   exposit_reduction_version = c("3.02", "3.01a", "3.01a2", "2.0"),
-  V_ditch = 30, V_event = 100, dilution = 2)
+  V_ditch = set_units(30, "m3"), V_event = set_units(100, "m3"), dilution = 2)
 {
+  # Set default units if not specified
+  if (!inherits(rate, "units")) rate <- set_units(rate, "g/ha")
+  if (!inherits(Koc, "units")) Koc <- set_units(Koc, "L/kg")
+  if (!inherits(DT50, "units")) DT50 <- set_units(DT50, "d")
+  if (!inherits(t_runoff, "units")) t_runoff <- set_units(t_runoff, "d")
+  if (!inherits(V_ditch, "units")) V_ditch <- set_units(V_ditch, "m3")
+  if (!inherits(V_event, "units")) V_event <- set_units(V_event, "m3")
+
   k_deg <- log(2)/DT50
-  input <- rate * (1 - interception) * 1 * exp(-k_deg * t_runoff) # assumes 1 ha treated area
+  
+  # The input is calculated for an area of 1 ha
+  input <- rate * as_units(1, "ha") * (1 - interception) * exp(as.numeric(-k_deg * t_runoff))
+  input_units <- units(input)
+  input_numeric <- drop_units(input)
 
   if (length(Koc) > 1) stop("Only one compound at a time supported")
 
   exposit_reduction_version <- match.arg(exposit_reduction_version)
-  red_water <- pfm::perc_runoff_reduction_exposit[[exposit_reduction_version]]["dissolved"] / 100
-  red_bound <- pfm::perc_runoff_reduction_exposit[[exposit_reduction_version]]["bound"] / 100
   reduction_runoff <- pfm::perc_runoff_reduction_exposit[[exposit_reduction_version]] / 100
+        
   transfer_runoff <- 1 - reduction_runoff
 
-  V_runoff <- V_event * (1 - reduction_runoff[["dissolved"]]) # m3
+  V_runoff <- V_event * (1 - reduction_runoff[["dissolved"]])
   V_flowing_ditch_runoff <- dilution * (V_ditch + V_runoff)
-
+  
   f_runoff_exposit <- function(Koc) {
-    Koc_breaks <- c(pfm::perc_runoff_exposit$Koc_lower_bound, Inf)
+    Koc_breaks <- c(pfm::perc_runoff_exposit$Koc_lower_bound, set_units(Inf, "L/kg"))
     Koc_classes <- as.character(cut(Koc, Koc_breaks, labels = rownames(pfm::perc_runoff_exposit)))
     perc_runoff <- pfm::perc_runoff_exposit[Koc_classes, c("dissolved", "bound")]
     if (identical(Koc, 0)) perc_runoff <- c(dissolved = 0, bound = 0)
     return(unlist(perc_runoff) / 100)
   }
   f_runoff <- f_runoff_exposit(Koc)
-  runoff_dissolved <- input * f_runoff["dissolved"] * transfer_runoff["dissolved"]
-  runoff_bound <- input * f_runoff["bound"] * transfer_runoff["bound"]
-  runoff_input <- cbind(runoff_dissolved, runoff_bound)
-  runoff_input$total <- runoff_input$dissolved + runoff_input$bound
 
-  PEC_sw_runoff <- 1000 * runoff_input / V_flowing_ditch_runoff
+  runoff_dissolved <- input_numeric * f_runoff["dissolved"] * transfer_runoff[, "dissolved"]
+  runoff_bound <- input_numeric * f_runoff["bound"] * transfer_runoff[, "bound"]
+  runoff_input <- cbind(dissolved = runoff_dissolved, bound = runoff_bound, 
+    total = runoff_dissolved + runoff_bound)
+  rownames(runoff_input) <- rownames(reduction_runoff)
+  units(runoff_input) <- input_units
+
+  dn <- dimnames(runoff_input)
+  PEC_sw_runoff <- set_units(runoff_input / V_flowing_ditch_runoff, "\u00B5g/L")
+  dimnames(PEC_sw_runoff) <- dn
 
   result <- list(
     perc_runoff = 100 * f_runoff,
-    runoff = runoff_input,
-    PEC_sw_runoff = PEC_sw_runoff)
+    runoff = as.data.frame(runoff_input),
+    PEC_sw_runoff = as.data.frame(PEC_sw_runoff))
   return(result)
 }
 

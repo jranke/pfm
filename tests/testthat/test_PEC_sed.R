@@ -5,5 +5,7 @@ test_that("PEC_sw_sed calculates correctly using the percentage method", {
   # default assumptions of CRD spreadsheet (5 cm sediment depth, 1.3 kg/L sediment density)
   # Reference value calculated with CRD spreadsheet
   PEC_sw_100_1_m <- PEC_sw_drift(100, distances = 1)
-  expect_equivalent(round(PEC_sw_sed(PEC_sw_100_1_m, percentage = 50), 3), 2.131)
+  expect_equivalent(
+    round(PEC_sw_sed(PEC_sw_100_1_m, percentage = 50), 3), 
+    set_units(2.131, "µg/kg"))
 })
