@@ -5,13 +5,17 @@ compounds ("Gefährdungsgruppen"), only one distinction is made in the
 calculations, between compounds with low mobility (group 1) and compounds
 with modest to high mobility (groups 2, 3 and 4). In this implementation,
 the group is derived only from the Koc, if not given explicitly. For
-details, see the discussion of the function arguments below.'><meta property="og:description" content='This is a reimplementation of the calculation described in the Exposit 3.02 spreadsheet file,
+details, see the discussion of the function arguments below.
+It is recommened to specify the arguments rate, Koc, DT50, t_drainage,
+V_ditch and V_drainage using units::units from the units package.'><meta property="og:description" content='This is a reimplementation of the calculation described in the Exposit 3.02 spreadsheet file,
 in the worksheet "Konzept Drainage". Although there are four groups of
 compounds ("Gefährdungsgruppen"), only one distinction is made in the
 calculations, between compounds with low mobility (group 1) and compounds
 with modest to high mobility (groups 2, 3 and 4). In this implementation,
 the group is derived only from the Koc, if not given explicitly. For
-details, see the discussion of the function arguments below.'></head><body>
+details, see the discussion of the function arguments below.
+It is recommened to specify the arguments rate, Koc, DT50, t_drainage,
+V_ditch and V_drainage using units::units from the units package.'></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -52,7 +56,9 @@ compounds ("Gefährdungsgruppen"), only one distinction is made in the
 calculations, between compounds with low mobility (group 1) and compounds
 with modest to high mobility (groups 2, 3 and 4). In this implementation,
 the group is derived only from the Koc, if not given explicitly. For
-details, see the discussion of the function arguments below.</p>
+details, see the discussion of the function arguments below.
+It is recommened to specify the arguments <code>rate</code>, <code>Koc</code>, <code>DT50</code>, <code>t_drainage</code>,
+<code>V_ditch</code> and <code>V_drainage</code> using <a href="https://rdrr.io/pkg/units/man/units.html" class="external-link">units::units</a> from the <code>units</code> package.</p>
     </div>
 
     <div class="section level2">
@@ -62,10 +68,10 @@ details, see the discussion of the function arguments below.</p>
 <span>  interception <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  Koc <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  mobility <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"low"</span>, <span class="st">"high"</span><span class="op">)</span>,</span>
-<span>  DT50 <span class="op">=</span> <span class="cn">Inf</span>,</span>
-<span>  t_drainage <span class="op">=</span> <span class="fl">3</span>,</span>
-<span>  V_ditch <span class="op">=</span> <span class="fl">30</span>,</span>
-<span>  V_drainage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>spring <span class="op">=</span> <span class="fl">10</span>, autumn <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,</span>
+<span>  DT50 <span class="op">=</span> <span class="fu">set_units</span><span class="op">(</span><span class="cn">Inf</span>, <span class="st">"d"</span><span class="op">)</span>,</span>
+<span>  t_drainage <span class="op">=</span> <span class="fu">set_units</span><span class="op">(</span><span class="fl">3</span>, <span class="st">"days"</span><span class="op">)</span>,</span>
+<span>  V_ditch <span class="op">=</span> <span class="fu">set_units</span><span class="op">(</span><span class="fl">30</span>, <span class="st">"m3"</span><span class="op">)</span>,</span>
+<span>  V_drainage <span class="op">=</span> <span class="fu">set_units</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>spring <span class="op">=</span> <span class="fl">10</span>, autumn <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>, <span class="st">"m3"</span><span class="op">)</span>,</span>
 <span>  dilution <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -148,6 +154,7 @@ scenarios. If the rate was given in g/ha, the PECsw are in microg/L.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   12.5   25.0 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $PEC_sw_drainage</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Units: [µg/L]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   spring   autumn </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1.562500 4.807692 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>

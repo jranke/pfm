@@ -13,10 +13,10 @@ PEC_sw_exposit_drainage(
   interception = 0,
   Koc = NA,
   mobility = c(NA, "low", "high"),
-  DT50 = Inf,
-  t_drainage = 3,
-  V_ditch = 30,
-  V_drainage = c(spring = 10, autumn = 100),
+  DT50 = set_units(Inf, "d"),
+  t_drainage = set_units(3, "days"),
+  V_ditch = set_units(30, "m3"),
+  V_drainage = set_units(c(spring = 10, autumn = 100), "m3"),
   dilution = 2
 )
 }
@@ -58,6 +58,8 @@ calculations, between compounds with low mobility (group 1) and compounds
 with modest to high mobility (groups 2, 3 and 4). In this implementation,
 the group is derived only from the Koc, if not given explicitly. For
 details, see the discussion of the function arguments below.
+It is recommened to specify the arguments \code{rate}, \code{Koc}, \code{DT50}, \code{t_drainage},
+\code{V_ditch} and \code{V_drainage} using \link[units:units]{units::units} from the \code{units} package.
 }
 \examples{
   PEC_sw_exposit_drainage(500, Koc = 150)

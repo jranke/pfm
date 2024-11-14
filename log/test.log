@@ -2,29 +2,17 @@
 ✔ | F W  S  OK | Context
 ✔ |          7 | Exposit calculations
 ✔ |          6 | Geometric mean calculation
-<<<<<<< HEAD
-✔ |          1 | Check max_twa for parent mkinfit models against analytical solutions
-=======
-✔ |          1 | Check max_twa for parent mkinfit models against analytical solutions [1.2s]
->>>>>>> main
+✔ |          1 | Check max_twa for parent mkinfit models against analytical solutions [2.0s]
 ✔ |          1 | Simple PEC sediment calculations
 ✔ |         17 | Simple PEC soil calculations
 ✔ |          8 | Simple PEC surface water calculations with drift entry
 ✔ |          1 | Actual and time weighted average concentrations for SFO kinetics
 ✔ |          9 | FOCUS Step 1 calculations
 ✔ |          8 | FOCUS Steps 12 input files
-<<<<<<< HEAD
-✔ |          7 | Read and analyse TOXSWA cwa files [4.2s]
+✔ |          7 | Read and analyse TOXSWA cwa files [6.3s]
 ✔ |         12 | UK drainage PEC calculations
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════
-Duration: 5.5 s
-=======
-✔ |          7 | Read and analyse TOXSWA cwa files [4.3s]
-✔ |         12 | UK drainage PEC calculations
-
-══ Results ═════════════════════════════════════════════════════════════════════════════════════════
-Duration: 6.3 s
->>>>>>> main
+Duration: 9.5 s
 
 [ FAIL 0 | WARN 0 | SKIP 0 | PASS 77 ]

@@ -62,28 +62,33 @@ test_that("Runoff PECsw are as in Exposit 3.02", {
 
 test_that("Drainage PECsw are as in Exposit 3.02", {
   # 100 g/ha, Koc = 1000 L/kg, DT50 = 1000 days
-  res_exposit_1 <- c(spring = 0.02, autumn = 0.05)
+  res_exposit_1 <- set_units(c(spring = 0.02, autumn = 0.05),
+    "\u00B5g/L")
 
   res_1 <- PEC_sw_exposit_drainage(100, Koc = 1000, DT50 = 1000)
   res_pfm_1 <- round(res_1$PEC_sw_drainage, 2)
   expect_equivalent(res_exposit_1, res_pfm_1)
 
   # 10 g/ha, Koc = 300000 L/kg, DT50 = 10 days
-  res_exposit_2 <- c(spring = 0.00, autumn = 0.00)
+  res_exposit_2 <- set_units(c(spring = 0.00, autumn = 0.00),
+    "\u00B5g/L")
 
   res_2 <- PEC_sw_exposit_drainage(10, Koc = 300000, DT50 = 10)
   res_pfm_2 <- round(res_2$PEC_sw_drainage, 2)
   expect_equivalent(res_exposit_2, res_pfm_2)
 
   # 200 g/ha, Koc = 30 L/kg, DT50 = 100 days
-  res_exposit_3 <- c(spring = 0.61, autumn = 1.88)
+  res_exposit_3 <- set_units(c(spring = 0.61, autumn = 1.88),
+    "\u00B5g/L")
+    
 
   res_3 <- PEC_sw_exposit_drainage(200, Koc = 30, DT50 = 100)
   res_pfm_3 <- round(res_3$PEC_sw_drainage, 2)
   expect_equivalent(res_exposit_3, res_pfm_3)
 
   # 1000 g/ha, Koc = 545 L/kg, group = 1, DT50 = 20 days, 25% interception
-  res_exposit_4 <- c(spring = 0.11, autumn = 0.32)
+  res_exposit_4 <- set_units(c(spring = 0.11, autumn = 0.32),
+    "\u00B5g/L")
 
   res_4 <- PEC_sw_exposit_drainage(1000, interception = 0.25, Koc = 545, DT50 =
                                    20, mobility = "low")

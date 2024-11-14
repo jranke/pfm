@@ -79,7 +79,8 @@
 #' @examples
 #'   PEC_sw_exposit_runoff(500, Koc = 150)
 #'   PEC_sw_exposit_runoff(600, Koc = 10000, DT50 = 195, exposit = "3.01a")
-PEC_sw_exposit_runoff <- function(rate, interception = 0, Koc, DT50 = set_units(Inf, "d"), 
+PEC_sw_exposit_runoff <- function(rate, interception = 0, Koc, 
+  DT50 = set_units(Inf, "d"), 
   t_runoff = set_units(3, "days"),
   exposit_reduction_version = c("3.02", "3.01a", "3.01a2", "2.0"),
   V_ditch = set_units(30, "m3"), V_event = set_units(100, "m3"), dilution = 2)
@@ -145,6 +146,9 @@ PEC_sw_exposit_runoff <- function(rate, interception = 0, Koc, DT50 = set_units(
 #' with modest to high mobility (groups 2, 3 and 4). In this implementation,
 #' the group is derived only from the Koc, if not given explicitly. For
 #' details, see the discussion of the function arguments below.
+
+#' It is recommened to specify the arguments `rate`, `Koc`, `DT50`, `t_drainage`, 
+#' `V_ditch` and `V_drainage` using [units::units] from the `units` package.
 #'
 #' @param rate The application rate in g/ha
 #' @param interception The fraction intercepted by the crop
@@ -170,18 +174,31 @@ PEC_sw_exposit_runoff <- function(rate, interception = 0, Koc, DT50 = set_units(
 #' @seealso \code{\link{perc_runoff_exposit}} for runoff loss percentages and \code{\link{perc_runoff_reduction_exposit}} for runoff reduction percentages used
 #' @examples
 #'   PEC_sw_exposit_drainage(500, Koc = 150)
-PEC_sw_exposit_drainage <- function(rate, interception = 0, Koc = NA, mobility = c(NA, "low", "high"), DT50 = Inf, t_drainage = 3,
-  V_ditch = 30, V_drainage = c(spring = 10, autumn = 100), dilution = 2)
+PEC_sw_exposit_drainage <- function(rate, interception = 0, 
+  Koc = NA, mobility = c(NA, "low", "high"),
+  DT50 = set_units(Inf, "d"), 
+  t_drainage = set_units(3, "days"),
+  V_ditch = set_units(30, "m3"), 
+  V_drainage = set_units(c(spring = 10, autumn = 100), "m3"), dilution = 2)
 {
-  # Rückstand zum Zeitpunkt des Niederschlagsereignisses (residue at the time of the drainage event)
+  # Set default units if not specified
+  if (!inherits(rate, "units")) rate <- set_units(rate, "g/ha")
+  if (!inherits(Koc, "units")) Koc <- set_units(Koc, "L/kg")
+  if (!inherits(DT50, "units")) DT50 <- set_units(DT50, "d")
+  if (!inherits(t_drainage, "units")) t_runoff <- set_units(t_drainage, "d")
+  if (!inherits(V_ditch, "units")) V_ditch <- set_units(V_ditch, "m3")
+  if (!inherits(V_drainage, "units")) V_event <- set_units(V_drainage, "m3")
+  
   k_deg <- log(2)/DT50
-  residue <- rate * (1 - interception) * 1 * exp(-k_deg * t_drainage) # assumes 1 ha treated area
+  
+  # Total residue at the time of the drainage event, assumes 1 ha treated area
+  residue <- rate * as_units(1, "ha") * (1 - interception) * exp(as.numeric(-k_deg * t_drainage))
 
   mobility <- match.arg(mobility)
   if (is.na(mobility)) {
     if (is.na(Koc)) stop("Koc is needed if the mobility is not specified")
     else {
-      if (Koc > 550) mobility = "low"
+      if (Koc > set_units(550, "L/kg")) mobility = "low"
       else mobility = "high"
     }
   }
@@ -200,11 +217,11 @@ PEC_sw_exposit_drainage <- function(rate, interception = 0, Koc = NA, mobility =
 
   f_peak = c(spring = 0.125, autumn = 0.25) # Stoßbelastung (fraction drained at event)
 
-  PEC_sw_drainage <- 1000 * residue * f_drainage_total * f_peak / V_flowing_ditch_drainage
+  PEC_sw_drainage <- residue * f_drainage_total * f_peak / V_flowing_ditch_drainage
 
   result <- list(
     perc_drainage_total = 100 * f_drainage_total,
     perc_peak = 100 * f_peak,
-    PEC_sw_drainage = PEC_sw_drainage)
+    PEC_sw_drainage = set_units(PEC_sw_drainage, "\u00B5g/L"))
   return(result)
 }
