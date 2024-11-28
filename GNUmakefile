@@ -13,7 +13,6 @@ pkgfiles = \
 	GNUmakefile \
 	inst/data_generation/* \
 	inst/testdata/* \
-	README.html \
 	R/* \
 	tests/testthat.R \
 	tests/testthat/*
@@ -22,9 +21,6 @@ all: build
 
 roxy:
 	Rscript -e "roxygen2::roxygenize(roclets = c('rd', 'collate', 'namespace'))"
-
-README.html: README.md
-	"$(RBIN)/Rscript" -e "rmarkdown::render('README.md', output_format = 'html_document', output_options = list(mathjax = NULL))"
 
 $(TGZ): $(pkgfiles)
 	"$(RBIN)/R" CMD build . 2>&1 | tee log/build.log

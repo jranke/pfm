@@ -2,7 +2,6 @@
 ^pfm_.*.zip
 ^pfm.Rcheck$
 ^GNUmakefile$
-^README.html$
 ^log
 ^test.R$
 ^pesticide.txt$
