@@ -1,7 +1,8 @@
 #' Calculate initial predicted environmental concentrations in surface water due to drainage using the UK method
 #'
 #' This implements the method specified in the UK data requirements handbook and was checked against the spreadsheet
-#' published on the CRC website
+#' published on the CRC website. Degradation before the start of the drainage period is taken into account if
+#' `latest_application` is specified and the degradation parameters are given either as a `soil_DT50` or a `model`.
 #'
 #' @param rate Application rate in g/ha
 #' @param interception The fraction of the application rate that does not reach the soil
@@ -37,17 +38,19 @@ PEC_sw_drainage_UK <- function(rate, interception = 0, Koc,
     latest <- as.Date(paste(latest_application, "1999"), "%d %b %Y")
     tmp <- Sys.setlocale("LC_TIME", lct)
     degradation_time <- as.numeric(difftime(as.Date("1999-10-01"), units = "days", latest))
-    if (!missing(soil_DT50)) {
-      k = log(2)/soil_DT50
-      as.Date(paste(latest_application, "1999"), "%d %B %Y")
+    if (degradation_time > 0) {
+      if (!missing(soil_DT50)) {
+        k = log(2)/soil_DT50
+        as.Date(paste(latest_application, "1999"), "%d %B %Y")
 
-      amount_available <- amount_available * exp(-k * degradation_time)
-      if (!missing(model)) stop("You already supplied a soil_DT50 value, implying SFO kinetics")
-    }
-    if (!missing(model)) {
-      fraction_left <- pfm_degradation(model, parms = model_parms, 
-                                       times = degradation_time)[1, "parent"]
-      amount_available <- fraction_left * amount_available
+        amount_available <- amount_available * exp(-k * degradation_time)
+        if (!missing(model)) stop("You already supplied a soil_DT50 value, implying SFO kinetics")
+      } 
+      if (!missing(model)) {
+        fraction_left <- pfm_degradation(model, parms = model_parms, 
+                                         times = degradation_time)[1, "parent"]
+        amount_available <- fraction_left * amount_available
+      }
     }
   } 
 

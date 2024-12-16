@@ -1,5 +1,5 @@
-* using log directory ‘/home/agsad.admin.ch/f80868656/projects/pfm/pfm.Rcheck’
-* using R version 4.4.1 (2024-06-14)
+* using log directory ‘/home/f80868656@agsad.admin.ch/projects/pfm/pfm.Rcheck’
+* using R version 4.4.2 (2024-10-31)
 * using platform: x86_64-pc-linux-gnu
 * R was compiled by
     gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
@@ -9,14 +9,12 @@
 * using options ‘--no-tests --as-cran’
 * checking for file ‘pfm/DESCRIPTION’ ... OK
 * checking extension type ... Package
-* this is package ‘pfm’ version ‘0.6.3’
+* this is package ‘pfm’ version ‘0.6.4’
 * package encoding: UTF-8
 * checking CRAN incoming feasibility ... NOTE
 Maintainer: ‘Johannes Ranke <johannes.ranke@agroscope.admin.ch>’
 
-The Date field is over a month old.
-
-Size of tarball: 8532216 bytes
+Size of tarball: 8532039 bytes
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -31,10 +29,10 @@ Size of tarball: 8532216 bytes
   sub-directories of 1Mb or more:
     testdata   9.9Mb
 * checking package directory ... OK
-* checking for future file timestamps ... OK
+* checking for future file timestamps ... NOTE
+unable to verify current time
 * checking DESCRIPTION meta-information ... OK
-* checking top-level files ... NOTE
-Files ‘README.md’ or ‘NEWS.md’ cannot be checked without ‘pandoc’ being installed.
+* checking top-level files ... OK
 * checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... OK
@@ -51,7 +49,7 @@ Files ‘README.md’ or ‘NEWS.md’ cannot be checked without ‘pandoc’ be
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
-* checking R code for possible problems ... [16s/12s] OK
+* checking R code for possible problems ... OK
 * checking Rd files ... OK
 * checking Rd metadata ... OK
 * checking Rd line widths ... OK
@@ -65,7 +63,13 @@ Files ‘README.md’ or ‘NEWS.md’ cannot be checked without ‘pandoc’ be
 * checking data for non-ASCII characters ... OK
 * checking LazyData ... OK
 * checking data for ASCII and uncompressed saves ... OK
-* checking examples ... [17s/18s] OK
+* checking examples ... NOTE
+Examples with CPU (user + system) or elapsed time > 5s
+              user system elapsed
+one_box      1.287  4.642   0.795
+max_twa      1.121  4.715   0.586
+sawtooth     1.272  4.425   0.740
+plot.one_box 1.271  4.314   0.706
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ... SKIPPED
 * checking PDF version of manual ... OK
@@ -75,8 +79,8 @@ Skipping checking HTML validation: no command 'tidy' found
 * checking for detritus in the temp directory ... OK
 * DONE
 
-Status: 4 NOTEs
+Status: 5 NOTEs
 See
-  ‘/home/agsad.admin.ch/f80868656/projects/pfm/pfm.Rcheck/00check.log’
+  ‘/home/f80868656@agsad.admin.ch/projects/pfm/pfm.Rcheck/00check.log’
 for details.
 

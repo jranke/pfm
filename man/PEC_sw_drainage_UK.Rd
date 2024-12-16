@@ -35,7 +35,8 @@ The predicted concentration in surface water in µg/L
 }
 \description{
 This implements the method specified in the UK data requirements handbook and was checked against the spreadsheet
-published on the CRC website
+published on the CRC website. Degradation before the start of the drainage period is taken into account if
+\code{latest_application} is specified and the degradation parameters are given either as a \code{soil_DT50} or a \code{model}.
 }
 \examples{
 PEC_sw_drainage_UK(150, Koc = 100)
