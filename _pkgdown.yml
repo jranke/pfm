@@ -6,6 +6,9 @@ template:
   bootstrap: 5
   bootswatch: spacelab
 
+news:
+  cran_dates: false
+
 reference:
   - title: General utility functions
     desc: Functions that are independent of specific fate modelling areas

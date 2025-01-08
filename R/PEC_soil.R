@@ -68,7 +68,8 @@ if(getRversion() >= '2.15.1') utils::globalVariables(c("destination", "study_typ
 #'   as Kom here
 #' @param t_avg Averaging times for time weighted average concentrations
 #' @param t_act Time series for actual concentrations
-#' @param scenarios If this is 'default', the DT50 will be used without correction
+#' @param scenarios If this is 'default', a soil bulk density of 1.5 kg/L will 
+#'   be used. The DT50 will be used without correction
 #'   and soil properties as specified in the REACH guidance (R.16, Table
 #'   R.16-9) are used for porewater PEC calculations.  If this is "EFSA_2015",
 #'   the DT50 is taken to be a modelling half-life at 20°C and pF2 (for when

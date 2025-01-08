@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="index.html">pfm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="pfm">pfm<a class="anchor" aria-label="anchor" href="#pfm"></a>
 </h1></div>
-<p><a href="https://jranke.r-universe.dev/ui/#package:pfm" class="external-link"><img src="https://jranke.r-universe.dev/badges/pfm" alt="pfm status badge"></a> <a href="https://app.travis-ci.com/jranke/pfm" class="external-link"><img src="https://app.travis-ci.com/jranke/pfm.svg?token=Sq9VuYWyRz2FbBLxu6DK&amp;branch=main" alt="Build Status"></a> <a href="https://codecov.io/github/jranke/pfm" class="external-link"><img src="https://codecov.io/github/jranke/pfm/branch/main/graphs/badge.svg" alt="codecov"></a></p>
+<p><a href="https://pkgdown.jrwb.de/pfm/"><img src="https://img.shields.io/badge/docs-jrwb.de-blue.svg" alt="Online documentation"></a> <a href="https://jranke.r-universe.dev/ui/#package:pfm" class="external-link"><img src="https://jranke.r-universe.dev/badges/pfm" alt="pfm status badge"></a> <a href="https://app.travis-ci.com/jranke/pfm" class="external-link"><img src="https://app.travis-ci.com/jranke/pfm.svg?token=Sq9VuYWyRz2FbBLxu6DK&amp;branch=main" alt="Build Status"></a> <a href="https://codecov.io/github/jranke/pfm" class="external-link"><img src="https://codecov.io/github/jranke/pfm/branch/main/graphs/badge.svg" alt="codecov"></a></p>
 <p>The R package <strong>pfm</strong> provides some utilities for fate modelling, including dealing with FOCUS pesticide fate modelling tools, (currently only TOXSWA cwa and out files), made available under the GNU public license.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -55,9 +55,10 @@
 <p>The easiest way to install the package is probably to use the <a href="https://jranke.r-universe.dev/pfm" class="external-link">r-universe repo</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pfm"</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://jranke.r-universe.dev"</span>, <span class="st">"https://cran.r-project.org"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Alternatively you can install the package using the <code>remotes</code> package. Using <code>quick = TRUE</code> skips docs, multiple-architecture builds, demos, and vignettes.</p>
+<p>The packages at R-universe are provided with a slight delay. Alternatively, you can install the package directly from github, e.g. by using <a href="https://pak.r-lib.org" class="external-link"><code>pak</code></a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/remotes/man/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"jranke/pfm"</span>, quick <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"jranke/pfm"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="use">Use<a class="anchor" aria-label="anchor" href="#use"></a>
@@ -67,7 +68,7 @@
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
-<p>One recent nice example of the usage of this package is the visualisation of a time weighted average for a sawtooth curve obtained from several overlays of mkinfit predictions as shown <a href="http://pkgdown.jrwb.de/pfm/reference/plot.one_box.html" class="external-link">here</a>.</p>
+<p>One nice example of the usage of this package is the visualisation of a time weighted average for a sawtooth curve obtained from several overlays of mkinfit predictions as shown <a href="http://pkgdown.jrwb.de/pfm/reference/plot.one_box.html" class="external-link">here</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="applications">Applications<a class="anchor" aria-label="anchor" href="#applications"></a>
