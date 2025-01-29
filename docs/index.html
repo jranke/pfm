@@ -48,13 +48,14 @@
 <div class="page-header"><h1 id="pfm">pfm<a class="anchor" aria-label="anchor" href="#pfm"></a>
 </h1></div>
 <p><a href="https://pkgdown.jrwb.de/pfm/"><img src="https://img.shields.io/badge/docs-jrwb.de-blue.svg" alt="Online documentation"></a> <a href="https://jranke.r-universe.dev/ui/#package:pfm" class="external-link"><img src="https://jranke.r-universe.dev/badges/pfm" alt="pfm status badge"></a> <a href="https://app.travis-ci.com/jranke/pfm" class="external-link"><img src="https://app.travis-ci.com/jranke/pfm.svg?token=Sq9VuYWyRz2FbBLxu6DK&amp;branch=main" alt="Build Status"></a> <a href="https://codecov.io/github/jranke/pfm" class="external-link"><img src="https://codecov.io/github/jranke/pfm/branch/main/graphs/badge.svg" alt="codecov"></a></p>
-<p>The R package <strong>pfm</strong> provides some utilities for fate modelling, including dealing with FOCUS pesticide fate modelling tools, (currently only TOXSWA cwa and out files), made available under the GNU public license.</p>
+<p>The R package <strong>pfm</strong> provides some utilities for fate modelling, including simple PEC calculation routines and some routines for dealing with FOCUS pesticide fate modelling tools (currently only TOXSWA cwa and out files), made available under the GNU public license.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>The easiest way to install the package is probably to use the <a href="https://jranke.r-universe.dev/pfm" class="external-link">r-universe repo</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pfm"</span>, repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://jranke.r-universe.dev"</span>, <span class="st">"https://cran.r-project.org"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pfm"</span>,</span>
+<span>  repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://jranke.r-universe.dev"</span>, <span class="st">"https://cran.r-project.org"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>The packages at R-universe are provided with a slight delay. Alternatively, you can install the package directly from github, e.g. by using <a href="https://pak.r-lib.org" class="external-link"><code>pak</code></a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
@@ -133,7 +134,7 @@ Korkaric M, Hanke I, Grossar D, Neuweiler R, Christ B, Wirth J, Hochstrasser M, 
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>
