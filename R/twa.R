@@ -131,6 +131,7 @@ one_box.mkinfit <- function(x, ini = "model", ..., t_end = 100, res = 0.01) {
 #' fit_2 <- mkinfit(m_2, FOCUS_2006_D, quiet = TRUE)
 #' pred_2 <- one_box(fit_2, ini = 1)
 #' pred_2_saw <- sawtooth(pred_2, 2, 7)
+#' plot(pred_2_saw)
 #' plot(pred_2_saw, max_twa = 21, max_twa_var = "m1")
 plot.one_box <- function(x,
                          xlim = range(time(x)), ylim = c(0, max(x)),
@@ -148,7 +149,9 @@ plot.one_box <- function(x,
          x_twa$window_end[max_twa_var], value, col = "grey")
     text(x_twa$window_end[max_twa_var], value, paste("Maximum:", signif(value, 3)), pos = 4)
     # Plot a second time to cover the grey rectangle
-    matlines(time(x), as.matrix(x), lty = 1:length(obs_vars), col = 1:length(obs_vars))
+    plot.ts(x, plot.type = "single", xlab = xlab, ylab = ylab,
+            lty = 1:length(obs_vars), col = 1:length(obs_vars),
+            las = 1, xlim = xlim, ylim = ylim)
   }
 }
 
@@ -229,7 +232,7 @@ twa.one_box <- function(x, window = 21)
 
   resolution = 1/frequency(x)
   n_filter = window/resolution
-  result = filter(x, rep(1/n_filter, n_filter), method = "convolution", sides = 1)
+  result = stats::filter(x, rep(1/n_filter, n_filter), method = "convolution", sides = 1)
   class(result) = c("one_box", "ts")
   dimnames(result) <- dimnames(x)
   return(result)

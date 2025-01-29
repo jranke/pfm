@@ -6,7 +6,8 @@
 [![codecov](https://codecov.io/github/jranke/pfm/branch/main/graphs/badge.svg)](https://codecov.io/github/jranke/pfm) 
 
 The R package **pfm** provides some utilities for fate modelling, including
-dealing with FOCUS pesticide fate modelling tools, (currently only TOXSWA cwa
+simple PEC calculation routines and some routines for 
+dealing with FOCUS pesticide fate modelling tools (currently only TOXSWA cwa
 and out files), made available under the GNU public license.
 
 ## Installation
@@ -15,7 +16,8 @@ The easiest way to install the package is probably to use the
 [r-universe repo](https://jranke.r-universe.dev/pfm):
 
 ```r
-install.packages("pfm", repos = c("https://jranke.r-universe.dev", "https://cran.r-project.org"))
+install.packages("pfm",
+  repos = c("https://jranke.r-universe.dev", "https://cran.r-project.org"))
 ```
 
 The packages at R-universe are provided with a slight delay. Alternatively, you
