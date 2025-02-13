@@ -35,9 +35,12 @@ PEC_sw_drainage_UK <- function(rate, interception = 0, Koc,
   if (!missing(latest_application)) {
     lct <- Sys.getlocale("LC_TIME")
     tmp <- Sys.setlocale("LC_TIME", "C")
-    latest <- as.Date(paste(latest_application, "1999"), "%d %b %Y")
+    if (latest_application == "29 February") {
+      ref_year <- 2000
+    } else { ref_year <- 1999}
+    latest <- as.Date(paste(latest_application, ref_year), "%d %b %Y")
     tmp <- Sys.setlocale("LC_TIME", lct)
-    degradation_time <- as.numeric(difftime(as.Date("1999-10-01"), units = "days", latest))
+    degradation_time <- as.numeric(difftime(as.Date(paste0(ref_year,"-10-01")), units = "days", latest))
     if (degradation_time > 0) {
       if (!missing(soil_DT50)) {
         k = log(2)/soil_DT50
