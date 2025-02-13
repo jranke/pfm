@@ -2,10 +2,13 @@ Package: pfm
 Type: Package
 Title: Utilities for Pesticide Fate Modelling
 Version: 0.6.4
-Date: 2025-01-29
-Authors@R: person("Johannes Ranke", email = "johannes.ranke@agroscope.admin.ch",
-                  role = c("aut", "cre"),
-                  comment = c(ORCID = "0000-0003-4371-6538"))
+Date: 2025-02-13
+Authors@R: c(
+  person("Johannes Ranke", email = "johannes.ranke@agroscope.admin.ch",
+    role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0003-4371-6538")),
+  person("Elisabeth Lutz", email = "elisabeth.lutz@agroscope.admin.ch",
+    role = "ctb"))
 Description: Utilities for simple calculations of predicted environmental
     concentrations ('PEC' values) and for dealing with data from some FOCUS
     pesticide fate modelling software packages.

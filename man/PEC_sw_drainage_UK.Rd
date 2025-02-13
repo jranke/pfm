@@ -40,6 +40,8 @@ published on the CRC website. Degradation before the start of the drainage perio
 }
 \examples{
 PEC_sw_drainage_UK(150, Koc = 100)
+PEC_sw_drainage_UK(60, interception = 0.5, Koc = 550,
+  latest_application = "01 July", soil_DT50 = 200)
 }
 \references{
 HSE's Chemicals Regulation Division (CRD) Active substance

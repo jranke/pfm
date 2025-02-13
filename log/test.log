@@ -9,10 +9,10 @@
 ✔ |          1 | Actual and time weighted average concentrations for SFO kinetics
 ✔ |          9 | FOCUS Step 1 calculations
 ✔ |          8 | FOCUS Steps 12 input files
-✔ |          7 | Read and analyse TOXSWA cwa files [4.8s]
-✔ |         13 | UK drainage PEC calculations
+✔ |          7 | Read and analyse TOXSWA cwa files [2.8s]
+✔ |         15 | UK drainage PEC calculations
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════
-Duration: 6.6 s
+Duration: 3.8 s
 
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 78 ]
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 80 ]

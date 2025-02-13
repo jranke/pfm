@@ -34,6 +34,14 @@ test_that("UK drainflow PECs are correct", {
                                         latest_application = "01 July",
                                         soil_DT50 = 200), 2), 0.84)
 
+  expect_error(round(PEC_sw_drainage_UK(60, interception = 0.5, Koc = 550,
+                                        latest_application = "100 July",
+                                        soil_DT50 = 200), 2), "Please specify")
+
+  expect_silent(round(PEC_sw_drainage_UK(60, interception = 0.5, Koc = 550,
+                                        latest_application = "29 February",
+                                        soil_DT50 = 200), 2))
+
   # Test that PECsw do not increase if the application is after the beginning
   # of the drainflow period
   expect_equal(

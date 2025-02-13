@@ -25,6 +25,9 @@
 #' @author Johannes Ranke
 #' @examples
 #' PEC_sw_drainage_UK(150, Koc = 100)
+#' PEC_sw_drainage_UK(60, interception = 0.5, Koc = 550,
+#'   latest_application = "01 July", soil_DT50 = 200)
+
 PEC_sw_drainage_UK <- function(rate, interception = 0, Koc,
                                    latest_application = NULL, soil_DT50 = NULL,
                                    model = NULL, model_parms = NULL)
@@ -39,6 +42,7 @@ PEC_sw_drainage_UK <- function(rate, interception = 0, Koc,
       ref_year <- 2000
     } else { ref_year <- 1999}
     latest <- as.Date(paste(latest_application, ref_year), "%d %b %Y")
+    if (is.na(latest)) stop("Please specify the latest application in the format '%d %b', e.g. '01 July'")
     tmp <- Sys.setlocale("LC_TIME", lct)
     degradation_time <- as.numeric(difftime(as.Date(paste0(ref_year,"-10-01")), units = "days", latest))
     if (degradation_time > 0) {

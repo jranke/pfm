@@ -1,8 +1,11 @@
 ## version 0.6.4
 
+- R/PEC_sw_drainage_uk.R: Fix a bug preventing the function to work of `latest_application` is set to 29 February.
+
 - R/twa.R: Fix a bug in plotting one-box models of class `one_box` that affected plots that displayed a time weighted average.
 
 - R/PEC_sw_drainage_uk.R: Fix a bug leading to increased PEC values in the case the application date is after the beginning of the drainage period and `soil_DT50` was specified.
+
 
 ## version 0.6.3
 
