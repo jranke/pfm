@@ -39,7 +39,7 @@ either in the original form or integrated over the width of the water body, depe
 on the 'formula' argument.}
 
 \item{crop_group_JKI}{When using the 'JKI' drift data, one of the German names
-as used in \link{drift_parameters_focus}. Will only be used if drift_data is 'JKI'.}
+as used in \link{drift_data_JKI}. Will only be used if drift_data is 'JKI'.}
 
 \item{crop_group_RF}{One of the crop groups as used in \link{drift_parameters_focus}}
 

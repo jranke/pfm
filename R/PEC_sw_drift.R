@@ -21,7 +21,7 @@
 #'   either in the original form or integrated over the width of the water body, depending
 #'   on the 'formula' argument.
 #' @param crop_group_JKI When using the 'JKI' drift data, one of the German names
-#'   as used in [drift_parameters_focus]. Will only be used if drift_data is 'JKI'.
+#'   as used in [drift_data_JKI]. Will only be used if drift_data is 'JKI'.
 #' @param water_depth Depth of the water body in cm
 #' @param PEC_units Requested units for the calculated PEC. Only µg/L currently supported
 #' @param water_width Width of the water body in cm
