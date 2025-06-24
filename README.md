@@ -23,7 +23,7 @@ the exponential formulas published by Rautmann to inter- or extrapolate to arbit
 distances, or on the integrated Rautmann formulas (integrated over the width of the
 surface water body) used in FOCUS drift calculations.
 
-For PEC drainage calculations, the methods used by the [UK](https://pkgdown.jrwb.de/pfm/reference/PEC_drainage_UK.html),
+For PEC drainage calculations, the methods used by the [UK at tier 1](https://pkgdown.jrwb.de/pfm/reference/PEC_drainage_UK.html) and
 by [Germany](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_drainage.html) are implemented.
 For runoff, the
 [German](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_runoff.html) method used
