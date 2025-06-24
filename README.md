@@ -6,9 +6,34 @@
 [![codecov](https://codecov.io/github/jranke/pfm/branch/main/graphs/badge.svg)](https://codecov.io/github/jranke/pfm) 
 
 The R package **pfm** provides some utilities for fate modelling, including
-simple PEC calculation routines and some routines for 
-dealing with FOCUS pesticide fate modelling tools (currently only TOXSWA cwa
-and out files), made available under the GNU public license.
+simple routines for calculating predicted environmental concentrations (PEC)
+and some routines for dealing with FOCUS pesticide fate modelling tools made
+available under the GNU public license.
+
+More specifically, **pfm** includes facilities for simple one-box modelling of
+the [saw-tooth](https://pkgdown.jrwb.de/pfm/reference/sawtooth.html)-like
+curves resulting from multiple repeated applications, for calculation
+of [PEC soil](https://pkgdown.jrwb.de/pfm/reference/PEC_soil.html) based
+on the 1997 SANCO guidance and the first tiers of the EFSA PEC soil guidance
+from 2012 and 2015, as well as some functions for calculating [PEC surface 
+water](https://pkgdown.jrwb.de/pfm/reference/sawtooth.html). 
+The [PEC drift](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_drift.html)
+calculations can be based on the Rautmann drift percentiles published by JKI,
+the exponential formulas published by Rautmann to inter- or extrapolate to arbitrary
+distances, or on the integrated Rautmann formulas (integrated over the width of the
+surface water body) used in FOCUS drift calculations.
+
+For PEC drainage calculations, the methods used by the [UK](https://pkgdown.jrwb.de/pfm/reference/PEC_drainage_UK.html),
+by [Germany](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_drainage.html) are implemented.
+For runoff, the
+[German](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_runoff.html) method used
+at tier 1 is available.
+
+The output of FOCUS TOXSWA calculations can be read in, plotted, and evaluated
+using the [TOXSWA cwa](https://pkgdown.jrwb.de/pfm/reference/TOXSWA_cwa.html) class
+giving maximum time weighted average concentrations and peak statistics  way as 
+available when using the [EPAT](https://www.rifcon.com/en/downloads/software-2/)
+tool.
 
 ## Installation
 
