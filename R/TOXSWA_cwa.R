@@ -150,7 +150,7 @@ plot.TOXSWA_cwa <- function(x, time_column = c("datetime", "t", "t_firstjan", "t
 #' by \code{\link{read.TOXSWA_cwa}}.
 #'
 #' @export
-#' @format An \code{\link{R6Class}} generator object.
+#' @format An [R6::R6Class] generator object.
 #' @field filename Length one character vector holding the filename.
 #' @field basedir Length one character vector holding the directory where the file came from.
 #' @field zipfile If not null, giving the path to the zip file from which the file was read.

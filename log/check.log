@@ -1,10 +1,10 @@
-* using log directory ‘/home/jranke/git/pfm/pfm.Rcheck’
-* using R version 4.4.2 (2024-10-31)
+* using log directory ‘/home/agsad.admin.ch/f80868656/projects/pfm/pfm.Rcheck’
+* using R version 4.5.2 (2025-10-31)
 * using platform: x86_64-pc-linux-gnu
 * R was compiled by
-    gcc (Debian 12.2.0-14) 12.2.0
-    GNU Fortran (Debian 12.2.0-14) 12.2.0
-* running under: Debian GNU/Linux 12 (bookworm)
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+* running under: Ubuntu 24.04.3 LTS
 * using session charset: UTF-8
 * using options ‘--no-tests --as-cran’
 * checking for file ‘pfm/DESCRIPTION’ ... OK
@@ -14,7 +14,7 @@
 * checking CRAN incoming feasibility ... NOTE
 Maintainer: ‘Johannes Ranke <johannes.ranke@agroscope.admin.ch>’
 
-Size of tarball: 8532625 bytes
+Size of tarball: 8534480 bytes
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -24,13 +24,12 @@ Size of tarball: 8532625 bytes
 * checking for portable file names ... OK
 * checking for sufficient/correct file permissions ... OK
 * checking whether package ‘pfm’ can be installed ... OK
-* checking installed package size ... NOTE
+* checking installed package size ... INFO
   installed size is 10.3Mb
   sub-directories of 1Mb or more:
     testdata   9.9Mb
 * checking package directory ... OK
-* checking for future file timestamps ... NOTE
-unable to verify current time
+* checking for future file timestamps ... OK
 * checking DESCRIPTION meta-information ... OK
 * checking top-level files ... OK
 * checking for left-over files ... OK
@@ -67,13 +66,16 @@ unable to verify current time
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ... SKIPPED
 * checking PDF version of manual ... OK
-* checking HTML version of manual ... OK
+* checking HTML version of manual ... NOTE
+Skipping checking HTML validation: no command 'tidy' found.
+Please obtain a recent version of HTML Tidy by downloading a binary
+release or compiling the source code from <https://www.html-tidy.org/>.
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
 
-Status: 3 NOTEs
+Status: 2 NOTEs
 See
-  ‘/home/jranke/git/pfm/pfm.Rcheck/00check.log’
+  ‘/home/agsad.admin.ch/f80868656/projects/pfm/pfm.Rcheck/00check.log’
 for details.
 

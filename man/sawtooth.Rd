@@ -12,7 +12,7 @@ sawtooth(
 )
 }
 \arguments{
-\item{x}{A \code{\link{one_box}} object}
+\item{x}{A \link{one_box} object}
 
 \item{n}{The number of applications. If \code{applications} is specified, \code{n} is ignored}
 

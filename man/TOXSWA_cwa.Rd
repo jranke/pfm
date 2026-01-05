@@ -4,7 +4,7 @@
 \alias{TOXSWA_cwa}
 \title{R6 class for holding TOXSWA water concentration data and associated statistics}
 \format{
-An \code{\link{R6Class}} generator object.
+An \link[R6:R6Class]{R6::R6Class} generator object.
 }
 \description{
 An R6 class for holding TOXSWA water concentration (cwa) data

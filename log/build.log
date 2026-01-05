@@ -3,9 +3,6 @@
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
 * checking for empty or unneeded directories
-Removed empty directory ‘pfm/inst/testdata/SwashProjects/Project_1/MACRO’
-Removed empty directory ‘pfm/inst/testdata/SwashProjects/Project_1’
-Removed empty directory ‘pfm/inst/testdata/SwashProjects’
 * re-saving image files
 * building ‘pfm_0.6.4.tar.gz’
 
