@@ -33,7 +33,8 @@ PEC_sw_drainage_UK <- function(rate, interception = 0, Koc,
                                    model = NULL, model_parms = NULL)
 {
   percentage_lost <- SSLRC_mobility_classification(Koc)[[2]]
-  amount_available <- rate * (1 - interception) # g/ha
+  if (inherits(rate, "units") && !identical(as.character(units(rate)), "g/ha")) stop("rate must have units g/ha, not ", units(rate))
+  amount_available <- as.numeric(rate) * (1 - interception) # g/ha
 
   if (!missing(latest_application)) {
     lct <- Sys.getlocale("LC_TIME")
@@ -62,6 +63,6 @@ PEC_sw_drainage_UK <- function(rate, interception = 0, Koc,
   } 
 
   volume = 130000 # L/ha
-  PEC = 1e6 * (percentage_lost/100) * amount_available / volume
+  PEC = set_units(1e6 * (percentage_lost/100) * amount_available / volume, "µg/L")
   return(PEC)
 }
