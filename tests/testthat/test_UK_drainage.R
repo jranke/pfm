@@ -24,15 +24,23 @@ test_that("UK drainflow PECs are correct", {
 
   # This is the first example calculation from the data requirements handbook, where they give
   # 8.07 µg/L as the result (obviously a rounding error).
-  expect_equal(round(PEC_sw_drainage_UK(150, interception = 0, Koc = 100), 4), 8.0769)
+  expect_equal(round(PEC_sw_drainage_UK(150, interception = 0, Koc = 100), 4), 
+    as_units(8.0769, "\u00B5g/L"))
+
+  # Same as above, but using units for the input
+  expect_equal(round(PEC_sw_drainage_UK(as_units(0.15, "kg/ha"), interception = 0, 
+        Koc = as_units(100, "mL/g")), 4), 
+    as_units(8.0769, "\u00B5g/L"))
 
   # This is the second example calculation from the data requirements handbook
-  expect_equal(round(PEC_sw_drainage_UK(90, interception = 0, Koc = 10), 4), 13.1538)
+  expect_equal(round(PEC_sw_drainage_UK(90, interception = 0, Koc = 10), 4),
+    as_units(13.1538, "\u00B5g/L"))
 
   # This is the third example calculation from the data requirements handbook, 
   expect_equal(round(PEC_sw_drainage_UK(60, interception = 0.5, Koc = 550,
-                                        latest_application = "01 July",
-                                        soil_DT50 = 200), 2), 0.84)
+    latest_application = "01 July",
+    soil_DT50 = 200), 2), 
+    as_units(0.84, "\u00B5g/L"))
 
   expect_error(round(PEC_sw_drainage_UK(60, interception = 0.5, Koc = 550,
                                         latest_application = "100 July",
@@ -41,6 +49,11 @@ test_that("UK drainflow PECs are correct", {
   expect_silent(round(PEC_sw_drainage_UK(60, interception = 0.5, Koc = 550,
                                         latest_application = "29 February",
                                         soil_DT50 = 200), 2))
+
+  expect_silent(round(PEC_sw_drainage_UK(60, interception = 0.5, Koc = 550,
+                                        latest_application = "29 February",
+                                        soil_DT50 = as_units(200, "d")), 2))
+  
 
   # Test that PECsw do not increase if the application is after the beginning
   # of the drainflow period

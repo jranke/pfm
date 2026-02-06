@@ -147,7 +147,7 @@ plot.TOXSWA_cwa <- function(x, time_column = c("datetime", "t", "t_firstjan", "t
 #' and some associated statistics.  like maximum moving window average
 #' concentrations, and dataframes holding the events exceeding specified
 #' thresholds.  Usually, an instance of this class will be generated
-#' by \code{\link{read.TOXSWA_cwa}}.
+#' by [read.TOXSWA_cwa].
 #'
 #' @export
 #' @format An [R6::R6Class] generator object.

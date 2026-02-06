@@ -15,15 +15,18 @@ PEC_sw_drainage_UK(
 )
 }
 \arguments{
-\item{rate}{Application rate in g/ha}
+\item{rate}{Application rate in g/ha or with a compatible unit specified
+with the units package}
 
 \item{interception}{The fraction of the application rate that does not reach the soil}
 
-\item{Koc}{The sorption coefficient normalised to organic carbon in L/kg}
+\item{Koc}{The sorption coefficient normalised to organic carbon in L/kg or a unit specified
+with the units package}
 
 \item{latest_application}{Latest application date, formatted as e.g. "01 July"}
 
-\item{soil_DT50}{Soil degradation half-life, if SFO kinetics are to be used}
+\item{soil_DT50}{Soil degradation half-life, if SFO kinetics are to be used, in
+days or a time unit specified with the units package}
 
 \item{model}{The soil degradation model to be used. Either one of "FOMC",
 "DFOP", "HS", or "IORE", or an mkinmod object}
