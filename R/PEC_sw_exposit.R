@@ -52,7 +52,8 @@
 #'
 #' @importFrom units as_units set_units drop_units
 #' @importFrom dplyr across mutate
-#' @param rate The application rate in g/ha
+#' @param rate Application rate in g/ha or with a compatible unit specified
+#' with the units package
 #' @param interception The fraction intercepted by the crop
 #' @param Koc The sorption coefficient to soil organic carbon
 #' @param DT50 The soil half-life in days
