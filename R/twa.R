@@ -3,9 +3,9 @@
 #' @param x When numeric, this is the half-life to be used for an exponential
 #'   decline. When a character string specifying a parent decline model is given
 #'   e.g. \code{FOMC}, \code{parms} must contain the corresponding parameters.
-#'   If x is an [mkin::mkinfit] object, the decline is calculated from this
+#'   If x is an [mkinfit] object, the decline is calculated from this
 #'   object.
-#' @param ini The initial amount. If x is an [mkin::mkinfit] object, and
+#' @param ini The initial amount. If x is an [mkinfit] object, and
 #'   ini is 'model', the fitted initial concentrations are used. Otherwise, ini
 #'   must be numeric. If it has length one, it is used for the parent and
 #'   initial values of metabolites are zero, otherwise, it must give values for
@@ -13,7 +13,7 @@
 #' @param t_end End of the time series
 #' @param res Resolution of the time series
 #' @param ... Further arguments passed to methods
-#' @return An object of class \code{one_box}, inheriting from \code{\link{ts}}.
+#' @return An object of class \code{one_box}, inheriting from [ts].
 #' @importFrom stats filter frequency time ts
 #' @export
 #' @examples
@@ -108,7 +108,7 @@ one_box.mkinfit <- function(x, ini = "model", ..., t_end = 100, res = 0.01) {
 
 #' Plot time series of decline data
 #'
-#' @param x The object of type \code{\link{one_box}} to be plotted
+#' @param x The object of type [one_box] to be plotted
 #' @param xlim Limits for the x axis
 #' @param ylim Limits for the y axis
 #' @param xlab Label for the x axis
@@ -119,7 +119,7 @@ one_box.mkinfit <- function(x, ini = "model", ..., t_end = 100, res = 0.01) {
 #'   be shown if max_twa is not NULL.
 #' @param ... Further arguments passed to methods
 #' @importFrom stats plot.ts
-#' @seealso \code{\link{sawtooth}}
+#' @seealso [sawtooth]
 #' @export
 #' @examples
 #' dfop_pred <- one_box("DFOP", parms = c(k1 = 0.2, k2 = 0.02, g = 0.7))
@@ -141,7 +141,7 @@ plot.one_box <- function(x,
   obs_vars <- dimnames(x)[[2]]
   plot.ts(x, plot.type = "single", xlab = xlab, ylab = ylab,
           lty = 1:length(obs_vars), col = 1:length(obs_vars),
-          las = 1, xlim = xlim, ylim = ylim)
+          las = 1, xlim = xlim, ylim = ylim, ...)
   if (!is.null(max_twa)) {
     x_twa <- max_twa(x, window = max_twa)
     value <- x_twa$max[max_twa_var]
@@ -151,7 +151,7 @@ plot.one_box <- function(x,
     # Plot a second time to cover the grey rectangle
     plot.ts(x, plot.type = "single", xlab = xlab, ylab = ylab,
             lty = 1:length(obs_vars), col = 1:length(obs_vars),
-            las = 1, xlim = xlim, ylim = ylim)
+            las = 1, xlim = xlim, ylim = ylim, ...)
   }
 }
 
@@ -159,7 +159,7 @@ plot.one_box <- function(x,
 #'
 #' If the application pattern is specified in \code{applications},
 #' \code{n} and \code{i} are disregarded.
-#' @param x A \code{\link{one_box}} object
+#' @param x A [one_box] object
 #' @param n The number of applications. If \code{applications} is specified, \code{n} is ignored
 #' @param i The interval between applications. If \code{applications} is specified, \code{i}
 #'   is ignored
@@ -210,7 +210,7 @@ sawtooth <- function(x, n = 1, i = 365,
 #' the earliest possible time for the maximum in the time series returned
 #' is after one window has passed.
 #'
-#' @param x An object of type \code{\link{one_box}}
+#' @param x An object of type [one_box]
 #' @param window The size of the moving window
 #' @seealso \code{\link{max_twa}}
 #' @importFrom stats start end
@@ -246,7 +246,7 @@ twa.one_box <- function(x, window = 21)
 #' \code{\link{plot.one_box}} using the window size for the argument
 #' \code{max_twa}.
 #'
-#' The method working directly on fitted [mkin::mkinfit]] objects uses the
+#' The method working directly on fitted [mkinfit] objects uses the
 #' equations given in the PEC soil section of the FOCUS guidance and is restricted
 #' SFO, FOMC and DFOP models and to the parent compound
 #' @references FOCUS (2006) \dQuote{Guidance Document on Estimating Persistence and

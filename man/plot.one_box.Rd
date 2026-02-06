@@ -16,7 +16,7 @@
 )
 }
 \arguments{
-\item{x}{The object of type \code{\link{one_box}} to be plotted}
+\item{x}{The object of type \link{one_box} to be plotted}
 
 \item{xlim}{Limits for the x axis}
 
@@ -51,5 +51,5 @@ plot(pred_2_saw)
 plot(pred_2_saw, max_twa = 21, max_twa_var = "m1")
 }
 \seealso{
-\code{\link{sawtooth}}
+\link{sawtooth}
 }

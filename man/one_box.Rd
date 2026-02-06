@@ -37,7 +37,7 @@ all observed variables.}
 \item{parms}{A named numeric vector containing the model parameters}
 }
 \value{
-An object of class \code{one_box}, inheriting from \code{\link{ts}}.
+An object of class \code{one_box}, inheriting from \link{ts}.
 }
 \description{
 Create a time series of decline data

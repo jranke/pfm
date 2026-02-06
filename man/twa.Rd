@@ -10,7 +10,7 @@ twa(x, window = 21)
 \method{twa}{one_box}(x, window = 21)
 }
 \arguments{
-\item{x}{An object of type \code{\link{one_box}}}
+\item{x}{An object of type \link{one_box}}
 
 \item{window}{The size of the moving window}
 }
