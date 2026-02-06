@@ -19,7 +19,7 @@ for finding the maximum. It is therefore recommended to check this using
 \code{max_twa}.
 }
 \details{
-The method working directly on fitted \code{\link{mkinfit}} objects uses the
+The method working directly on fitted \link[mkin:mkinfit]{mkin::mkinfit}] objects uses the
 equations given in the PEC soil section of the FOCUS guidance and is restricted
 SFO, FOMC and DFOP models and to the parent compound
 }

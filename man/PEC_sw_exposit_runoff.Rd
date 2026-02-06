@@ -21,7 +21,8 @@ PEC_sw_exposit_runoff(
 )
 }
 \arguments{
-\item{rate}{The application rate in g/ha}
+\item{rate}{Application rate in g/ha or with a compatible unit specified
+with the units package}
 
 \item{interception}{The fraction intercepted by the crop}
 

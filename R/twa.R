@@ -3,9 +3,9 @@
 #' @param x When numeric, this is the half-life to be used for an exponential
 #'   decline. When a character string specifying a parent decline model is given
 #'   e.g. \code{FOMC}, \code{parms} must contain the corresponding parameters.
-#'   If x is an \code{\link{mkinfit}} object, the decline is calculated from this
+#'   If x is an [mkin::mkinfit] object, the decline is calculated from this
 #'   object.
-#' @param ini The initial amount. If x is an \code{\link{mkinfit}} object, and
+#' @param ini The initial amount. If x is an [mkin::mkinfit] object, and
 #'   ini is 'model', the fitted initial concentrations are used. Otherwise, ini
 #'   must be numeric. If it has length one, it is used for the parent and
 #'   initial values of metabolites are zero, otherwise, it must give values for
@@ -246,7 +246,7 @@ twa.one_box <- function(x, window = 21)
 #' \code{\link{plot.one_box}} using the window size for the argument
 #' \code{max_twa}.
 #'
-#' The method working directly on fitted \code{\link{mkinfit}} objects uses the
+#' The method working directly on fitted [mkin::mkinfit]] objects uses the
 #' equations given in the PEC soil section of the FOCUS guidance and is restricted
 #' SFO, FOMC and DFOP models and to the parent compound
 #' @references FOCUS (2006) \dQuote{Guidance Document on Estimating Persistence and

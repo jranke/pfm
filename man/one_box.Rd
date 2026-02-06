@@ -19,10 +19,10 @@ one_box(x, ini, ..., t_end = 100, res = 0.01)
 \item{x}{When numeric, this is the half-life to be used for an exponential
 decline. When a character string specifying a parent decline model is given
 e.g. \code{FOMC}, \code{parms} must contain the corresponding parameters.
-If x is an \code{\link{mkinfit}} object, the decline is calculated from this
+If x is an \link[mkin:mkinfit]{mkin::mkinfit} object, the decline is calculated from this
 object.}
 
-\item{ini}{The initial amount. If x is an \code{\link{mkinfit}} object, and
+\item{ini}{The initial amount. If x is an \link[mkin:mkinfit]{mkin::mkinfit} object, and
 ini is 'model', the fitted initial concentrations are used. Otherwise, ini
 must be numeric. If it has length one, it is used for the parent and
 initial values of metabolites are zero, otherwise, it must give values for

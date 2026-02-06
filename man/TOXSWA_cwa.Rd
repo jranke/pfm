@@ -4,14 +4,14 @@
 \alias{TOXSWA_cwa}
 \title{R6 class for holding TOXSWA water concentration data and associated statistics}
 \format{
-An \code{\link{R6Class}} generator object.
+An \link[R6:R6Class]{R6::R6Class} generator object.
 }
 \description{
 An R6 class for holding TOXSWA water concentration (cwa) data
 and some associated statistics.  like maximum moving window average
 concentrations, and dataframes holding the events exceeding specified
 thresholds.  Usually, an instance of this class will be generated
-by \code{\link{read.TOXSWA_cwa}}.
+by \link{read.TOXSWA_cwa}.
 }
 \examples{
 H_sw_R1_stream  <- read.TOXSWA_cwa("00003s_pa.cwa",
