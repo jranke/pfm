@@ -120,10 +120,14 @@ PEC_sw_drift <- function(rate,
   drift_data <- match.arg(drift_data)
 
   unmatched_crop_groups_JKI <- setdiff(crop_group_JKI, colnames(pfm::drift_data_JKI[[1]]))
-  if (length(unmatched_crop_groups_JKI) > 0) stop("Crop group(s) ", unmatched_crop_groups_JKI, " not supported")
+  if (length(unmatched_crop_groups_JKI) > 0) {
+    stop("Crop group(s) ", paste(unmatched_crop_groups_JKI, collapse = ", "), " not supported")
+  }
 
   unmatched_crop_groups_RF <- setdiff(crop_group_RF, unique(pfm::drift_parameters_focus$crop_group))
-  if (length(unmatched_crop_groups_RF) > 0) stop("Crop group(s) ", unmatched_crop_groups_RF, " not supported")
+  if (length(unmatched_crop_groups_RF) > 0) {
+    stop("Crop group(s) ", paste(unmatched_crop_groups_RF, collapse = ", "),  "not supported")
+  }
 
   if (drift_data == "JKI" & crop_group_RF[1] != "arable") {
     stop("Specifying crop_group_RF only makes sense if 'RF' is used for 'drift_data'")
