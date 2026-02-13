@@ -7,8 +7,7 @@
 drift_percentages_rautmann(
   distances,
   applications = 1,
-  crop_group_RF = c("arable", "hops", "vines, late", "vines, early", "fruit, late",
-    "fruit, early", "aerial"),
+  crop_group_RF = "arable",
   formula = c("Rautmann", "FOCUS"),
   widths = 1
 )
@@ -18,7 +17,9 @@ drift_percentages_rautmann(
 
 \item{applications}{Number of applications for selection of drift percentile}
 
-\item{crop_group_RF}{One of the crop groups as used in \link{drift_parameters_focus}}
+\item{crop_group_RF}{Crop group(s) as used in \link{drift_parameters_focus}, i.e.
+"arable", "hops", "vines, late", "vines, early", "fruit, late", "fruit, early"
+or "aerial".}
 
 \item{formula}{By default, the original Rautmann formula is used. If you
 specify "FOCUS", mean drift input over the width of the water body is
@@ -35,6 +36,16 @@ Calculate drift percentages based on Rautmann data
 drift_data_JKI[[1]][as.character(c(1, 3, 5)), "Ackerbau"]
 drift_percentages_rautmann(c(1, 3, 5))
 drift_percentages_rautmann(c(1, 3, 5), formula = "FOCUS")
+
+# Since pfm 0.6.5, the function can also take a vector of crop groups
+drift_percentages_rautmann(
+  distances = c(1, 5, 5),
+  crop_group_RF = c("fruit, early", "fruit, early", "fruit, late"))
+
+# Two applications, all else equal
+drift_data_JKI[[2]][as.character(c(1, 3, 5)), "Ackerbau"]
+drift_percentages_rautmann(c(1, 3, 5), applications = 2)
+drift_percentages_rautmann(c(1, 3, 5), formula = "FOCUS", app = 2)
 
 # One application to early or late fruit crops
 drift_data_JKI[[1]][as.character(c(3, 5, 20, 50)), "Obstbau frueh"]

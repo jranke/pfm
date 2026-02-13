@@ -10,10 +10,8 @@ PEC_sw_drift(
   water_depth = as_units("30 cm"),
   drift_percentages = NULL,
   drift_data = c("JKI", "RF"),
-  crop_group_JKI = c("Ackerbau", "Obstbau frueh", "Obstbau spaet", "Weinbau frueh",
-    "Weinbau spaet", "Hopfenbau", "Flaechenkulturen > 900 l/ha", "Gleisanlagen"),
-  crop_group_RF = c("arable", "hops", "vines, late", "vines, early", "fruit, late",
-    "fruit, early", "aerial"),
+  crop_group_JKI = "Ackerbau",
+  crop_group_RF = "arable",
   distances = c(1, 5, 10, 20),
   formula = c("Rautmann", "FOCUS"),
   water_width = as_units("100 cm"),
@@ -31,7 +29,8 @@ PEC_sw_drift(
 \item{water_depth}{Depth of the water body in cm}
 
 \item{drift_percentages}{Percentage drift values for which to calculate PECsw.
-Overrides 'drift_data' and 'distances' if not NULL.}
+Overrides 'drift_data', 'distances', 'applications', crop group and
+formula arguments if not NULL.}
 
 \item{drift_data}{Source of drift percentage data. If 'JKI', the \link{drift_data_JKI}
 included in the package is used. If 'RF', the Rautmann drift data are calculated
@@ -39,9 +38,14 @@ either in the original form or integrated over the width of the water body, depe
 on the 'formula' argument.}
 
 \item{crop_group_JKI}{When using the 'JKI' drift data, one of the German names
-as used in \link{drift_data_JKI}. Will only be used if drift_data is 'JKI'.}
+as used in \link{drift_data_JKI}. Will only be used if drift_data is 'JKI'. Available
+crop groups are "Ackerbau", "Obstbau frueh", "Obstbau spaet",
+"Weinbau frueh", "Weinbau spaet", "Hopfenbau", "Flaechenkulturen > 900 l/ha" and
+"Gleisanlagen".}
 
-\item{crop_group_RF}{One of the crop groups as used in \link{drift_parameters_focus}}
+\item{crop_group_RF}{Crop group(s) as used in \link{drift_parameters_focus}, i.e.
+"arable", "hops", "vines, late", "vines, early", "fruit, late", "fruit, early"
+or "aerial".}
 
 \item{distances}{The distances in m for which to get PEC values}
 
@@ -70,6 +74,9 @@ with input via spray drift.
 \details{
 It is recommened to specify the arguments \code{rate}, \code{water_depth} and
 \code{water_width} using \link[units:units]{units::units} from the \code{units} package.
+
+Since pfm version 0.6.5, the function is vectorised with respect to rates,
+applications, water depth, crop groups and distances
 }
 \examples{
 PEC_sw_drift(100)
@@ -94,6 +101,34 @@ PEC_sw_drift(100, drift_data = "RF")
 PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS")
 PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS", side_angle = 45)
 PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS", side_angle = 45, water_width = 200)
+
+# The function is vectorised with respect to rates, applications, water depth,
+# crop groups and distances
+PEC_sw_drift(
+  rate = rep(100, 6),
+  applications = c(1, 2, rep(1, 4)),
+  water_depth = c(30, 30, 30, 60, 30, 30),
+  crop_group_JKI = c(rep("Ackerbau", 4), rep("Obstbau frueh", 2)),
+  distances = c(rep(5, 4), 10, 5))
+
+# Try the same with the Rautmann formula
+PEC_sw_drift(
+  rate = rep(100, 6),
+  applications = c(1, 2, rep(1, 4)),
+  water_depth = c(30, 30, 30, 60, 30, 30),
+  drift_data = "RF",
+  crop_group_RF = c(rep("arable", 4), rep("fruit, early", 2)),
+  distances = c(rep(5, 4), 10, 5))
+
+# And with the FOCUS variant
+PEC_sw_drift(
+  rate = rep(100, 6),
+  applications = c(1, 2, rep(1, 4)),
+  water_depth = c(30, 30, 30, 60, 30, 30),
+  drift_data = "RF",
+  formula = "FOCUS",
+  crop_group_RF = c(rep("arable", 4), rep("fruit, early", 2)),
+  distances = c(rep(5, 4), 10, 5))
 }
 \seealso{
 \link{drift_parameters_focus}, \link{drift_percentages_rautmann}

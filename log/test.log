@@ -5,14 +5,14 @@
 ✔ |          1 | Check max_twa for parent mkinfit models against analytical solutions
 ✔ |          1 | Simple PEC sediment calculations
 ✔ |         17 | Simple PEC soil calculations
-✔ |          8 | Simple PEC surface water calculations with drift entry
+✔ |         10 | Simple PEC surface water calculations with drift entry
 ✔ |          1 | Actual and time weighted average concentrations for SFO kinetics
 ✔ |          9 | FOCUS Step 1 calculations
 ✔ |          8 | FOCUS Steps 12 input files
-✔ |          7 | Read and analyse TOXSWA cwa files [2.6s]
+✔ |          7 | Read and analyse TOXSWA cwa files [4.2s]
 ✔ |         17 | UK drainage PEC calculations
 
 ══ Results ═════════════════════════════════════════════════════════════════════════════════════════
-Duration: 3.8 s
+Duration: 6.0 s
 
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 82 ]
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 84 ]

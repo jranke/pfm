@@ -35,7 +35,32 @@ test_that("The Rautmann formula is correctly implemented", {
   expect_equal(pfm_jki, pfm_rf, tolerance = 0.01)
 
   expect_error(PEC_sw_drift(100, drift_data = "RF", applications = 10), "Only 1 to 8 applications")
-  expect_error(PEC_sw_drift(100, drift_data = "RF", applications = 1, crop_group_RF = "Obstbau spaet"),
-    "should be one of")
+
+  expect_error(PEC_sw_drift(100, drift_data = "RF", applications = 1, crop_group_RF = "Obstbau spaet"))
   expect_silent(PEC_sw_drift(100, drift_data = "RF", applications = 1, crop_group_RF = "fruit, late"))
+})
+
+test_that("The function is vectorised also with respect to crop groups", {
+  res_vec_1 <- PEC_sw_drift(
+    rate = rep(100, 6),
+    applications = c(1, 2, rep(1, 4)),
+    water_depth = c(30, 30, 30, 60, 30, 30),
+    crop_group_JKI = c(rep("Ackerbau", 4), rep("Obstbau frueh", 2)),
+    distances = c(rep(5, 4), 10, 5))
+  expect_equal(
+    round(res_vec_1, 3),
+    set_units(c('5 m' = 0.190, '5 m' = 0.157, '5 m' = 0.190, '5 m' = 0.095, '10 m' = 3.937, '5 m' = 6.630), "\u00B5g/L"))
+
+  # Try the same with the Rautmann formula, results are slightly different
+  res_vec_2 <- PEC_sw_drift(
+    rate = rep(100, 6),
+    applications = c(1, 2, rep(1, 4)),
+    water_depth = c(30, 30, 30, 60, 30, 30),
+    drift_data = "RF",
+    crop_group_RF = c(rep("arable", 4), rep("fruit, early", 2)),
+    distances = c(rep(5, 4), 10, 5))
+  expect_equal(
+    round(res_vec_2, 3),
+    set_units(c('5 m' = 0.191, '5 m' = 0.160, '5 m' = 0.191, '5 m' = 0.095, '10 m' = 3.936, '5 m' = 6.628), "\u00B5g/L"))
+
 })

@@ -1,5 +1,9 @@
 ## version 0.6.4
 
+- R/PEC_sw_drift.R: Vectorise the function not only with respect to distances, rates and water depths, but also with respect to crop groups. Closes issue #2 reported by Julian Klein (@juklei).
+
+## version 0.6.4
+
 - R/PEC_sw_drainage_uk.R: Fix a bug preventing the function to work of `latest_application` is set to 29 February. Also, make this function correctly deal with units.
 
 - R/twa.R: Fix a bug in plotting one-box models of class `one_box` that affected plots that displayed a time weighted average.

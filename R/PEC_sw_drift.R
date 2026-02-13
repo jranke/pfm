@@ -1,3 +1,4 @@
+utils::globalVariables(c("A", "B", "C", "D", "H", "hinge", "z1", "z2", "distance", "pctg", "width"))
 #' Calculate predicted environmental concentrations in surface water due to drift
 #'
 #' This is a basic, vectorised form of a simple calculation of a contaminant
@@ -7,6 +8,9 @@
 #' It is recommened to specify the arguments `rate`, `water_depth` and
 #' `water_width` using [units::units] from the `units` package.
 #'
+#' Since pfm version 0.6.5, the function is vectorised with respect to rates,
+#' applications, water depth, crop groups and distances
+#'
 #' @inheritParams drift_percentages_rautmann
 #' @importFrom units as_units set_units
 #' @seealso [drift_parameters_focus], [drift_percentages_rautmann]
@@ -15,18 +19,25 @@
 #' @param rate_units Defaults to g/ha. For backwards compatibility, only used
 #' if the specified rate does not have [units::units]].
 #' @param drift_percentages Percentage drift values for which to calculate PECsw.
-#'   Overrides 'drift_data' and 'distances' if not NULL.
+#'   Overrides 'drift_data', 'distances', 'applications', crop group and
+#'   formula arguments if not NULL.
 #' @param drift_data Source of drift percentage data. If 'JKI', the [drift_data_JKI]
 #'   included in the package is used. If 'RF', the Rautmann drift data are calculated
 #'   either in the original form or integrated over the width of the water body, depending
 #'   on the 'formula' argument.
 #' @param crop_group_JKI When using the 'JKI' drift data, one of the German names
-#'   as used in [drift_data_JKI]. Will only be used if drift_data is 'JKI'.
+#'   as used in [drift_data_JKI]. Will only be used if drift_data is 'JKI'. Available
+#'   crop groups are "Ackerbau", "Obstbau frueh", "Obstbau spaet",
+#'   "Weinbau frueh", "Weinbau spaet", "Hopfenbau", "Flaechenkulturen > 900 l/ha" and
+#'   "Gleisanlagen".
 #' @param water_depth Depth of the water body in cm
 #' @param PEC_units Requested units for the calculated PEC. Only µg/L currently supported
 #' @param water_width Width of the water body in cm
 #' @param side_angle The angle of the side of the water relative to the bottom which
 #'   is assumed to be horizontal, in degrees. The SYNOPS model assumes 45 degrees here.
+#' @importFrom tibble as_tibble
+#' @importFrom dplyr bind_rows
+#' @importFrom tidyr pivot_longer
 #' @return The predicted concentration in surface water
 #' @export
 #' @author Johannes Ranke
@@ -53,16 +64,41 @@
 #' PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS")
 #' PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS", side_angle = 45)
 #' PEC_sw_drift(100, drift_data = "RF", formula = "FOCUS", side_angle = 45, water_width = 200)
+#'
+#' # The function is vectorised with respect to rates, applications, water depth,
+#' # crop groups and distances
+#' PEC_sw_drift(
+#'   rate = rep(100, 6),
+#'   applications = c(1, 2, rep(1, 4)),
+#'   water_depth = c(30, 30, 30, 60, 30, 30),
+#'   crop_group_JKI = c(rep("Ackerbau", 4), rep("Obstbau frueh", 2)),
+#'   distances = c(rep(5, 4), 10, 5))
+#'
+#' # Try the same with the Rautmann formula
+#' PEC_sw_drift(
+#'   rate = rep(100, 6),
+#'   applications = c(1, 2, rep(1, 4)),
+#'   water_depth = c(30, 30, 30, 60, 30, 30),
+#'   drift_data = "RF",
+#'   crop_group_RF = c(rep("arable", 4), rep("fruit, early", 2)),
+#'   distances = c(rep(5, 4), 10, 5))
+#'
+#' # And with the FOCUS variant
+#' PEC_sw_drift(
+#'   rate = rep(100, 6),
+#'   applications = c(1, 2, rep(1, 4)),
+#'   water_depth = c(30, 30, 30, 60, 30, 30),
+#'   drift_data = "RF",
+#'   formula = "FOCUS",
+#'   crop_group_RF = c(rep("arable", 4), rep("fruit, early", 2)),
+#'   distances = c(rep(5, 4), 10, 5))
 PEC_sw_drift <- function(rate,
   applications = 1,
   water_depth = as_units("30 cm"),
   drift_percentages = NULL,
   drift_data = c("JKI", "RF"),
-  crop_group_JKI = c("Ackerbau",
-    "Obstbau frueh", "Obstbau spaet", "Weinbau frueh", "Weinbau spaet",
-    "Hopfenbau", "Flaechenkulturen > 900 l/ha", "Gleisanlagen"),
-  crop_group_RF = c("arable", "hops", "vines, late", "vines, early",
-    "fruit, late", "fruit, early", "aerial"),
+  crop_group_JKI = "Ackerbau",
+  crop_group_RF = "arable",
   distances = c(1, 5, 10, 20),
   formula = c("Rautmann", "FOCUS"),
   water_width = as_units("100 cm"),
@@ -70,38 +106,60 @@ PEC_sw_drift <- function(rate,
   rate_units = "g/ha",
   PEC_units = "\u00B5g/L")
 {
+
+  # Check arguments and set default units if not specified
   rate_units <- match.arg(rate_units)
   PEC_units <- match.arg(PEC_units)
-  # Set default units if not specified
   if (!inherits(rate, "units")) rate <- set_units(rate, rate_units, mode = "symbolic")
   if (!inherits(water_width, "units")) water_width <- set_units(water_width, "cm")
   if (!inherits(water_depth, "units")) water_depth <- set_units(water_depth, "cm")
   drift_data <- match.arg(drift_data)
-  crop_group_JKI <- match.arg(crop_group_JKI)
-  crop_group_RF <- match.arg(crop_group_RF)
-  if (drift_data == "JKI" & crop_group_RF != "arable") {
+
+  unmatched_crop_groups_JKI <- setdiff(crop_group_JKI, colnames(pfm::drift_data_JKI[[1]]))
+  if (length(unmatched_crop_groups_JKI) > 0) stop("Crop group(s) ", unmatched_crop_groups_JKI, " not supported")
+
+  unmatched_crop_groups_RF <- setdiff(crop_group_RF, unique(pfm::drift_parameters_focus$crop_group))
+  if (length(unmatched_crop_groups_RF) > 0) stop("Crop group(s) ", unmatched_crop_groups_RF, " not supported")
+
+  if (drift_data == "JKI" & crop_group_RF[1] != "arable") {
     stop("Specifying crop_group_RF only makes sense if 'RF' is used for 'drift_data'")
   }
-  if (drift_data == "RF" & crop_group_JKI != "Ackerbau") {
+  if (drift_data == "RF" & crop_group_JKI[1] != "Ackerbau") {
     stop("Specifying crop_group_JKI only makes sense if 'JKI' is used for 'drift_data'")
   }
   formula <- match.arg(formula)
+
+  # Check waterbody arguments and calculate mean water width (absolute and relative to water width)
   if (side_angle < 0 | side_angle > 90) stop("The side anglemust be between 0 and 90 degrees")
   mean_water_width <- if (side_angle == 90) water_width # Mean water width over waterbody depth
   else water_width - (water_depth / tanpi(side_angle/180))
   if (as.numeric(mean_water_width) < 0) stop("Undefined geometry")
   relative_mean_water_width <- mean_water_width / water_width # Always <= 1
+
+  # Base PEC sw drift for overspray
   PEC_sw_overspray <- set_units(rate / (relative_mean_water_width * water_depth), PEC_units, mode = "symbolic")
-  dist_index <- as.character(distances)
 
   if (is.null(drift_percentages)) {
-    drift_percentages <- switch(drift_data,
-      JKI = pfm::drift_data_JKI[[applications]][dist_index, crop_group_JKI],
-      RF =  drift_percentages_rautmann(distances, applications,
+    if (drift_data == "JKI") {
+      drift_data_JKI_long <- pfm::drift_data_JKI |>
+        lapply(as_tibble, rownames = "distance") |>
+        bind_rows(.id = "applications") |>
+        pivot_longer(3:10, names_to = "crop_group_JKI", values_to = "pctg")
+
+      drift_percentages <- tibble(
+          applications = as.character(applications),
+          distance = as.character(distances), crop_group_JKI
+        ) |>
+        left_join(drift_data_JKI_long, by = c("applications", "distance", "crop_group_JKI")) |>
+        pull(pctg)
+      names(drift_percentages) <- paste(distances, "m")
+    }
+    if (drift_data == "RF") {
+      drift_percentages <- drift_percentages_rautmann(distances, applications,
         formula = formula,
         crop_group_RF, widths = as.numeric(set_units(water_width, "m")))
-    )
-    names(drift_percentages) <- paste(dist_index, "m")
+      names(drift_percentages) <- paste(distances, "m")
+    }
   } else {
     names(drift_percentages) <- paste(drift_percentages, "%")
   }
@@ -118,7 +176,11 @@ PEC_sw_drift <- function(rate,
 #' @param distances The distances in m for which to get PEC values
 #' @param widths The widths of the water bodies (only used in the FOCUS formula)
 #' @param applications Number of applications for selection of drift percentile
-#' @param crop_group_RF One of the crop groups as used in [drift_parameters_focus]
+#' @param crop_group_RF Crop group(s) as used in [drift_parameters_focus], i.e.
+#'   "arable", "hops", "vines, late", "vines, early", "fruit, late", "fruit, early"
+#'   or "aerial".
+#' @importFrom tibble tibble
+#' @importFrom dplyr if_else left_join mutate pull
 #' @seealso [drift_parameters_focus], [PEC_sw_drift]
 #' @references FOCUS (2014) Generic guidance for Surface Water Scenarios (version 1.4).
 #' FOrum for the Co-ordination of pesticde fate models and their USe.
@@ -130,6 +192,16 @@ PEC_sw_drift <- function(rate,
 #' drift_data_JKI[[1]][as.character(c(1, 3, 5)), "Ackerbau"]
 #' drift_percentages_rautmann(c(1, 3, 5))
 #' drift_percentages_rautmann(c(1, 3, 5), formula = "FOCUS")
+#'
+#' # Since pfm 0.6.5, the function can also take a vector of crop groups
+#' drift_percentages_rautmann(
+#'   distances = c(1, 5, 5),
+#'   crop_group_RF = c("fruit, early", "fruit, early", "fruit, late"))
+#'
+#' # Two applications, all else equal
+#' drift_data_JKI[[2]][as.character(c(1, 3, 5)), "Ackerbau"]
+#' drift_percentages_rautmann(c(1, 3, 5), applications = 2)
+#' drift_percentages_rautmann(c(1, 3, 5), formula = "FOCUS", app = 2)
 #'
 #' # One application to early or late fruit crops
 #' drift_data_JKI[[1]][as.character(c(3, 5, 20, 50)), "Obstbau frueh"]
@@ -151,41 +223,46 @@ PEC_sw_drift <- function(rate,
 #'   main = "One application to fruit, early")
 #' abline(v = 11.4, lty = 2)
 drift_percentages_rautmann <- function(distances, applications = 1,
-  crop_group_RF = c("arable", "hops", "vines, late", "vines, early", "fruit, late",
-    "fruit, early", "aerial"),
+  crop_group_RF = "arable",
   formula = c("Rautmann", "FOCUS"),
   widths = 1
 )
 {
-  cg <- match.arg(crop_group_RF)
-  if (!applications %in% 1:8) stop("Only 1 to 8 applications are supported")
+  unmatched_crop_groups <- setdiff(crop_group_RF, unique(pfm::drift_parameters_focus$crop_group))
+  if (length(unmatched_crop_groups) > 0) stop("Crop group(s) ", unmatched_crop_groups, " not supported")
+  if (!all(applications %in% 1:8)) stop("Only 1 to 8 applications are supported")
   formula <- match.arg(formula)
 
-  parms <- pfm::drift_parameters_focus[pfm::drift_parameters_focus$crop_group == cg &
-    pfm::drift_parameters_focus$n_apps == applications, c("A", "B", "C", "D", "hinge")]
+  # To avoid recycling of components with length != 1 but smaller than the longest argument,
+  # which would likely be unintended, we use tibble here
+  parms <- tibble(distance = distances, width = widths, n_apps = applications, crop_group = crop_group_RF) |>
+    left_join(pfm::drift_parameters_focus, by = c("n_apps", "crop_group"))
 
   if (formula[1] == "Rautmann") {
-    drift_percentages = with(as.list(parms), {
-      A <- ifelse(distances < hinge, A, C)
-      B <- ifelse(distances < hinge, B, D)
-      A * distances^B
-    })
+    drift_percentages <- parms |>
+      mutate(
+        A = if_else(distance < hinge, A, C),
+        B = if_else(distance < hinge, B, D)) |>
+      mutate(
+        pctg = A * distances^B) |>
+      pull(pctg)
   } else {
-    drift_percentages = with(as.list(parms), {
-      z1 = distances
-      z2 = distances + widths
-      H = hinge
-      ifelse(z2 < hinge,
+    drift_percentages <- parms |>
+      mutate(
+        z1 = distance,
+        z2 = distance + width,
+        H = hinge) |>
+      mutate(
+        pctg = if_else(z2 < hinge,
         # farther edge closer than hinge distance
-        A/(widths * (B + 1)) * (z2^(B + 1) - z1^(B + 1)),
-        ifelse(z1 < hinge,
+        A/(width * (B + 1)) * (z2^(B + 1) - z1^(B + 1)),
+        if_else(z1 < hinge,
           # hinge distance in waterbody (between z1 and z2)
-          (A/(B + 1) * (H^(B + 1) - z1^(B + 1)) + C/(D + 1) * (z2^(D + 1) - H^(D + 1)))/widths,
+          (A/(B + 1) * (H^(B + 1) - z1^(B + 1)) + C/(D + 1) * (z2^(D + 1) - H^(D + 1)))/width,
           # z1 >= hinge, i.e. near edge farther than hinge distance
-          C/(widths * (D + 1)) * (z2^(D + 1) - z1^(D + 1))
-        )
-      )
-    })
+          C/(width * (D + 1)) * (z2^(D + 1) - z1^(D + 1)))
+        )) |>
+      pull(pctg)
   }
 
   return(drift_percentages)

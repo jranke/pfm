@@ -1,8 +1,8 @@
 Package: pfm
 Type: Package
 Title: Utilities for Pesticide Fate Modelling
-Version: 0.6.4
-Date: 2026-02-06
+Version: 0.6.5
+Date: 2026-02-13
 Authors@R: c(
   person("Johannes Ranke", email = "johannes.ranke@agroscope.admin.ch",
     role = c("aut", "cre"),
@@ -13,24 +13,13 @@ Description: Utilities for simple calculations of predicted environmental
     concentrations ('PEC' values) and for dealing with data from some FOCUS
     pesticide fate modelling software packages.
 Depends:
-    R (>= 3.5.0),
+    R (>= 4.1.0),
     R6,
     mkin (>= 1.2)
 Imports:
-    graphics,
-    readr,
-    methods,
-    units,
-    dplyr
+    graphics, readr, methods, units, dplyr, tibble, tidyr
 Suggests:
-    testthat,
-    chents,
-    grImport,
-    magrittr,
-    covr,
-    here,
-    waldo,
-    docxtractr
+    testthat, chents, grImport, magrittr, covr, here, waldo, docxtractr
 License: GPL
 LazyLoad: true
 LazyData: true
