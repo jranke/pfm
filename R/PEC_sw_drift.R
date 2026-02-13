@@ -12,6 +12,7 @@ utils::globalVariables(c("A", "B", "C", "D", "H", "hinge", "z1", "z2", "distance
 #' applications, water depth, crop groups and distances
 #'
 #' @inheritParams drift_percentages_rautmann
+#' @importFrom testthat capture_output
 #' @importFrom units as_units set_units
 #' @seealso [drift_parameters_focus], [drift_percentages_rautmann]
 #' @param rate Application rate in units specified below, or with units defined via the
@@ -38,7 +39,10 @@ utils::globalVariables(c("A", "B", "C", "D", "H", "hinge", "z1", "z2", "distance
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr bind_rows
 #' @importFrom tidyr pivot_longer
-#' @return The predicted concentration in surface water
+#' @return A numeric vector with the predicted concentration in surface water.
+#'   In some cases, the vector is named with distances or drift percentages, for 
+#'   backward compatibility with versions before the vectorisation of arguments
+#'   other than 'distances' was introduced in v0.6.5.
 #' @export
 #' @author Johannes Ranke
 #' @examples
@@ -135,6 +139,19 @@ PEC_sw_drift <- function(rate,
   else water_width - (water_depth / tanpi(side_angle/180))
   if (as.numeric(mean_water_width) < 0) stop("Undefined geometry")
   relative_mean_water_width <- mean_water_width / water_width # Always <= 1
+  
+  # Check lengths of arguments advertised as vectorised for compatibility
+  arg_lengths <- sapply(
+    list(rate = rate, applications = applications, distances = distances, 
+      water_depth = water_depth, crop_group_JKI = crop_group_JKI, 
+      crop_group_RF = crop_group_RF),
+    length)
+  
+  arg_lengths_not_one <- arg_lengths[arg_lengths != 1]
+  if (length(unique(arg_lengths_not_one)) > 1) {
+    stop("The following argument lengths do not match:\n", 
+      capture_output(print(arg_lengths_not_one)))
+  }
 
   # Base PEC sw drift for overspray
   PEC_sw_overspray <- set_units(rate / (relative_mean_water_width * water_depth), PEC_units, mode = "symbolic")

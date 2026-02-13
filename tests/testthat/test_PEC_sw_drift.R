@@ -62,5 +62,7 @@ test_that("The function is vectorised also with respect to crop groups", {
   expect_equal(
     round(res_vec_2, 3),
     set_units(c('5 m' = 0.191, '5 m' = 0.160, '5 m' = 0.191, '5 m' = 0.095, '10 m' = 3.936, '5 m' = 6.628), "\u00B5g/L"))
-
+  
+  # If different argument lengths are supplied, we should get an error
+  expect_error(PEC_sw_drift(c(200, 100), distances = c(1, 5, 10)), "argument lengths")
 })

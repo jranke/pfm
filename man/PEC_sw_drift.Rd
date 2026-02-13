@@ -64,7 +64,10 @@ if the specified rate does not have \link[units:units]{units::units}].}
 \item{PEC_units}{Requested units for the calculated PEC. Only µg/L currently supported}
 }
 \value{
-The predicted concentration in surface water
+A numeric vector with the predicted concentration in surface water.
+In some cases, the vector is named with distances or drift percentages, for
+backward compatibility with versions before the vectorisation of arguments
+other than 'distances' was introduced in v0.6.5.
 }
 \description{
 This is a basic, vectorised form of a simple calculation of a contaminant

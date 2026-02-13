@@ -17,9 +17,9 @@ Depends:
     R6,
     mkin (>= 1.2)
 Imports:
-    graphics, readr, methods, units, dplyr, tibble, tidyr
+    graphics, readr, methods, units, dplyr, tibble, tidyr, testthat
 Suggests:
-    testthat, chents, grImport, magrittr, covr, here, waldo, docxtractr
+    chents, grImport, magrittr, covr, here, waldo, docxtractr
 License: GPL
 LazyLoad: true
 LazyData: true
