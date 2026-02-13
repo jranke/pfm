@@ -1,4 +1,6 @@
-## version 0.6.4
+## version 0.6.5
+
+- R/PEC_sw_drainage_UK.R: Create a function `drainage_date_UK` that does not only respect the beginning of the drainage period on 1 October, but also the end of the drainage period on 30 April, and use it for determining the degradation time. Applications early in the year before 1 May will now correctly be calculated without degradation time.
 
 - R/PEC_sw_drift.R: Vectorise the function not only with respect to distances, rates and water depths, but also with respect to crop groups. Closes issue #2 reported by Julian Klein (@juklei).
 

@@ -2,6 +2,7 @@
 % Please edit documentation in R/PEC_sw_drainage_UK.R
 \name{PEC_sw_drainage_UK}
 \alias{PEC_sw_drainage_UK}
+\alias{drainage_date_UK}
 \title{Calculate initial predicted environmental concentrations in surface water due to drainage using the UK method}
 \usage{
 PEC_sw_drainage_UK(
@@ -13,6 +14,8 @@ PEC_sw_drainage_UK(
   model = NULL,
   model_parms = NULL
 )
+
+drainage_date_UK(application_date)
 }
 \arguments{
 \item{rate}{Application rate in g/ha or with a compatible unit specified
@@ -32,29 +35,35 @@ days or a time unit specified with the units package}
 "DFOP", "HS", or "IORE", or an mkinmod object}
 
 \item{model_parms}{A named numeric vector containing the model parameters}
+
+\item{application_date}{Application date}
 }
 \value{
 The predicted concentration in surface water in µg/L
 }
 \description{
 This implements the method specified in the UK data requirements handbook and was checked against the spreadsheet
-published on the CRC website. Degradation before the start of the drainage period is taken into account if
+published on the CRC website. Degradation between the end (30 April) and the start (1 October) of
+the drainage period is taken into account if
 \code{latest_application} is specified and the degradation parameters are given either as a \code{soil_DT50} or a \code{model}.
 }
 \examples{
 PEC_sw_drainage_UK(150, Koc = 100)
 PEC_sw_drainage_UK(60, interception = 0.5, Koc = 550,
   latest_application = "01 July", soil_DT50 = 200)
+drainage_date_UK("2023-07-10")
+drainage_date_UK("2020-12-01")
+drainage_date_UK(as.Date("2022-01-15"))
 }
 \references{
 HSE's Chemicals Regulation Division (CRD) Active substance
 PECsw calculations (for UK specific authorisation requests)
-\url{https://www.hse.gov.uk/pesticides/topics/pesticide-approvals/pesticides-registration/data-requirements-handbook/fate/active-substance-uk.htm}
-accessed 2019-09-27
+\url{https://www.hse.gov.uk/pesticides/data-requirements-handbook/fate/pecsw-sed-via-drainflow.htm}
+accessed 2026-02-13
 
-Drainage PECs Version 1.0 (2015) Spreadsheet published at
-\url{https://www.hse.gov.uk/pesticides/topics/pesticide-approvals/pesticides-registration/data-requirements-handbook/fate/pec-tools-2015/PEC\%20sw-sed\%20(drainage).xlsx}
-accessed 2019-09-27
+PECsw/sed spray drift and tier 1 drainflow calculator Version 2.1.1 (2025) Spreadsheet published at
+\url{https://www.hse.gov.uk/pesticides/assets/docs/PEC\%20sw-sed\%20(spraydrift).xlsx)}
+accessed 2026-02-13
 }
 \author{
 Johannes Ranke

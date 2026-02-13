@@ -1,4 +1,5 @@
 library(pfm)
+library(units)
 context("UK drainage PEC calculations")
 
 test_that("The mobility classification and the drained percentage are correct", {
@@ -41,6 +42,12 @@ test_that("UK drainflow PECs are correct", {
     latest_application = "01 July",
     soil_DT50 = 200), 2), 
     as_units(0.84, "\u00B5g/L"))
+  
+  # Check and example with early application before the end of the drainage period
+  expect_equal(round(PEC_sw_drainage_UK(90, interception = 0, Koc = 10,
+    latest_application = "01 February",
+    soil_DT50 = 200), 4),
+    as_units(13.1538, "\u00B5g/L"))
 
   expect_error(round(PEC_sw_drainage_UK(60, interception = 0.5, Koc = 550,
                                         latest_application = "100 July",

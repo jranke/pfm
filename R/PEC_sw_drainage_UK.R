@@ -1,7 +1,8 @@
 #' Calculate initial predicted environmental concentrations in surface water due to drainage using the UK method
 #'
 #' This implements the method specified in the UK data requirements handbook and was checked against the spreadsheet
-#' published on the CRC website. Degradation before the start of the drainage period is taken into account if
+#' published on the CRC website. Degradation between the end (30 April) and the start (1 October) of 
+#' the drainage period is taken into account if
 #' `latest_application` is specified and the degradation parameters are given either as a `soil_DT50` or a `model`.
 #'
 #' @param rate Application rate in g/ha or with a compatible unit specified
@@ -18,12 +19,12 @@
 #' @return The predicted concentration in surface water in µg/L
 #' @references HSE's Chemicals Regulation Division (CRD) Active substance
 #'   PECsw calculations (for UK specific authorisation requests)
-#'   \url{https://www.hse.gov.uk/pesticides/topics/pesticide-approvals/pesticides-registration/data-requirements-handbook/fate/active-substance-uk.htm}
-#'   accessed 2019-09-27
+#'   \url{https://www.hse.gov.uk/pesticides/data-requirements-handbook/fate/pecsw-sed-via-drainflow.htm}
+#'   accessed 2026-02-13
 #'
-#'   Drainage PECs Version 1.0 (2015) Spreadsheet published at
-#'   \url{https://www.hse.gov.uk/pesticides/topics/pesticide-approvals/pesticides-registration/data-requirements-handbook/fate/pec-tools-2015/PEC\%20sw-sed\%20(drainage).xlsx}
-#'   accessed 2019-09-27
+#'   PECsw/sed spray drift and tier 1 drainflow calculator Version 2.1.1 (2025) Spreadsheet published at
+#'   \url{https://www.hse.gov.uk/pesticides/assets/docs/PEC%20sw-sed%20(spraydrift).xlsx)}
+#'   accessed 2026-02-13
 #' @export
 #' @author Johannes Ranke
 #' @examples
@@ -61,12 +62,13 @@ PEC_sw_drainage_UK <- function(rate,
     latest <- as.Date(paste(latest_application, ref_year), "%d %b %Y")
     if (is.na(latest)) stop("Please specify the latest application in the format '%d %b', e.g. '01 July'")
     tmp <- Sys.setlocale("LC_TIME", lct)
-    degradation_time <- as.numeric(difftime(as.Date(paste0(ref_year,"-10-01")), units = "days", latest))
+    
+    drainage_date <- drainage_date_UK(latest)
+    degradation_time <- as.numeric(difftime(drainage_date, latest, units = "days"))
+    
     if (degradation_time > 0) {
       if (!missing(soil_DT50)) {
         k = log(2)/soil_DT50_d
-        as.Date(paste(latest_application, "1999"), "%d %B %Y")
-
         amount_available <- amount_available * exp(-k * degradation_time)
         if (!missing(model)) stop("You already supplied a soil_DT50 value, implying SFO kinetics")
       }
@@ -81,4 +83,23 @@ PEC_sw_drainage_UK <- function(rate,
   volume = 130000 # L/ha
   PEC = set_units(1e6 * (percentage_lost/100) * amount_available / volume, "\u00B5g/L")
   return(PEC)
+}
+
+#' @rdname PEC_sw_drainage_UK
+#' @param application_date Application date
+#' @export
+#' @examples
+#' drainage_date_UK("2023-07-10")
+#' drainage_date_UK("2020-12-01")
+#' drainage_date_UK(as.Date("2022-01-15"))
+drainage_date_UK <- function(application_date) {
+  year <- substr(application_date, 1, 4)
+  drainage_end <- as.Date(paste0(year, "-04-30"))
+  drainage_start <- as.Date(paste0(year, "-10-01"))
+  if (application_date <= drainage_end | application_date >= drainage_start) {
+    drainage_date <- application_date
+  } else {
+    drainage_date <- drainage_start
+  }
+  return(drainage_date)
 }
