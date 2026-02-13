@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pfm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,8 +42,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">drift_percentages_rautmann</span><span class="op">(</span></span>
 <span>  <span class="va">distances</span>,</span>
 <span>  applications <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  crop_group_RF <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"arable"</span>, <span class="st">"hops"</span>, <span class="st">"vines, late"</span>, <span class="st">"vines, early"</span>, <span class="st">"fruit, late"</span>,</span>
-<span>    <span class="st">"fruit, early"</span>, <span class="st">"aerial"</span><span class="op">)</span>,</span>
+<span>  crop_group_RF <span class="op">=</span> <span class="st">"arable"</span>,</span>
 <span>  formula <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Rautmann"</span>, <span class="st">"FOCUS"</span><span class="op">)</span>,</span>
 <span>  widths <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -62,7 +61,9 @@
 
 
 <dt id="arg-crop-group-rf">crop_group_RF<a class="anchor" aria-label="anchor" href="#arg-crop-group-rf"></a></dt>
-<dd><p>One of the crop groups as used in <a href="drift_parameters_focus.html">drift_parameters_focus</a></p></dd>
+<dd><p>Crop group(s) as used in <a href="drift_parameters_focus.html">drift_parameters_focus</a>, i.e.
+"arable", "hops", "vines, late", "vines, early", "fruit, late", "fruit, early"
+or "aerial".</p></dd>
 
 
 <dt id="arg-formula">formula<a class="anchor" aria-label="anchor" href="#arg-formula"></a></dt>
@@ -97,6 +98,21 @@ FOrum for the Co-ordination of pesticde fate models and their USe.
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.7593000 0.9424748 0.5719342</span>
 <span class="r-in"><span><span class="fu">drift_percentages_rautmann</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span>, formula <span class="op">=</span> <span class="st">"FOCUS"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.9273922 0.8160023 0.5224362</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Since pfm 0.6.5, the function can also take a vector of crop groups</span></span></span>
+<span class="r-in"><span><span class="fu">drift_percentages_rautmann</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  distances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  crop_group_RF <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"fruit, early"</span>, <span class="st">"fruit, early"</span>, <span class="st">"fruit, late"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 66.702000 19.884442  8.410849</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Two applications, all else equal</span></span></span>
+<span class="r-in"><span><span class="va">drift_data_JKI</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>, <span class="st">"Ackerbau"</span><span class="op">]</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    1    3    5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.38 0.79 0.47 </span>
+<span class="r-in"><span><span class="fu">drift_percentages_rautmann</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span>, applications <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.4376000 0.8036556 0.4797365</span>
+<span class="r-in"><span><span class="fu">drift_percentages_rautmann</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span>, formula <span class="op">=</span> <span class="st">"FOCUS"</span>, app <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.6837733 0.6925952 0.4369331</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># One application to early or late fruit crops</span></span></span>
 <span class="r-in"><span><span class="va">drift_data_JKI</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">20</span>, <span class="fl">50</span><span class="op">)</span><span class="op">)</span>, <span class="st">"Obstbau frueh"</span><span class="op">]</span></span></span>
@@ -137,7 +153,7 @@ FOrum for the Co-ordination of pesticde fate models and their USe.
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>

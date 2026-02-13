@@ -11,7 +11,7 @@ with input via spray drift."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">pfm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,10 +51,8 @@ with input via spray drift.</p>
 <span>  water_depth <span class="op">=</span> <span class="fu">as_units</span><span class="op">(</span><span class="st">"30 cm"</span><span class="op">)</span>,</span>
 <span>  drift_percentages <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  drift_data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"JKI"</span>, <span class="st">"RF"</span><span class="op">)</span>,</span>
-<span>  crop_group_JKI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ackerbau"</span>, <span class="st">"Obstbau frueh"</span>, <span class="st">"Obstbau spaet"</span>, <span class="st">"Weinbau frueh"</span>,</span>
-<span>    <span class="st">"Weinbau spaet"</span>, <span class="st">"Hopfenbau"</span>, <span class="st">"Flaechenkulturen &gt; 900 l/ha"</span>, <span class="st">"Gleisanlagen"</span><span class="op">)</span>,</span>
-<span>  crop_group_RF <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"arable"</span>, <span class="st">"hops"</span>, <span class="st">"vines, late"</span>, <span class="st">"vines, early"</span>, <span class="st">"fruit, late"</span>,</span>
-<span>    <span class="st">"fruit, early"</span>, <span class="st">"aerial"</span><span class="op">)</span>,</span>
+<span>  crop_group_JKI <span class="op">=</span> <span class="st">"Ackerbau"</span>,</span>
+<span>  crop_group_RF <span class="op">=</span> <span class="st">"arable"</span>,</span>
 <span>  distances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span>,</span>
 <span>  formula <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Rautmann"</span>, <span class="st">"FOCUS"</span><span class="op">)</span>,</span>
 <span>  water_width <span class="op">=</span> <span class="fu">as_units</span><span class="op">(</span><span class="st">"100 cm"</span><span class="op">)</span>,</span>
@@ -83,7 +81,8 @@ with input via spray drift.</p>
 
 <dt id="arg-drift-percentages">drift_percentages<a class="anchor" aria-label="anchor" href="#arg-drift-percentages"></a></dt>
 <dd><p>Percentage drift values for which to calculate PECsw.
-Overrides 'drift_data' and 'distances' if not NULL.</p></dd>
+Overrides 'drift_data', 'distances', 'applications', crop group and
+formula arguments if not NULL.</p></dd>
 
 
 <dt id="arg-drift-data">drift_data<a class="anchor" aria-label="anchor" href="#arg-drift-data"></a></dt>
@@ -95,11 +94,16 @@ on the 'formula' argument.</p></dd>
 
 <dt id="arg-crop-group-jki">crop_group_JKI<a class="anchor" aria-label="anchor" href="#arg-crop-group-jki"></a></dt>
 <dd><p>When using the 'JKI' drift data, one of the German names
-as used in <a href="drift_data_JKI.html">drift_data_JKI</a>. Will only be used if drift_data is 'JKI'.</p></dd>
+as used in <a href="drift_data_JKI.html">drift_data_JKI</a>. Will only be used if drift_data is 'JKI'. Available
+crop groups are "Ackerbau", "Obstbau frueh", "Obstbau spaet",
+"Weinbau frueh", "Weinbau spaet", "Hopfenbau", "Flaechenkulturen &gt; 900 l/ha" and
+"Gleisanlagen".</p></dd>
 
 
 <dt id="arg-crop-group-rf">crop_group_RF<a class="anchor" aria-label="anchor" href="#arg-crop-group-rf"></a></dt>
-<dd><p>One of the crop groups as used in <a href="drift_parameters_focus.html">drift_parameters_focus</a></p></dd>
+<dd><p>Crop group(s) as used in <a href="drift_parameters_focus.html">drift_parameters_focus</a>, i.e.
+"arable", "hops", "vines, late", "vines, early", "fruit, late", "fruit, early"
+or "aerial".</p></dd>
 
 
 <dt id="arg-distances">distances<a class="anchor" aria-label="anchor" href="#arg-distances"></a></dt>
@@ -138,6 +142,8 @@ if the specified rate does not have <a href="https://r-quantities.github.io/unit
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>It is recommened to specify the arguments <code>rate</code>, <code>water_depth</code> and
 <code>water_width</code> using <a href="https://r-quantities.github.io/units/reference/units.html" class="external-link">units::units</a> from the <code>units</code> package.</p>
+<p>Since pfm version 0.6.5, the function is vectorised with respect to rates,
+applications, water depth, crop groups and distances</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -208,6 +214,43 @@ if the specified rate does not have <a href="https://r-quantities.github.io/unit
 <span class="r-out co"><span class="r-pr">#&gt;</span> Units: [µg/L]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        1 m        5 m       10 m       20 m </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.60169999 0.18937304 0.10402698 0.05517095 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The function is vectorised with respect to rates, applications, water depth,</span></span></span>
+<span class="r-in"><span><span class="co"># crop groups and distances</span></span></span>
+<span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">6</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  applications <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  water_depth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">60</span>, <span class="fl">30</span>, <span class="fl">30</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  crop_group_JKI <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Ackerbau"</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Obstbau frueh"</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  distances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fl">10</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Units: [µg/L]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       5 m       5 m       5 m       5 m      10 m       5 m </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1900000 0.1566667 0.1900000 0.0950000 3.9366667 6.6300000 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Try the same with the Rautmann formula</span></span></span>
+<span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">6</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  applications <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  water_depth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">60</span>, <span class="fl">30</span>, <span class="fl">30</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  drift_data <span class="op">=</span> <span class="st">"RF"</span>,</span></span>
+<span class="r-in"><span>  crop_group_RF <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"arable"</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"fruit, early"</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  distances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fl">10</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Units: [µg/L]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        5 m        5 m        5 m        5 m       10 m        5 m </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.19064473 0.15991216 0.19064473 0.09532236 3.93566026 6.62814740 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># And with the FOCUS variant</span></span></span>
+<span class="r-in"><span><span class="fu">PEC_sw_drift</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">6</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  applications <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  water_depth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">60</span>, <span class="fl">30</span>, <span class="fl">30</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  drift_data <span class="op">=</span> <span class="st">"RF"</span>,</span></span>
+<span class="r-in"><span>  formula <span class="op">=</span> <span class="st">"FOCUS"</span>,</span></span>
+<span class="r-in"><span>  crop_group_RF <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"arable"</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"fruit, early"</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  distances <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fl">10</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Units: [µg/L]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       5 m       5 m       5 m       5 m      10 m       5 m </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1741454 0.1456444 0.1741454 0.0870727 3.7957683 6.1809560 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -219,7 +262,7 @@ if the specified rate does not have <a href="https://r-quantities.github.io/unit
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>
