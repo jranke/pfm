@@ -33,11 +33,12 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.4" id="version-064">version 0.6.4<a class="anchor" aria-label="anchor" href="#version-064"></a></h2>
-<ul><li>R/PEC_sw_drift.R: Vectorise the function not only with respect to distances, rates and water depths, but also with respect to crop groups. Closes issue <a href="https://github.com/jranke/pfm/issues/2" class="external-link">#2</a> reported by Julian Klein (<a href="https://github.com/juklei" class="external-link">@juklei</a>).</li>
+<h2 class="pkg-version" data-toc-text="0.6.5" id="version-065">version 0.6.5<a class="anchor" aria-label="anchor" href="#version-065"></a></h2>
+<ul><li><p>R/PEC_sw_drainage_UK.R: Create a function <code>drainage_date_UK</code> that does not only respect the beginning of the drainage period on 1 October, but also the end of the drainage period on 30 April, and use it for determining the degradation time. Applications early in the year before 1 May will now correctly be calculated without degradation time.</p></li>
+<li><p>R/PEC_sw_drift.R: Vectorise the function not only with respect to distances, rates and water depths, but also with respect to crop groups. Closes issue <a href="https://github.com/jranke/pfm/issues/2" class="external-link">#2</a> reported by Julian Klein (<a href="https://github.com/juklei" class="external-link">@juklei</a>).</p></li>
 </ul></div>
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.6.4" id="version-064-1">version 0.6.4<a class="anchor" aria-label="anchor" href="#version-064-1"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.6.4" id="version-064">version 0.6.4<a class="anchor" aria-label="anchor" href="#version-064"></a></h2>
 <ul><li><p>R/PEC_sw_drainage_uk.R: Fix a bug preventing the function to work of <code>latest_application</code> is set to 29 February. Also, make this function correctly deal with units.</p></li>
 <li><p>R/twa.R: Fix a bug in plotting one-box models of class <code>one_box</code> that affected plots that displayed a time weighted average.</p></li>
 <li><p>R/PEC_sw_drainage_uk.R: Fix a bug leading to increased PEC values in the case the application date is after the beginning of the drainage period and <code>soil_DT50</code> was specified.</p></li>

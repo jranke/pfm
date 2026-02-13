@@ -3,7 +3,6 @@
 * checking DESCRIPTION meta-information ... OK
 * checking for LF line-endings in source and make files and shell scripts
 * checking for empty or unneeded directories
-Removed empty directory ‘pfm/tests/testthat/_snaps’
 * re-saving image files
 * building ‘pfm_0.6.5.tar.gz’
 
