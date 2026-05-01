@@ -19,7 +19,7 @@ if(getRversion() >= '2.15.1') utils::globalVariables(c("destination", "study_typ
 #' Total soil and porewater PEC values for the scenarios as defined in the EFSA
 #' guidance (2017, p. 14/15) can easily be calculated.
 #' @note While time weighted average (TWA) concentrations given in the examples
-#' from the EFSA guidance from 2015 (p. 80) are be reproduced, this is not
+#' from the EFSA guidance from 2015 (p. 80) can be reproduced, this is not
 #' true for the TWA concentrations given for the same example in the EFSA guidance
 #' from 2017 (p. 92).
 #' @note According to the EFSA guidance (EFSA, 2017, p. 43), leaching should be
@@ -145,7 +145,8 @@ PEC_soil <- function(rate, rate_units = "g/ha", interception = 0,
                      t_avg = 0,
                      t_act = NULL,
                      scenarios = c("default", "EFSA_2017", "EFSA_2015"),
-                     leaching = scenarios == "EFSA_2017",
+                     leaching = FALSE,
+                     scenarios == "EFSA_2017",
                      porewater = FALSE)
 {
   # Comments with equation numbers in parentheses refer to
