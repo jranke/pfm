@@ -1,8 +1,7 @@
 #' Groundwater ubiquity score based on Gustafson (1989)
 #' 
-#' The groundwater ubiquity score GUS is calculated according to the following
+#' The groundwater ubiquity score GUS is calculated according to the 
 #' equation
-#'
 #' \deqn{GUS = \log_{10} DT50_{soil} (4 - \log_{10} K_{oc})}{GUS = log10 DT50soil * (4 - log10 Koc)}
 #' 
 #' @references Gustafson, David I. (1989) Groundwater ubiquity score: a simple

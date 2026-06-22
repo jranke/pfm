@@ -1,7 +1,7 @@
 # Groundwater ubiquity score based on Gustafson (1989)
 
 The groundwater ubiquity score GUS is calculated according to the
-following equation
+equation \$\$GUS = \log\_{10} DT50\_{soil} (4 - \log\_{10} K\_{oc})\$\$
 
 ## Usage
 
@@ -100,10 +100,6 @@ print(x, ..., digits = 1)
 
 A list with the DT50 and Koc used as well as the resulting score of
 class GUS_result
-
-## Details
-
-\$\$GUS = \log\_{10} DT50\_{soil} (4 - \log\_{10} K\_{oc})\$\$
 
 ## References
 
