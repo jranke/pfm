@@ -40,7 +40,7 @@ utils::globalVariables(c("A", "B", "C", "D", "H", "hinge", "z1", "z2", "distance
 #' @importFrom dplyr bind_rows
 #' @importFrom tidyr pivot_longer
 #' @return A numeric vector with the predicted concentration in surface water.
-#'   In some cases, the vector is named with distances or drift percentages, for 
+#'   In some cases, the vector is named with distances or drift percentages, for
 #'   backward compatibility with versions before the vectorisation of arguments
 #'   other than 'distances' was introduced in v0.6.5.
 #' @export
@@ -53,6 +53,10 @@ utils::globalVariables(c("A", "B", "C", "D", "H", "hinge", "z1", "z2", "distance
 #'
 #' # This makes it possible to also use different distances
 #' PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF")
+#'
+#' # We can also specify distance units explicitly
+#' library(units)
+#' PEC_sw_drift(100, distances = set_units(c(1, 3, 5, 6, 10, 20, 50, 100), "m"), drift_data = "RF")
 #'
 #' # or consider aerial application
 #' PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF",
@@ -115,6 +119,7 @@ PEC_sw_drift <- function(rate,
   rate_units <- match.arg(rate_units)
   PEC_units <- match.arg(PEC_units)
   if (!inherits(rate, "units")) rate <- set_units(rate, rate_units, mode = "symbolic")
+  if (!inherits(distances, "units")) distances <- set_units(distances, "m")
   if (!inherits(water_width, "units")) water_width <- set_units(water_width, "cm")
   if (!inherits(water_depth, "units")) water_depth <- set_units(water_depth, "cm")
   drift_data <- match.arg(drift_data)
@@ -143,17 +148,17 @@ PEC_sw_drift <- function(rate,
   else water_width - (water_depth / tanpi(side_angle/180))
   if (as.numeric(mean_water_width) < 0) stop("Undefined geometry")
   relative_mean_water_width <- mean_water_width / water_width # Always <= 1
-  
+
   # Check lengths of arguments advertised as vectorised for compatibility
   arg_lengths <- sapply(
-    list(rate = rate, applications = applications, distances = distances, 
-      water_depth = water_depth, crop_group_JKI = crop_group_JKI, 
+    list(rate = rate, applications = applications, distances = distances,
+      water_depth = water_depth, crop_group_JKI = crop_group_JKI,
       crop_group_RF = crop_group_RF),
     length)
-  
+
   arg_lengths_not_one <- arg_lengths[arg_lengths != 1]
   if (length(unique(arg_lengths_not_one)) > 1) {
-    stop("The following argument lengths do not match:\n", 
+    stop("The following argument lengths do not match:\n",
       capture_output(print(arg_lengths_not_one)))
   }
 
@@ -173,13 +178,13 @@ PEC_sw_drift <- function(rate,
         ) |>
         left_join(drift_data_JKI_long, by = c("applications", "distance", "crop_group_JKI")) |>
         pull(pctg)
-      names(drift_percentages) <- paste(distances, "m")
+      names(drift_percentages) <- paste(as.character(distances), "m")
     }
     if (drift_data == "RF") {
       drift_percentages <- drift_percentages_rautmann(distances, applications,
         formula = formula,
         crop_group_RF, widths = as.numeric(set_units(water_width, "m")))
-      names(drift_percentages) <- paste(distances, "m")
+      names(drift_percentages) <- paste(as.character(distances), "m")
     }
   } else {
     names(drift_percentages) <- paste(drift_percentages, "%")
@@ -250,9 +255,13 @@ drift_percentages_rautmann <- function(distances, applications = 1,
 )
 {
   unmatched_crop_groups <- setdiff(crop_group_RF, unique(pfm::drift_parameters_focus$crop_group))
+  if (!inherits(distances, "units")) distances <- set_units(distances, "m")
+  if (!inherits(widths, "units")) widths <- set_units(widths, "m")
   if (length(unmatched_crop_groups) > 0) stop("Crop group(s) ", unmatched_crop_groups, " not supported")
   if (!all(applications %in% 1:8)) stop("Only 1 to 8 applications are supported")
   formula <- match.arg(formula)
+  distances <- drop_units(distances)
+  widths <- drop_units(widths)
 
   # To avoid recycling of components with length != 1 but smaller than the longest argument,
   # which would likely be unintended, we use tibble here

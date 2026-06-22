@@ -1,20 +1,18 @@
-* using log directory ‘/home/jranke/git/pfm/pfm.Rcheck’
-* using R version 4.5.2 (2025-10-31)
+* using log directory ‘/home/f80868656/projects/pfm/pfm.Rcheck’
+* using R version 4.6.0 (2026-04-24)
 * using platform: x86_64-pc-linux-gnu
 * R was compiled by
-    gcc (Debian 14.2.0-19) 14.2.0
-    GNU Fortran (Debian 14.2.0-19) 14.2.0
-* running under: Debian GNU/Linux 13 (trixie)
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+* running under: Ubuntu 24.04.4 LTS
 * using session charset: UTF-8
+* current time: 2026-06-22 16:48:14 UTC
 * using options ‘--no-tests --as-cran’
 * checking for file ‘pfm/DESCRIPTION’ ... OK
 * checking extension type ... Package
 * this is package ‘pfm’ version ‘0.6.5’
 * package encoding: UTF-8
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: ‘Johannes Ranke <johannes.ranke@agroscope.admin.ch>’
-
-Size of tarball: 8535898 bytes
+* checking CRAN incoming feasibility ... OK
 * checking package namespace information ... OK
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
@@ -25,12 +23,11 @@ Size of tarball: 8535898 bytes
 * checking for sufficient/correct file permissions ... OK
 * checking whether package ‘pfm’ can be installed ... OK
 * checking installed package size ... INFO
-  installed size is 10.3Mb
+  installed size is 10.4Mb
   sub-directories of 1Mb or more:
-    testdata   9.9Mb
+    testdata  10.0Mb
 * checking package directory ... OK
-* checking for future file timestamps ... NOTE
-unable to verify current time
+* checking for future file timestamps ... OK
 * checking DESCRIPTION meta-information ... OK
 * checking top-level files ... OK
 * checking for left-over files ... OK
@@ -63,17 +60,20 @@ unable to verify current time
 * checking data for non-ASCII characters ... OK
 * checking LazyData ... OK
 * checking data for ASCII and uncompressed saves ... OK
-* checking examples ... OK
+* checking examples ... [11s/10s] OK
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ... SKIPPED
 * checking PDF version of manual ... OK
-* checking HTML version of manual ... OK
+* checking HTML version of manual ... NOTE
+Skipping checking HTML validation: no command 'tidy' found.
+Please obtain a recent version of HTML Tidy by downloading a binary
+release or compiling the source code from <https://www.html-tidy.org/>.
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
 
-Status: 2 NOTEs
+Status: 1 NOTE
 See
-  ‘/home/jranke/git/pfm/pfm.Rcheck/00check.log’
+  ‘/home/f80868656/projects/pfm/pfm.Rcheck/00check.log’
 for details.
 

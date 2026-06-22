@@ -90,6 +90,10 @@ PEC_sw_drift(100, drift_data = "RF")
 # This makes it possible to also use different distances
 PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF")
 
+# We can also specify distance units explicitly
+library(units)
+PEC_sw_drift(100, distances = set_units(c(1, 3, 5, 6, 10, 20, 50, 100), "m"), drift_data = "RF")
+
 # or consider aerial application
 PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF",
   crop_group_RF = "aerial")
