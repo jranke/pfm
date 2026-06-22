@@ -5,6 +5,7 @@ title: pfm
 template:
   bootstrap: 5
   bootswatch: spacelab
+  math-rendering: mathjax
 
 news:
   cran_dates: false
