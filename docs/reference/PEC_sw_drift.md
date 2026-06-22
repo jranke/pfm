@@ -148,6 +148,16 @@ PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF")
 #>      100 m 
 #> 0.01018774 
 
+# We can also specify distance units explicitly
+library(units)
+#> udunits database from /usr/share/xml/udunits/udunits2.xml
+PEC_sw_drift(100, distances = set_units(c(1, 3, 5, 6, 10, 20, 50, 100), "m"), drift_data = "RF")
+#> Units: [µg/L]
+#>        1 m        3 m        5 m        6 m       10 m       20 m       50 m 
+#> 0.91976667 0.31415827 0.19064473 0.15951494 0.09680051 0.04915079 0.02006434 
+#>      100 m 
+#> 0.01018774 
+
 # or consider aerial application
 PEC_sw_drift(100, distances = c(1, 3, 5, 6, 10, 20, 50, 100), drift_data = "RF",
   crop_group_RF = "aerial")

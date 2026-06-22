@@ -49,7 +49,6 @@ The easiest way to install the package is probably to use the
 [r-universe repo](https://jranke.r-universe.dev/pfm):
 
 ``` r
-
 install.packages("pfm",
   repos = c("https://jranke.r-universe.dev", "https://cran.r-project.org"))
 ```
@@ -59,7 +58,6 @@ Alternatively, you can install the package directly from github, e.g. by
 using [`pak`](https://pak.r-lib.org).
 
 ``` r
-
 # install.packages("pak")
 pak::pak("jranke/pfm")
 ```
@@ -81,8 +79,8 @@ overlays of mkinfit predictions as shown
 Calculations of predicted environmental concentrations using this
 package have been used in some publications by Agroscope.
 
-|  |
-|----|
-| Korkaric M, Lehto M, Poiger T, de Baan L, Mathis M, Ammann L, Hanke I, Balmer M, Blom JF (2023) Risikoindikatoren für Pflanzenschutzmittel: weiterführende Analysen zur Berechnung. Agroscope Science, 154, 1-48, [doi:10.34776/as154g](https://doi.org/10.34776/as154g) |
-| Korkaric M, Ammann L, Hanke I, Schneuwly J, Lehto M, Poiger T, de Baan L, Daniel O, Blom JF (2022) Neue Pflanzenschutzmittel-Risikoindikatoren für die Schweiz. Agrarforschung Schweiz 13, 1-10, [doi:10.34776/afs13-1](https://doi.org/10.34776/afs13-1) |
+|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Korkaric M, Lehto M, Poiger T, de Baan L, Mathis M, Ammann L, Hanke I, Balmer M, Blom JF (2023) Risikoindikatoren für Pflanzenschutzmittel: weiterführende Analysen zur Berechnung. Agroscope Science, 154, 1-48, [doi:10.34776/as154g](https://doi.org/10.34776/as154g)                                                                                                                                                                                                                              |
+| Korkaric M, Ammann L, Hanke I, Schneuwly J, Lehto M, Poiger T, de Baan L, Daniel O, Blom JF (2022) Neue Pflanzenschutzmittel-Risikoindikatoren für die Schweiz. Agrarforschung Schweiz 13, 1-10, [doi:10.34776/afs13-1](https://doi.org/10.34776/afs13-1)                                                                                                                                                                                                                                             |
 | Korkaric M, Hanke I, Grossar D, Neuweiler R, Christ B, Wirth J, Hochstrasser M, Dubuis PH, Kuster T, Breitenmoser S, Egger B, Perren S, Schürch S, Aldrich A, Jeker L, Poiger T, Daniel O (2020) Datengrundlage und Kriterien für eine Einschränkung der PSM-Auswahl im ÖLN: Schutz der Oberflächengewässer, der Bienen und des Grundwassers (Metaboliten), sowie agronomische Folgen der Einschränkungen. Agroscope Science, 106, 2020, 1-31. [doi:10.34776/as106g](https://doi.org/10.34776/as106g) |

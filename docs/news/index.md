@@ -2,6 +2,12 @@
 
 ## version 0.6.5
 
+- R/PEC_sw_drift.R: Support specifying units for distances and widths
+  using the units package.
+
+- R/TOXSWA_cwa.R: Adapt to readr (\>= 2.2.0) requiring to wrap literal
+  input as used for reading .out files with I().
+
 - R/PEC_sw_drainage_UK.R: Create a function `drainage_date_UK` that does
   not only respect the beginning of the drainage period on 1 October,
   but also the end of the drainage period on 30 April, and use it for

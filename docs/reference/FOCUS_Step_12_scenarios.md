@@ -14,7 +14,6 @@ percentages for Step 2 calculations in a matrix called 'rd'.
 ## Examples
 
 ``` r
-
 # \dontrun{
   # This is the code that was used to extract the data
   scenario_path <- "inst/extdata/FOCUS_Step_12_scenarios.txt"

@@ -61,7 +61,6 @@ Johannes Ranke
 ``` r
 library(pfm)
 library(units)
-#> udunits database from /usr/share/xml/udunits/udunits2.xml
 PEC_sw_sed(PEC_sw_drift(100, distances = 1), percentage = 50)
 #> 2.130769 [µg/kg]
 ```
