@@ -15,7 +15,7 @@ by read.TOXSWA_cwa."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">pfm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,13 +46,13 @@ by read.TOXSWA_cwa."></head><body>
 and some associated statistics.  like maximum moving window average
 concentrations, and dataframes holding the events exceeding specified
 thresholds.  Usually, an instance of this class will be generated
-by <code><a href="read.TOXSWA_cwa.html">read.TOXSWA_cwa</a></code>.</p>
+by <a href="read.TOXSWA_cwa.html">read.TOXSWA_cwa</a>.</p>
     </div>
 
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>An <code><a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6Class</a></code> generator object.</p>
+    <p>An <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6::R6Class</a> generator object.</p>
     </div>
     <div class="section level2">
     <h2 id="public-fields">Public fields<a class="anchor" aria-label="anchor" href="#public-fields"></a></h2>
@@ -60,31 +60,31 @@ by <code><a href="read.TOXSWA_cwa.html">read.TOXSWA_cwa</a></code>.</p>
 <dd><p>Length one character vector holding the filename.</p></dd>
 
 
-<dt><code>basedir</code></dt>
+    <dt><code>basedir</code></dt>
 <dd><p>Length one character vector holding the directory where the file came from.</p></dd>
 
 
-<dt><code>zipfile</code></dt>
+    <dt><code>zipfile</code></dt>
 <dd><p>If not null, giving the path to the zip file from which the file was read.</p></dd>
 
 
-<dt><code>segment</code></dt>
+    <dt><code>segment</code></dt>
 <dd><p>Length one integer, specifying for which segment the cwa data were read.</p></dd>
 
 
-<dt><code>substance</code></dt>
+    <dt><code>substance</code></dt>
 <dd><p>The TOXSWA name of the substance.</p></dd>
 
 
-<dt><code>cwas</code></dt>
+    <dt><code>cwas</code></dt>
 <dd><p>Dataframe holding the concentrations.</p></dd>
 
 
-<dt><code>events</code></dt>
+    <dt><code>events</code></dt>
 <dd><p>List of dataframes holding the event statistics for each threshold.</p></dd>
 
 
-<dt><code>windows</code></dt>
+    <dt><code>windows</code></dt>
 <dd><p>Matrix of maximum time weighted average concentrations (TWAC_max)
 and areas under the curve in µg/day * h (AUC_max_h) or µg/day * d (AUC_max_d)
 for the requested moving window sizes in days.</p></dd>
@@ -97,14 +97,13 @@ for the requested moving window sizes in days.</p></dd>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-TOXSWA_cwa-new"><code>TOXSWA_cwa$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-TOXSWA_cwa-initialize"><code>TOXSWA_cwa$new()</code></a></p></li>
 <li><p><a href="#method-TOXSWA_cwa-moving_windows"><code>TOXSWA_cwa$moving_windows()</code></a></p></li>
 <li><p><a href="#method-TOXSWA_cwa-get_events"><code>TOXSWA_cwa$get_events()</code></a></p></li>
 <li><p><a href="#method-TOXSWA_cwa-print"><code>TOXSWA_cwa$print()</code></a></p></li>
 <li><p><a href="#method-TOXSWA_cwa-clone"><code>TOXSWA_cwa$clone()</code></a></p></li>
-</ul></div><p></p><hr><a id="method-TOXSWA_cwa-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+</ul></div><p></p><hr><a id="method-TOXSWA_cwa-initialize"></a><div class="section">
+<h3 id="toxswa-cwa-new-"><code>TOXSWA_cwa$new()</code><a class="anchor" aria-label="anchor" href="#toxswa-cwa-new-"></a></h3>
 <p>Create a TOXSWA_cwa object from a file</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/TOXSWA_cwa.html">TOXSWA_cwa</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
@@ -115,51 +114,43 @@ for the requested moving window sizes in days.</p></dd>
 <span>  substance <span class="op">=</span> <span class="st">"parent"</span>,</span>
 <span>  total <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>filename</code></dt>
 <dd><p>The filename</p></dd>
 
-
-<dt><code>basedir</code></dt>
+      <dt><code>basedir</code></dt>
 <dd><p>The directory to look in</p></dd>
 
-
-<dt><code>zipfile</code></dt>
+      <dt><code>zipfile</code></dt>
 <dd><p>Optional path to a zipfile holding the file</p></dd>
 
-
-<dt><code>segment</code></dt>
+      <dt><code>segment</code></dt>
 <dd><p>Either "last" or the number of the segment for which to read the data</p></dd>
 
-
-<dt><code>substance</code></dt>
+      <dt><code>substance</code></dt>
 <dd><p>The TOXSWA substance name (for TOXSWA 4 or higher)</p></dd>
 
-
-<dt><code>total</code></dt>
+      <dt><code>total</code></dt>
 <dd><p>Should total concentrations be read in? If FALSE, free concentrations are read</p></dd>
 
 
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-TOXSWA_cwa-moving_windows"></a><div class="section">
-<h3 id="method-moving-windows-">Method <code>moving_windows()</code><a class="anchor" aria-label="anchor" href="#method-moving-windows-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-TOXSWA_cwa-moving_windows"></a><div class="section">
+<h3 id="toxswa-cwa-moving-windows-"><code>TOXSWA_cwa$moving_windows()</code><a class="anchor" aria-label="anchor" href="#toxswa-cwa-moving-windows-"></a></h3>
 <p>Add to the <code>windows</code> field described above.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">TOXSWA_cwa</span><span class="op">$</span><span class="fu">moving_windows</span><span class="op">(</span><span class="va">windows</span>, total <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>windows</code></dt>
 <dd><p>Window sizes in days</p></dd>
 
-
-<dt><code>total</code></dt>
+      <dt><code>total</code></dt>
 <dd><p>If TRUE, the total concentration including the amount adsorbed to
 suspended matter will be used.</p></dd>
 
@@ -167,22 +158,21 @@ suspended matter will be used.</p></dd>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-TOXSWA_cwa-get_events"></a><div class="section">
-<h3 id="method-get-events-">Method <code>get_events()</code><a class="anchor" aria-label="anchor" href="#method-get-events-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-TOXSWA_cwa-get_events"></a><div class="section">
+<h3 id="toxswa-cwa-get-events-"><code>TOXSWA_cwa$get_events()</code><a class="anchor" aria-label="anchor" href="#toxswa-cwa-get-events-"></a></h3>
 <p>Populate a datataframe with event information for the specified
 threshold value.  The resulting dataframe is stored in the <code>events</code>
 field of the object.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">TOXSWA_cwa</span><span class="op">$</span><span class="fu">get_events</span><span class="op">(</span><span class="va">thresholds</span>, total <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>thresholds</code></dt>
 <dd><p>Threshold values in µg/L.</p></dd>
 
-
-<dt><code>total</code></dt>
+      <dt><code>total</code></dt>
 <dd><p>If TRUE, the total concentration including the amount adsorbed to
 suspended matter will be used.</p></dd>
 
@@ -190,22 +180,23 @@ suspended matter will be used.</p></dd>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-TOXSWA_cwa-print"></a><div class="section">
-<h3 id="method-print-">Method <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code><a class="anchor" aria-label="anchor" href="#method-print-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-TOXSWA_cwa-print"></a><div class="section">
+<h3 id="toxswa-cwa-print-"><code>TOXSWA_cwa$print()</code><a class="anchor" aria-label="anchor" href="#toxswa-cwa-print-"></a></h3>
 <p>Print a <code>TOXSWA_cwa</code> object</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">TOXSWA_cwa</span><span class="op">$</span><span class="fu">print</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-TOXSWA_cwa-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p></p><hr><a id="method-TOXSWA_cwa-clone"></a><div class="section">
+<h3 id="toxswa-cwa-clone-"><code>TOXSWA_cwa$clone()</code><a class="anchor" aria-label="anchor" href="#toxswa-cwa-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">TOXSWA_cwa</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -215,6 +206,7 @@ suspended matter will be used.</p></dd>
 </div>
 
 </div>
+
 
     </div>
 
@@ -264,7 +256,7 @@ suspended matter will be used.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

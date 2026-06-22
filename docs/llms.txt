@@ -1,0 +1,218 @@
+# pfm
+
+[![Online
+documentation](https://img.shields.io/badge/docs-jrwb.de-blue.svg)](https://pkgdown.jrwb.de/pfm/)
+[![pfm status
+badge](https://jranke.r-universe.dev/badges/pfm)](https://jranke.r-universe.dev/ui/#package:pfm)
+[![Build
+Status](https://app.travis-ci.com/jranke/pfm.svg?token=Sq9VuYWyRz2FbBLxu6DK&branch=main)](https://app.travis-ci.com/jranke/pfm)
+[![codecov](https://codecov.io/github/jranke/pfm/branch/main/graphs/badge.svg)](https://codecov.io/github/jranke/pfm)
+
+The R package **pfm** provides some utilities for fate modelling,
+including simple routines for calculating predicted environmental
+concentrations (PEC) and some routines for dealing with FOCUS pesticide
+fate modelling tools made available under the GNU public license.
+
+More specifically, **pfm** includes facilities for simple one-box
+modelling of the
+[saw-tooth](https://pkgdown.jrwb.de/pfm/reference/sawtooth.html)-like
+curves resulting from multiple repeated applications, for calculation of
+[PEC soil](https://pkgdown.jrwb.de/pfm/reference/PEC_soil.html) based on
+the 1997 SANCO guidance and the first tiers of the EFSA PEC soil
+guidance from 2012 and 2015, as well as some functions for calculating
+[PEC surface
+water](https://pkgdown.jrwb.de/pfm/reference/sawtooth.html). The [PEC
+drift](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_drift.html)
+calculations can be based on the Rautmann drift percentiles published by
+JKI, the exponential formulas published by Rautmann to inter- or
+extrapolate to arbitrary distances, or on the integrated Rautmann
+formulas (integrated over the width of the surface water body) used in
+FOCUS drift calculations.
+
+For PEC drainage calculations, the methods used by the [UK at tier
+1](https://pkgdown.jrwb.de/pfm/reference/PEC_drainage_UK.html) and by
+[Germany](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_drainage.html)
+are implemented. For runoff, the
+[German](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_runoff.html)
+method used at tier 1 is available.
+
+The output of FOCUS TOXSWA calculations can be read in, plotted, and
+evaluated using the [TOXSWA
+cwa](https://pkgdown.jrwb.de/pfm/reference/TOXSWA_cwa.html) class giving
+maximum time weighted average concentrations and peak statistics way as
+available when using the
+[EPAT](https://www.rifcon.com/en/downloads/software-2/) tool.
+
+## Installation
+
+The easiest way to install the package is probably to use the
+[r-universe repo](https://jranke.r-universe.dev/pfm):
+
+``` r
+
+install.packages("pfm",
+  repos = c("https://jranke.r-universe.dev", "https://cran.r-project.org"))
+```
+
+The packages at R-universe are provided with a slight delay.
+Alternatively, you can install the package directly from github, e.g. by
+using [`pak`](https://pak.r-lib.org).
+
+``` r
+
+# install.packages("pak")
+pak::pak("jranke/pfm")
+```
+
+## Use
+
+Please refer to the
+[reference](http://pkgdown.jrwb.de/pfm/reference/index.md).
+
+## Examples
+
+One nice example of the usage of this package is the visualisation of a
+time weighted average for a sawtooth curve obtained from several
+overlays of mkinfit predictions as shown
+[here](http://pkgdown.jrwb.de/pfm/reference/plot.one_box.md).
+
+## Applications
+
+Calculations of predicted environmental concentrations using this
+package have been used in some publications by Agroscope.
+
+|  |
+|----|
+| Korkaric M, Lehto M, Poiger T, de Baan L, Mathis M, Ammann L, Hanke I, Balmer M, Blom JF (2023) Risikoindikatoren für Pflanzenschutzmittel: weiterführende Analysen zur Berechnung. Agroscope Science, 154, 1-48, [doi:10.34776/as154g](https://doi.org/10.34776/as154g) |
+| Korkaric M, Ammann L, Hanke I, Schneuwly J, Lehto M, Poiger T, de Baan L, Daniel O, Blom JF (2022) Neue Pflanzenschutzmittel-Risikoindikatoren für die Schweiz. Agrarforschung Schweiz 13, 1-10, [doi:10.34776/afs13-1](https://doi.org/10.34776/afs13-1) |
+| Korkaric M, Hanke I, Grossar D, Neuweiler R, Christ B, Wirth J, Hochstrasser M, Dubuis PH, Kuster T, Breitenmoser S, Egger B, Perren S, Schürch S, Aldrich A, Jeker L, Poiger T, Daniel O (2020) Datengrundlage und Kriterien für eine Einschränkung der PSM-Auswahl im ÖLN: Schutz der Oberflächengewässer, der Bienen und des Grundwassers (Metaboliten), sowie agronomische Folgen der Einschränkungen. Agroscope Science, 106, 2020, 1-31. [doi:10.34776/as106g](https://doi.org/10.34776/as106g) |
+
+# Package index
+
+## General utility functions
+
+Functions that are independent of specific fate modelling areas
+
+- [`geomean()`](https://pkgdown.jrwb.de/pfm/reference/geomean.md) :
+  Calculate the geometric mean
+- [`one_box()`](https://pkgdown.jrwb.de/pfm/reference/one_box.md) :
+  Create a time series of decline data
+- [`plot(`*`<one_box>`*`)`](https://pkgdown.jrwb.de/pfm/reference/plot.one_box.md)
+  : Plot time series of decline data
+- [`sawtooth()`](https://pkgdown.jrwb.de/pfm/reference/sawtooth.md) :
+  Create decline time series for multiple applications
+- [`twa()`](https://pkgdown.jrwb.de/pfm/reference/twa.md) : Calculate a
+  time weighted average concentration
+- [`max_twa()`](https://pkgdown.jrwb.de/pfm/reference/max_twa.md) : The
+  maximum time weighted average concentration for a moving window
+- [`pfm_degradation()`](https://pkgdown.jrwb.de/pfm/reference/pfm_degradation.md)
+  : Calculate a time course of relative concentrations based on an
+  mkinmod model
+- [`SFO_actual_twa()`](https://pkgdown.jrwb.de/pfm/reference/SFO_actual_twa.md)
+  : Actual and maximum moving window time average concentrations for SFO
+  kinetics
+- [`FOMC_actual_twa()`](https://pkgdown.jrwb.de/pfm/reference/FOMC_actual_twa.md)
+  : Actual and maximum moving window time average concentrations for
+  FOMC kinetics
+- [`reexports`](https://pkgdown.jrwb.de/pfm/reference/reexports.md)
+  [`set_nd_nq`](https://pkgdown.jrwb.de/pfm/reference/reexports.md)
+  [`set_nd_nq_focus`](https://pkgdown.jrwb.de/pfm/reference/reexports.md)
+  : Objects exported from other packages
+- [`TSCF()`](https://pkgdown.jrwb.de/pfm/reference/TSCF.md) : Estimation
+  of the transpiration stream concentration factor
+
+## Predicted environmental concentrations in soil
+
+- [`PEC_soil()`](https://pkgdown.jrwb.de/pfm/reference/PEC_soil.md) :
+  Calculate predicted environmental concentrations in soil
+- [`PEC_soil_mets()`](https://pkgdown.jrwb.de/pfm/reference/PEC_soil_mets.md)
+  : Calculate initial and accumulation PEC soil for a set of metabolites
+- [`soil_scenario_data_EFSA_2015`](https://pkgdown.jrwb.de/pfm/reference/soil_scenario_data_EFSA_2015.md)
+  : Properties of the predefined scenarios from the EFSA guidance from
+  2015
+- [`soil_scenario_data_EFSA_2017`](https://pkgdown.jrwb.de/pfm/reference/soil_scenario_data_EFSA_2017.md)
+  : Properties of the predefined scenarios from the EFSA guidance from
+  2017
+- [`PEC_FOMC_accu_rel()`](https://pkgdown.jrwb.de/pfm/reference/PEC_FOMC_accu_rel.md)
+  : Get the relative accumulation of an FOMC model over multiples of an
+  interval
+- [`EFSA_washoff_2017`](https://pkgdown.jrwb.de/pfm/reference/EFSA_washoff_2017.md)
+  : Subset of EFSA crop washoff default values
+
+## Predicted environmental concentrations in groundwater
+
+- [`FOCUS_GW_scenarios_2012`](https://pkgdown.jrwb.de/pfm/reference/FOCUS_GW_scenarios_2012.md)
+  : A very small subset of the FOCUS Groundwater scenario definitions
+- [`EFSA_GW_interception_2014`](https://pkgdown.jrwb.de/pfm/reference/EFSA_GW_interception_2014.md)
+  : Subset of EFSA crop interception default values for groundwater
+  modelling
+
+## Predicted environmental concentrations in surface water
+
+- [`PEC_sw_drift()`](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_drift.md)
+  : Calculate predicted environmental concentrations in surface water
+  due to drift
+- [`drift_data_JKI`](https://pkgdown.jrwb.de/pfm/reference/drift_data_JKI.md)
+  : Deposition from spray drift expressed as percent of the applied dose
+  as published by the JKI
+- [`drift_parameters_focus`](https://pkgdown.jrwb.de/pfm/reference/drift_parameters_focus.md)
+  : Regression parameters for the Rautmann drift data
+- [`drift_percentages_rautmann()`](https://pkgdown.jrwb.de/pfm/reference/drift_percentages_rautmann.md)
+  : Calculate drift percentages based on Rautmann data
+- [`PEC_sw_drainage_UK()`](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_drainage_UK.md)
+  [`drainage_date_UK()`](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_drainage_UK.md)
+  : Calculate initial predicted environmental concentrations in surface
+  water due to drainage using the UK method
+- [`PEC_sw_sed()`](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_sed.md)
+  : Calculate predicted environmental concentrations in sediment from
+  surface water concentrations
+- [`PEC_sw_focus()`](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_focus.md)
+  : Calculate PEC surface water at FOCUS Step 1
+- [`chent_focus_sw()`](https://pkgdown.jrwb.de/pfm/reference/chent_focus_sw.md)
+  : Create a chemical compound object for FOCUS Step 1 calculations
+- [`FOCUS_Step_12_scenarios`](https://pkgdown.jrwb.de/pfm/reference/FOCUS_Step_12_scenarios.md)
+  : Step 1/2 scenario data as distributed with the FOCUS Step 1/2
+  calculator
+- [`PEC_sw_exposit_drainage()`](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_drainage.md)
+  : Calculate PEC surface water due to drainage as in Exposit 3
+- [`PEC_sw_exposit_runoff()`](https://pkgdown.jrwb.de/pfm/reference/PEC_sw_exposit_runoff.md)
+  : Calculate PEC surface water due to runoff and erosion as in Exposit
+  3
+- [`perc_runoff_exposit`](https://pkgdown.jrwb.de/pfm/reference/perc_runoff_exposit.md)
+  : Runoff loss percentages as used in Exposit 3
+- [`perc_runoff_reduction_exposit`](https://pkgdown.jrwb.de/pfm/reference/perc_runoff_reduction_exposit.md)
+  : Runoff reduction percentages as used in Exposit
+- [`TOXSWA_cwa`](https://pkgdown.jrwb.de/pfm/reference/TOXSWA_cwa.md) :
+  R6 class for holding TOXSWA water concentration data and associated
+  statistics
+- [`read.TOXSWA_cwa()`](https://pkgdown.jrwb.de/pfm/reference/read.TOXSWA_cwa.md)
+  : Read TOXSWA surface water concentrations
+- [`plot(`*`<TOXSWA_cwa>`*`)`](https://pkgdown.jrwb.de/pfm/reference/plot.TOXSWA_cwa.md)
+  : Plot TOXSWA surface water concentrations
+
+## Classifications and indicators
+
+Evaluating environmental fate properties
+
+- [`SSLRC_mobility_classification()`](https://pkgdown.jrwb.de/pfm/reference/SSLRC_mobility_classification.md)
+  : Determine the SSLRC mobility classification for a chemical substance
+  from its Koc
+- [`GUS()`](https://pkgdown.jrwb.de/pfm/reference/GUS.md)
+  [`print(`*`<GUS_result>`*`)`](https://pkgdown.jrwb.de/pfm/reference/GUS.md)
+  : Groundwater ubiquity score based on Gustafson (1989)
+
+## Work with chent objects containing relevant information
+
+- [`endpoint()`](https://pkgdown.jrwb.de/pfm/reference/endpoint.md)
+  [`soil_DT50()`](https://pkgdown.jrwb.de/pfm/reference/endpoint.md)
+  [`soil_Kfoc()`](https://pkgdown.jrwb.de/pfm/reference/endpoint.md)
+  [`soil_N()`](https://pkgdown.jrwb.de/pfm/reference/endpoint.md)
+  [`soil_sorption()`](https://pkgdown.jrwb.de/pfm/reference/endpoint.md)
+  : Retrieve endpoint information from the chyaml field of a chent
+  object
+
+## Utilities
+
+- [`get_vertex()`](https://pkgdown.jrwb.de/pfm/reference/get_vertex.md)
+  : Fit a parabola through three points
+

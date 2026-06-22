@@ -9,7 +9,7 @@ The text file is not included in the package as its licence is not clear."></hea
 
     <a class="navbar-brand me-2" href="../index.html">pfm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,27 +61,27 @@ calculations in a matrix called 'rd'.</p>
 <span class="r-in"><span>  <span class="va">FOCUS_Step_12_scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">scenarios</span>, sep <span class="op">=</span> <span class="st">"\t"</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, check.names <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
 <span class="r-in"><span>    stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'scenarios' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'scenarios' not found</span>
 <span class="r-in"><span>  <span class="va">FOCUS_Step_12_scenarios</span><span class="op">$</span><span class="va">names</span> <span class="op">=</span> <span class="va">sce</span><span class="op">$</span><span class="va">Crop</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'sce' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'sce' not found</span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">sce</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">sce</span><span class="op">$</span><span class="va">Crop</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'sce' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'sce' not found</span>
 <span class="r-in"><span>  <span class="va">FOCUS_Step_12_scenarios</span><span class="op">$</span><span class="va">drift</span> <span class="op">=</span> <span class="va">sce</span><span class="op">[</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'sce' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'sce' not found</span>
 <span class="r-in"><span>  <span class="va">FOCUS_Step_12_scenarios</span><span class="op">$</span><span class="va">interception</span> <span class="op">=</span> <span class="va">sce</span><span class="op">[</span>, <span class="fl">12</span><span class="op">:</span><span class="fl">15</span><span class="op">]</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'sce' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'sce' not found</span>
 <span class="r-in"><span>  <span class="va">sce_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">scenario_path</span><span class="op">)</span><span class="op">[</span><span class="fl">41</span><span class="op">:</span><span class="fl">46</span><span class="op">]</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>cannot open file 'inst/extdata/FOCUS_Step_12_scenarios.txt': No such file or directory</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in file(con, "r"):</span> cannot open the connection</span>
 <span class="r-in"><span>  <span class="va">rd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">sce_2</span>, sep <span class="op">=</span> <span class="st">"\t"</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'sce_2' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'sce_2' not found</span>
 <span class="r-in"><span>  <span class="va">rd_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="va">rd</span><span class="op">$</span><span class="va">V2</span>, nrow <span class="op">=</span> <span class="fl">3</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'rd' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'rd' not found</span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/dimnames.html" class="external-link">dimnames</a></span><span class="op">(</span><span class="va">rd_mat</span><span class="op">)</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>Time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Oct-Feb"</span>, <span class="st">"Mar-May"</span>, <span class="st">"Jun-Sep"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>                          Region <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"North"</span>, <span class="st">"South"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'rd_mat' not found</span>
 <span class="r-in"><span>  <span class="va">FOCUS_Step_12_scenarios</span><span class="op">$</span><span class="va">rd</span> <span class="op">=</span> <span class="va">rd_mat</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'rd_mat' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'rd_mat' not found</span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/save.html" class="external-link">save</a></span><span class="op">(</span><span class="va">FOCUS_Step_12_scenarios</span>, file <span class="op">=</span> <span class="st">"data/FOCUS_Step_12_scenarios.RData"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>cannot open compressed file 'data/FOCUS_Step_12_scenarios.RData', probable reason 'No such file or directory'</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in gzfile(file, "wb"):</span> cannot open the connection</span>
@@ -101,7 +101,7 @@ calculations in a matrix called 'rd'.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>
