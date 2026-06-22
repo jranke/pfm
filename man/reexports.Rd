@@ -12,6 +12,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{mkin}{\code{\link[mkin]{set_nd_nq}}, \code{\link[mkin:set_nd_nq]{set_nd_nq_focus}}}
+  \item{mkin}{\code{\link[mkin:set_nd_nq]{set_nd_nq()}}, \code{\link[mkin:set_nd_nq_focus]{set_nd_nq_focus()}}}
 }}
 

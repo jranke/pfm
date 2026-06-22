@@ -24,139 +24,142 @@ print(H_sw_R1_stream)
 }
 \keyword{data}
 \section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{filename}}{Length one character vector holding the filename.}
+  \if{html}{\out{<div class="r6-fields">}}
+  \describe{
+    \item{\code{filename}}{Length one character vector holding the filename.}
 
-\item{\code{basedir}}{Length one character vector holding the directory where the file came from.}
+    \item{\code{basedir}}{Length one character vector holding the directory where the file came from.}
 
-\item{\code{zipfile}}{If not null, giving the path to the zip file from which the file was read.}
+    \item{\code{zipfile}}{If not null, giving the path to the zip file from which the file was read.}
 
-\item{\code{segment}}{Length one integer, specifying for which segment the cwa data were read.}
+    \item{\code{segment}}{Length one integer, specifying for which segment the cwa data were read.}
 
-\item{\code{substance}}{The TOXSWA name of the substance.}
+    \item{\code{substance}}{The TOXSWA name of the substance.}
 
-\item{\code{cwas}}{Dataframe holding the concentrations.}
+    \item{\code{cwas}}{Dataframe holding the concentrations.}
 
-\item{\code{events}}{List of dataframes holding the event statistics for each threshold.}
+    \item{\code{events}}{List of dataframes holding the event statistics for each threshold.}
 
-\item{\code{windows}}{Matrix of maximum time weighted average concentrations (TWAC_max)
+    \item{\code{windows}}{Matrix of maximum time weighted average concentrations (TWAC_max)
 and areas under the curve in µg/day * h (AUC_max_h) or µg/day * d (AUC_max_d)
 for the requested moving window sizes in days.}
-}
-\if{html}{\out{</div>}}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-TOXSWA_cwa-new}{\code{TOXSWA_cwa$new()}}
-\item \href{#method-TOXSWA_cwa-moving_windows}{\code{TOXSWA_cwa$moving_windows()}}
-\item \href{#method-TOXSWA_cwa-get_events}{\code{TOXSWA_cwa$get_events()}}
-\item \href{#method-TOXSWA_cwa-print}{\code{TOXSWA_cwa$print()}}
-\item \href{#method-TOXSWA_cwa-clone}{\code{TOXSWA_cwa$clone()}}
-}
+  \itemize{
+    \item \href{#method-TOXSWA_cwa-initialize}{\code{TOXSWA_cwa$new()}}
+    \item \href{#method-TOXSWA_cwa-moving_windows}{\code{TOXSWA_cwa$moving_windows()}}
+    \item \href{#method-TOXSWA_cwa-get_events}{\code{TOXSWA_cwa$get_events()}}
+    \item \href{#method-TOXSWA_cwa-print}{\code{TOXSWA_cwa$print()}}
+    \item \href{#method-TOXSWA_cwa-clone}{\code{TOXSWA_cwa$clone()}}
+  }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-TOXSWA_cwa-new"></a>}}
-\if{latex}{\out{\hypertarget{method-TOXSWA_cwa-new}{}}}
-\subsection{Method \code{new()}}{
-Create a TOXSWA_cwa object from a file
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{TOXSWA_cwa$new(
+\if{html}{\out{<a id="method-TOXSWA_cwa-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-TOXSWA_cwa-initialize}{}}}
+\subsection{\code{TOXSWA_cwa$new()}}{
+  Create a TOXSWA_cwa object from a file
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{TOXSWA_cwa$new(
   filename,
   basedir,
   zipfile = NULL,
   segment = "last",
   substance = "parent",
   total = FALSE
-)}\if{html}{\out{</div>}}
+)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{filename}}{The filename}
+      \item{\code{basedir}}{The directory to look in}
+      \item{\code{zipfile}}{Optional path to a zipfile holding the file}
+      \item{\code{segment}}{Either "last" or the number of the segment for which to read the data}
+      \item{\code{substance}}{The TOXSWA substance name (for TOXSWA 4 or higher)}
+      \item{\code{total}}{Should total concentrations be read in? If FALSE, free concentrations are read}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{filename}}{The filename}
-
-\item{\code{basedir}}{The directory to look in}
-
-\item{\code{zipfile}}{Optional path to a zipfile holding the file}
-
-\item{\code{segment}}{Either "last" or the number of the segment for which to read the data}
-
-\item{\code{substance}}{The TOXSWA substance name (for TOXSWA 4 or higher)}
-
-\item{\code{total}}{Should total concentrations be read in? If FALSE, free concentrations are read}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-TOXSWA_cwa-moving_windows"></a>}}
 \if{latex}{\out{\hypertarget{method-TOXSWA_cwa-moving_windows}{}}}
-\subsection{Method \code{moving_windows()}}{
-Add to the \code{windows} field described above.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{TOXSWA_cwa$moving_windows(windows, total = FALSE)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{windows}}{Window sizes in days}
-
-\item{\code{total}}{If TRUE, the total concentration including the amount adsorbed to
+\subsection{\code{TOXSWA_cwa$moving_windows()}}{
+  Add to the \code{windows} field described above.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{TOXSWA_cwa$moving_windows(windows, total = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{windows}}{Window sizes in days}
+      \item{\code{total}}{If TRUE, the total concentration including the amount adsorbed to
 suspended matter will be used.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
-\if{html}{\out{</div>}}
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-TOXSWA_cwa-get_events"></a>}}
 \if{latex}{\out{\hypertarget{method-TOXSWA_cwa-get_events}{}}}
-\subsection{Method \code{get_events()}}{
-Populate a datataframe with event information for the specified
+\subsection{\code{TOXSWA_cwa$get_events()}}{
+  Populate a datataframe with event information for the specified
 threshold value.  The resulting dataframe is stored in the \code{events}
 field of the object.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{TOXSWA_cwa$get_events(thresholds, total = FALSE)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{thresholds}}{Threshold values in µg/L.}
-
-\item{\code{total}}{If TRUE, the total concentration including the amount adsorbed to
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{TOXSWA_cwa$get_events(thresholds, total = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{thresholds}}{Threshold values in µg/L.}
+      \item{\code{total}}{If TRUE, the total concentration including the amount adsorbed to
 suspended matter will be used.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
-\if{html}{\out{</div>}}
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-TOXSWA_cwa-print"></a>}}
 \if{latex}{\out{\hypertarget{method-TOXSWA_cwa-print}{}}}
-\subsection{Method \code{print()}}{
-Print a \code{TOXSWA_cwa} object
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{TOXSWA_cwa$print()}\if{html}{\out{</div>}}
+\subsection{\code{TOXSWA_cwa$print()}}{
+  Print a \code{TOXSWA_cwa} object
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{TOXSWA_cwa$print()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-TOXSWA_cwa-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-TOXSWA_cwa-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{TOXSWA_cwa$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{TOXSWA_cwa$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{TOXSWA_cwa$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

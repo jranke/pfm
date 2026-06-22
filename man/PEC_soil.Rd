@@ -123,7 +123,7 @@ guidance (2017, p. 14/15) can easily be calculated.
 }
 \note{
 While time weighted average (TWA) concentrations given in the examples
-from the EFSA guidance from 2015 (p. 80) are be reproduced, this is not
+from the EFSA guidance from 2015 (p. 80) can be reproduced, this is not
 true for the TWA concentrations given for the same example in the EFSA guidance
 from 2017 (p. 92).
 
