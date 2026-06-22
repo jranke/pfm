@@ -275,9 +275,9 @@ TOXSWA_cwa <- R6::R6Class("TOXSWA_cwa",
 
           cwa_lines <- grep(cwa_string, outfile, value = TRUE)
 
-          cwa_all_segments <- read_fwf(paste(cwa_lines, collapse = "\n"),
-                                       fwf_empty(paste(tail(cwa_lines), collapse = "\n")))
-
+          cwa_all_segments <- read_fwf(I(paste(cwa_lines, collapse = "\n")),
+            fwf_empty(I(paste(tail(cwa_lines), collapse = "\n"))),
+            show_col_types = FALSE)
 
           available_segments = 1:(ncol(cwa_all_segments) - 3)
           if (segment == "last") segment = max(available_segments)
